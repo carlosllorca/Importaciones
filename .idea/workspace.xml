@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/commands/RbacController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/layouts/mainMenu.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/layouts/main_save.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/layouts/navbar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/manage/_formRole.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/manage/createRole.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/manage/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/manage/rbac.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/manage/updatePerm.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/manage/updateRole.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/manage/viewRole.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/js/updatePerm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/ini.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SiteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/LoginForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/LoginForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/error.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/error.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/plantilla.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/plantilla.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/yii_overrides.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/yii_overrides.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,6 +108,16 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/web/js/yii_overrides.js" root0="SKIP_INSPECTION" />
   </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="seisa.llorca.cu" id="17445150-5343-4251-8a4b-56a6b7c6862c" name="seisa" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$" remote-root="/var/www/html/Importaciones" />
+        </path_mappings>
+      </server>
+    </servers>
+  </component>
+  <component name="PhpWebServerValidation" deployment_server_id="3cf5b849-b098-4dd0-ba55-4dc3a6ea6136" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="REMOTE" web_path_to_validation_script="http://127.0.0.1/" />
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/codeception/stub" />
@@ -230,7 +220,9 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/js" />
+    <property name="enableYiiStorm" value="true" />
+    <property name="langName" value="en" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -238,7 +230,10 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.remoteExternalTools" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
+    <property name="themeName" value="" />
+    <property name="useYiiMigrations" value="true" />
+    <property name="yiicFile" value="" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -249,17 +244,17 @@
       <recent name="$PROJECT_DIR$/views/layouts" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="SEISA" type="PhpRemoteDebugRunConfigurationType" factoryName="PHP Remote Debug" filter_connections="FILTER" server_name="seisa" session_id="19823">
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
         <serviceView>
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:seisa" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -282,7 +277,8 @@
       <workItem from="1576472854600" duration="870000" />
       <workItem from="1576507214514" duration="7455000" />
       <workItem from="1576544383824" duration="666000" />
-      <workItem from="1576545090630" duration="18095000" />
+      <workItem from="1576545090630" duration="18181000" />
+      <workItem from="1576617694320" duration="913000" />
     </task>
     <task id="LOCAL-00001" summary="Preparando el proyecto">
       <created>1576473614599</created>
@@ -312,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576557972348</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Menu principal y detalles de maquetación.">
+      <created>1576565776432</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1576565776433</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,16 +329,22 @@
     <MESSAGE value="ya con bootstrap 4" />
     <MESSAGE value="adicionando todos los modelos" />
     <MESSAGE value="Añadido sweet alert, solucionando con js bug de la plantilla que esconde el mensaje de error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Añadido sweet alert, solucionando con js bug de la plantilla que esconde el mensaje de error" />
+    <MESSAGE value="Menu principal y detalles de maquetación." />
+    <option name="LAST_COMMIT_MESSAGE" value="Menu principal y detalles de maquetación." />
   </component>
   <component name="WindowStateProjectService">
     <state x="2475" y="200" width="800" height="677" key="#Deployment" timestamp="1576472912804">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2475" y="200" width="800" height="677" key="#Deployment/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576472912804" />
-    <state x="579" y="214" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576552905291">
-      <screen x="49" y="27" width="1871" height="1053" />
+    <state x="2589" y="192" width="824" height="684" key="#Servers" timestamp="1576618320785">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="2589" y="192" width="824" height="684" key="#Servers/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618320785" />
+    <state x="2464" y="192" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576618343307">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2464" y="192" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618343307" />
     <state x="579" y="214" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1576552905291" />
     <state x="693" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1576563377743">
       <screen x="0" y="27" width="3840" height="1053" />
@@ -345,20 +354,61 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2546" y="325" width="827" height="602" key="#com.intellij.tools.ToolEditorDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576507363873" />
-    <state x="154" y="159" width="860" height="807" key="CommitChangelistDialog2" timestamp="1576557971785">
-      <screen x="0" y="27" width="3840" height="1053" />
-    </state>
-    <state x="154" y="159" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1576557971785" />
-    <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576473606983" />
-    <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/49.27.1871.1053@49.27.1871.1053" timestamp="1576553154680" />
-    <state x="755" y="478" width="399" height="149" key="NewPhpFileDialog" timestamp="1576561083605">
-      <screen x="0" y="27" width="3840" height="1053" />
-    </state>
-    <state x="755" y="478" width="399" height="149" key="NewPhpFileDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1576561083605" />
-    <state x="2369" y="187" key="SettingsEditor" timestamp="1576507366775">
+    <state x="2548" y="378" width="654" height="348" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1576618367261">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2369" y="187" key="SettingsEditor/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576507366775" />
+    <state x="2548" y="378" width="654" height="348" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618367261" />
+    <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2" timestamp="1576565775973">
+      <screen x="0" y="27" width="3840" height="1053" />
+    </state>
+    <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1576565775973" />
+    <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576473606983" />
+    <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/49.27.1871.1053@49.27.1871.1053" timestamp="1576553154680" />
+    <state x="2663" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1576617786856">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2663" y="310" width="424" height="484" key="FileChooserDialogImpl/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576617786856" />
+    <state width="1874" height="344" key="GridCell.Tab.0.bottom" timestamp="1576618386332">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.0.bottom/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618386332" />
+    <state width="1874" height="344" key="GridCell.Tab.0.center" timestamp="1576618386331">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.0.center/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618386331" />
+    <state width="1874" height="344" key="GridCell.Tab.0.left" timestamp="1576618386331">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.0.left/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618386331" />
+    <state width="1874" height="344" key="GridCell.Tab.0.right" timestamp="1576618386331">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.0.right/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618386331" />
+    <state width="1874" height="344" key="GridCell.Tab.1.bottom" timestamp="1576618443557">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.1.bottom/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618443557" />
+    <state width="1874" height="344" key="GridCell.Tab.1.center" timestamp="1576618443557">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.1.center/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618443557" />
+    <state width="1874" height="344" key="GridCell.Tab.1.left" timestamp="1576618443556">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.1.left/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618443556" />
+    <state width="1874" height="344" key="GridCell.Tab.1.right" timestamp="1576618443557">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.1.right/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618443557" />
+    <state x="2298" y="463" width="249" height="153" key="NewPhpFileDialog" timestamp="1576618165980">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="755" y="478" width="399" height="149" key="NewPhpFileDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1576561083605" />
+    <state x="2298" y="463" width="249" height="153" key="NewPhpFileDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618165980" />
+    <state x="2369" y="187" key="SettingsEditor" timestamp="1576617941092">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2369" y="187" key="SettingsEditor/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576617941092" />
     <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576473625775">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
