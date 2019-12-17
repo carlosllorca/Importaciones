@@ -50,9 +50,15 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['username'], 'string', 'max' => 25],
             [['full_name'], 'string', 'max' => 200],
             [['email'], 'string', 'max' => 150],
-            [['password'], 'string', 'max' => 100],
+            [['password'], 'string', 'max' => 100,'min'=>8,'tooShort'=>'La contraseña debe tener como mínimo 8 caracteres'],
             [['province_ueb'], 'exist', 'skipOnError' => true, 'targetClass' => ProvinceUeb::className(), 'targetAttribute' => ['province_ueb' => 'id']],
         ];
+    }
+    public function passwordsMatch($attribute, $params)
+    {
+        if ($this->password != $this->confirm_password) {
+            $this->addError($attribute, 'Las contraseñas no coinciden.');
+        }
     }
 
     /**

@@ -28,7 +28,8 @@ class LoginForm extends Model
         return [
             // username and password are both required
             [['username', 'password'], 'required'],
-            [['username', 'password'], 'string','max'=>50],
+            [['username'], 'string', 'max' => 150, ],
+            [['password'], 'string','tooShort' => 'Contraseña debería contener al menos 8 caracteres.', 'max' => 150, 'min' => 8],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()

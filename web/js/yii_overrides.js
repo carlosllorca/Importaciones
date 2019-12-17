@@ -28,11 +28,17 @@ yii.confirm = function (message, okCallback, cancelCallback) {
 };
 $(function() {
     $('.form-control').on('focusout',function(){
-        setTimeout(()=>{
-            if($($(this).parent()).hasClass('has-error')){
-                $($(this).parent()).addClass('is-focused')
-            }
-        },500)
+        dontHideMessage(this)
 
     })
-})
+    $('.has-error').addClass('is-focused');
+
+
+});
+let dontHideMessage=function(element){
+    setTimeout(()=>{
+        if($($(element).parent()).hasClass('has-error')){
+            $($(element).parent()).addClass('is-focused')
+        }
+    },500)
+}

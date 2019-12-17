@@ -61,6 +61,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if(Yii::$app->user->isGuest)
+            return $this->redirect('/site/login');
+        Yii::$app->session->setFlash('success',"Probando....");
         return $this->render('index');
     }
 
@@ -95,6 +98,7 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
+        Yii::$app->session->setFlash('success','Su usuario ha sido desconectado satisfactoriamente.');
 
         return $this->goHome();
     }

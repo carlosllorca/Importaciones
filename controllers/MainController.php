@@ -25,7 +25,9 @@ class MainController extends Controller
     private $gestRoute=[
 
         'site/contact',
-        'site/login'
+        'site/login',
+
+        'user/create'
     ];
 
     public function beforeAction($action)

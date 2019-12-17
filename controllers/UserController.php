@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Rbac;
 use Yii;
 use app\models\User;
 use app\models\UserSearch;
@@ -65,9 +66,17 @@ class UserController extends MainController
     public function actionCreate()
     {
         $model = new User();
+        $model->created_at= date('Y-m-d');
+
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            $model->created_at= date('Y-m-d');
+            $model->active=true;
+            $model->password = Yii::$app->getSecurity()->generatePasswordHash($model->password);
+            Rbac::changeRole($model->username,Rbac::$ROOT);
+            $model->save(false);
+            return $this->redirect(['site/login', 'id' => $model->id]);
         }
 
         return $this->render('create', [

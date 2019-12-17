@@ -2,32 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Yii.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/ManageController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Rbac.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/UserSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/user/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/user/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/user/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/user/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/user/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/user/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/css/fontawesome.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/css/material-dashboard.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/css/plantilla.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/js/yii_overrides.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/sA/sweetalert.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/sA/sweetalert.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commands/RbacController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/layouts/mainMenu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/layouts/main_save.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/layouts/navbar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/manage/_formRole.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/manage/createRole.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/manage/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/manage/rbac.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/manage/updatePerm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/manage/updateRole.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/manage/viewRole.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/updatePerm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/AppAsset.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/AppAsset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/console.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SiteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/LoginForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/LoginForm.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/error.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/error.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/plantilla.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/plantilla.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/yii_overrides.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/yii_overrides.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +96,15 @@
         <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="user: table" type="69fad909:PgImplModel$LocalTable" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="seisa" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="SEISA: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="sequences" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
     </expand>
     <select />
@@ -225,7 +230,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -237,11 +242,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/web/css" />
-      <recent name="$PROJECT_DIR$/web" />
       <recent name="$PROJECT_DIR$/web/js" />
-      <recent name="$PROJECT_DIR$/controllers" />
-      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/commands" />
+      <recent name="$PROJECT_DIR$/views/manage" />
+      <recent name="$PROJECT_DIR$/views" />
+      <recent name="$PROJECT_DIR$/views/layouts" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -261,6 +266,9 @@
       </list>
     </option>
   </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -274,7 +282,7 @@
       <workItem from="1576472854600" duration="870000" />
       <workItem from="1576507214514" duration="7455000" />
       <workItem from="1576544383824" duration="666000" />
-      <workItem from="1576545090630" duration="10304000" />
+      <workItem from="1576545090630" duration="18095000" />
     </task>
     <task id="LOCAL-00001" summary="Preparando el proyecto">
       <created>1576473614599</created>
@@ -297,7 +305,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576553155010</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Añadido sweet alert, solucionando con js bug de la plantilla que esconde el mensaje de error">
+      <created>1576557972348</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1576557972348</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,7 +325,8 @@
     <MESSAGE value="Preparando el proyecto" />
     <MESSAGE value="ya con bootstrap 4" />
     <MESSAGE value="adicionando todos los modelos" />
-    <option name="LAST_COMMIT_MESSAGE" value="adicionando todos los modelos" />
+    <MESSAGE value="Añadido sweet alert, solucionando con js bug de la plantilla que esconde el mensaje de error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Añadido sweet alert, solucionando con js bug de la plantilla que esconde el mensaje de error" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2475" y="200" width="800" height="677" key="#Deployment" timestamp="1576472912804">
@@ -321,15 +337,24 @@
       <screen x="49" y="27" width="1871" height="1053" />
     </state>
     <state x="579" y="214" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1576552905291" />
+    <state x="693" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1576563377743">
+      <screen x="0" y="27" width="3840" height="1053" />
+    </state>
+    <state x="693" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1576563377743" />
     <state x="2546" y="325" width="827" height="602" key="#com.intellij.tools.ToolEditorDialog" timestamp="1576507363873">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2546" y="325" width="827" height="602" key="#com.intellij.tools.ToolEditorDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576507363873" />
-    <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2" timestamp="1576553154680">
-      <screen x="49" y="27" width="1871" height="1053" />
+    <state x="154" y="159" width="860" height="807" key="CommitChangelistDialog2" timestamp="1576557971785">
+      <screen x="0" y="27" width="3840" height="1053" />
     </state>
+    <state x="154" y="159" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1576557971785" />
     <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576473606983" />
     <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/49.27.1871.1053@49.27.1871.1053" timestamp="1576553154680" />
+    <state x="755" y="478" width="399" height="149" key="NewPhpFileDialog" timestamp="1576561083605">
+      <screen x="0" y="27" width="3840" height="1053" />
+    </state>
+    <state x="755" y="478" width="399" height="149" key="NewPhpFileDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1576561083605" />
     <state x="2369" y="187" key="SettingsEditor" timestamp="1576507366775">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -338,18 +363,19 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576473625775" />
-    <state x="672" y="192" width="566" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1576555197270">
+    <state x="672" y="192" width="566" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1576559686639">
       <screen x="0" y="27" width="3840" height="1053" />
     </state>
-    <state x="672" y="192" width="566" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1576555197270" />
+    <state x="672" y="192" width="566" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1576559686639" />
     <state x="649" y="398" key="com.intellij.ide.util.TipDialog" timestamp="1576545130231">
       <screen x="49" y="27" width="1871" height="1053" />
     </state>
     <state x="2536" y="380" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576507215067" />
     <state x="649" y="398" key="com.intellij.ide.util.TipDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1576545130231" />
-    <state x="2544" y="253" key="run.anything.popup" timestamp="1576507429956">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="1248" y="274" key="run.anything.popup" timestamp="1576564049924">
+      <screen x="0" y="27" width="3840" height="1053" />
     </state>
+    <state x="1248" y="274" key="run.anything.popup/0.27.3840.1053@0.27.3840.1053" timestamp="1576564049924" />
     <state x="2544" y="253" key="run.anything.popup/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576507429956" />
   </component>
 </project>
