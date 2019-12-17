@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "user".
@@ -14,6 +15,7 @@ use Yii;
  * @property string $password
  * @property string $created_at
  * @property string|null $last_login
+ * @property boolean $active
  * @property int|null $province_ueb
  *
  * @property BuyRequest[] $buyRequests
@@ -24,7 +26,7 @@ use Yii;
  * @property Offert[] $offerts0
  * @property ProvinceUeb $provinceUeb
  */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -44,7 +46,8 @@ class User extends \yii\db\ActiveRecord
             [['created_at', 'last_login'], 'safe'],
             [['province_ueb'], 'default', 'value' => null],
             [['province_ueb'], 'integer'],
-            [['username'], 'string', 'max' => 50],
+            [['active'], 'boolean'],
+            [['username'], 'string', 'max' => 25],
             [['full_name'], 'string', 'max' => 200],
             [['email'], 'string', 'max' => 150],
             [['password'], 'string', 'max' => 100],
@@ -59,13 +62,13 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
-            'full_name' => 'Full Name',
-            'email' => 'Email',
-            'password' => 'Password',
-            'created_at' => 'Created At',
-            'last_login' => 'Last Login',
-            'province_ueb' => 'Province Ueb',
+            'username' => 'Usuario',
+            'full_name' => 'Nombre completo',
+            'email' => 'Correo electrónico',
+            'password' => 'Contraseña',
+            'created_at' => 'Creado',
+            'last_login' => 'Último acceso',
+            'province_ueb' => 'ueb',
         ];
     }
 
@@ -123,5 +126,60 @@ class User extends \yii\db\ActiveRecord
     public function getProvinceUeb()
     {
         return $this->hasOne(ProvinceUeb::className(), ['id' => 'province_ueb']);
+    }
+
+    /**
+     * Identity Interfeace clases
+     */
+    /**
+     * @param int|string $id
+     * @return User|IdentityInterface|null
+     */
+    public static function findIdentity($id)
+    {
+        return static::findOne(['username' => $id]);
+    }
+
+    /**
+     * @return int|string
+     */
+    public function getId()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param $username
+     * @return User|null
+     */
+    public static function findByUsername($username)
+    {
+        return static::findOne(['username' => $username]);
+    }
+
+    /**
+     * @param $password
+     * @return bool
+     */
+    public function validatePassword($password)
+    {
+        if (Yii::$app->getSecurity()->validatePassword($password, $this->password)) {
+            return true;
+        }
+        return false;
+    }
+
+    //no usadas
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return null;
+    }
+    public function getAuthKey()
+    {
+        return null;
+    }
+    public function validateAuthKey($authKey)
+    {
+        return null;
     }
 }

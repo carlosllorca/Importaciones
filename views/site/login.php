@@ -22,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="p-3">
                         <?php $form = ActiveForm::begin([
                             'id' => 'login-form',
+
                            // 'layout' => 'horizontal',
 //                            'fieldConfig' => [
 //                                'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
@@ -29,15 +30,15 @@ $this->params['breadcrumbs'][] = $this->title;
 //                            ],
                         ]); ?>
 
-                        <?= $form->field($model, 'username')->textInput(['autofocus' => true,'max-length'=>true])->label('Nombre de Usuario') ?>
+                        <?= $form->field($model, 'username')->textInput(['autofocus' => true,['maxlength' => true]])->label('Nombre de Usuario') ?>
 
-                        <?= $form->field($model, 'password')->passwordInput()->label('Contraseña') ?>
+                        <?= $form->field($model, 'password')->passwordInput([['maxlength' => true]])->label('Contraseña') ?>
 
                         <?= $form->field($model, 'rememberMe')->checkbox()->label('Recuérdame!') ?>
 
                         <div class="form-group">
                             <div class="col-lg-offset-1 col-lg-11">
-                                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                                <?= Html::submitButton('Acceder', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                             </div>
                         </div>
 

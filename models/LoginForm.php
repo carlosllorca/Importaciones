@@ -28,7 +28,7 @@ class LoginForm extends Model
         return [
             // username and password are both required
             [['username', 'password'], 'required'],
-            [['username', 'password'], 'string','max'=>150],
+            [['username', 'password'], 'string','max'=>50],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
@@ -48,8 +48,12 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             $user = $this->getUser();
 
+
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'Nombre de usuario o contraseña incorrectos.');
+            }
+            if($user&&!$user->active){
+                $this->addError($attribute, 'Lo sentimos. Sus credenciales han sido suspendidas.');
             }
         }
     }

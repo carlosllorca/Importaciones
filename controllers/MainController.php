@@ -32,11 +32,11 @@ class MainController extends Controller
     {
 
 
-        if (Yii::$app->user->can('manage/index'))
-            $this->layout ='admin';
+
         $route=str_replace('-','',Yii::$app->controller->getRoute());
         if(Yii::$app->user->isGuest&&!in_array($route,$this->gestRoute)){
-            header("Location: /");
+            Yii::$app->session->setFlash('danger','Lo sentimos debes estar autenticado.');
+            header("Location: /site/login");
             die();
 
         }
