@@ -260,7 +260,15 @@
     <state x="2546" y="325" width="827" height="602" key="#com.intellij.tools.ToolEditorDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576507363873" />
     <state x="433" y="159" width="1122" height="807" key="CommitChangelistDialog2" timestamp="1576545966049">
       <screen x="49" y="27" width="1871" height="1053" />
+    <state x="2548" y="378" width="654" height="348" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1576618367261">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="2548" y="378" width="654" height="348" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618367261" />
+    <state x="1997" y="135" width="1077" height="807" key="CommitChangelistDialog2" timestamp="1576618618319">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1576565775973" />
+    <state x="1997" y="135" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618618319" />
     <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576473606983" />
     <state x="433" y="159" key="CommitChangelistDialog2/49.27.1871.1053@49.27.1871.1053" timestamp="1576545966049" />
     <state x="2369" y="187" key="SettingsEditor" timestamp="1576507366775">
@@ -278,6 +286,12 @@
     <state x="649" y="398" key="com.intellij.ide.util.TipDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1576545130231" />
     <state x="2544" y="253" key="run.anything.popup" timestamp="1576507429956">
       <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="2606" y="266" width="537" height="572" key="git4idea.branch.GitSmartOperationDialog" timestamp="1576618628688">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2606" y="266" width="537" height="572" key="git4idea.branch.GitSmartOperationDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618628688" />
+    <state x="1248" y="274" key="run.anything.popup" timestamp="1576564049924">
+      <screen x="0" y="27" width="3840" height="1053" />
     </state>
     <state x="2544" y="253" key="run.anything.popup/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576507429956" />
   </component>
