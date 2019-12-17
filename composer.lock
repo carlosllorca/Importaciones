@@ -1,23 +1,24 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "05251a4beeaa8dfa7849f73389718d5f",
+    "content-hash": "1a184205f6f3c983ec409d9497f0ae9a",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:twbs/bootstrap.git",
+                "url": "https://github.com/twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/twbs/bootstrap/zipball/68b0d231a13201eb14acd3dc84e51543d16e5f7e",
-                "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
+                "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e",
+                "shasum": null
             },
             "require": {
                 "bower-asset/jquery": ">=1.9.1,<4.0"
@@ -38,7 +39,8 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/5e670ad62f50c738388d4dcec78d2888505ad77b",
-                "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
+                "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b",
+                "shasum": null
             },
             "require": {
                 "bower-asset/jquery": ">=1.7"
@@ -53,13 +55,14 @@
             "version": "3.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "15bc73803f76bc53b654b9fdbbbc096f56d7c03d"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/15bc73803f76bc53b654b9fdbbbc096f56d7c03d",
-                "reference": "15bc73803f76bc53b654b9fdbbbc096f56d7c03d"
+                "reference": "15bc73803f76bc53b654b9fdbbbc096f56d7c03d",
+                "shasum": null
             },
             "type": "bower-asset",
             "license": [
@@ -77,7 +80,8 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/bestiejs/punycode.js/zipball/38c8d3131a82567bfef18da09f7f4db68c84f8a3",
-                "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
+                "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3",
+                "shasum": null
             },
             "type": "bower-asset"
         },
@@ -92,7 +96,8 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/aef7b953107264f00234902a3880eb50dafc48be",
-                "reference": "aef7b953107264f00234902a3880eb50dafc48be"
+                "reference": "aef7b953107264f00234902a3880eb50dafc48be",
+                "shasum": null
             },
             "require": {
                 "bower-asset/jquery": ">=1.8"
@@ -328,6 +333,192 @@
                 "html"
             ],
             "time": "2019-10-28T03:44:26+00:00"
+        },
+        {
+            "name": "fortawesome/font-awesome",
+            "version": "v4.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "a8386aae19e200ddb0f6845b5feeee5eb7013687"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/a8386aae19e200ddb0f6845b5feeee5eb7013687",
+                "reference": "a8386aae19e200ddb0f6845b5feeee5eb7013687",
+                "shasum": ""
+            },
+            "require-dev": {
+                "jekyll": "1.0.2",
+                "lessc": "1.4.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.6.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OFL-1.1",
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Gandy",
+                    "email": "dave@fontawesome.io",
+                    "homepage": "http://twitter.com/davegandy",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The iconic font and CSS framework",
+            "homepage": "http://fontawesome.io/",
+            "keywords": [
+                "FontAwesome",
+                "awesome",
+                "bootstrap",
+                "font",
+                "icon"
+            ],
+            "time": "2016-10-24T15:52:54+00:00"
+        },
+        {
+            "name": "mervick/material-design-icons",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mervick/material-design-icons.git",
+                "reference": "12b5064d3f791a95172087328ed0c49daac0b8f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mervick/material-design-icons/zipball/12b5064d3f791a95172087328ed0c49daac0b8f7",
+                "reference": "12b5064d3f791a95172087328ed0c49daac0b8f7",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT",
+                "CC-BY-4.0"
+            ],
+            "authors": [
+                {
+                    "name": "Andrey Izman",
+                    "email": "izmanw@gmail.com"
+                }
+            ],
+            "description": "Google Material Design Icons For Using With Bootstrap",
+            "homepage": "http://github.com/mervick/material-design-icons",
+            "keywords": [
+                "bootstrap",
+                "google",
+                "icons",
+                "icons-web-font",
+                "material",
+                "material-design",
+                "web-font"
+            ],
+            "time": "2015-12-06T07:05:24+00:00"
+        },
+        {
+            "name": "mervick/yii2-material-design-icons",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mervick/yii2-material-design-icons.git",
+                "reference": "b3666248fc89d098372b369796da05495455706a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mervick/yii2-material-design-icons/zipball/b3666248fc89d098372b369796da05495455706a",
+                "reference": "b3666248fc89d098372b369796da05495455706a",
+                "shasum": ""
+            },
+            "require": {
+                "mervick/material-design-icons": "~1.0",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yii\\materialicons\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrey Izman",
+                    "email": "izmanw@gmail.com"
+                }
+            ],
+            "description": "Asset Bundle For Yii2 Framework With Google Material Design Icons",
+            "homepage": "http://github.com/mervick/yii2-material-design-icons",
+            "keywords": [
+                "asset",
+                "asset-bundle",
+                "bootstrap",
+                "bundle",
+                "google",
+                "icons",
+                "icons-web-font",
+                "material",
+                "material-design",
+                "web-font",
+                "yii2"
+            ],
+            "time": "2015-07-04T10:07:41+00:00"
+        },
+        {
+            "name": "ricar2ce/yii2-material-theme",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ricar2ce/yii2-material-theme.git",
+                "reference": "384038bd931cf3b1c604c1df25670be3b7e4ca05"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ricar2ce/yii2-material-theme/zipball/384038bd931cf3b1c604c1df25670be3b7e4ca05",
+                "reference": "384038bd931cf3b1c604c1df25670be3b7e4ca05",
+                "shasum": ""
+            },
+            "require": {
+                "mervick/yii2-material-design-icons": "~1.0",
+                "php": ">=5.4.0",
+                "yidas/yii2-fontawesome": "^4.0",
+                "yiisoft/yii2": "~2.0.14",
+                "yiisoft/yii2-bootstrap": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "rce\\material\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ricardo Comendador Escalona",
+                    "email": "ricar2ce@gmail.com"
+                }
+            ],
+            "description": "Material Theme for Yii2",
+            "keywords": [
+                "creative",
+                "extension",
+                "material",
+                "theme",
+                "yii2"
+            ],
+            "time": "2019-06-15T08:43:04+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -625,6 +816,51 @@
                 "shim"
             ],
             "time": "2019-08-06T08:03:45+00:00"
+        },
+        {
+            "name": "yidas/yii2-fontawesome",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yidas/yii2-fontawesome.git",
+                "reference": "268306a1f51e8ae8bc66913e4620707a4cd9be06"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yidas/yii2-fontawesome/zipball/268306a1f51e8ae8bc66913e4620707a4cd9be06",
+                "reference": "268306a1f51e8ae8bc66913e4620707a4cd9be06",
+                "shasum": ""
+            },
+            "require": {
+                "fortawesome/font-awesome": "~4.7",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yidas\\yii\\fontawesome\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nick Tsai",
+                    "email": "myintaer@gmail.com",
+                    "homepage": "https://github.com/yidas/"
+                }
+            ],
+            "description": "Font Awesome Asset Bundle for Yii2 framework",
+            "keywords": [
+                "asset",
+                "asset bundle",
+                "font awesome",
+                "yii"
+            ],
+            "time": "2018-10-09T03:12:24+00:00"
         },
         {
             "name": "yiisoft/yii2",

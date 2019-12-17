@@ -33,6 +33,10 @@ class ComposerStaticInit4b982682bd89e020452b92df3716b13e
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
         ),
+        'r' => 
+        array (
+            'ramosisw\\CImaterial\\' => 20,
+        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
@@ -126,6 +130,10 @@ class ComposerStaticInit4b982682bd89e020452b92df3716b13e
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
+        ),
+        'ramosisw\\CImaterial\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ramosisw/yii2-material-dashboard',
         ),
         'phpDocumentor\\Reflection\\' => 
         array (

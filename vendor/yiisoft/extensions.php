@@ -48,4 +48,13 @@ return array (
       '@yii/faker' => $vendorDir . '/yiisoft/yii2-faker',
     ),
   ),
+  'ramosisw/yii2-material-dashboard' => 
+  array (
+    'name' => 'ramosisw/yii2-material-dashboard',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@ramosisw/CImaterial' => $vendorDir . '/ramosisw/yii2-material-dashboard',
+    ),
+  ),
 );
