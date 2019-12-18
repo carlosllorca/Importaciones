@@ -7,33 +7,43 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\CertificationTypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Certification Types';
+$this->title = 'Tipos de certificado';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="certification-type-index">
+<div class="buy-request-status-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title"><?=$this->title?></h4>
+            <p class="card-category">Clasificación de los certificados</p>
+        </div>
+        <div class="card-body" style="padding: 15px">
+            <div class="p-3">
+                <p>
+                    <?= Html::a('Nuevo', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
 
-    <p>
-        <?= Html::a('Create Certification Type', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+                <?php Pjax::begin(); ?>
+                <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'label',
+                        'label',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                        ['class' => 'yii\grid\ActionColumn'],
+                    ],
+                ]); ?>
 
-    <?php Pjax::end(); ?>
+                <?php Pjax::end(); ?>
+            </div>
+        </div>
+    </div>
+
+
 
 </div>

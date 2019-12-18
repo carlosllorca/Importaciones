@@ -130,6 +130,9 @@ a.desc:after {
     margin:0px;
     border-radius: 0px;
 }
+select.form-control{
+    padding: 0px;
+}
 
 
 

@@ -43,8 +43,8 @@ class DocumentType extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'label' => 'Label',
-            'required' => 'Required',
+            'label' => 'Nombre',
+            'required' => 'Requerido',
         ];
     }
 
@@ -62,5 +62,8 @@ class DocumentType extends \yii\db\ActiveRecord
     public function getDocumentTypePermissions()
     {
         return $this->hasMany(DocumentTypePermission::className(), ['document_type_id' => 'id']);
+    }
+    public static function combo(){
+        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
     }
 }

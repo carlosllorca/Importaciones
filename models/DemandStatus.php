@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "demand_status".
@@ -40,7 +41,7 @@ class DemandStatus extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'label' => 'Label',
+            'label' => 'Nombre',
         ];
     }
 
@@ -50,5 +51,9 @@ class DemandStatus extends \yii\db\ActiveRecord
     public function getDemands()
     {
         return $this->hasMany(Demand::className(), ['demand_status_id' => 'id']);
+    }
+    public static function combo(){
+
+        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
     }
 }

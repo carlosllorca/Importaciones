@@ -74,7 +74,7 @@ use app\models\Rbac;
                     id="submenu1">
                     <?=$this->render('menu-item',['permission'=>'buyrequeststatus','section'=>'buy-request-status','title'=>'Estado solicitud de compra'])?>
                     <?=$this->render('menu-item',['permission'=>'certification','section'=>'certification','title'=>'Certificados'])?>
-                    <?=$this->render('menu-item',['permission'=>'certificationtype','section'=>'certificationtype','title'=>'Categorías de Certificados'])?>
+                    <?=$this->render('menu-item',['permission'=>'certificationtype','section'=>'certification-type','title'=>'Categorías de Certificados'])?>
                     <?=$this->render('menu-item',['permission'=>'country','section'=>'country','title'=>'Paises'])?>
                     <?=$this->render('menu-item',['permission'=>'demandstatus','section'=>'demand-status','title'=>'Estado demanda'])?>
                     <?=$this->render('menu-item',['permission'=>'deploymentpart','section'=>'deployment-part','title'=>'Partes de entrega'])?>
@@ -82,7 +82,7 @@ use app\models\Rbac;
                     <?=$this->render('menu-item',['permission'=>'offertstatus','section'=>'offert-status','title'=>'Estado de oferta'])?>
                     <?=$this->render('menu-item',['permission'=>'organism','section'=>'organism','title'=>'Organismo'])?>
                     <?=$this->render('menu-item',['permission'=>'paymentmethod','section'=>'payment-method','title'=>'Método de pago'])?>
-                    <?=$this->render('menu-item',['permission'=>'purchasereson','section'=>'purchase-reason','title'=>'Motivo de la compra'])?>
+                    <?=$this->render('menu-item',['permission'=>'purchasereason','section'=>'purchase-reason','title'=>'Motivo de la compra'])?>
                     <?=$this->render('menu-item',['permission'=>'stage','section'=>'stage','title'=>'Hito'])?>
                     <?=$this->render('menu-item',['permission'=>'um','section'=>'um','title'=>'Unidad de medida'])?>
                     <?=$this->render('menu-item',['permission'=>'warrantytime','section'=>'warranty-time','title'=>'Tiempo de garantía'])?>

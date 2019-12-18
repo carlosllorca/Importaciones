@@ -42,8 +42,8 @@ class Organism extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'short_name' => 'Short Name',
-            'name' => 'Name',
+            'short_name' => 'Iniciales',
+            'name' => 'Nombre',
         ];
     }
 
@@ -53,5 +53,8 @@ class Organism extends \yii\db\ActiveRecord
     public function getClients()
     {
         return $this->hasMany(Client::className(), ['organism_id' => 'id']);
+    }
+    public static function combo(){
+        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
     }
 }

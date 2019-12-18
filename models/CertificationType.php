@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "certification_type".
@@ -40,7 +41,7 @@ class CertificationType extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'label' => 'Label',
+            'label' => 'Nombre',
         ];
     }
 
@@ -50,5 +51,8 @@ class CertificationType extends \yii\db\ActiveRecord
     public function getCertifications()
     {
         return $this->hasMany(Certification::className(), ['certification_type_id' => 'id']);
+    }
+    public static function combo(){
+        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
     }
 }

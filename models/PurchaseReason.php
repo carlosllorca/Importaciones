@@ -40,7 +40,7 @@ class PurchaseReason extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'label' => 'Label',
+            'label' => 'Nombre',
         ];
     }
 
@@ -50,5 +50,8 @@ class PurchaseReason extends \yii\db\ActiveRecord
     public function getDemands()
     {
         return $this->hasMany(Demand::className(), ['purchase_reason_id' => 'id']);
+    }
+    public static function combo(){
+        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
     }
 }

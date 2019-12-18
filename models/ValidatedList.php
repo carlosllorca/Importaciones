@@ -42,7 +42,7 @@ class ValidatedList extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'label' => 'Label',
+            'label' => 'Nombre',
         ];
     }
 
@@ -68,5 +68,8 @@ class ValidatedList extends \yii\db\ActiveRecord
     public function getValidatedListItems()
     {
         return $this->hasMany(ValidatedListItem::className(), ['validated_list_id' => 'id']);
+    }
+    public static function combo(){
+        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
     }
 }

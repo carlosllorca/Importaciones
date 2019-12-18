@@ -5,17 +5,21 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Stage */
 
-$this->title = 'Update Stage: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Stages', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Actualizar: ' . $model->label;
+$this->params['breadcrumbs'][] = ['label' => 'Hitos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->label, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
-<div class="stage-update">
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title"><?=$this->title?></h4>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-
+    </div>
+    <div class="card-body" style="padding: 15px">
+        <div class="p-3">
+            <?= $this->render('_form', [
+                'model' => $model,
+            ]) ?>
+        </div>
+    </div>
 </div>

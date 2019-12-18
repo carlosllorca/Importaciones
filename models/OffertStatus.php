@@ -40,7 +40,7 @@ class OffertStatus extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'label' => 'Label',
+            'label' => 'Nombre',
         ];
     }
 
@@ -50,5 +50,8 @@ class OffertStatus extends \yii\db\ActiveRecord
     public function getOfferts()
     {
         return $this->hasMany(Offert::className(), ['offert_status_id' => 'id']);
+    }
+    public static function combo(){
+        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
     }
 }

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "certification".
@@ -32,7 +33,7 @@ class Certification extends \yii\db\ActiveRecord
         return [
             [['label', 'certification_type_id'], 'required'],
             [['label'], 'string'],
-            [['certification_type_id'], 'default', 'value' => null],
+
             [['certification_type_id'], 'integer'],
             [['certification_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => CertificationType::className(), 'targetAttribute' => ['certification_type_id' => 'id']],
         ];
@@ -45,8 +46,8 @@ class Certification extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'label' => 'Label',
-            'certification_type_id' => 'Certification Type ID',
+            'label' => 'Nombre',
+            'certification_type_id' => 'Tipo de certificación',
         ];
     }
 
@@ -64,5 +65,8 @@ class Certification extends \yii\db\ActiveRecord
     public function getCertificationValidatedListItems()
     {
         return $this->hasMany(CertificationValidatedListItem::className(), ['certification_id' => 'id']);
+    }
+    public static function combo(){
+        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
     }
 }

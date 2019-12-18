@@ -5,17 +5,21 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Um */
 
-$this->title = 'Update Um: ' . $model->id;
+$this->title = 'Actualizar Um: ' . $model->label;
 $this->params['breadcrumbs'][] = ['label' => 'Ums', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = ['label' => $model->label, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
-<div class="um-update">
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title"><?=$this->title?></h4>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-
+    </div>
+    <div class="card-body" style="padding: 15px">
+        <div class="p-3">
+            <?= $this->render('_form', [
+                'model' => $model,
+            ]) ?>
+        </div>
+    </div>
 </div>

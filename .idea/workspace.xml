@@ -1,144 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="qdas">
-      <change afterPath="$PROJECT_DIR$/controllers/BuyRequestStatusController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/CertificationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/CertificationTypeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/DemandStatusController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/DeploymentPartController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/DocumentTypeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/DocumentTypePermissionController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/OffertStatusController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/OrganismController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/PaymentMethodController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/ProvinceUebController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/PurchaseReasonController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/StageController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/UmController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/ValidatedListController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/WarrantyTimeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/BuyRequestStatusSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/CertificationSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/CertificationTypeSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/DemandStatusSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/DeploymentPartSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/DocumentTypePermissionSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/DocumentTypeSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/OffertStatusSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/OrganismSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/PaymentMethodSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/ProvinceUebSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/PurchaseReasonSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/StageSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/UmSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/ValidatedListSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/WarrantyTimeSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/buy-request-status/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/buy-request-status/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/buy-request-status/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/buy-request-status/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/buy-request-status/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/buy-request-status/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/certification-type/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/certification-type/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/certification-type/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/certification-type/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/certification-type/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/certification-type/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/certification/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/certification/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/certification/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/certification/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/certification/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/certification/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/demand-status/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/demand-status/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/demand-status/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/demand-status/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/demand-status/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/demand-status/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/deployment-part/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/deployment-part/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/deployment-part/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/deployment-part/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/deployment-part/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/deployment-part/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/document-type-permission/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/document-type-permission/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/document-type-permission/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/document-type-permission/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/document-type-permission/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/document-type-permission/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/document-type/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/document-type/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/document-type/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/document-type/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/document-type/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/document-type/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/layouts/menu-item.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/offert-status/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/offert-status/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/offert-status/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/offert-status/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/offert-status/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/offert-status/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/organism/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/organism/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/organism/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/organism/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/organism/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/organism/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/payment-method/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/payment-method/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/payment-method/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/payment-method/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/payment-method/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/payment-method/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/province-ueb/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/province-ueb/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/province-ueb/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/province-ueb/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/province-ueb/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/province-ueb/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/purchase-reason/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/purchase-reason/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/purchase-reason/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/purchase-reason/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/purchase-reason/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/purchase-reason/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/stage/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/stage/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/stage/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/stage/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/stage/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/stage/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/um/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/um/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/um/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/um/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/um/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/um/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/validated-list/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/validated-list/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/validated-list/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/validated-list/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/validated-list/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/validated-list/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/warranty-time/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/warranty-time/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/warranty-time/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/warranty-time/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/warranty-time/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/warranty-time/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/CountryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/CountryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestStatus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Certification.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Certification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/CertificationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/CertificationType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Country.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Country.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DemandStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DemandStatus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DeploymentPart.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DeploymentPart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DocumentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/OffertStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/OffertStatus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Organism.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Organism.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/PaymentMethod.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/PaymentMethod.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Provider.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Provider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/PurchaseReason.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/PurchaseReason.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Um.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Um.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ValidatedList.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ValidatedList.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/WarrantyTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/WarrantyTime.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/buy-request-status/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request-status/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/buy-request-status/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request-status/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/buy-request-status/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request-status/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/buy-request-status/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request-status/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/certification-type/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/certification-type/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/certification-type/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/certification-type/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/certification-type/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/certification-type/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/certification-type/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/certification-type/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/certification/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/certification/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/certification/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/certification/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/certification/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/certification/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/certification/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/certification/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/country/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/country/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/country/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/country/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/country/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/country/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/country/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/country/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/demand-status/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand-status/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/demand-status/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand-status/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/demand-status/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand-status/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/demand-status/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand-status/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/deployment-part/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/deployment-part/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/deployment-part/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/deployment-part/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/deployment-part/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/deployment-part/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/deployment-part/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/deployment-part/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/document-type/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/document-type/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/document-type/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/document-type/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/document-type/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/document-type/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/document-type/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/document-type/update.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layouts/mainMenu.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/mainMenu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/offert-status/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/offert-status/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/offert-status/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/offert-status/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/offert-status/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/offert-status/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/offert-status/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/offert-status/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/organism/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/organism/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/organism/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/organism/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/organism/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/organism/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/organism/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/organism/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/payment-method/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/payment-method/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/payment-method/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/payment-method/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/payment-method/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/payment-method/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/payment-method/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/payment-method/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/province-ueb/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/province-ueb/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/province-ueb/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/province-ueb/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/purchase-reason/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/purchase-reason/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/purchase-reason/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/purchase-reason/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/purchase-reason/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/purchase-reason/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/purchase-reason/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/purchase-reason/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/stage/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/stage/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/stage/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/stage/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/stage/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/stage/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/um/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/um/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/um/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/um/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/um/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/um/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/um/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/um/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/user/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/user/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/validated-list/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/validated-list/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/validated-list/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/validated-list/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/validated-list/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/validated-list/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/warranty-time/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/warranty-time/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/warranty-time/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/warranty-time/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/warranty-time/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/warranty-time/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/warranty-time/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/warranty-time/update.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/yii_overrides.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/yii_overrides.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -355,7 +298,7 @@
       <workItem from="1576544383824" duration="666000" />
       <workItem from="1576545090630" duration="18181000" />
       <workItem from="1576617694320" duration="913000" />
-      <workItem from="1576632382314" duration="8277000" />
+      <workItem from="1576632382314" duration="15024000" />
     </task>
     <task id="LOCAL-00001" summary="Preparando el proyecto">
       <created>1576473614599</created>
@@ -392,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576565776433</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Menu nomencladores">
+      <created>1576642318025</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1576642318025</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,7 +357,8 @@
     <MESSAGE value="adicionando todos los modelos" />
     <MESSAGE value="Añadido sweet alert, solucionando con js bug de la plantilla que esconde el mensaje de error" />
     <MESSAGE value="Menu principal y detalles de maquetación." />
-    <option name="LAST_COMMIT_MESSAGE" value="Menu principal y detalles de maquetación." />
+    <MESSAGE value="Menu nomencladores" />
+    <option name="LAST_COMMIT_MESSAGE" value="Menu nomencladores" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2475" y="200" width="800" height="677" key="#Deployment" timestamp="1576472912804">
@@ -431,16 +382,20 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2546" y="325" width="827" height="602" key="#com.intellij.tools.ToolEditorDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576507363873" />
+    <state x="717" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1576643249842">
+      <screen x="49" y="27" width="1871" height="1053" />
+    </state>
+    <state x="717" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1576643249842" />
     <state x="2548" y="378" width="654" height="348" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1576618367261">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2548" y="378" width="654" height="348" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618367261" />
-    <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2" timestamp="1576565775973">
-      <screen x="0" y="27" width="3840" height="1053" />
+    <state x="433" y="159" width="1077" height="807" key="CommitChangelistDialog2" timestamp="1576642317698">
+      <screen x="49" y="27" width="1871" height="1053" />
     </state>
     <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1576565775973" />
     <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576473606983" />
-    <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/49.27.1871.1053@49.27.1871.1053" timestamp="1576553154680" />
+    <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/49.27.1871.1053@49.27.1871.1053" timestamp="1576642317698" />
     <state x="2663" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1576617786856">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

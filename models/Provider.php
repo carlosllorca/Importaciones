@@ -50,12 +50,12 @@ class Provider extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Nombre',
             'country_id' => 'Country ID',
-            'address' => 'Address',
-            'active' => 'Active',
-            'contact_name' => 'Contact Name',
-            'contact_email' => 'Contact Email',
+            'address' => 'Dirección',
+            'active' => 'Activo',
+            'contact_name' => 'Persona de contacto',
+            'contact_email' => 'Email de contacto',
         ];
     }
 
@@ -73,5 +73,8 @@ class Provider extends \yii\db\ActiveRecord
     public function getProviderValidatedLists()
     {
         return $this->hasMany(ProviderValidatedList::className(), ['provider_id' => 'id']);
+    }
+    public static function combo(){
+        return ArrayHelper::map(self::find()->orderBy('name')->all(),'id','name');
     }
 }

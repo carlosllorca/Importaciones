@@ -5,16 +5,20 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\OffertStatus */
 
-$this->title = 'Create Offert Status';
-$this->params['breadcrumbs'][] = ['label' => 'Offert Statuses', 'url' => ['index']];
+$this->title = 'Crear estado';
+$this->params['breadcrumbs'][] = ['label' => 'Estados de oferta', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="offert-status-create">
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title"><?=$this->title?></h4>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-
+    </div>
+    <div class="card-body" style="padding: 15px">
+        <div class="p-3">
+            <?= $this->render('_form', [
+                'model' => $model,
+            ]) ?>
+        </div>
+    </div>
 </div>
