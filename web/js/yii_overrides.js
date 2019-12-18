@@ -42,3 +42,10 @@ let dontHideMessage=function(element){
         }
     },500)
 }
+function openToogleMenu(ev){
+    if($(ev.target).parent().hasClass("open")){
+        $(ev.target).parent().removeClass("open")
+    }else{
+        $(ev.target).parent().addClass("open")
+    }
+}

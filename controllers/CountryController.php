@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * CountryController implements the CRUD actions for Country model.
  */
-class CountryController extends Controller
+class CountryController extends MainController
 {
     /**
      * {@inheritdoc}
@@ -104,7 +104,12 @@ class CountryController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        try{
+            $this->findModel($id)->delete();
+        }catch (\Exception $exception){
+            Yii::$app->session->setFlash('danger',"No podemos eliminar este elemento. Está siendo utilizado.");
+        }
+
 
         return $this->redirect(['index']);
     }

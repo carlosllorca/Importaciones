@@ -1,9 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/web/ini.php" afterDir="false" />
+    <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="qdas">
+      <change afterPath="$PROJECT_DIR$/controllers/BuyRequestStatusController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/CertificationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/CertificationTypeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/DemandStatusController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/DeploymentPartController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/DocumentTypeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/DocumentTypePermissionController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/OffertStatusController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/OrganismController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/PaymentMethodController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/ProvinceUebController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/PurchaseReasonController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/StageController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/UmController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/ValidatedListController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/WarrantyTimeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/BuyRequestStatusSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/CertificationSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/CertificationTypeSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/DemandStatusSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/DeploymentPartSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/DocumentTypePermissionSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/DocumentTypeSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/OffertStatusSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/OrganismSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/PaymentMethodSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/ProvinceUebSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/PurchaseReasonSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/StageSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/UmSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/ValidatedListSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/WarrantyTimeSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/buy-request-status/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/buy-request-status/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/buy-request-status/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/buy-request-status/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/buy-request-status/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/buy-request-status/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/certification-type/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/certification-type/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/certification-type/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/certification-type/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/certification-type/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/certification-type/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/certification/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/certification/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/certification/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/certification/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/certification/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/certification/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/demand-status/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/demand-status/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/demand-status/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/demand-status/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/demand-status/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/demand-status/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/deployment-part/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/deployment-part/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/deployment-part/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/deployment-part/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/deployment-part/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/deployment-part/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/document-type-permission/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/document-type-permission/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/document-type-permission/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/document-type-permission/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/document-type-permission/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/document-type-permission/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/document-type/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/document-type/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/document-type/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/document-type/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/document-type/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/document-type/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/layouts/menu-item.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/offert-status/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/offert-status/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/offert-status/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/offert-status/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/offert-status/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/offert-status/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/organism/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/organism/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/organism/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/organism/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/organism/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/organism/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/payment-method/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/payment-method/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/payment-method/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/payment-method/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/payment-method/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/payment-method/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/province-ueb/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/province-ueb/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/province-ueb/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/province-ueb/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/province-ueb/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/province-ueb/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/purchase-reason/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/purchase-reason/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/purchase-reason/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/purchase-reason/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/purchase-reason/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/purchase-reason/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/stage/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/stage/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/stage/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/stage/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/stage/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/stage/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/um/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/um/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/um/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/um/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/um/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/um/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/validated-list/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/validated-list/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/validated-list/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/validated-list/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/validated-list/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/validated-list/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/warranty-time/_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/warranty-time/_search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/warranty-time/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/warranty-time/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/warranty-time/update.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/warranty-time/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/CountryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/CountryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/mainMenu.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/mainMenu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/yii_overrides.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/yii_overrides.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,66 +162,7 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="seisa" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="seisa" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="seisa" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="SEISA: database" type="162271b6:PgImplModel$Database" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="seisa" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="SEISA: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="seisa" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="SEISA: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="seisa" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="SEISA: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="seisa" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="SEISA: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="user: table" type="69fad909:PgImplModel$LocalTable" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="seisa" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="SEISA: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
-        <item name="sequences" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -279,6 +355,7 @@
       <workItem from="1576544383824" duration="666000" />
       <workItem from="1576545090630" duration="18181000" />
       <workItem from="1576617694320" duration="913000" />
+      <workItem from="1576632382314" duration="8277000" />
     </task>
     <task id="LOCAL-00001" summary="Preparando el proyecto">
       <created>1576473614599</created>
@@ -368,38 +445,54 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2663" y="310" width="424" height="484" key="FileChooserDialogImpl/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576617786856" />
-    <state width="1874" height="344" key="GridCell.Tab.0.bottom" timestamp="1576618386332">
+    <state width="1874" height="344" key="GridCell.Tab.0.bottom" timestamp="1576619355299">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.0.bottom/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618386332" />
-    <state width="1874" height="344" key="GridCell.Tab.0.center" timestamp="1576618386331">
+    <state width="1874" height="344" key="GridCell.Tab.0.bottom/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576619355299" />
+    <state width="1874" height="344" key="GridCell.Tab.0.center" timestamp="1576619355299">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.0.center/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618386331" />
-    <state width="1874" height="344" key="GridCell.Tab.0.left" timestamp="1576618386331">
+    <state width="1874" height="344" key="GridCell.Tab.0.center/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576619355299" />
+    <state width="1874" height="344" key="GridCell.Tab.0.left" timestamp="1576619355299">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.0.left/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618386331" />
-    <state width="1874" height="344" key="GridCell.Tab.0.right" timestamp="1576618386331">
+    <state width="1874" height="344" key="GridCell.Tab.0.left/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576619355299" />
+    <state width="1874" height="344" key="GridCell.Tab.0.right" timestamp="1576619355299">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.0.right/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618386331" />
-    <state width="1874" height="344" key="GridCell.Tab.1.bottom" timestamp="1576618443557">
+    <state width="1874" height="344" key="GridCell.Tab.0.right/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576619355299" />
+    <state width="1874" height="344" key="GridCell.Tab.1.bottom" timestamp="1576619355299">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.1.bottom/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618443557" />
-    <state width="1874" height="344" key="GridCell.Tab.1.center" timestamp="1576618443557">
+    <state width="1874" height="344" key="GridCell.Tab.1.bottom/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576619355299" />
+    <state width="1874" height="344" key="GridCell.Tab.1.center" timestamp="1576619355299">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.1.center/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618443557" />
-    <state width="1874" height="344" key="GridCell.Tab.1.left" timestamp="1576618443556">
+    <state width="1874" height="344" key="GridCell.Tab.1.center/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576619355299" />
+    <state width="1874" height="344" key="GridCell.Tab.1.left" timestamp="1576619355299">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.1.left/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618443556" />
-    <state width="1874" height="344" key="GridCell.Tab.1.right" timestamp="1576618443557">
+    <state width="1874" height="344" key="GridCell.Tab.1.left/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576619355299" />
+    <state width="1874" height="344" key="GridCell.Tab.1.right" timestamp="1576619355299">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.1.right/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618443557" />
+    <state width="1874" height="344" key="GridCell.Tab.1.right/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576619355299" />
+    <state width="1874" height="344" key="GridCell.Tab.2.bottom" timestamp="1576619355300">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.2.bottom/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576619355300" />
+    <state width="1874" height="344" key="GridCell.Tab.2.center" timestamp="1576619355299">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.2.center/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576619355299" />
+    <state width="1874" height="344" key="GridCell.Tab.2.left" timestamp="1576619355299">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.2.left/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576619355299" />
+    <state width="1874" height="344" key="GridCell.Tab.2.right" timestamp="1576619355299">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1874" height="344" key="GridCell.Tab.2.right/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576619355299" />
     <state x="2298" y="463" width="249" height="153" key="NewPhpFileDialog" timestamp="1576618165980">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -409,19 +502,20 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2369" y="187" key="SettingsEditor/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576617941092" />
-    <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576473625775">
+    <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576619213378">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="2475" y="275" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576619213378" />
     <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576473625775" />
     <state x="672" y="192" width="566" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1576559686639">
       <screen x="0" y="27" width="3840" height="1053" />
     </state>
     <state x="672" y="192" width="566" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1576559686639" />
-    <state x="649" y="398" key="com.intellij.ide.util.TipDialog" timestamp="1576545130231">
+    <state x="649" y="398" key="com.intellij.ide.util.TipDialog" timestamp="1576632412663">
       <screen x="49" y="27" width="1871" height="1053" />
     </state>
     <state x="2536" y="380" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576507215067" />
-    <state x="649" y="398" key="com.intellij.ide.util.TipDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1576545130231" />
+    <state x="649" y="398" key="com.intellij.ide.util.TipDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1576632412663" />
     <state x="1248" y="274" key="run.anything.popup" timestamp="1576564049924">
       <screen x="0" y="27" width="3840" height="1053" />
     </state>

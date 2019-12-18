@@ -113,8 +113,23 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+.collapsed{
+    display: none;
+}
+.collapsed.in{
+    display: unset;
+}
 
-
+.collapse{
+    display: none!important;
+}
+.collapse.in {
+    display: block!important;
+}
+.sidebar[data-color="purple"] .nav li.active > a, .off-canvas-sidebar[data-color="purple"] .nav li.active > a {
+    margin:0px;
+    border-radius: 0px;
+}
 
 
 
