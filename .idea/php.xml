@@ -81,6 +81,11 @@
       <path value="$PROJECT_DIR$/vendor/ricar2ce/yii2-material-theme" />
       <path value="$PROJECT_DIR$/vendor/fortawesome/font-awesome" />
       <path value="$PROJECT_DIR$/vendor/ramosisw/yii2-material-dashboard" />
+      <path value="$PROJECT_DIR$/vendor/select2/select2" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/dependent-dropdown" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-depdrop" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-select2" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />

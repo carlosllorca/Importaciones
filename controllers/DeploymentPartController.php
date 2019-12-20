@@ -52,9 +52,7 @@ class DeploymentPartController extends MainController
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        return $this->redirect('index');
     }
 
     /**

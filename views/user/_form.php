@@ -9,27 +9,57 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="user-form">
-
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <?= $form->field($model, 'username')->textInput(['maxlength' => true,'disabled'=>!$model->isNewRecord]) ?>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <?= $form->field($model, 'full_name')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+        </div>
 
-    <?= $form->field($model, 'full_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+        <div class="col-sm-6 col-md-4">
+            <?= $form->field($model, 'rol')->dropDownList(\app\models\Rbac::comboRoles()) ?>
+        </div>
+        <?php
+            if($model->isNewRecord){
+                ?>
+                <div class="col-sm-6 col-md-4">
+                    <?= $form->field($model, 'password')->passwordInput() ?>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <?= $form->field($model, 'confirm_password')->passwordInput() ?>
+                </div>
+                <?php
+            }
+        ?>
 
-    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+        <div class="col-sm-6 col-md-4" id="ueb" class="<?=$model->rol!=\app\models\Rbac::$UEB?"":"hidden"?>">
+            <?= $form->field($model, 'province_ueb')->dropDownList(\app\models\ProvinceUeb::combo(),['prompt'=>'Seleccione']) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'last_login')->textInput() ?>
 
-    <?= $form->field($model, 'province_ueb')->textInput() ?>
+
+
+
+
+
+
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$this->registerJsFile('/js/user/_form.js',['depends'=>\yii\web\JqueryAsset::className()]);
+?>

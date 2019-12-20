@@ -15,7 +15,8 @@ class Yii extends \yii\BaseYii
  * Class BaseApplication
  * Used for properties that are identical for both WebApplication and ConsoleApplication
  *
- * @property \app\components\RbacManager $authManager The auth manager for this application. Null is returned if auth manager is not configured. This property is read-only. Extended component.
+ * @property \app\components\TrazaComponent $traza The auth manager for this application. Null is returned if auth manager is not configured. This property is read-only. Extended component.
+
  * @property \app\components\Mailer $mailer The mailer component. This property is read-only. Extended component.
  */
 abstract class BaseApplication extends yii\base\Application

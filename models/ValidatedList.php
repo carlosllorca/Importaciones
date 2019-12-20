@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "validated_list".
  *
@@ -12,7 +12,7 @@ use Yii;
  *
  * @property Demand[] $demands
  * @property ProviderValidatedList[] $providerValidatedLists
- * @property ValidatedListItem[] $validatedListItems
+ * @property Subfamily[] $subfamilies
  */
 class ValidatedList extends \yii\db\ActiveRecord
 {
@@ -65,11 +65,12 @@ class ValidatedList extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getValidatedListItems()
+    public function getSubfamilies()
     {
-        return $this->hasMany(ValidatedListItem::className(), ['validated_list_id' => 'id']);
+        return $this->hasMany(Subfamily::className(), ['validated_list_id' => 'id']);
     }
     public static function combo(){
         return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
     }
+
 }

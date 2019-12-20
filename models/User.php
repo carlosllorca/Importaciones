@@ -13,6 +13,7 @@ use yii\web\IdentityInterface;
  * @property string $full_name
  * @property string $email
  * @property string $password
+ * @property string $confirm_password
  * @property string $created_at
  * @property string|null $last_login
  * @property boolean $active
@@ -25,6 +26,8 @@ use yii\web\IdentityInterface;
  * @property Offert[] $offerts
  * @property Offert[] $offerts0
  * @property ProvinceUeb $provinceUeb
+ * @property AuthItem $role
+ * @property AuthAssignment $authAssignament
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -35,6 +38,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return 'user';
     }
+    public $confirm_password;
+    public $rol;
+    const SCENARIO_CREATE_USER = 'createUser';
+
 
     /**
      * {@inheritdoc}
@@ -46,11 +53,24 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['created_at', 'last_login'], 'safe'],
             [['province_ueb'], 'default', 'value' => null],
             [['province_ueb'], 'integer'],
+            [['email'], 'email'],
+            [['password','confirm_password'], 'passwordsMatch','on'=>self::SCENARIO_CREATE_USER],
+            [['rol'], 'required','on'=>self::SCENARIO_CREATE_USER],
             [['active'], 'boolean'],
             [['username'], 'string', 'max' => 25],
-            [['full_name'], 'string', 'max' => 200],
-            [['email'], 'string', 'max' => 150],
+            [['full_name'], 'string', 'max' => 150],
+            [['email'], 'string', 'max' => 50],
+            [['province_ueb'], 'required',
+                'when'=>function($model){
+                    return $model->rol==Rbac::$UEB;
+                },
+                'whenClient' =>
+                    "function (attribute, value) {
+                     
+                    return $('#user-rol').val() === 'ueb';
+                }"],
             [['password'], 'string', 'max' => 100,'min'=>8,'tooShort'=>'La contraseña debe tener como mínimo 8 caracteres'],
+            [['confirm_password'], 'string', 'max' => 100,'min'=>8,'tooShort'=>'La contraseña debe tener como mínimo 8 caracteres','on'=>self::SCENARIO_CREATE_USER],
             [['province_ueb'], 'exist', 'skipOnError' => true, 'targetClass' => ProvinceUeb::className(), 'targetAttribute' => ['province_ueb' => 'id']],
         ];
     }
@@ -61,6 +81,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         }
     }
 
+
     /**
      * {@inheritdoc}
      */
@@ -68,13 +89,15 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'username' => 'Usuario',
+            'username' => 'Nombre de usuario',
             'full_name' => 'Nombre completo',
             'email' => 'Correo electrónico',
             'password' => 'Contraseña',
+            'confirm_password' => 'Confirmar Contraseña',
             'created_at' => 'Creado',
             'last_login' => 'Último acceso',
-            'province_ueb' => 'ueb',
+            'province_ueb' => 'UEB',
+            'active' => 'Activo',
         ];
     }
 
@@ -133,6 +156,23 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return $this->hasOne(ProvinceUeb::className(), ['id' => 'province_ueb']);
     }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAuthAssignament()
+    {
+        return $this->hasOne(AuthAssignment::className(), ['user_id' => 'username']);
+
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRole()
+    {
+        return $this->authAssignament->itemName;
+
+    }
+
 
     /**
      * Identity Interfeace clases

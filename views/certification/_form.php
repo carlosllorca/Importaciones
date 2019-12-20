@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'label')->textInput() ?>
 
-    <?= $form->field($model, 'certification_type_id')->dropDownList(\app\models\CertificationType::combo(),['prompt'=>'Seleccione']) ?>
+    <?= $form->field($model, 'certification_type_id')->dropDownList(\app\models\CertificationType::combo()) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

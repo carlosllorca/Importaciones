@@ -26,43 +26,61 @@ use app\models\Rbac;
                     <p>Página principal</p>
                 </a>
             </li>
-            <li class="nav-item  ">
-                <a class="nav-link" href="./user.html">
-                    <i class="material-icons">person</i>
-                    <p>Perfil de usuario</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./tables.html">
-                    <i class="material-icons">content_paste</i>
-                    <p>___</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./typography.html">
-                    <i class="material-icons">library_books</i>
-                    <p>__</p>
-                </a>
-            </li>
+            <?php
+            if(Yii::$app->user->can('demand/index')){
+                ?>
+                <li class="<?= \app\controllers\MainController::determineActive('demand') ?>">
+                    <a class="nav-link" href="/demand/index">
+                        <i class="material-icons">content_paste</i>
+                        <p>Demandas</p>
+                    </a>
+                </li>
+                <?php
 
-            <li class="nav-item ">
-                <a class="nav-link" href="./map.html">
-                    <i class="material-icons">location_ons</i>
-                    <p>__</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./notifications.html">
-                    <i class="material-icons">notifications</i>
-                    <p>__</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./rtl.html">
-                    <i class="material-icons">language</i>
-                    <p>___</p>
-                </a>
-            </li>
+            }
+            if(Yii::$app->user->can('client/index')){
+                ?>
+                <li class="<?= \app\controllers\MainController::determineActive('client') ?>">
+                    <a class="nav-link" href="/client/index">
+                        <i class="material-icons">contacts</i>
+                        <p>Clientes</p>
+                    </a>
+                </li>
+                <?php
+
+            }
+
+            ?>
+
+
+
+            <?php
+                if(Yii::$app->user->can('provinceueb/index')){
+                    ?>
+                    <li class="<?= \app\controllers\MainController::determineActive('province-ueb') ?>">
+                        <a class="nav-link" href="/province-ueb/index">
+                            <i class="material-icons">home</i>
+                            <p>UEB</p>
+                        </a>
+                    </li>
+                    <?php
+
+                }
+            ?>
+            <?php
+                if(Yii::$app->user->can('validatedlist/index')){
+                    ?>
+                    <li class="<?= \app\controllers\MainController::determineActive('validated-list') ?><?= \app\controllers\MainController::determineActive('validated-list-item') ?>">
+                        <a class="nav-link" href="/validated-list/index">
+                            <i class="material-icons">shopping_cart</i>
+                            <p>Listados validados</p>
+                        </a>
+                    </li>
+                    <?php
+
+                }
+            ?>
+
 
             <li>
                 <a class="pointer <?= Rbac::getRole() != Rbac::$ROOT ? 'hidden' : '' ?>" data-toggle="collapse"
@@ -84,6 +102,7 @@ use app\models\Rbac;
                     <?=$this->render('menu-item',['permission'=>'paymentmethod','section'=>'payment-method','title'=>'Método de pago'])?>
                     <?=$this->render('menu-item',['permission'=>'purchasereason','section'=>'purchase-reason','title'=>'Motivo de la compra'])?>
                     <?=$this->render('menu-item',['permission'=>'stage','section'=>'stage','title'=>'Hito'])?>
+                    <?=$this->render('menu-item',['permission'=>'sellerrequirement','section'=>'seller-requirement','title'=>'Rquerimiento del vendedor'])?>
                     <?=$this->render('menu-item',['permission'=>'um','section'=>'um','title'=>'Unidad de medida'])?>
                     <?=$this->render('menu-item',['permission'=>'warrantytime','section'=>'warranty-time','title'=>'Tiempo de garantía'])?>
 
@@ -107,6 +126,20 @@ use app\models\Rbac;
                 <?php
             }
             ?>
+
+            <?php
+            if (Yii::$app->user->can('user/index')) {
+                ?>
+                <li class="<?= \app\controllers\MainController::determineActive('user') ?> ">
+                    <a href="/user/index">
+                        <i class="material-icons">group</i>
+                        <p>Usuarios</p>
+                    </a>
+                </li>
+                <?php
+            }
+            ?>
+
 
         </ul>
     </div>

@@ -7,14 +7,14 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\ValidatedListSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Validated Lists';
+$this->title = 'Listados validados';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="buy-request-status-index">
     <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title"><?=$this->title?></h4>
-            <p class="card-category">Partes en que se divide la entrega</p>
+            <p class="card-category">Listados validados con grupos de productos que puede solicitar el usuario.</p>
         </div>
         <div class="card-body" style="padding: 15px">
             <div class="p-3">
@@ -31,7 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
                         'label',
-                        ['class' => 'yii\grid\ActionColumn'],
+                        ['class' => 'yii\grid\ActionColumn',
+                        'template' => '{update} {delete}'
+                        ],
                     ],
                 ]); ?>
                 <?php Pjax::end(); ?>

@@ -53,9 +53,7 @@ class UserController extends MainController
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+      return  $this->redirect(['update','id'=>$id]);
     }
 
     /**
@@ -66,22 +64,27 @@ class UserController extends MainController
     public function actionCreate()
     {
         $model = new User();
+        $model->setScenario(User::SCENARIO_CREATE_USER);
         $model->created_at= date('Y-m-d');
-
-
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->created_at= date('Y-m-d');
             $model->active=true;
             $model->password = Yii::$app->getSecurity()->generatePasswordHash($model->password);
-            Rbac::changeRole($model->username,Rbac::$ROOT);
+            Rbac::changeRole($model->username,$model->rol);
             $model->save(false);
-            return $this->redirect(['site/login', 'id' => $model->id]);
+            Yii::$app->traza->saveLog('Agregar Usuario', "Fue añadido el usuario {$model->username} al sistema.");
+            Yii::$app->session->setFlash('success','Usuario creado correctamente.');
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
             'model' => $model,
         ]);
+    }
+    public function actionLogs($id){
+        $user = $this->findModel($id);
+        return $this->render('logs',['model'=>$user]);
+
     }
 
     /**
@@ -94,11 +97,12 @@ class UserController extends MainController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $model->rol= Rbac::getRole($model->username);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Rbac::changeRole($model->id,$model->rol);
+            Yii::$app->traza->saveLog('Actualizar Usuario', "Actualizados los datos de {$model->username}.");
+            return $this->redirect(['index']);
         }
-
         return $this->render('update', [
             'model' => $model,
         ]);
@@ -111,17 +115,31 @@ class UserController extends MainController
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDisable($id)
     {
-        try{
-            $this->findModel($id)->delete();
-        }catch (\Exception $exception){
-            Yii::$app->session->setFlash('danger',"No podemos eliminar este elemento. Está siendo utilizado.");
+        if($id==2){
+            Yii::$app->session->setFlash('danger','Lo sentimos el usuario principal no puede ser desactivado');
+            return $this->redirect(['index']);
         }
+        try{
+            $user = $this->findModel($id);
 
+            $user->active = !$user->active;
+            $user->save();
+            if($user->active){
+                Yii::$app->session->setFlash('success',"Usuario activado");
+                Yii::$app->traza->saveLog('Usuario activado', "El usuario {$user->username} fue activado.");
+            }else{
+                Yii::$app->session->setFlash('success',"Usuario desactivado");
+                Yii::$app->traza->saveLog('Usuario desactivado', "El usuario {$user->username} fue desactivado.");
+            }
 
+        }catch (\Exception $exception){
+           // Yii::$app->session->setFlash('danger',"No podemos eliminar este elemento. Está siendo utilizado.");
+        }
         return $this->redirect(['index']);
     }
+
 
     /**
      * Finds the User model based on its primary key value.

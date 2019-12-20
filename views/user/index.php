@@ -7,39 +7,84 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Users';
+$this->title = 'Usuarios del sistema';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-index">
+<div class="buy-request-status-index">
+    <div class="card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title"><?=$this->title?></h4>
+            <p class="card-category">Se muestran los usuarios que tienen acceso al sistema.</p>
+        </div>
+        <div class="card-body" style="padding: 15px">
+            <div class="p-3">
+                <p>
+                    <?= Html::a('Nuevo', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+                <?php Pjax::begin(); ?>
+                <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
+                        'username',
+                        'full_name',
+                        'email:email',
 
-    <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                        'created_at:date',
+                        'last_login:datetime',
+                        [
+                                'attribute' => 'rol',
+                                'filter' => \app\models\Rbac::comboRoles(),
+                                'value' => function($model){
+                                    /**
+                                     * @var $model \app\models\User
+                                     */
+                                    return $model->role->description;
+                                }
+                        ],
+                        'active:boolean',
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+                        [
+                                'class' => 'yii\grid\ActionColumn',
+                                'template' => '{update} {disable}',
+                                'buttons'=>[
+                                        'disable'=>function($url,$model){
+                                                /**
+                                                 * @var $model \app\models\User
+                                                 */
 
-            'id',
-            'username',
-            'full_name',
-            'email:email',
-            'password',
-            //'created_at',
-            //'last_login',
-            //'province_ueb',
+                                                if(Yii::$app->user->can('user/disable')){
+                                                    if($model->active){
+                                                        $msg = "¿Confirma que desea desactivar este usuario?";
+                                                        return Html::a(
+                                                            "<span class='glyphicon glyphicon-remove'/>",[$url],
+                                                            [
+                                                                'data-confirm'=>$msg,
+                                                                'title'=>'Desactivar usuario'
+                                                            ]);
+                                                    }else{
+                                                        $msg = "¿Confirma que desea activar este usuario?";
+                                                        return Html::a(
+                                                            "<span class='glyphicon glyphicon-ok'/>",[$url],
+                                                            [
+                                                                'data-confirm'=>$msg,
+                                                                'title'=>'activar usuario'
+                                                            ]);
+                                                    }
+                                                }
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                                        }
+                                ]
 
-    <?php Pjax::end(); ?>
-
+                        ],
+                    ],
+                ]); ?>
+                <?php Pjax::end(); ?>
+            </div>
+        </div>
+    </div>
 </div>

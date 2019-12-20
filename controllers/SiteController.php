@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -81,6 +82,9 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            $user=Yii::$app->user->identity;
+            $user->last_login=date('Y-m-d H:i:s');
+            $user->save(false);
             return $this->goBack();
         }
 

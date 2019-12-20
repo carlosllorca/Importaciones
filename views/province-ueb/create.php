@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\ProvinceUeb */
 
-$this->title = 'Create Province Ueb';
-$this->params['breadcrumbs'][] = ['label' => 'Province Uebs', 'url' => ['index']];
+$this->title = 'Crear UEB';
+$this->params['breadcrumbs'][] = ['label' => 'UEB', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="card">
@@ -22,3 +22,4 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+

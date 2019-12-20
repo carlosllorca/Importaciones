@@ -17,6 +17,19 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '123',
         ],
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'locale' => 'es-ES', //ej. 'es-ES'
+            'thousandSeparator' => '.',
+            'decimalSeparator' => ',',
+            'dateFormat' => 'd/M/Y',
+            'datetimeFormat' => 'd/M/Y hh:i:ss a',
+            'currencyCode' => '$',
+
+        ],
+        'traza'=>[
+            'class' => 'app\components\TrazaComponent',
+        ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],

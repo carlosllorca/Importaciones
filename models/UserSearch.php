@@ -18,7 +18,7 @@ class UserSearch extends User
     {
         return [
             [['id', 'province_ueb'], 'integer'],
-            [['username', 'full_name', 'email', 'password', 'created_at', 'last_login'], 'safe'],
+            [['username', 'full_name', 'email', 'password', 'created_at', 'last_login','rol'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class UserSearch extends User
     public function search($params)
     {
         $query = User::find();
-
+        $query->innerJoinWith('authAssignament');
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -62,6 +62,7 @@ class UserSearch extends User
             'created_at' => $this->created_at,
             'last_login' => $this->last_login,
             'province_ueb' => $this->province_ueb,
+            'item_name' => $this->rol,
         ]);
 
         $query->andFilterWhere(['ilike', 'username', $this->username])

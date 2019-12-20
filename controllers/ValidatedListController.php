@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\ValidatedListItemSearch;
 use Yii;
 use app\models\ValidatedList;
 use app\models\ValidatedListSearch;
@@ -52,9 +53,7 @@ class ValidatedListController extends MainController
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        return $this->redirect('index');
     }
 
     /**
@@ -86,13 +85,19 @@ class ValidatedListController extends MainController
     {
         $model = $this->findModel($id);
 
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
+        $searchModel = new ValidatedListItemSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$id);
 
         return $this->render('update', [
             'model' => $model,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
+
     }
 
     /**

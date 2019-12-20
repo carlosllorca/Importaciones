@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\ValidatedList */
 
-$this->title = 'Update Validated List: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Validated Lists', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Actualizar listado validado: ' . $model->label;
+$this->params['breadcrumbs'][] = ['label' => 'Listados validados', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->label, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="card">
     <div class="card-header card-header-primary">
@@ -20,6 +20,12 @@ $this->params['breadcrumbs'][] = 'Update';
             <?= $this->render('_form', [
                 'model' => $model,
             ]) ?>
+
+            <?=$this->render('/validated-list-item/index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+                'model'=>$model
+            ]);?>
         </div>
     </div>
 </div>

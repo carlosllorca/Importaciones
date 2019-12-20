@@ -59,8 +59,8 @@
                         </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="#">Perfil de usuario</a>
+                        <a class="dropdown-item" href="#">Contactar con la administración</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/site/logout" data-method="post">Desconectarse</a>
                     </div>

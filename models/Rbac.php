@@ -20,6 +20,10 @@ class Rbac extends Model
     public $isNewRecord=true;
 
     public static $ROOT='root';
+    public static $UEB='ueb';
+    public static $DOPBS='dopbs';
+    public static $COMPRADOR='comprador';
+    public static $GOL='gol';
     /**
      * @return array the validation rules.
      */

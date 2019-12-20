@@ -67,7 +67,7 @@ class ProvinceUebController extends MainController
         $model = new ProvinceUeb();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -87,7 +87,7 @@ class ProvinceUebController extends MainController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
@@ -104,12 +104,7 @@ class ProvinceUebController extends MainController
      */
     public function actionDelete($id)
     {
-        try {
-            $this->findModel($id)->delete();
-        } catch (\Exception $exception) {
-            Yii::$app->session->setFlash('danger', "No podemos eliminar este elemento. Está siendo utilizado.");
-        }
-
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }

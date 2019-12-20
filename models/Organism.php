@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "organism".
@@ -30,7 +31,7 @@ class Organism extends \yii\db\ActiveRecord
     {
         return [
             [['short_name', 'name'], 'required'],
-            [['short_name'], 'string', 'max' => 10],
+            [['short_name'], 'string', 'max' => 20],
             [['name'], 'string', 'max' => 250],
         ];
     }
@@ -55,6 +56,12 @@ class Organism extends \yii\db\ActiveRecord
         return $this->hasMany(Client::className(), ['organism_id' => 'id']);
     }
     public static function combo(){
-        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
+        if(Rbac::getRole()==Rbac::$UEB){
+            return self::comboUEB();
+        }
+        return ArrayHelper::map(self::find()->orderBy('short_name')->all(),'id','short_name');
+    }
+    public static function comboUEB(){
+        return ArrayHelper::map(self::find()->innerJoinWith('clients')->where(['client.province_ueb'=>Yii::$app->user->identity->province_ueb])->orderBy('short_name')->all(),'id','short_name');
     }
 }

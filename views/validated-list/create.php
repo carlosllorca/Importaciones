@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\ValidatedList */
 
-$this->title = 'Create Validated List';
-$this->params['breadcrumbs'][] = ['label' => 'Validated Lists', 'url' => ['index']];
+$this->title = 'Crear listado validado';
+$this->params['breadcrumbs'][] = ['label' => 'Listados validados', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="card">

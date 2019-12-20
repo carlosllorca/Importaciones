@@ -7,33 +7,35 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\ProvinceUebSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Province Uebs';
+$this->title = 'Listado de UEB';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="province-ueb-index">
+<div class="buy-request-status-index">
+    <div class="card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title"><?=$this->title?></h4>
+            <p class="card-category">UEB distribuidas en las diferentes provincias desde las que se realizan las demandas.</p>
+        </div>
+        <div class="card-body" style="padding: 15px">
+            <div class="p-3">
+                <p>
+                    <?= Html::a('Nuevo', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+                <?php Pjax::begin(); ?>
+                <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Province Ueb', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'label',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
-    <?php Pjax::end(); ?>
-
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
+                        'label',
+                        ['class' => 'yii\grid\ActionColumn'],
+                    ],
+                ]); ?>
+                <?php Pjax::end(); ?>
+            </div>
+        </div>
+    </div>
 </div>
