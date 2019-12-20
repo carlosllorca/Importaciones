@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\DemandItem;
+use app\models\DemandStatus;
 use app\models\Rbac;
+use app\models\ValidatedListItemSearch;
 use Yii;
 use app\models\Demand;
 use app\models\DemandSearch;
@@ -77,14 +80,27 @@ class DemandController extends MainController
     public function actionCreate()
     {
         $model = new Demand();
+        $model->created_by=Yii::$app->user->identity->id;
+        $model->created_date=date('Y-m-d');
+        $model->demand_status_id=DemandStatus::BORRADOR_ID;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->traza->saveLog('Demanda creada','Se ha creado una demanda con ID'.$model->id);
+            return $this->redirect(['demand-products', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
         ]);
+    }
+    public function actionSend($id){
+        $model = $this->findModel($id);
+        $model->demand_status_id=DemandStatus::ENVIADA_ID;
+        $model->sending_date=date('Y-m-d H:i:s');
+        $model->save();
+        Yii::$app->traza->saveLog('Demanda enviada','Se ha enviado la demanda con ID'.$model->id);
+        Yii::$app->session->setFlash('success',"Su demanda ha sido enviada");
+        return $this->redirect('index');
     }
 
     /**
@@ -97,14 +113,25 @@ class DemandController extends MainController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->organism=$model->client->organism_id;
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['demand-products', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+    public function actionDemandProducts($id){
+        $model = $this->findModel($id);
+
+        $demandItem= new DemandItem();
+        $demandItem->demand_id=$model->id;
+
+        return $this->render('demand_products',['model'=>$model,'demandItem'=>$demandItem]);
+
     }
 
     /**

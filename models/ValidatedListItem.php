@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "validated_list_item".
@@ -83,6 +84,13 @@ class ValidatedListItem extends \yii\db\ActiveRecord
         }
         return $certificados;
     }
+    public function certificadosStr(){
+        $certificados = [];
+        foreach ($this->certificationValidatedListItems as $certificationValidatedListItem){
+            array_push($certificados,$certificationValidatedListItem->certification->label);
+        }
+        return implode(', ',$certificados);
+    }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -106,5 +114,8 @@ class ValidatedListItem extends \yii\db\ActiveRecord
     public function getUm()
     {
         return $this->hasOne(Um::className(), ['id' => 'um_id']);
+    }
+    public static function combo($vl){
+        return ArrayHelper::map(ValidatedListItem::find()->innerJoinWith('subfamily')->where(['subfamily.validated_list_id'=>$vl])->all(),'id','product_name');
     }
 }

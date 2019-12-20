@@ -3,13 +3,10 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Demand */
-
-$this->title = 'Actualizar demanda: ';
-$this->params['breadcrumbs'][] = ['label' => 'Demandas', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Actualizar';
+/* @var $model app\models\DemandItem */
+$this->title= "Añadir elemento a la demanda";
 ?>
+
 <div class="card">
     <div class="card-header card-header-primary">
         <h4 class="card-title"><?=$this->title?></h4>
@@ -19,6 +16,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
         <div class="p-3">
             <?= $this->render('_form', [
                 'model' => $model,
+                'vl'=>$vl
             ]) ?>
         </div>
     </div>

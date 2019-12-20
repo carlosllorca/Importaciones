@@ -27,7 +27,9 @@ use yii\helpers\Url;
         <div class="col-md-4">
             <?= $form->field($model, 'client_id')->widget(DepDrop::classname(), [
                 'type' => DepDrop::TYPE_SELECT2,
+
                 'pluginOptions'=>[
+                        'initialize'=>true,
                     'depends'=>['cat-id'],
                     'placeholder'=>'Seleccione...',
                     'url'=>Url::to(['/client/combo'])
@@ -54,22 +56,30 @@ use yii\helpers\Url;
                 <div class="col-md-4" style="text-align: left">
                     <?= $form->field($model, 'payment_method_id')->widget(Select2::classname(), [
                         'data' => \app\models\PaymentMethod::combo(),
-                        'options' => ['placeholder' => 'Seleccione ...'],
-                        'pluginOptions' => [
-                            'allowClear' => true
-                        ],
+                        'options' => ['placeholder' => 'Seleccione ...','id'=>'payment_method'],
+
+                        'pluginEvents'=>[
+                            "change" => "function(el) { validar('payment_method') }",
+                        ]
                     ]);?>
-                    <?= $form->field($model, 'other_execution')->textarea(['rows' => 2])->label('Especifique') ?>
+                    <div id="details-payment_method" class="<?=$model->payment_method_id!=\app\models\PaymentMethod::OTRO_ID?'hidden':''?>">
+                        <?= $form->field($model, 'other_execution')->textarea(['rows' => 2])->label('Especifique') ?>
+                    </div>
+
                 </div>
                 <div class="col-md-4" style="text-align: left">
                     <?= $form->field($model, 'deployment_part_id')->widget(Select2::classname(), [
                         'data' => \app\models\DeploymentPart::combo(),
-                        'options' => ['placeholder' => 'Seleccione ...'],
-                        'pluginOptions' => [
-                            'allowClear' => true
-                        ],
+                        'options' => ['placeholder' => 'Seleccione ...','id'=>'deployment_parts'],
+                        'pluginEvents'=>[
+                            "change" => "function(el) { validar('deployment_parts') }",
+                        ]
+
                     ]);?>
-                    <?= $form->field($model, 'other_deploy')->textarea(['rows' => 2])->label('Especifique') ?>
+                    <div class="<?=$model->payment_method_id!=\app\models\DeploymentPart::OTRO_ID?'hidden':''?>" id="details-deployment_parts"  >
+                        <?= $form->field($model, 'other_deploy')->textarea(['rows' => 2])->label('Especifique') ?>
+                    </div>
+
                 </div>
                 <div class="col-md-4" style="text-align: left">
                     <?=$form->field($model, 'waranty_time_id')->widget(Select2::classname(), [
@@ -79,7 +89,7 @@ use yii\helpers\Url;
                             'allowClear' => true
                         ],
                     ]);?>
-                    <?= $form->field($model, 'warranty_specification')->textarea(['rows' => 2]) ->label('Especifique')?>
+                    <?= $form->field($model, 'warranty_specification')->textarea(['rows' => 2]) ->label('Especificaciones de la garantía')?>
                 </div>
             </div>
         </div>
@@ -121,34 +131,42 @@ use yii\helpers\Url;
         <div class="card-body">
             <div class="row">
                 <div class="col-md-5" style="text-align: left">
-                    <?= $form->field($model, 'require_replacement_part')->checkbox()?>
-                    <?= $form->field($model, 'replacement_part_details')->textarea(['rows' => 3])
-                    ->label('Cantidades, código y descripción del fabricante')
-                    ?>
+                    <?= $form->field($model, 'require_replacement_part')->checkbox([])?>
+                    <div id="field-demand-replacement_part_details" class="<?=$model->require_replacement_part?'':"hidden"?>">
+                        <?= $form->field($model, 'replacement_part_details')->textarea(['rows' => 3])
+                            ->label('Cantidades, código y descripción del fabricante')
+                        ?>
+                    </div>
+
+
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-5" style="text-align: left">
                     <?= $form->field($model, 'require_post_warranty')->checkbox() ?>
-                    <?= $form->field($model, 'post_warranty_details')->textarea(['rows' => 3]) ?>
+                    <div id="field-demand-require_post_warranty" class="<?=$model->require_post_warranty?'':"hidden"?>">
+                        <?= $form->field($model, 'post_warranty_details')->textarea(['rows' => 3]) ?>
+                    </div>
+
                 </div>
 
             </div>
             <div class="row">
                 <div class="col-md-5" style="text-align: left">
                     <?= $form->field($model, 'require_technic_asistance')->checkbox() ?>
-                    <?= $form->field($model, 'technic_asistance_details')->textarea(['rows' => 3]) ?>
+                    <div id="field-require_technic_asistance" class="<?=$model->require_technic_asistance?'':"hidden"?>">
+                        <?= $form->field($model, 'technic_asistance_details')->textarea(['rows' => 3]) ?>
+                    </div>
+
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-5" style="text-align: left">
-                    <?= $form->field($model, 'seller_requirement_id')->widget(DepDrop::classname(), [
-                        'type' => Se::TYPE_SELECT2,
-                        'pluginOptions'=>[
-                            'depends'=>['cat-id'],
-                            'placeholder'=>'Seleccione...',
-                            'url'=>Url::to(['/client/combo'])
-                        ]
-                    ]);
-                    ?>
+                    <?= $form->field($model, 'seller_requirement_id')->widget(Select2::classname(), [
+                        'data' => \app\models\SellerRequirement::combo(),
+                        'options' => ['placeholder' => 'Seleccione ...'],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ],
+                    ]);?>
                     <?= $form->field($model, 'post_warranty_details')->textarea(['rows' => 3]) ?>
                 </div>
 
@@ -158,35 +176,16 @@ use yii\helpers\Url;
         </div>
 
     </div>
-
-
-
-
-
-
-
-
-
-    <?= $form->field($model, 'created_date')->textInput() ?>
-
-    <?= $form->field($model, 'sending_date')->textInput() ?>
-
-    <?= $form->field($model, 'rejected_reason')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'observation')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'validated_list_id')->textInput() ?>
-
-
-
-    <?= $form->field($model, 'demand_status_id')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
+    <?= $form->field($model, 'observation')->textarea(['rows' => 3]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar y añadir productos', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$this->registerJsFile('/js/demand/_form.js',['depends'=>\yii\web\JqueryAsset::className()]);
+
+?>

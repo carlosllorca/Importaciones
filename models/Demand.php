@@ -68,6 +68,32 @@ class Demand extends \yii\db\ActiveRecord
             [['require_replacement_part', 'require_post_warranty', 'require_technic_asistance'], 'boolean'],
             [['created_date', 'sending_date'], 'safe'],
             [['client_contract_number'], 'string', 'max' => 50],
+            [['other_execution'], 'required',
+                'when'=>function($model){
+                    /**
+                     * @var $model Demand
+                     */
+                    return $model->payment_method_id==PaymentMethod::OTRO_ID;
+                },
+                'whenClient' =>
+                    "function (attribute, value) {
+                  
+                       
+                    return $('#payment_method').val() == 5;
+                }"],
+            [['other_deploy'], 'required',
+                'when'=>function($model){
+                    /**
+                     * @var $model Demand
+                     */
+                    return $model->deployment_part_id==DeploymentPart::OTRO_ID;
+                },
+                'whenClient' =>
+                    "function (attribute, value) {
+                  
+                       
+                    return $('#deployment_parts').val() == 5;
+                }"],
             [['client_id'], 'exist', 'skipOnError' => true, 'targetClass' => Client::className(), 'targetAttribute' => ['client_id' => 'id']],
             [['demand_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => DemandStatus::className(), 'targetAttribute' => ['demand_status_id' => 'id']],
             [['deployment_part_id'], 'exist', 'skipOnError' => true, 'targetClass' => DeploymentPart::className(), 'targetAttribute' => ['deployment_part_id' => 'id']],
@@ -90,9 +116,9 @@ class Demand extends \yii\db\ActiveRecord
             'client_contract_number' => 'Número de contrato',
             'client_id' => 'Cliente',
             'payment_method_id' => 'A ejecutar con',
-            'other_execution' => 'Other Execution',
+            'other_execution' => 'Otro método de pago',
             'deployment_part_id' => 'Las entregas se necesitan en',
-            'other_deploy' => 'Other Deploy',
+            'other_deploy' => 'Especifique',
             'waranty_time_id' => 'Tiempos de garantía',
             'warranty_specification' => 'Warranty Specification',
             'purchase_reason_id' => 'Motivo de la compra',
@@ -105,9 +131,9 @@ class Demand extends \yii\db\ActiveRecord
             'created_date' => 'Created Date',
             'sending_date' => 'Sending Date',
             'rejected_reason' => 'Rejected Reason',
-            'observation' => 'Observation',
+            'observation' => 'Observaciones',
             'validated_list_id' => 'Listado validado',
-            'seller_requirement_id' => 'Seller Requirement ID',
+            'seller_requirement_id' => 'Indique si se requiere por parte del vendedor',
             'demand_status_id' => 'Demand Status ID',
             'created_by' => 'Created By',
             'organism' => 'Organismo',

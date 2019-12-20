@@ -15,6 +15,10 @@ use yii\helpers\ArrayHelper;
  */
 class DemandStatus extends \yii\db\ActiveRecord
 {
+    const BORRADOR_ID=1;
+    const ENVIADA_ID=2;
+    const ACEPTADA_ID=3;
+    const RECHAZADA_ID=4;
     /**
      * {@inheritdoc}
      */

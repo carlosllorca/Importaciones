@@ -85,7 +85,17 @@ $this->params['breadcrumbs'][] = $this->title;
                         //'demand_status_id',
                         //'created_by',
 
-                        ['class' => 'yii\grid\ActionColumn'],
+                        [
+                                'class' => 'yii\grid\ActionColumn',
+                                'visibleButtons' => [
+                                    'update'=>function ($model, $key, $index) {
+                                        return ($model->demand_status_id === \app\models\DemandStatus::BORRADOR_ID||$model->demand_status_id === \app\models\DemandStatus::RECHAZADA_ID);
+                                    },
+                                    'delete'=>function ($model, $key, $index) {
+                                        return ( $model->demand_status_id === \app\models\DemandStatus::BORRADOR_ID||$model->demand_status_id === \app\models\DemandStatus::RECHAZADA_ID);
+                                    }
+                                ]
+                        ],
                     ],
                 ]); ?>
 

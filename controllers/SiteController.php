@@ -85,6 +85,7 @@ class SiteController extends Controller
             $user=Yii::$app->user->identity;
             $user->last_login=date('Y-m-d H:i:s');
             $user->save(false);
+            Yii::$app->traza->saveLog('Usuario autenticado','Se ha autenticado el usuario '.$user->username);
             return $this->goBack();
         }
 
@@ -101,8 +102,10 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
+        Yii::$app->traza->saveLog('Usuario sale del sistema','El usuario  '.Yii::$app->user->id.' ha salido del sistema');
         Yii::$app->user->logout();
         Yii::$app->session->setFlash('success','Su usuario ha sido desconectado satisfactoriamente.');
+
 
         return $this->goHome();
     }

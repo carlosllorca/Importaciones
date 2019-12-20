@@ -14,6 +14,7 @@ class DemandSearch extends Demand
     /**
      * {@inheritdoc}
      */
+
     public function rules()
     {
         return [

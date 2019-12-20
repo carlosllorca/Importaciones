@@ -52,7 +52,7 @@ class DemandItem extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'demand_id' => 'Demand ID',
-            'validated_list_item_id' => 'Validated List Item ID',
+            'validated_list_item_id' => 'Producto',
             'price' => 'Price',
             'quantity' => 'Quantity',
             'buy_request_id' => 'Buy Request ID',
