@@ -64,6 +64,7 @@ class ManageController extends MainController
         $model->type='Role';
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $this->addRole($model->name,$model->description);
+            Yii::$app->traza->saveLog('Rol creado','El Rol '.$model->name.' ha sido creado.');
             return $this->redirect(['view', 'id' => $model->name]);
         } else {
             return $this->render('createRole', [
@@ -179,8 +180,15 @@ class ManageController extends MainController
 
     public function actionDelete($id)
     {
+
         if(Rbac::remove($id))
-        return $this->redirect(['index']);
+        {
+
+            Yii::$app->session->setFlash('success','Rol eliminado correctamente.');
+            Yii::$app->traza->saveLog('Rol eilminado','El Rol '.$id.' ha sido eliminado');
+            return $this->redirect(['manage/rbac']);
+        }
+
         else{
             throw new ErrorException('Can not delete the Rol');
         }

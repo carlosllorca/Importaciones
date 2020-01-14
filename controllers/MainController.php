@@ -28,7 +28,6 @@ class MainController extends Controller
         'site/contact',
         'site/login',
 
-        'user/create'
     ];
 
     public function beforeAction($action)

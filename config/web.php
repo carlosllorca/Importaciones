@@ -38,6 +38,8 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
+
+            'authTimeout' => 86400,
             'enableAutoLogin' => true,
         ],
 

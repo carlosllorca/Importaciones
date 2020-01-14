@@ -59,7 +59,7 @@ function addRol(rol){
                         $('#'+result[i].id).removeClass('show');
                         $('#'+result[i].id).addClass('hide');
                     }else{
-                        $('#'+result[i].id).removeClass('hide');
+
                         $('#'+result[i].id).addClass('show');
                     }
                 }

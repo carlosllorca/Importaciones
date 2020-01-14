@@ -12,6 +12,7 @@ use yii\web\IdentityInterface;
  * @property string $username
  * @property string $full_name
  * @property string $email
+
  * @property string $password
  * @property string $confirm_password
  * @property string $created_at
@@ -59,6 +60,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['active'], 'boolean'],
             [['username'], 'string', 'max' => 25],
             [['full_name'], 'string', 'max' => 150],
+
             [['email'], 'string', 'max' => 50],
             [['province_ueb'], 'required',
                 'when'=>function($model){
@@ -108,6 +110,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return $this->hasMany(BuyRequest::className(), ['created_by' => 'id']);
     }
+
 
     /**
      * @return \yii\db\ActiveQuery
@@ -214,18 +217,30 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         }
         return false;
     }
-
-    //no usadas
+    /**
+     * Finds an identity by the given token.
+     *
+     * @param string $token the token to be looked for
+     * @return IdentityInterface|null the identity object that matches the given token.
+     */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        return null;
+        return static::findOne(['access_token' => $token]);
     }
+    /**
+     * @param string $authKey
+     * @return boolean if auth key is valid for current user
+     */
+    public function validateAuthKey($authKey)
+    {
+        return $this->getAuthKey() === $authKey;
+    }
+
+    //no usadas
+
     public function getAuthKey()
     {
         return null;
     }
-    public function validateAuthKey($authKey)
-    {
-        return null;
-    }
+
 }

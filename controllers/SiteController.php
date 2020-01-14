@@ -64,7 +64,7 @@ class SiteController extends Controller
     {
         if(Yii::$app->user->isGuest)
             return $this->redirect('/site/login');
-        Yii::$app->session->setFlash('success',"Probando....");
+
         return $this->render('index');
     }
 

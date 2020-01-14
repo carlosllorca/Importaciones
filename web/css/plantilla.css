@@ -26,3 +26,9 @@ text-transform: unset;
 .card {
      font-size: unset;
 }
+[hidden]{
+    display: none!important;
+}
+.show{
+    display: block!important;
+}

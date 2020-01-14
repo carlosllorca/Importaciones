@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\models\Demand;
+
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
@@ -14,12 +15,14 @@ class DemandSearch extends Demand
     /**
      * {@inheritdoc}
      */
+    public $client_name;
+    public $ueb;
 
     public function rules()
     {
         return [
             [['id', 'client_id', 'payment_method_id', 'deployment_part_id', 'waranty_time_id', 'purchase_reason_id', 'validated_list_id', 'seller_requirement_id', 'demand_status_id', 'created_by'], 'integer'],
-            [['client_contract_number', 'other_execution', 'other_deploy', 'warranty_specification', 'replacement_part_details', 'post_warranty_details', 'technic_asistance_details', 'created_date', 'sending_date', 'rejected_reason', 'observation'], 'safe'],
+            [['client_contract_number', 'other_execution', 'other_deploy', 'warranty_specification', 'replacement_part_details', 'post_warranty_details', 'technic_asistance_details', 'created_date', 'sending_date', 'rejected_reason', 'observation','client_name','ueb'], 'safe'],
             [['require_replacement_part', 'require_post_warranty', 'require_technic_asistance'], 'boolean'],
         ];
     }
@@ -137,6 +140,61 @@ class DemandSearch extends Demand
             ->andFilterWhere(['ilike', 'technic_asistance_details', $this->technic_asistance_details])
             ->andFilterWhere(['ilike', 'rejected_reason', $this->rejected_reason])
             ->andFilterWhere(['ilike', 'observation', $this->observation]);
+
+        return $dataProvider;
+    }
+    public function searchDT($params)
+    {
+        $query = Demand::find();
+        $query->innerJoinWith('client.provinceUeb');
+
+        $query->where(['not',['demand_status_id'=>DemandStatus::BORRADOR_ID]]);
+
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'client_id' => $this->client_id,
+            'payment_method_id' => $this->payment_method_id,
+            'deployment_part_id' => $this->deployment_part_id,
+            'waranty_time_id' => $this->waranty_time_id,
+            'purchase_reason_id' => $this->purchase_reason_id,
+            'require_replacement_part' => $this->require_replacement_part,
+            'require_post_warranty' => $this->require_post_warranty,
+            'require_technic_asistance' => $this->require_technic_asistance,
+            'client.province_ueb'=>$this->ueb,
+            'created_date' => $this->created_date,
+            'sending_date' => $this->sending_date,
+            'validated_list_id' => $this->validated_list_id,
+            'seller_requirement_id' => $this->seller_requirement_id,
+            'demand_status_id' => $this->demand_status_id,
+            'created_by' => $this->created_by,
+        ]);
+
+        $query->andFilterWhere(['ilike', 'client_contract_number', $this->client_contract_number])
+            ->andFilterWhere(['ilike', 'other_execution', $this->other_execution])
+            ->andFilterWhere(['ilike', 'other_deploy', $this->other_deploy])
+            ->andFilterWhere(['ilike', 'warranty_specification', $this->warranty_specification])
+            ->andFilterWhere(['ilike', 'replacement_part_details', $this->replacement_part_details])
+            ->andFilterWhere(['ilike', 'post_warranty_details', $this->post_warranty_details])
+            ->andFilterWhere(['ilike', 'technic_asistance_details', $this->technic_asistance_details])
+            ->andFilterWhere(['ilike', 'rejected_reason', $this->rejected_reason])
+            ->andFilterWhere(['ilike', 'observation', $this->observation])
+            ->andFilterWhere(['ilike', 'client.name', $this->client_name]);
 
         return $dataProvider;
     }

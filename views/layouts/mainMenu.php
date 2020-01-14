@@ -15,7 +15,7 @@ use app\models\Rbac;
   -->
     <div class="logo">
         <a href="/" class="simple-text logo-normal">
-            SEISA
+            <?=\yii\helpers\Html::img('/img/SEISA.png',['width'=>'60%'])?>
         </a>
     </div>
     <div class="sidebar-wrapper">
@@ -23,7 +23,7 @@ use app\models\Rbac;
             <li class="<?= \app\controllers\MainController::determineActive('site') ?>">
                 <a class="nav-link" href="/">
                     <i class="material-icons">dashboard</i>
-                    <p>Página principal</p>
+                    <p>Inicio</p>
                 </a>
             </li>
             <?php

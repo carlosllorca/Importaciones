@@ -13,6 +13,7 @@ use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * DemandController implements the CRUD actions for Demand model.
@@ -33,6 +34,17 @@ class DemandController extends MainController
             ],
         ];
     }
+    /**
+     * @inheritdoc
+     */
+    public function beforeAction($action)
+    {
+        if ($action->id == 'reject') {
+            $this->enableCsrfValidation = false;
+        }
+
+        return parent::beforeAction($action);
+    }
 
     /**
      * Lists all Demand models.
@@ -44,6 +56,10 @@ class DemandController extends MainController
             case Rbac::$UEB:
                 return $this->_uebIndex();
                 break;
+            case Rbac::$ESP_TECNICO:
+                return $this->_dtIndex();
+                break;
+
             default:
                 throw new ForbiddenHttpException("Esta sección no esta preparada para usuarios con su rol");
         }
@@ -57,6 +73,45 @@ class DemandController extends MainController
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+    public function _dtIndex(){
+        $searchModel = new DemandSearch();
+
+        $dataProvider = $searchModel->searchDT(Yii::$app->request->queryParams);
+
+        return $this->render('_dt_index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+    public function actionApprove($id){
+        $model = $this->findModel($id);
+        $model->demand_status_id=DemandStatus::ACEPTADA_ID;
+        $model->save(false);
+        Yii::$app->traza->saveLog('Demanda aceptadad','La Demanda '.$model->id. ' ha sido aceptada');
+        Yii::$app->session->setFlash('success','Demanda aceptada');
+        return $this->redirect('index');
+        //todo: Enviar email a la UEB para notificar.
+
+    }
+    public function actionReject(){
+        $this->enableCsrfValidation=false;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $raw_data = Yii::$app->request->getRawBody();
+        $cc= json_decode($raw_data )->demand;
+        $reason= json_decode($raw_data )->reason;
+
+
+        $model = $this->findModel($cc);
+        $model->demand_status_id=DemandStatus::RECHAZADA_ID;
+        $model->rejected_reason=$reason;
+        $model->save(false);
+        Yii::$app->traza->saveLog('Demanda rechazada','La Demanda '.$model->id. ' ha sido rechazada');
+        Yii::$app->session->setFlash('success','Demanda rechazada');
+        return ['success'=>true];
+        //todo: Enviar email a la UEB para notificar.
+
     }
 
     /**

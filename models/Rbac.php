@@ -21,7 +21,7 @@ class Rbac extends Model
 
     public static $ROOT='root';
     public static $UEB='ueb';
-    public static $DOPBS='dopbs';
+    public static $ESP_TECNICO='esp_tecnico';
     public static $COMPRADOR='comprador';
     public static $GOL='gol';
     /**
@@ -36,9 +36,7 @@ class Rbac extends Model
         return [
             [['name', 'description',], 'required'],
             ['name','isUnique'],
-            [['name','description'],
-                'match', 'pattern' => '/^([a-zA-Z" "]{0,255})+$/',
-                'message' => '{attribute} should contain only letters, and spaces.'],
+
         ];
     }
     public function isUnique($attribute){

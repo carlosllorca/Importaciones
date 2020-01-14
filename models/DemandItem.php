@@ -38,6 +38,7 @@ class DemandItem extends \yii\db\ActiveRecord
             [['demand_id', 'validated_list_item_id', 'quantity', 'buy_request_id'], 'default', 'value' => null],
             [['demand_id', 'validated_list_item_id', 'quantity', 'buy_request_id'], 'integer'],
             [['price'], 'number'],
+            [['quantity'], 'integer','min'=>0],
             [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
             [['demand_id'], 'exist', 'skipOnError' => true, 'targetClass' => Demand::className(), 'targetAttribute' => ['demand_id' => 'id']],
             [['validated_list_item_id'], 'exist', 'skipOnError' => true, 'targetClass' => ValidatedListItem::className(), 'targetAttribute' => ['validated_list_item_id' => 'id']],
@@ -54,7 +55,7 @@ class DemandItem extends \yii\db\ActiveRecord
             'demand_id' => 'Demand ID',
             'validated_list_item_id' => 'Producto',
             'price' => 'Price',
-            'quantity' => 'Quantity',
+            'quantity' => 'Cantidad',
             'buy_request_id' => 'Buy Request ID',
         ];
     }

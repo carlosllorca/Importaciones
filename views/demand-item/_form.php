@@ -25,9 +25,9 @@ use kartik\select2\Select2;
 
     </div>
 
-    <?= $form->field($model, 'price')->textInput() ?>
+    <?= $form->field($model, 'price')->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'quantity')->textInput() ?>
+    <?= $form->field($model, 'quantity')->textInput(['type'=>'number'])->label('Cantidad') ?>
 
 
 
