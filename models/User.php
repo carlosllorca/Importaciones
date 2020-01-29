@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveQuery;
+use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 
 /**
@@ -23,6 +25,7 @@ use yii\web\IdentityInterface;
  * @property BuyRequest[] $buyRequests
  * @property BuyRequestDocument[] $buyRequestDocuments
  * @property Demand[] $demands
+ * @property Demand[] $demandsApproved
  * @property Log[] $logs
  * @property Offert[] $offerts
  * @property Offert[] $offerts0
@@ -104,7 +107,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBuyRequests()
     {
@@ -113,7 +116,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBuyRequestDocuments()
     {
@@ -121,7 +124,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getDemands()
     {
@@ -129,7 +132,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getLogs()
     {
@@ -137,7 +140,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getOfferts()
     {
@@ -145,7 +148,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getOfferts0()
     {
@@ -153,14 +156,14 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getProvinceUeb()
     {
         return $this->hasOne(ProvinceUeb::className(), ['id' => 'province_ueb']);
     }
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getAuthAssignament()
     {
@@ -168,7 +171,14 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     }
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
+     */
+    public function getDemandsApproved()
+    {
+        return $this->hasMany(Demand::className(), ['approved_by' => 'id']);
+    }
+    /**
+     * @return ActiveQuery
      */
     public function getRole()
     {
@@ -241,6 +251,12 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function getAuthKey()
     {
         return null;
+    }
+    public static function combo($rol){
+        return ArrayHelper::map(self::find()->innerJoinWith('authAssignament')
+            ->where(['auth_assignment.item_name'=>$rol])
+            ->andWhere(['user.active'=>true])
+            ->all(),'id','full_name');
     }
 
 }

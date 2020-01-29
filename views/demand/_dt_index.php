@@ -30,10 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         ['class' => 'yii\grid\SerialColumn'],
 
 
-                        //'client_contract_number',
+                        'demand_code',
                         [
                             'label' => 'Cliente',
-                            'attribute' => 'client_name',
+                            'attribute' => 'client_id',
+                            'filter' => \app\models\Client::combo(),
 
                             'value' => 'client.name'
                         ],
@@ -44,25 +45,37 @@ $this->params['breadcrumbs'][] = $this->title;
                             'value' => 'client.provinceUeb.label'
                         ],
 
-                        [
-                                'attribute' => 'payment_method_id',
-                                'header' => 'Método de pago',
-                                'value'=>'paymentMethod.label',
-                                'filter' => \app\models\PaymentMethod::combo(),
 
-                        ],
 
                         [
                             'attribute' => 'validated_list_id',
                             'value'=>'validatedList.label',
-                            'header' => 'Listado validado',
+                            'label' => 'Tipo',
                             'filter' => \app\models\ValidatedList::combo(),
 
                         ],
                         [
+                            'attribute' => 'approved_by',
+                            'value'=>function($model){
+                                /**
+                                 * @var $model \app\models\Demand
+                                 */
+                                if($model->demand_status_id==\app\models\DemandStatus::ACEPTADA_ID){
+                                    return $model->approvedBy->full_name;
+                                }else{
+                                    return ' - ';
+                                }
+                            },
+
+                            'filter' => \app\models\User::combo(\app\models\Rbac::$ESP_TECNICO),
+
+                        ],
+
+                        [
                             'attribute' => 'demand_status_id',
-                            'value'=>'demandStatus.label',
-                            'header' => 'Estado de la demanda',
+
+                            'value'=>function($model){return $model->demandStatus->label;},
+                            'label' => 'Estado de la demanda',
                             'filter' => \app\models\DemandStatus::combo(),
 
                         ],

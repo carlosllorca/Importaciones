@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "demand".
  *
@@ -32,6 +30,9 @@ use Yii;
  * @property int $demand_status_id
  * @property int $created_by
  * @property string|null $seller_requirement_details
+ * @property string|null $demand_code
+ * @property int|null $approved_by
+ * @property string|null $approved_date
  *
  * @property Client $client
  * @property DemandStatus $demandStatus
@@ -39,6 +40,7 @@ use Yii;
  * @property PaymentMethod $paymentMethod
  * @property PurchaseReason $purchaseReason
  * @property User $createdBy
+ * @property User $approvedBy
  * @property ValidatedList $validatedList
  * @property WarrantyTime $warantyTime
  * @property DemandItem[] $demandItems
@@ -46,6 +48,8 @@ use Yii;
  */
 class Demand extends \yii\db\ActiveRecord
 {
+    public $organism;
+
     /**
      * {@inheritdoc}
      */
@@ -53,7 +57,6 @@ class Demand extends \yii\db\ActiveRecord
     {
         return 'demand';
     }
-    public $organism;
 
     /**
      * {@inheritdoc}
@@ -64,16 +67,18 @@ class Demand extends \yii\db\ActiveRecord
             [['client_contract_number', 'client_id', 'payment_method_id', 'deployment_part_id', 'waranty_time_id', 'purchase_reason_id', 'created_date', 'validated_list_id', 'seller_requirement_id', 'demand_status_id', 'created_by'], 'required'],
             [['client_id', 'payment_method_id', 'deployment_part_id', 'waranty_time_id', 'purchase_reason_id', 'validated_list_id', 'seller_requirement_id', 'demand_status_id', 'created_by'], 'default', 'value' => null],
             [['client_id', 'payment_method_id', 'deployment_part_id', 'waranty_time_id', 'purchase_reason_id', 'validated_list_id', 'seller_requirement_id', 'demand_status_id', 'created_by'], 'integer'],
-            [['other_execution', 'other_deploy', 'warranty_specification', 'replacement_part_details', 'post_warranty_details', 'technic_asistance_details', 'rejected_reason', 'observation','seller_requirement_details'], 'string'],
+            [['other_execution', 'other_deploy', 'warranty_specification', 'replacement_part_details', 'post_warranty_details', 'technic_asistance_details', 'rejected_reason', 'observation', 'seller_requirement_details'], 'string'],
+            [['demand_code'], 'unique'],
+            [['demand_code'], 'string'],
             [['require_replacement_part', 'require_post_warranty', 'require_technic_asistance'], 'boolean'],
-            [['created_date', 'sending_date'], 'safe'],
+            [['created_date', 'sending_date', 'approved_date'], 'safe'],
             [['client_contract_number'], 'string', 'max' => 50],
             [['other_execution'], 'required',
-                'when'=>function($model){
+                'when' => function ($model) {
                     /**
                      * @var $model Demand
                      */
-                    return $model->payment_method_id==PaymentMethod::OTRO_ID;
+                    return $model->payment_method_id == PaymentMethod::OTRO_ID;
                 },
                 'whenClient' =>
                     "function (attribute, value) {
@@ -82,11 +87,11 @@ class Demand extends \yii\db\ActiveRecord
                     return $('#payment_method').val() == 5;
                 }"],
             [['other_deploy'], 'required',
-                'when'=>function($model){
+                'when' => function ($model) {
                     /**
                      * @var $model Demand
                      */
-                    return $model->deployment_part_id==DeploymentPart::OTRO_ID;
+                    return $model->deployment_part_id == DeploymentPart::OTRO_ID;
                 },
                 'whenClient' =>
                     "function (attribute, value) {
@@ -99,7 +104,7 @@ class Demand extends \yii\db\ActiveRecord
             [['deployment_part_id'], 'exist', 'skipOnError' => true, 'targetClass' => DeploymentPart::className(), 'targetAttribute' => ['deployment_part_id' => 'id']],
             [['payment_method_id'], 'exist', 'skipOnError' => true, 'targetClass' => PaymentMethod::className(), 'targetAttribute' => ['payment_method_id' => 'id']],
             [['purchase_reason_id'], 'exist', 'skipOnError' => true, 'targetClass' => PurchaseReason::className(), 'targetAttribute' => ['purchase_reason_id' => 'id']],
-            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
+            [['created_by', 'approved_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
             [['seller_requirement_id'], 'exist', 'skipOnError' => true, 'targetClass' => SellerRequirement::className(), 'targetAttribute' => ['seller_requirement_id' => 'id']],
             [['validated_list_id'], 'exist', 'skipOnError' => true, 'targetClass' => ValidatedList::className(), 'targetAttribute' => ['validated_list_id' => 'id']],
             [['waranty_time_id'], 'exist', 'skipOnError' => true, 'targetClass' => WarrantyTime::className(), 'targetAttribute' => ['waranty_time_id' => 'id']],
@@ -117,6 +122,7 @@ class Demand extends \yii\db\ActiveRecord
             'client_id' => 'Cliente',
             'payment_method_id' => 'A ejecutar con',
             'other_execution' => 'Otro método de pago',
+            'demand_code' => 'Código',
             'deployment_part_id' => 'Las entregas se necesitan en',
             'other_deploy' => 'Especifique',
             'waranty_time_id' => 'Tiempos de garantía',
@@ -137,6 +143,7 @@ class Demand extends \yii\db\ActiveRecord
             'demand_status_id' => 'Demand Status ID',
             'created_by' => 'Created By',
             'organism' => 'Organismo',
+            'approved_by' => 'Aprobado por',
         ];
     }
 
@@ -187,6 +194,13 @@ class Demand extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getApprovedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'approved_by']);
+    }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -211,11 +225,38 @@ class Demand extends \yii\db\ActiveRecord
     {
         return $this->hasMany(DemandItem::className(), ['demand_id' => 'id']);
     }
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getSellerRequirement()
     {
         return $this->hasOne(SellerRequirement::className(), ['id' => 'seller_requirement_id']);
+    }
+
+    /**
+     * Get available code for set in demand_code
+     * @return bool|string
+     */
+    public function setDemandCode()
+    {
+        $availableCode = false;
+
+        $startingCode = "DN-" . date('Y') . "-";
+        $demands = Demand::find()->where(['not', ['demand_code' => null]])->andWhere(['ilike','demand_code', $startingCode])->orderBy(['demand_code'=>SORT_ASC])->all();
+        $usedCodes = [];
+        foreach ($demands as $demand) {
+            array_push($usedCodes, $demand->demand_code);
+        }
+        $next = true;
+        for ($i = 1; $next; $i++) {
+            $str = str_pad($i, 5, '0', STR_PAD_LEFT);
+            $currentCode = $startingCode . $str;
+            if (!in_array($currentCode, $usedCodes)) {
+                $availableCode = $currentCode;
+                $next = false;
+            }
+        }
+        return $availableCode;
     }
 }

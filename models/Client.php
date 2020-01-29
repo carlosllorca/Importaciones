@@ -90,7 +90,7 @@ class Client extends \yii\db\ActiveRecord
         return ArrayHelper::map($models,'id','name');
     }
     public static function combo(){
-        $models = Client::find()->where(['province_ueb'=>Yii::$app->user->identity->province_ueb])->all();
+        $models = Client::find()->all();
         return ArrayHelper::map($models,'id','name');
     }
 }

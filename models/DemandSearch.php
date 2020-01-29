@@ -21,7 +21,7 @@ class DemandSearch extends Demand
     public function rules()
     {
         return [
-            [['id', 'client_id', 'payment_method_id', 'deployment_part_id', 'waranty_time_id', 'purchase_reason_id', 'validated_list_id', 'seller_requirement_id', 'demand_status_id', 'created_by'], 'integer'],
+            [['id', 'client_id', 'payment_method_id', 'deployment_part_id', 'waranty_time_id', 'purchase_reason_id', 'validated_list_id', 'seller_requirement_id', 'demand_status_id', 'created_by','approved_by'], 'integer'],
             [['client_contract_number', 'other_execution', 'other_deploy', 'warranty_specification', 'replacement_part_details', 'post_warranty_details', 'technic_asistance_details', 'created_date', 'sending_date', 'rejected_reason', 'observation','client_name','ueb'], 'safe'],
             [['require_replacement_part', 'require_post_warranty', 'require_technic_asistance'], 'boolean'],
         ];
@@ -52,6 +52,7 @@ class DemandSearch extends Demand
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
 
         $this->load($params);
 
@@ -147,6 +148,9 @@ class DemandSearch extends Demand
     {
         $query = Demand::find();
         $query->innerJoinWith('client.provinceUeb');
+        $query->innerJoinWith('validatedList');
+
+        $query->innerJoinWith('demandStatus');
 
         $query->where(['not',['demand_status_id'=>DemandStatus::BORRADOR_ID]]);
 
@@ -156,7 +160,25 @@ class DemandSearch extends Demand
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+        $dataProvider->sort->attributes['ueb'] = [
+            // The tables are the ones our relation are configured to
+            // in my case they are prefixed with "tbl_"
+            'asc' => ['province_ueb.label' => SORT_ASC],
+            'desc' => ['province_ueb.label' => SORT_DESC],
+        ];
+        $dataProvider->sort->attributes['validated_list_id'] = [
+            // The tables are the ones our relation are configured to
+            // in my case they are prefixed with "tbl_"
+            'asc' => ['validated_list.label' => SORT_ASC],
+            'desc' => ['validated_list.label' => SORT_DESC],
+        ];
 
+        $dataProvider->sort->attributes['demand_status_id'] = [
+            // The tables are the ones our relation are configured to
+            // in my case they are prefixed with "tbl_"
+            'asc' => ['demand_status.label' => SORT_ASC],
+            'desc' => ['demand_status.label' => SORT_DESC],
+        ];
         $this->load($params);
 
         if (!$this->validate()) {
@@ -178,6 +200,7 @@ class DemandSearch extends Demand
             'require_technic_asistance' => $this->require_technic_asistance,
             'client.province_ueb'=>$this->ueb,
             'created_date' => $this->created_date,
+            'approved_by' => $this->approved_by,
             'sending_date' => $this->sending_date,
             'validated_list_id' => $this->validated_list_id,
             'seller_requirement_id' => $this->seller_requirement_id,

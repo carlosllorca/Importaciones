@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\DemandItem;
 use app\models\DemandStatus;
 use app\models\Rbac;
+use app\models\User;
 use app\models\ValidatedListItemSearch;
 use Yii;
 use app\models\Demand;
@@ -87,8 +88,10 @@ class DemandController extends MainController
     public function actionApprove($id){
         $model = $this->findModel($id);
         $model->demand_status_id=DemandStatus::ACEPTADA_ID;
+        $model->approved_by=Yii::$app->user->identity->id;
+        $model->approved_date=date('Y-m-d');
         $model->save(false);
-        Yii::$app->traza->saveLog('Demanda aceptadad','La Demanda '.$model->id. ' ha sido aceptada');
+        Yii::$app->traza->saveLog('Demanda aceptada','La Demanda '.$model->demand_code. ' ha sido aceptada');
         Yii::$app->session->setFlash('success','Demanda aceptada');
         return $this->redirect('index');
         //todo: Enviar email a la UEB para notificar.
@@ -152,9 +155,17 @@ class DemandController extends MainController
         $model = $this->findModel($id);
         $model->demand_status_id=DemandStatus::ENVIADA_ID;
         $model->sending_date=date('Y-m-d H:i:s');
-        $model->save();
-        Yii::$app->traza->saveLog('Demanda enviada','Se ha enviado la demanda con ID'.$model->id);
-        Yii::$app->session->setFlash('success',"Su demanda ha sido enviada");
+        if(!$model->demand_code){
+            $model->demand_code=$model->setDemandCode();
+        }
+        if($model->validate()){
+            $model->save();
+            Yii::$app->traza->saveLog('Demanda enviada','Se ha enviado la demanda '.$model->demand_code);
+            Yii::$app->session->setFlash('success',"La demanda {$model->demand_code} ha sido enviada.");
+        }else{
+            Yii::$app->session->setFlash('danger','Error al procesar su solicitud. Inténtelo de nuevo más tarde.');
+        }
+
         return $this->redirect('index');
     }
 

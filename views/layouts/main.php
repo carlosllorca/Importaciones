@@ -13,8 +13,8 @@ use app\assets\AppAsset;
 AppAsset::register($this);
 if (class_exists('ramosisw\CImaterial\web\MaterialAsset')) {
     ramosisw\CImaterial\web\MaterialAsset::register($this);
-} 
-?>
+}
+?>s
 
 
 <?php $this->beginPage() ?>
