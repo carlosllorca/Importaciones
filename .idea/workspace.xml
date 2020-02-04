@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/views/demand/_details.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/demand/_items.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/demand/_requerimientos.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/css/fuentes.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/js/demand/items.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/DemandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/DemandController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/Demand.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Demand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DemandItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DemandItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DemandItemSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DemandItemSearch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ValidatedListItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ValidatedListItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/demand/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/plantilla.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/plantilla.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/site.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -337,7 +323,7 @@
       <workItem from="1579747107180" duration="2479000" />
       <workItem from="1579874130157" duration="15000" />
       <workItem from="1580262319032" duration="7608000" />
-      <workItem from="1580768997213" duration="23694000" />
+      <workItem from="1580768997213" duration="24160000" />
     </task>
     <task id="LOCAL-00001" summary="Preparando el proyecto">
       <created>1576473614599</created>
@@ -409,7 +395,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580268557334</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="View de la demanda.&#10;Clasificado como distribución interna listo.">
+      <created>1580796651307</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1580796651307</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +421,8 @@
     <MESSAGE value="Listos los nomencladores" />
     <MESSAGE value="Envio de Demanda" />
     <MESSAGE value="Envio de demanda. &#10;Aprobación/Rechazo de demanda&#10;Refinamiento del index de demanda para DT" />
-    <option name="LAST_COMMIT_MESSAGE" value="Envio de demanda. &#10;Aprobación/Rechazo de demanda&#10;Refinamiento del index de demanda para DT" />
+    <MESSAGE value="View de la demanda.&#10;Clasificado como distribución interna listo." />
+    <option name="LAST_COMMIT_MESSAGE" value="View de la demanda.&#10;Clasificado como distribución interna listo." />
   </component>
   <component name="WindowStateProjectService">
     <state x="2475" y="200" width="800" height="677" key="#Deployment" timestamp="1576472912804">
@@ -476,14 +470,14 @@
     </state>
     <state x="2744" y="235" width="474" height="609" key="#xdebugger.evaluate/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580264681378" />
     <state x="852" y="256" width="254" height="593" key="#xdebugger.evaluate/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1576847070634" />
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2" timestamp="1580268556850">
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2" timestamp="1580796650847">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580268556850" />
     <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1576565775973" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576871847355" />
     <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1576847246126" />
-    <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576473606983" />
+    <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580796650847" />
     <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/49.27.1871.1053@49.27.1871.1053" timestamp="1578979741565" />
     <state x="2663" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1576681612752">
       <screen x="1920" y="0" width="1920" height="1080" />
