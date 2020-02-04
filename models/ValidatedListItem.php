@@ -118,4 +118,15 @@ class ValidatedListItem extends \yii\db\ActiveRecord
     public static function combo($vl){
         return ArrayHelper::map(ValidatedListItem::find()->innerJoinWith('subfamily')->where(['subfamily.validated_list_id'=>$vl])->all(),'id','product_name');
     }
+
+    /**
+     * Combo solo con los productos de la demanda
+     * @param integer $demand_id
+     * @return array
+     */
+    public static function comboDemand($demand_id){
+
+        return ArrayHelper::map(ValidatedListItem::find()->innerJoinWith('demandItems')
+            ->where(['demand_item.demand_id'=>$demand_id])->all(),'id','product_name');
+    }
 }

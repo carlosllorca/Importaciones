@@ -41,6 +41,10 @@ class DemandItemSearch extends DemandItem
     public function search($params)
     {
         $query = DemandItem::find();
+        $query->innerJoinWith('validatedListItem');
+        if(!isset($params['sort'])){
+            $query->orderBy('product_name');
+        }
 
         // add conditions that should always apply here
 

@@ -13,6 +13,7 @@ use Yii;
  * @property float $price
  * @property int $quantity
  * @property int|null $buy_request_id
+ * @property boolean $internal_distribution
  *
  * @property BuyRequest $buyRequest
  * @property Demand $demand
@@ -38,6 +39,7 @@ class DemandItem extends \yii\db\ActiveRecord
             [['demand_id', 'validated_list_item_id', 'quantity', 'buy_request_id'], 'default', 'value' => null],
             [['demand_id', 'validated_list_item_id', 'quantity', 'buy_request_id'], 'integer'],
             [['price'], 'number'],
+            [['internal_distribution'], 'boolean'],
             [['quantity'], 'integer','min'=>0],
             [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
             [['demand_id'], 'exist', 'skipOnError' => true, 'targetClass' => Demand::className(), 'targetAttribute' => ['demand_id' => 'id']],
@@ -54,7 +56,7 @@ class DemandItem extends \yii\db\ActiveRecord
             'id' => 'ID',
             'demand_id' => 'Demand ID',
             'validated_list_item_id' => 'Producto',
-            'price' => 'Price',
+            'price' => 'Precio',
             'quantity' => 'Cantidad',
             'buy_request_id' => 'Buy Request ID',
         ];
@@ -82,5 +84,16 @@ class DemandItem extends \yii\db\ActiveRecord
     public function getValidatedListItem()
     {
         return $this->hasOne(ValidatedListItem::className(), ['id' => 'validated_list_item_id']);
+    }
+    public function status($withHtml=false){
+        if($this->internal_distribution){
+            return $withHtml?"<b class='text-success' >Distribución interna</b>":"Distribución interna";
+        }elseif ($this->buy_request_id){
+            return $withHtml?"<b class='text-success'>{$this->buyRequest->code}</b>":$this->buyRequest->code;
+
+        }else{
+            return $withHtml?"<b class='text-danger'>Sin clasificar</b>":"Sin clasificar";
+        }
+
     }
 }

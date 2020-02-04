@@ -32,3 +32,30 @@ text-transform: unset;
 .show{
     display: block!important;
 }
+.dropdown-importaciones {
+    padding: 12px 15px!important;
+}
+.moveToLeft{
+    margin-left: -150px!important;
+}
+.text-success, .text-danger {
+    font-weight: bold;
+}
+.badge-inma-tab{
+    top:2px;
+    right: -2px;
+    position: absolute;
+    background:#a94442!important;
+    color: #fff !important;
+    font-weight: bold !important;
+    padding: 4px 7px !important;
+}
+
+@font-face {
+    font-family:Roboto-bold;
+    src: url('/Roboto/Roboto-Bold.ttf');
+}
+@font-face {
+    font-family:Roboto;
+    src: url('/Roboto/Roboto-Regular.ttf');
+}

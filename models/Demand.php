@@ -148,6 +148,18 @@ class Demand extends \yii\db\ActiveRecord
     }
 
     /**
+     * Devuelve el importe en moneda total de la demanda
+     */
+    public function totalAmount()
+    {
+        $amount = 0;
+        foreach ($this->demandItems as $demandItem) {
+            $amount += $demandItem->quantity * $demandItem->price;
+        }
+        return $amount;
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getClient()
@@ -194,6 +206,7 @@ class Demand extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -243,7 +256,7 @@ class Demand extends \yii\db\ActiveRecord
         $availableCode = false;
 
         $startingCode = "DN-" . date('Y') . "-";
-        $demands = Demand::find()->where(['not', ['demand_code' => null]])->andWhere(['ilike','demand_code', $startingCode])->orderBy(['demand_code'=>SORT_ASC])->all();
+        $demands = Demand::find()->where(['not', ['demand_code' => null]])->andWhere(['ilike', 'demand_code', $startingCode])->orderBy(['demand_code' => SORT_ASC])->all();
         $usedCodes = [];
         foreach ($demands as $demand) {
             array_push($usedCodes, $demand->demand_code);
@@ -259,4 +272,89 @@ class Demand extends \yii\db\ActiveRecord
         }
         return $availableCode;
     }
+
+    public function warrantySpecification()
+    {
+        if ($this->warranty_specification)
+            return $this->warranty_specification;
+        return '-';
+    }
+
+    public function txtWarrantyTime()
+    {
+        if ($this->warantyTime)
+            return $this->warantyTime->label;
+        return '-';
+    }
+
+    public function txtDeploymentPart()
+    {
+        if ($this->deploymentPart) {
+            if ($this->deployment_part_id == DeploymentPart::OTRO_ID) {
+                return $this->other_deploy;
+            } else {
+                return $this->deploymentPart->label;
+            }
+        } else {
+            return '-';
+        }
+    }
+
+    public function txtPaymentMethod()
+    {
+        if ($this->paymentMethod) {
+            if ($this->payment_method_id == PaymentMethod::OTRO_ID) {
+                return $this->other_execution;
+            } else {
+                return $this->paymentMethod->label;
+            }
+        } else {
+            return '-';
+        }
+    }
+
+    public function txtSellerRequirementPart()
+    {
+        if ($this->require_replacement_part) {
+            return $this->replacement_part_details;
+        } else {
+            return 'No';
+        }
+    }
+
+    public function txtPostWarrantyService()
+    {
+        if ($this->require_post_warranty) {
+            return $this->post_warranty_details;
+        } else {
+            return 'No';
+        }
+    }
+
+    public function txtRequireTechnicAsistence()
+    {
+        if ($this->require_technic_asistance) {
+            return $this->technic_asistance_details;
+        } else {
+            return 'No';
+        }
+    }
+
+    /**
+     * Devuelve los demandItem sin clasificar
+     * @return DemandItem[]
+     */
+    public function sinClasificar()
+    {
+        $items = [];
+        foreach ($this->demandItems as $demandItem) {
+            if ($demandItem->status() == 'Sin clasificar') {
+                array_push($items, $demandItem);
+            }
+        }
+        return $items;
+
+    }
+
+
 }

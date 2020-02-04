@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\DemandItem;
+use app\models\DemandItemSearch;
 use app\models\DemandStatus;
 use app\models\Rbac;
 use app\models\User;
@@ -40,7 +41,7 @@ class DemandController extends MainController
      */
     public function beforeAction($action)
     {
-        if ($action->id == 'reject') {
+        if (in_array($action->id ,[ 'reject','clasify'])) {
             $this->enableCsrfValidation = false;
         }
 
@@ -125,8 +126,20 @@ class DemandController extends MainController
      */
     public function actionView($id)
     {
+        $searchModel = new DemandItemSearch();
+        $searchModel->demand_id=$id;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $active ='requirements';
+        $session = Yii::$app->session->getFlash('active');
+        if($session){
+            $active=$session;
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'active'=>$active
         ]);
     }
 
@@ -212,6 +225,26 @@ class DemandController extends MainController
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+    public function actionClasify(){
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $raw_data = json_decode(Yii::$app->request->getRawBody());
+        $items= $raw_data->items;
+        switch ($raw_data->action){
+            case 'internal_distribution':
+                DemandItem::updateAll([
+                    'internal_distribution'=>true,
+                ],[
+                    'id'=>$items
+                ]);
+                break;
+        }
+        Yii::$app->session->setFlash('active','items');
+        return [
+            'success'=>true,
+            'items'=>$items
+        ];
+
     }
 
     /**

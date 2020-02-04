@@ -148,3 +148,6 @@ select.form-control{
 }
 
 
+.card-body{
+    padding: 3rem!important;
+}
