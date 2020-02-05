@@ -157,6 +157,63 @@ var clasify = function(type,demand){
                 }
             });
             break
+        case 4:
+            swal({
+                title: "¿Está seguro que desea crear una solicitud internacional con los elementos seleccionados?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Si',
+                cancelButtonText: 'No',
+                allowOutsideClick: true
+            }).then(result=>{
+                if(result.value){
+                    let timerInterval
+                    let message = swal({
+                        title: 'Generando solicitud, por favor espere...',
+                        timer: 10000000,
+                        onBeforeOpen: async () => {
+                            Swal.showLoading()
+                            try{
+                                let result = await axios.post('/demand/clasify',
+                                    {
+                                        items:actives(),
+                                        demand:demand,
+                                        action:'internacional_request'
+                                    });
+                                if(result.data.success){
+                                    swal({
+                                        title: `Solicitud creada correctamente con código ${result.data.request_number}.`,
+                                        type: 'success',
+                                        confirmButtonText: 'Aceptar',
+                                        allowOutsideClick: true
+                                    });
+                                    reloadTab();
+
+                                }else{
+                                    swal({
+                                        title: "Ocurrió un error al procesar su solicitud. Inténtelo de nuevo más tarde.",
+                                        type: 'error',
+                                        confirmButtonText: 'Si',
+                                        allowOutsideClick: true
+                                    })
+                                }
+                            }catch (e) {
+                                swal({
+                                    title: "Ocurrió un error al procesar su solicitud. Inténtelo de nuevo más tarde.",
+                                    type: 'error',
+                                    confirmButtonText: 'Aceptar',
+                                    allowOutsideClick: true
+                                })
+                                return false;
+                            }
+                        },
+                        onClose: () => {
+                            clearInterval(timerInterval);
+                        }
+                    })
+                }
+            });
+            break
         default:
             swal({
                 title: 'Error interno de la aplicación.',
@@ -169,6 +226,69 @@ var clasify = function(type,demand){
 async function reloadTab(){
 
 
-   // $.pjax.reload({url:'/demand/view?id=3',container: '#items',timeout: 5000,type:'GET'});
-    $.pjax.reload({url:document.URL,container: '#titulos',timeout: 5000,type:'GET'});
+    location.reload();
+}
+function divide(item,maxValue){
+    Swal.fire({
+        title: 'Dividir las cantidades del producto',
+        input: 'number',
+        inputAttributes: {
+            autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Dividir',
+        showLoaderOnConfirm: true,
+        preConfirm: async (part) => {
+            return new Promise(async (resolve,reject)=>{
+                let val = maxValue-1;
+                if(part==maxValue){
+                    reject(`No se puede dividir el producto en la misma cantidad original.`)
+                }
+                else if(part<1||part>=maxValue){
+                   reject(`El valor introducido debe estar entre 1 y ${val}`)
+                }else{
+                    try{
+                        let result = await axios.post('/demand/divide',
+                            {
+                                items:item,
+                                part:part,
+                            });
+                        if(result.status==200){
+                            if(result.data.success){
+                                resolve(result.data);
+                            }else{
+                                throw new Error(result.data.error)
+                            }}
+                    }catch (e) {
+                        reject(e)
+                    }
+                }
+
+
+            }).then(response=>{
+                return {success:true};
+            }).catch(error=>{
+                Swal.showValidationMessage(
+                    error
+                )
+            })
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+
+        if(result.dismiss){
+
+
+        }else{
+            swal({
+                title: 'Producto dividido',
+                type: 'success',
+                confirmButtonText: 'Aceptar',
+                allowOutsideClick: true
+            })
+            reloadTab()
+
+        }
+
+    })
 }

@@ -45,7 +45,7 @@ class DemandController extends MainController
      */
     public function beforeAction($action)
     {
-        if (in_array($action->id ,[ 'reject','clasify'])) {
+        if (in_array($action->id ,[ 'reject','clasify','divide'])) {
             $this->enableCsrfValidation = false;
         }
 
@@ -230,6 +230,32 @@ class DemandController extends MainController
 
         return $this->redirect(['index']);
     }
+    public function actionDivide(){
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->session->setFlash('active','items');
+        $raw_data = json_decode(Yii::$app->request->getRawBody());
+        $item=DemandItem::findOne($raw_data->items);
+        $part= (int)$raw_data->part;
+        if($part<1){
+            return ['success'=>false,'error'=>'La unidad mínima de división es 1.'];
+        }elseif ($item->quantity<=1){
+            return ['success'=>false,'error'=>'El producto no puede ser dividido en más partes.'];
+        }elseif ($item->quantity<=$part){
+            return ['success'=>false,'error'=>'La cantidad solicitada debe ser menor que la cantidad original.'];
+        }else{
+            $newItem = new DemandItem();
+            $newItem->demand_id= $item->demand_id;
+            $newItem->validated_list_item_id=$item->validated_list_item_id;
+            $newItem->price=$item->price;
+            $newItem->quantity=$part;
+            $newItem->save();
+            $item->quantity = $item->quantity-$newItem->quantity;
+            $item->save();
+        }
+
+
+        return ['success'=>true];
+    }
     public function actionClasify(){
         Yii::$app->response->format = Response::FORMAT_JSON;
         $raw_data = json_decode(Yii::$app->request->getRawBody());
@@ -247,6 +273,25 @@ class DemandController extends MainController
             case 'nacional_request':
                 $buyRequest = new BuyRequest();
                 $buyRequest->buy_request_type_id= BuyRequestType::$NACIONAL_ID;
+                $buyRequest->buy_request_status_id=BuyRequestStatus::$BORRADOR_ID;
+                $buyRequest->created_by=User::userLogged()->id;
+                $buyRequest->created=date('Y-m-d');
+                try {
+                    $buyRequest->setCode();
+                } catch (ForbiddenHttpException $e) {
+                    throw new Exception($e->getMessage());
+                }
+                $buyRequest->save();
+                DemandItem::updateAll([
+                    'buy_request_id'=>$buyRequest->id,
+                ],[
+                    'id'=>$items
+                ]);
+                $request_number=$buyRequest->code;
+                break;
+            case 'internacional_request':
+                $buyRequest = new BuyRequest();
+                $buyRequest->buy_request_type_id= BuyRequestType::$INTERNACIIONAL_ID;
                 $buyRequest->buy_request_status_id=BuyRequestStatus::$BORRADOR_ID;
                 $buyRequest->created_by=User::userLogged()->id;
                 $buyRequest->created=date('Y-m-d');

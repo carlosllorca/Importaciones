@@ -16,7 +16,6 @@ $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 
 ?>
-
 <div class="buy-request-status-index">
 
     <div class="card">
@@ -102,6 +101,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
         </div>
+
+        <?php
+        echo $this->registerJsFile('/js/demand/items.js',['depends'=>\yii\web\JqueryAsset::className()])
+        ?>
         <?php Pjax::end()?>
 
     </div>

@@ -27,9 +27,9 @@ use yii\widgets\Pjax;
                 </div>
             </div>
             <div class="btn-group right <?=Yii::$app->user->can('demand/clasify')?'':'hidden'?>" role="group">
-                <button type="button" class="btn btn-primary dropdown-importaciones clasify" disabled title="Crear una solicitud de compra internacional con los productos seleccionados."><span class="glyphicon glyphicon-plus"></span><b> Solicitud internacional</b></button>
+                <button type="button" onclick='clasify(4,<?=$model->id?>)' class="btn btn-primary dropdown-importaciones clasify" disabled title="Crear una solicitud de compra internacional con los productos seleccionados."><span class="glyphicon glyphicon-plus"></span><b> Solicitud internacional</b></button>
                 <div class="btn-group" role="group">
-                    <button id="btnGroupDrop2"  onclick='clasify(4,<?=$model->id?>)' type="button" class="btn btn-primary dropdown-toggle dropdown-importaciones clasify" disabled  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button id="btnGroupDrop2"   type="button" class="btn btn-primary dropdown-toggle dropdown-importaciones clasify" disabled  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </button>
                     <div class="dropdown-menu moveToLeft" aria-labelledby="btnGroupDrop2">
                         <a class="dropdown-item"  onclick='clasify(5,<?=$model->id?>)' style="cursor: pointer">Añadir a una solicitud existente</a>
@@ -56,16 +56,16 @@ use yii\widgets\Pjax;
                          */
 
 
-                        if (!$model->buy_request_id!=null ) {
-                            return ['class' => 'hidden'];
-                        } else {
+                        if ($model->status()=='Sin clasificar' ) {
                             return ['class' => 'check_item'];
+                        } else {
+                            return ['class' => 'hidden'];
                         }
 
                     },
                     'content' => function ($model, $key, $index, $column) {
-                        $myClass = $model->buy_request_id!=null||$model->internal_distribution==true
-                            ? "hidden" : "check_item";
+                        $myClass = $model->status()=='Sin clasificar'
+                            ?  "check_item":"hidden";
                         return "<div class=\"checkbox {$myClass}\"> <label><input type=\"checkbox\" value='{$key}' class='{$myClass}' name=\"optionsCheckboxes\"></label></div>";
                     }
                 ],
@@ -91,7 +91,28 @@ use yii\widgets\Pjax;
                             return $model->status(true);
 
                         }
-                ]
+                ],
+                [
+                        'class' => 'yii\grid\ActionColumn',
+                        'template'=>'{divide}',
+                        'buttons'=>[
+                                'divide'=>function($url,$model){
+                                    /**
+                                     * @var $model DemandItem
+                                     */
+                                    return $model->status()=='Sin clasificar'?Html::a('<span class="glyphicon glyphicon-duplicate"></span>','#',
+                                        [
+                                                'title'=>'Dividir. Al dividir puedes enviar un mismo producto a dos destinos diferentes.',
+                                            'onclick'=>'divide('.$model->id.','.$model->quantity.')'
+                                        ]):null;
+                                }
+                        ],
+                    'visibleButtons' => [
+                            'divide'=>function(){
+                                return Yii::$app->user->can('demand/divide');
+                            }
+                    ]
+                ],
                 //'buy_request_id',
 
 
@@ -102,6 +123,3 @@ use yii\widgets\Pjax;
 
 </div>
 
-<?php
-echo $this->registerJsFile('/js/demand/items.js',['depends'=>\yii\web\JqueryAsset::className()])
-?>
