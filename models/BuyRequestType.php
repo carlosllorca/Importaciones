@@ -5,25 +5,24 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "buy_request_status".
+ * This is the model class for table "buy_request_type".
  *
  * @property int $id
  * @property string $label
  *
  * @property BuyRequest[] $buyRequests
  */
-class BuyRequestStatus extends \yii\db\ActiveRecord
+class BuyRequestType extends \yii\db\ActiveRecord
 {
-    static $BORRADOR_ID=1;
-    static $SIN_TRAMITAR_ID=2;
-
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'buy_request_status';
+        return 'buy_request_type';
     }
+    static  $INTERNACIIONAL_ID= 1;
+    static  $NACIONAL_ID= 2;
 
     /**
      * {@inheritdoc}
@@ -32,7 +31,7 @@ class BuyRequestStatus extends \yii\db\ActiveRecord
     {
         return [
             [['label'], 'required'],
-            [['label'], 'string', 'max' => 50],
+            [['label'], 'string', 'max' => 150],
         ];
     }
 
@@ -43,7 +42,7 @@ class BuyRequestStatus extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'label' => 'Nombre',
+            'label' => 'Label',
         ];
     }
 
@@ -52,6 +51,6 @@ class BuyRequestStatus extends \yii\db\ActiveRecord
      */
     public function getBuyRequests()
     {
-        return $this->hasMany(BuyRequest::className(), ['buy_request_status_id' => 'id']);
+        return $this->hasMany(BuyRequest::className(), ['buy_request_type_id' => 'id']);
     }
 }

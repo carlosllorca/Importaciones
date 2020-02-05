@@ -14,6 +14,7 @@ $this->title = "Detalles de la demanda";
 $this->params['breadcrumbs'][] = ['label' => 'Demandas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+
 ?>
 
 <div class="buy-request-status-index">
@@ -23,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <h4 class="card-title"><?=$this->title?></h4>
             <p class="card-category"></p>
         </div>
+        <?php Pjax::begin(['id'=>'titulos','timeout' => 5000])?>
         <div class="card-body" >
             <div class="row">
                 <div class="col-md-3">
@@ -39,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="col-md-3">
                     <label>Estado</label>
-                    <h5 class="text-uppercase" style="font-family: Roboto-bold"><?=$model->demandStatus->label?></h5>
+                    <h5 class="text-uppercase <?=$model->classByStatus()?>" style="font-family: Roboto-bold"><?=$model->demandStatus->label?></h5>
                 </div>
                 <div class="col-md-3">
                     <label>Fecha</label>
@@ -58,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <h5><?=Yii::$app->formatter->asCurrency($model->totalAmount())?></h5>
                 </div>
             </div>
-            <?php Pjax::begin(['id'=>'titulos','timeout' => 5000])?>
+
                   <div class="row p-0 m-0 mt-3">
                 <div class="card-nav-tabs" style="width: 100%">
                     <div class="card-header m-0 p-0">
@@ -97,9 +99,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
             </div>
-            <?php Pjax::end()?>
 
 
         </div>
+        <?php Pjax::end()?>
+
     </div>
 </div>

@@ -1,6 +1,7 @@
 <?php
 
 use app\models\DemandItem;
+use yii\bootstrap4\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
@@ -14,24 +15,24 @@ use yii\widgets\Pjax;
     <div class="col-12">
         <div style="text-align: right">
 
-            <?=\yii\bootstrap4\Html::button('<b>Distribución interna</b>',['class'=>'btn btn-primary clasify','onclick'=>'clasify(1)','style'=>['margin-left'=>'5px'],'disabled'=>true,'title'=>'Trasladar los productos seleccionados desde otra UEB.'])?>
-            <div class="btn-group " role="group">
-                <button type="button" class="btn btn-primary dropdown-importaciones clasify" title="Crear una solicitud de compra nacional con los productos seleccionados." disabled><span class="glyphicon glyphicon-plus"></span> <b> Solicitud Nacional</b></button>
+            <?=Yii::$app->user->can('demand/clasify')?Html::button('<b>Distribución interna</b>',['class'=>'btn btn-primary clasify','onclick'=>'clasify(1,'.$model->id.')','style'=>['margin-left'=>'5px'],'disabled'=>true,'title'=>'Trasladar los productos seleccionados desde otra UEB.']):null?>
+            <div class="btn-group <?=Yii::$app->user->can('demand/clasify')?'':'hidden'?>" role="group">
+                <button type="button" onclick='clasify(2,<?=$model->id?>)' class="btn btn-primary dropdown-importaciones clasify" title="Crear una solicitud de compra nacional con los productos seleccionados." disabled><span class="glyphicon glyphicon-plus"></span> <b> Solicitud Nacional</b></button>
                 <div class="btn-group " role="group" >
                     <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle dropdown-importaciones clasify"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled=true>
                     </button>
                     <div class="dropdown-menu moveToLeft" aria-labelledby="btnGroupDrop1">
-                        <a class="dropdown-item" href="#">Añadir a una solicitud existente</a>
+                        <a class="dropdown-item"  onclick='clasify(3,<?=$model->id?>)' style="cursor: pointer">Añadir a una solicitud existente</a>
                     </div>
                 </div>
             </div>
-            <div class="btn-group right" role="group">
+            <div class="btn-group right <?=Yii::$app->user->can('demand/clasify')?'':'hidden'?>" role="group">
                 <button type="button" class="btn btn-primary dropdown-importaciones clasify" disabled title="Crear una solicitud de compra internacional con los productos seleccionados."><span class="glyphicon glyphicon-plus"></span><b> Solicitud internacional</b></button>
                 <div class="btn-group" role="group">
-                    <button id="btnGroupDrop2" type="button" class="btn btn-primary dropdown-toggle dropdown-importaciones clasify" disabled  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button id="btnGroupDrop2"  onclick='clasify(4,<?=$model->id?>)' type="button" class="btn btn-primary dropdown-toggle dropdown-importaciones clasify" disabled  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </button>
                     <div class="dropdown-menu moveToLeft" aria-labelledby="btnGroupDrop2">
-                        <a class="dropdown-item" href="#">Añadir a una solicitud existente</a>
+                        <a class="dropdown-item"  onclick='clasify(5,<?=$model->id?>)' style="cursor: pointer">Añadir a una solicitud existente</a>
                     </div>
                 </div>
             </div>

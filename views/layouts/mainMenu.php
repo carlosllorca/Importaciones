@@ -91,6 +91,7 @@ use app\models\Rbac;
                 <ul class="nav nav-list  mt-0 submenus  <?= \app\controllers\MainController::determineExpand('nomencaladores') ?>"
                     id="submenu1">
                     <?=$this->render('menu-item',['permission'=>'buyrequeststatus','section'=>'buy-request-status','title'=>'Estado solicitud de compra'])?>
+                    <?=$this->render('menu-item',['permission'=>'buyrequesttype','section'=>'buy-request-type','title'=>'Tipos de Solicitud de compra'])?>
                     <?=$this->render('menu-item',['permission'=>'certification','section'=>'certification','title'=>'Certificados'])?>
                     <?=$this->render('menu-item',['permission'=>'certificationtype','section'=>'certification-type','title'=>'Categorías de Certificados'])?>
                     <?=$this->render('menu-item',['permission'=>'country','section'=>'country','title'=>'Paises'])?>

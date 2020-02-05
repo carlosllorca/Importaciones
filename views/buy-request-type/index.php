@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\BuyRequestStatusSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Estado solicitud de compra';
+$this->title = 'Tipos de solicitud de compra';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="buy-request-status-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title"><?=$this->title?></h4>
-            <p class="card-category">Estados por los que transita una solicitud de compra. Usted no debe crear o eliminar ninguno de estos estados.</p>
+            <p class="card-category">Cada tipo de solicitud tiene asociado un flujo dentro del sistema. Usted no debe crear ni eliminar ningún tipo.</p>
         </div>
         <div class="card-body" style="padding: 15px">
             <div class="p-3">
@@ -36,8 +36,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         'label',
 
                         [
-                                'class' => 'yii\grid\ActionColumn',
-                                'template' => '{update} {delete}'
+                            'class' => 'yii\grid\ActionColumn',
+                            'template' => '{update}{delete}'
                         ],
                     ],
                 ]); ?>

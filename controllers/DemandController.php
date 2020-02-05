@@ -2,6 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\BuyRequest;
+use app\models\BuyRequestStatus;
+use app\models\BuyRequestType;
 use app\models\DemandItem;
 use app\models\DemandItemSearch;
 use app\models\DemandStatus;
@@ -11,6 +14,7 @@ use app\models\ValidatedListItemSearch;
 use Yii;
 use app\models\Demand;
 use app\models\DemandSearch;
+use yii\db\Exception;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -229,7 +233,9 @@ class DemandController extends MainController
     public function actionClasify(){
         Yii::$app->response->format = Response::FORMAT_JSON;
         $raw_data = json_decode(Yii::$app->request->getRawBody());
+        $demand_id=$raw_data->demand;
         $items= $raw_data->items;
+        $request_number=null;
         switch ($raw_data->action){
             case 'internal_distribution':
                 DemandItem::updateAll([
@@ -238,11 +244,39 @@ class DemandController extends MainController
                     'id'=>$items
                 ]);
                 break;
+            case 'nacional_request':
+                $buyRequest = new BuyRequest();
+                $buyRequest->buy_request_type_id= BuyRequestType::$NACIONAL_ID;
+                $buyRequest->buy_request_status_id=BuyRequestStatus::$BORRADOR_ID;
+                $buyRequest->created_by=User::userLogged()->id;
+                $buyRequest->created=date('Y-m-d');
+                try {
+                    $buyRequest->setCode();
+                } catch (ForbiddenHttpException $e) {
+                    throw new Exception($e->getMessage());
+                }
+                $buyRequest->save();
+                DemandItem::updateAll([
+                    'buy_request_id'=>$buyRequest->id,
+                ],[
+                    'id'=>$items
+                ]);
+                $request_number=$buyRequest->code;
+                break;
+            default:
+                throw new Exception("Bad request.");
+
         }
         Yii::$app->session->setFlash('active','items');
+        $demand = Demand::findOne($demand_id);
+        if(count($demand->sinClasificar())==0){
+            $demand->demand_status_id=DemandStatus::TRAMITADA_ID;
+            $demand->save();
+        }
         return [
             'success'=>true,
-            'items'=>$items
+            'items'=>$items,
+            'request_number'=>$request_number
         ];
 
     }

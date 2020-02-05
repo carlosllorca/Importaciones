@@ -355,6 +355,31 @@ class Demand extends \yii\db\ActiveRecord
         return $items;
 
     }
+    public function classByStatus(){
+        switch ($this->demand_status_id){
+            case DemandStatus::BORRADOR_ID:
+                return 'text-secondary';
+                break;
+            case DemandStatus::ENVIADA_ID:
+                return 'text-primary';
+                break;
+            case DemandStatus::RECHAZADA_ID:
+                return 'text-danger';
+                break;
+            case DemandStatus::ACEPTADA_ID:
+                return 'text-info';
+                break;
+            case DemandStatus::TRAMITADA_ID:
+                return 'text-warning';
+                break;
+            case DemandStatus::CERRADA_ID:
+                return 'text-muted';
+                break;
+            default:
+                return 'text-dark';
+                break;
+        }
+    }
 
 
 

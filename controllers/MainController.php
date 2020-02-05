@@ -128,7 +128,7 @@ class MainController extends Controller
     public static function determineExpand($group)
     {
         $groupsBackend = ["nomencaladores" => [
-            'buy-request-status', 'certification','certification-type', 'country', 'demand-status', 'deployment-part', 'document-type', 'document-type-permission',
+            'buy-request-status','buy-request-type', 'certification','certification-type', 'country', 'demand-status', 'deployment-part', 'document-type', 'document-type-permission',
             'offert-status','organism','payment-method','purchase-reason','stage','um','validated-list','warranty-time'
         ],
             "user" => ["user"]];

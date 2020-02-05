@@ -259,4 +259,18 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             ->all(),'id','full_name');
     }
 
+    /**
+     *
+     * Devuelve el usuario autenticado o false si este no lo está.
+     * @return User|false
+     */
+    static function userLogged(){
+        if(Yii::$app->user->isGuest){
+            return false;
+        }else{
+            return User::findOne(Yii::$app->user->identity->id);
+        }
+
+    }
+
 }

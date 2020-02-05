@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\BuyRequestStatus;
-use app\models\BuyRequestStatusSearch;
+use app\models\BuyRequestType;
+use app\models\BuyRequestTypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * BuyRequestStatusController implements the CRUD actions for BuyRequestStatus model.
+ * BuyRequestTypeController implements the CRUD actions for BuyRequestType model.
  */
-class BuyRequestStatusController extends MainController
+class BuyRequestTypeController extends MainController
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class BuyRequestStatusController extends MainController
     }
 
     /**
-     * Lists all BuyRequestStatus models.
+     * Lists all BuyRequestType models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new BuyRequestStatusSearch();
+        $searchModel = new BuyRequestTypeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class BuyRequestStatusController extends MainController
     }
 
     /**
-     * Displays a single BuyRequestStatus model.
+     * Displays a single BuyRequestType model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class BuyRequestStatusController extends MainController
     }
 
     /**
-     * Creates a new BuyRequestStatus model.
+     * Creates a new BuyRequestType model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new BuyRequestStatus();
+        $model = new BuyRequestType();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success','Registro creado correctamente');
@@ -77,7 +77,7 @@ class BuyRequestStatusController extends MainController
     }
 
     /**
-     * Updates an existing BuyRequestStatus model.
+     * Updates an existing BuyRequestType model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,6 @@ class BuyRequestStatusController extends MainController
             'model' => $model,
         ]);
     }
-
     /**
      * Deletes an existing BuyRequestStatus model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -117,15 +116,15 @@ class BuyRequestStatusController extends MainController
     }
 
     /**
-     * Finds the BuyRequestStatus model based on its primary key value.
+     * Finds the BuyRequestType model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return BuyRequestStatus the loaded model
+     * @return BuyRequestType the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = BuyRequestStatus::findOne($id)) !== null) {
+        if (($model = BuyRequestType::findOne($id)) !== null) {
             return $model;
         }
 

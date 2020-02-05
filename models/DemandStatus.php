@@ -19,6 +19,8 @@ class DemandStatus extends \yii\db\ActiveRecord
     const ENVIADA_ID=2;
     const ACEPTADA_ID=3;
     const RECHAZADA_ID=4;
+    const CERRADA_ID=6;
+    const TRAMITADA_ID=5;
     /**
      * {@inheritdoc}
      */
