@@ -355,6 +355,7 @@ class Demand extends \yii\db\ActiveRecord
         return $items;
 
     }
+
     public function classByStatus(){
         switch ($this->demand_status_id){
             case DemandStatus::BORRADOR_ID:

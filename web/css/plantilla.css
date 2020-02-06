@@ -13,6 +13,9 @@ body{
 .navbar-brand{
     font-size: 18px!important;
 }
+b{
+    font-weight: bold;
+}
 .navbar .navbar-nav > li > a .material-icons, .navbar .navbar-nav > li > a .fa {
     font-size: 20px!important;
 }
@@ -58,4 +61,8 @@ text-transform: unset;
 @font-face {
     font-family:Roboto;
     src: url('/Roboto/Roboto-Regular.ttf');
+}
+.modal-backdrop{
+    opacity: .26;
+    z-index: 1;
 }

@@ -133,6 +133,7 @@ class DemandController extends MainController
         $searchModel = new DemandItemSearch();
         $searchModel->demand_id=$id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->sort=false;
         $active ='requirements';
         $session = Yii::$app->session->getFlash('active');
         if($session){
@@ -288,6 +289,24 @@ class DemandController extends MainController
                     'id'=>$items
                 ]);
                 $request_number=$buyRequest->code;
+                break;
+            case 'nacional_exist':
+                $request=$raw_data->solicitud;
+                DemandItem::updateAll([
+                    'buy_request_id'=>$request,
+                ],[
+                    'id'=>$items
+                ]);
+
+                break;
+            case 'internacional_exist':
+                $request=$raw_data->solicitud;
+                DemandItem::updateAll([
+                    'buy_request_id'=>$request,
+                ],[
+                    'id'=>$items
+                ]);
+
                 break;
             case 'internacional_request':
                 $buyRequest = new BuyRequest();

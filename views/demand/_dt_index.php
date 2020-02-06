@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
+
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
 
@@ -73,8 +74,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         [
                             'attribute' => 'demand_status_id',
+                            'format'=>'raw',
 
-                            'value'=>function($model){return $model->demandStatus->label;},
+                            'value'=>function($model){
+                                /**
+                                 * @var $model \app\models\Demand
+                                 */
+                                    return "<b class='{$model->classByStatus()}'>{$model->demandStatus->label}</b>";
+                                    },
                             'label' => 'Estado de la demanda',
                             'filter' => \app\models\DemandStatus::combo(),
 

@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\db\Exception;
+use yii\helpers\ArrayHelper;
 use yii\web\ForbiddenHttpException;
 
 /**
@@ -161,5 +162,15 @@ class BuyRequest extends \yii\db\ActiveRecord
         }
         $this->code=  $availableCode;
         return true;
+    }
+    public static function comboAvailableBuyRequest($type=false)
+    {
+        $models = self::find()->where(['buy_request_status_id'=>BuyRequestStatus::$BORRADOR_ID]);
+        if($type){
+            $models=$models->andWhere(['buy_request_type_id'=>$type]);
+        }
+        return ArrayHelper::map($models->all(),'id','code');
+
+
     }
 }

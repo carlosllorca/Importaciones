@@ -5,15 +5,24 @@ use yii\bootstrap4\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
+use yii\web\JqueryAsset;
 /* @var $this \yii\web\View */
 /* @var $model \app\models\Demand|\yii\db\ActiveRecord */
 /* @var $searchModel app\models\DemandItemSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+
 ?>
 
 <div class="row p-5">
     <div class="col-12">
         <div style="text-align: right">
+
+
+
+
+            <?=Html::input('hidden',null,json_encode(\app\models\BuyRequest::comboAvailableBuyRequest(\app\models\BuyRequestType::$INTERNACIIONAL_ID)),['id'=>'si'])?>
+            <?=Html::input('hidden',null,json_encode(\app\models\BuyRequest::comboAvailableBuyRequest(\app\models\BuyRequestType::$NACIONAL_ID)),['id'=>'sn'])?>
+
 
             <?=Yii::$app->user->can('demand/clasify')?Html::button('<b>Distribución interna</b>',['class'=>'btn btn-primary clasify','onclick'=>'clasify(1,'.$model->id.')','style'=>['margin-left'=>'5px'],'disabled'=>true,'title'=>'Trasladar los productos seleccionados desde otra UEB.']):null?>
             <div class="btn-group <?=Yii::$app->user->can('demand/clasify')?'':'hidden'?>" role="group">
@@ -122,4 +131,7 @@ use yii\widgets\Pjax;
 
 
 </div>
+<?php
+$this->registerJsFile('@web/js/openModal.js', ['depends' => JqueryAsset::className()])
+?>
 

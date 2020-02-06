@@ -157,6 +157,55 @@ var clasify = function(type,demand){
                 }
             });
             break
+        case 3:
+            var data = JSON.parse($('#sn').val())
+            swal({
+                title: "Asignar los pruductos a una solicitud existente",
+                input: 'select',
+                inputOptions: data,
+                preConfirm: async (part) => {
+                    return new Promise(async (resolve,reject)=>{
+
+                        if(!part){
+                            reject(`Debe seleccionar una órden de compra de la lista.`)
+                        }
+                       else{
+                            try{
+                                let result = await axios.post('/demand/clasify',
+                                    {
+                                        items:actives(),
+                                        demand:demand,
+                                        solicitud:part,
+                                        action:'nacional_exist'
+                                    });
+                                if(result.status==200){
+                                    if(result.data.success){
+                                        resolve(result.data);
+                                    }else{
+                                        throw new Error(result.data.error)
+                                    }}
+                            }catch (e) {
+                                reject(e)
+                            }
+                        }
+
+
+                    }).then(response=>{
+
+                        reloadTab();
+                    }).catch(error=>{
+                        Swal.showValidationMessage(
+                            error
+                        )
+                    })
+                },
+
+                showCancelButton: true,
+                confirmButtonText: 'Asignar',
+                cancelButtonText: 'Cancelar',
+                allowOutsideClick: true
+            })
+            break
         case 4:
             swal({
                 title: "¿Está seguro que desea crear una solicitud internacional con los elementos seleccionados?",
@@ -213,6 +262,55 @@ var clasify = function(type,demand){
                     })
                 }
             });
+            break
+        case 5:
+            var data = JSON.parse($('#si').val())
+            swal({
+                title: "Asignar los pruductos a una solicitud existente",
+                input: 'select',
+                inputOptions: data,
+                preConfirm: async (part) => {
+                    return new Promise(async (resolve,reject)=>{
+
+                        if(!part){
+                            reject(`Debe seleccionar una órden de compra de la lista.`)
+                        }
+                        else{
+                            try{
+                                let result = await axios.post('/demand/clasify',
+                                    {
+                                        items:actives(),
+                                        demand:demand,
+                                        solicitud:part,
+                                        action:'internacional_exist'
+                                    });
+                                if(result.status==200){
+                                    if(result.data.success){
+                                        resolve(result.data);
+                                    }else{
+                                        throw new Error(result.data.error)
+                                    }}
+                            }catch (e) {
+                                reject(e)
+                            }
+                        }
+
+
+                    }).then(response=>{
+
+                        reloadTab();
+                    }).catch(error=>{
+                        Swal.showValidationMessage(
+                            error
+                        )
+                    })
+                },
+
+                showCancelButton: true,
+                confirmButtonText: 'Asignar',
+                cancelButtonText: 'Cancelar',
+                allowOutsideClick: true
+            })
             break
         default:
             swal({
