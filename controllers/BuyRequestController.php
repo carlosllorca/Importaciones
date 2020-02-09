@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * BuyRequestController implements the CRUD actions for BuyRequest model.
  */
-class BuyRequestController extends Controller
+class BuyRequestController extends MainController
 {
     /**
      * {@inheritdoc}
@@ -104,7 +104,12 @@ class BuyRequestController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        try{
+            $this->findModel($id)->delete();
+        }catch (\Exception $exception){
+            Yii::$app->session->setFlash('danger',"No podemos eliminar este elemento. Está siendo utilizado.");
+        }
+
 
         return $this->redirect(['index']);
     }
