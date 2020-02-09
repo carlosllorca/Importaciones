@@ -38,6 +38,17 @@ use app\models\Rbac;
                 <?php
 
             }
+            if(Yii::$app->user->can('buyrequest/index')){
+                ?>
+                <li class="<?= \app\controllers\MainController::determineActive('buy-request') ?>">
+                    <a class="nav-link" href="/buy-request/index">
+                        <i class="material-icons">inbox</i>
+                        <p>Solicitudes de compra</p>
+                    </a>
+                </li>
+                <?php
+
+            }
             if(Yii::$app->user->can('client/index')){
                 ?>
                 <li class="<?= \app\controllers\MainController::determineActive('client') ?>">

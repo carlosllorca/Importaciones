@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\DemandStatus;
 use Yii;
 use app\models\BuyRequest;
 use app\models\BuyRequestSearch;
@@ -105,7 +106,17 @@ class BuyRequestController extends MainController
     public function actionDelete($id)
     {
         try{
-            $this->findModel($id)->delete();
+            $model = $this->findModel($id);
+            foreach ($model->demandItems as $demandItem){
+                $demandItem->buy_request_id=null;
+                $demandItem->demand->demand_status_id=DemandStatus::ACEPTADA_ID;
+                $demandItem->save(false);
+                $demandItem->demand->save(false);
+
+            }
+            Yii::$app->traza->saveLog("Solicitud {$model->code} eliminada.","La solicitud de compra {$model->code} ha sido eliminada.");
+            $model->delete();
+            Yii::$app->session->setFlash('success','Solicitud de compra eliminada.');
         }catch (\Exception $exception){
             Yii::$app->session->setFlash('danger',"No podemos eliminar este elemento. Está siendo utilizado.");
         }

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "buy_request_type".
@@ -52,5 +53,11 @@ class BuyRequestType extends \yii\db\ActiveRecord
     public function getBuyRequests()
     {
         return $this->hasMany(BuyRequest::className(), ['buy_request_type_id' => 'id']);
+    }
+    /**
+     * Combo tipos de solicitud de compra
+     */
+    public static  function combo(){
+        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
     }
 }

@@ -61,14 +61,14 @@ class BuyRequest extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'code' => 'Code',
-            'created' => 'Created',
-            'last_update' => 'Last Update',
-            'created_by' => 'Created By',
-            'buy_request_status_id' => 'Buy Request Status ID',
+            'code' => 'Código',
+            'created' => 'Fecha',
+            'last_update' => 'Última actualización',
+            'created_by' => 'Creado por',
+            'buy_request_status_id' => 'Estado',
             'bidding_start' => 'Bidding Start',
             'bidding_end' => 'Bidding End',
-            'buy_request_type_id' => 'Buy Request Type ID',
+            'buy_request_type_id' => 'Tipo',
         ];
     }
 

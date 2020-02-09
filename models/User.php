@@ -272,5 +272,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         }
 
     }
+    /**
+     * Combo autores de las Solicitudes de compra
+     */
+    static  function comboAuthorBuyRequest(){
+        return ArrayHelper::map(self::find()->innerJoinWith('buyRequests')->all(),'id','full_name');
+    }
 
 }

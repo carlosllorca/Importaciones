@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "buy_request_status".
@@ -53,5 +54,11 @@ class BuyRequestStatus extends \yii\db\ActiveRecord
     public function getBuyRequests()
     {
         return $this->hasMany(BuyRequest::className(), ['buy_request_status_id' => 'id']);
+    }
+    /**
+     * Combo estado de las solicitudes
+     */
+    public static function combo(){
+        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
     }
 }
