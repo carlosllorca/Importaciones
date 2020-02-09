@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\BuyRequestStatus;
+use app\models\DemandItem;
 use app\models\DemandStatus;
 use Yii;
 use app\models\BuyRequest;
@@ -86,13 +88,13 @@ class BuyRequestController extends MainController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $active = 'demands_associated';
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
         return $this->render('update', [
             'model' => $model,
+            'active'=>$active
         ]);
     }
 
@@ -140,4 +142,41 @@ class BuyRequestController extends MainController
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    /**
+     * Permisos para ver las solicitudes vinculadas
+     * @throws NotFoundHttpException
+     */
+    public function actionViewAssociatedDemands(){
+        throw new NotFoundHttpException('Página no encontrada.');
+    }
+    /**
+     * Permisos para ver las solicitudes vinculadas
+     * @throws NotFoundHttpException
+     */
+    public function actionViewProducts(){
+        throw new NotFoundHttpException('Página no encontrada.');
+    }
+    /**
+     * Permisos para ver las solicitudes vinculadas
+     * @throws NotFoundHttpException
+     */
+    public function actionViewPropuestas(){
+        throw new NotFoundHttpException('Página no encontrada.');
+    }
+    public function actionRemoveItem($item){
+        $demandItem = DemandItem::findOne($item);
+        $demandItem->buy_request_id=null;
+        $demandItem->save(false);
+        $demandItem->demand->demand_status_id=DemandStatus::ACEPTADA_ID;
+        $demandItem->demand->save(false);
+    }
+    public function actionApprove($id){
+        $model =$this->findModel($id);
+        $model->buy_request_status_id=BuyRequestStatus::$SIN_TRAMITAR_ID;
+        $model->save(false);
+        Yii::$app->session->setFlash('success','Solicitud aprobada.');
+        return $this->redirect(['update','id'=>$model->id]);
+    }
+
 }

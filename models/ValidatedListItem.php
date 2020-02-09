@@ -27,6 +27,7 @@ class ValidatedListItem extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public $quantity;
     public static function tableName()
     {
         return 'validated_list_item';

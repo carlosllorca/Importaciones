@@ -3,7 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\db\Exception;
+use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\web\ForbiddenHttpException;
 
@@ -113,11 +115,61 @@ class BuyRequest extends \yii\db\ActiveRecord
     }
 
     /**
+     * Demandas asociadas a las solicitudes de compra
+     */
+    public function getDemands(){
+        return Demand::find()->innerJoinWith('demandItems')->where(['demand_item.buy_request_id'=>$this->id])->groupBy('demand.id')->all();
+    }
+    /**
+     * Relación de productos agrupados por tipo categoría
+     */
+    public function getProducts(){
+        return ValidatedListItem::find()
+            ->addSelect(["SUM(demand_item.quantity) as quantity",'product_name','demand_item.price as price'])
+            ->innerJoinWith('demandItems')
+            ->where(['demand_item.buy_request_id'=>$this->id])
+            ->groupBy(['validated_list_item.id','demand_item.price'])->all();
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getOfferts()
     {
         return $this->hasMany(Offert::className(), ['buy_request_id' => 'id']);
+    }
+
+    /**
+     * Monto total de la orden de compra.
+     * @param bool $formated
+     * @return float|int|string
+     * @throws InvalidConfigException
+     */
+    public function ammount($formated=false){
+        $amount = 0;
+        foreach ($this->demandItems as $demandItem){
+            $amount+=$demandItem->quantity*$demandItem->price;
+        }
+        return $formated?Yii::$app->formatter->asCurrency($amount):$amount;
+    }
+
+    /**
+     * Clases para formatear los etados de las solicitudes
+     * @return string
+     */
+    public function classByStatus(){
+        switch ($this->buy_request_status_id){
+            case BuyRequestStatus::$BORRADOR_ID;
+                return 'text-secondary';
+                break;
+            case BuyRequestStatus::$SIN_TRAMITAR_ID:
+                return 'text-primary';
+                break;
+
+            default:
+                return 'text-dark';
+                break;
+        }
     }
 
     /**
@@ -170,7 +222,5 @@ class BuyRequest extends \yii\db\ActiveRecord
             $models=$models->andWhere(['buy_request_type_id'=>$type]);
         }
         return ArrayHelper::map($models->all(),'id','code');
-
-
     }
 }

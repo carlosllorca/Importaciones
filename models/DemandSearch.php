@@ -22,7 +22,7 @@ class DemandSearch extends Demand
     {
         return [
             [['id', 'client_id', 'payment_method_id', 'deployment_part_id', 'waranty_time_id', 'purchase_reason_id', 'validated_list_id', 'seller_requirement_id', 'demand_status_id', 'created_by','approved_by'], 'integer'],
-            [['client_contract_number', 'other_execution', 'other_deploy', 'warranty_specification', 'replacement_part_details', 'post_warranty_details', 'technic_asistance_details', 'created_date', 'sending_date', 'rejected_reason', 'observation','client_name','ueb'], 'safe'],
+            [['client_contract_number', 'other_execution', 'other_deploy', 'warranty_specification', 'replacement_part_details', 'post_warranty_details', 'technic_asistance_details', 'created_date', 'sending_date', 'rejected_reason', 'observation','client_name','ueb','demand_code'], 'safe'],
             [['require_replacement_part', 'require_post_warranty', 'require_technic_asistance'], 'boolean'],
         ];
     }
@@ -217,7 +217,8 @@ class DemandSearch extends Demand
             ->andFilterWhere(['ilike', 'technic_asistance_details', $this->technic_asistance_details])
             ->andFilterWhere(['ilike', 'rejected_reason', $this->rejected_reason])
             ->andFilterWhere(['ilike', 'observation', $this->observation])
-            ->andFilterWhere(['ilike', 'client.name', $this->client_name]);
+            ->andFilterWhere(['ilike', 'client.name', $this->client_name])
+            ->andFilterWhere(['ilike', 'demand.demand_code', $this->demand_code]);
 
         return $dataProvider;
     }
