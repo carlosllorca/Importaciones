@@ -36,16 +36,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         'created_at:date',
                         'last_login:datetime',
-                        [
-                                'attribute' => 'rol',
-                                'filter' => \app\models\Rbac::comboRoles(),
-                                'value' => function($model){
-                                    /**
-                                     * @var $model \app\models\User
-                                     */
-                                    return $model->role->description;
-                                }
-                        ],
+//                        [
+//                                'attribute' => 'rol',
+//                                'filter' => \app\models\Rbac::comboRoles(),
+//                                'value' => function($model){
+//                                    /**
+//                                     * @var $model \app\models\User
+//                                     */
+//                                    return $model->role?$model->role->description:null;
+//                                }
+//                        ],
                         'active:boolean',
 
                         [

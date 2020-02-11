@@ -66,3 +66,7 @@ text-transform: unset;
     opacity: .26;
     z-index: 1;
 }
+select{
+    -webkit-appearance: menulist!important;
+    -moz-appearance: menulist!important;
+}

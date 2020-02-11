@@ -1,5 +1,6 @@
 <?php
 
+use app\models\User;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -22,15 +23,30 @@ $this->params['breadcrumbs'][] = $this->title;
                 ['class' => 'btn btn-success',
                     'data-confirm'=>'¿Confirma que desea aprobar esta solicitud?',
                     'title' => 'Dar aprobación técnica.']) :null?>
-            <?= Yii::$app->user->can('buyrequest/assignspecialist')&$model->gol_approved?Html::a("<span class='glyphicon glyphicon-user'></span> Comprador",
-                ['#'], ['class' => "btn btn-primary", 'title' => 'Asignar el comprador que gestionará esta orden.']) :null?>
-            <?= Yii::$app->user->can('buyrequest/assignspecialist')&$model->gol_approved?Html::a("<span class='glyphicon glyphicon-user'></span> ET",
-                ['#'], ['class' => 'btn btn-success', 'title' => 'Asignar el especialista técnico que evaulará las ofertas.']) :null?>
+            <?= Yii::$app->user->can('buyrequest/assignuser')&$model->gol_approved?Html::a("<span class='glyphicon glyphicon-user'></span> Comprador",
+                '#',
+                [
+                    'class' => "btn btn-primary",
+                    'title' => 'Asignar/Reasignar el comprador que gestionará esta orden.',
+                    'onclick'=>'assignUser('.$model->id.',"comprador")'
+                ]) :null?>
+            <?= Yii::$app->user->can('buyrequest/assignuser')&$model->gol_approved?Html::a("<span class='glyphicon glyphicon-user'></span> ET",
+                '#',
+                [
+                    'class' => 'btn btn-success',
+                    'title' => 'Asignar/Reasignar el especialista técnico que evaulará las ofertas.',
+                    'onclick'=>'assignUser('.$model->id.',"et")'
+                ]) :null?>
             <?= Yii::$app->user->can('buyrequest/export')?Html::a("<span class='glyphicon glyphicon-export'></span>",
                 ['export', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank' ,'title' => 'Exportar a PDF']):null ?>
         </p>
         <div class="row">
             <div class="col-md-12">
+                <?=$model->buy_request_type_id==\app\models\BuyRequestType::$NACIONAL_ID?
+                    Html::input('hidden',null,json_encode(User::combo(\app\models\Rbac::$COMPRADOR_NACIONAL)),['id'=>'data_comprador']):null?>
+                <?=$model->buy_request_type_id==\app\models\BuyRequestType::$INTERNACIIONAL_ID?
+                    Html::input('text',null,json_encode(User::combo(\app\models\Rbac::$COMPRADOR_INTERNACIONAL)),['id'=>'data_comprador']):null?>
+                <?=Html::input('hidden',null,json_encode(User::combo(\app\models\Rbac::$ESP_TECNICO)),['id'=>'data_tecnico'])?>
                 <table class="table table-striped table-bordered detail-view">
                     <tbody>
                     <tr>
@@ -92,8 +108,46 @@ $this->params['breadcrumbs'][] = $this->title;
                         </th>
 
                     </tr>
+                    <tr>
+                        <th colspan="5">
+                            <label>Productos</label><div class="p-4">
+                                <table class="table tab-content">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 60%">
+                                            Relación de productos
+                                        </th>
+                                        <th style="width: 10%">Cantidad</th>
+                                        <th style="width: 10%">Precio</th>
+                                        <th style="width: 20%">Importe</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    foreach ($model->getProducts() as $product){
+                                        ?>
+                                        <tr>
+                                            <th style="width: 60%">
+                                                <?=$product->product_name?>
+                                            </th>
+                                            <td><?=$product->quantity?></td>
+                                            <td><?=$product->price?></td>
+                                            <td><?=Yii::$app->formatter->asCurrency($product->quantity*$product->price)?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </th>
+                    </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+<?php
+$this->registerJsFile('/js/buy-request/view.js',['depends'=>\yii\web\JqueryAsset::className()])
+?>

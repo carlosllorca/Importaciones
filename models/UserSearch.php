@@ -41,7 +41,7 @@ class UserSearch extends User
     public function search($params)
     {
         $query = User::find();
-        $query->innerJoinWith('authAssignament');
+        //$query->innerJoinWith('authAssignament');
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

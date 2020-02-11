@@ -97,9 +97,13 @@ class UserController extends MainController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model->rol= Rbac::getRole($model->username);
+        $current = $model->rol= Rbac::getRole($model->username);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Rbac::changeRole($model->id,$model->rol);
+
+            if($current!=$model->rol){
+                Rbac::changeRole($model->username,$model->rol);
+                $model->save(false);
+            }
             Yii::$app->traza->saveLog('Actualizar Usuario', "Actualizados los datos de {$model->username}.");
             return $this->redirect(['index']);
         }

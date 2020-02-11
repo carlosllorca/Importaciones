@@ -59,7 +59,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['province_ueb'], 'integer'],
             [['email'], 'email'],
             [['password','confirm_password'], 'passwordsMatch','on'=>self::SCENARIO_CREATE_USER],
-            [['rol'], 'required','on'=>self::SCENARIO_CREATE_USER],
+            [['rol'], 'required'],
             [['active'], 'boolean'],
             [['username'], 'string', 'max' => 25],
             [['full_name'], 'string', 'max' => 150],
@@ -278,5 +278,6 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     static  function comboAuthorBuyRequest(){
         return ArrayHelper::map(self::find()->innerJoinWith('buyRequests')->all(),'id','full_name');
     }
+
 
 }

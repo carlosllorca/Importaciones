@@ -22,7 +22,7 @@ use yii\web\ForbiddenHttpException;
  * @property string $bidding_end
  * @property int $buy_request_type_id
  * @property int $buyer_assigned
- * @property int $dt_specialist_assigned
+ * @property int $dt_specialist_asigned
  * @property boolean $gol_approved
  *
  * @property BuyRequestStatus $buyRequestStatus
@@ -142,6 +142,7 @@ class BuyRequest extends \yii\db\ActiveRecord
     }
     /**
      * Relación de productos agrupados por tipo categoría
+     * @return ValidatedListItem[]
      */
     public function getProducts(){
         return ValidatedListItem::find()

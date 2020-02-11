@@ -22,7 +22,9 @@ class Rbac extends Model
     public static $ROOT='root';
     public static $UEB='ueb';
     public static $ESP_TECNICO='esp_tecnico';
-    public static $COMPRADOR='comprador';
+    public static $COMPRADOR_NACIONAL='comprador_nacional';
+    public static $COMPRADOR_INTERNACIONAL='comprador_internacional';
+    public static $ESPECIALISTA_TECNICO='esp_tecnico';
     public static $GOL='gol';
     /**
      * @return array the validation rules.

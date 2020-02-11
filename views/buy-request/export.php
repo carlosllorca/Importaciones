@@ -7,5 +7,5 @@
 
 ?>
 <p style="text-align: center">
-    <h1 style="text-align: center">Solicitar el modelo</h1>
+    <h1 style="text-align: center">¿Modelo que se imprime?</h1>
 </p>

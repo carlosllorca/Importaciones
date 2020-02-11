@@ -14,6 +14,8 @@ use yii\filters\VerbFilter;
 use Mpdf\Mpdf;
 use Mpdf\Config\ConfigVariables;
 use Mpdf\Config\FontVariables;
+use yii\web\Response;
+
 /**
  * BuyRequestController implements the CRUD actions for BuyRequest model.
  */
@@ -32,6 +34,17 @@ class BuyRequestController extends MainController
                 ],
             ],
         ];
+    }
+    /**
+     * @inheritdoc
+     */
+    public function beforeAction($action)
+    {
+        if (in_array($action->id ,[ 'assign-user'])) {
+            $this->enableCsrfValidation = false;
+        }
+
+        return parent::beforeAction($action);
     }
 
     /**
@@ -199,6 +212,27 @@ class BuyRequestController extends MainController
         //return $this->renderPartial('/buy-request/export',['model'=>$model]);
         $mpdf->WriteHTML($this->renderPartial('/buy-request/export'),2);
         $mpdf->Output();
+    }
+    public function actionAssignUser(){
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $raw_data = json_decode(Yii::$app->request->getRawBody());
+        $request = $raw_data->solicitud;
+        $rol = $raw_data->action;
+        $user=$raw_data->user;
+        $model = $this->findModel($request);
+        if($rol=='comprador'){
+            $model->buyer_assigned=(int)($user);
+            $model->save();
+            Yii::$app->session->setFlash('success','Órden asignada al comprador '.$model->buyerAssigned->full_name.'.');
+        }
+        elseif ($rol=='et'){
+
+            $model->dt_specialist_asigned=(int)($user);
+            $model->save();
+            Yii::$app->session->setFlash('success','Órden asignada al especialista técnico '.$model->dtSpecialistAssigned->full_name.'.');
+        }
+
+        return ['success'=>true];
     }
 
 
