@@ -1,44 +1,99 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\BuyRequest */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Buy Requests', 'url' => ['index']];
+$this->title = 'Detalles de la solicitud de compra';
+$this->params['breadcrumbs'][] = ['label' => 'Solicitudes de compra', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="buy-request-view">
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title"><?= $this->title ?></h4>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    </div>
+    <div class="card-body" style="padding: 15px">
+        <p style="text-align: right">
+            <?= Yii::$app->user->can('buyrequest/golapproved')&&$model->gol_approved!=true?Html::a("<span class='glyphicon glyphicon-ok'></span>",
+                ['gol-approved', 'id' => $model->id],
+                ['class' => 'btn btn-success',
+                    'data-confirm'=>'¿Confirma que desea aprobar esta solicitud?',
+                    'title' => 'Dar aprobación técnica.']) :null?>
+            <?= Yii::$app->user->can('buyrequest/assignspecialist')&$model->gol_approved?Html::a("<span class='glyphicon glyphicon-user'></span> Comprador",
+                ['#'], ['class' => "btn btn-primary", 'title' => 'Asignar el comprador que gestionará esta orden.']) :null?>
+            <?= Yii::$app->user->can('buyrequest/assignspecialist')&$model->gol_approved?Html::a("<span class='glyphicon glyphicon-user'></span> ET",
+                ['#'], ['class' => 'btn btn-success', 'title' => 'Asignar el especialista técnico que evaulará las ofertas.']) :null?>
+            <?= Yii::$app->user->can('buyrequest/export')?Html::a("<span class='glyphicon glyphicon-export'></span>",
+                ['export', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank' ,'title' => 'Exportar a PDF']):null ?>
+        </p>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped table-bordered detail-view">
+                    <tbody>
+                    <tr>
+                        <th>
+                            <label>Código</label>
+                            <p><?= $model->code ?></p>
+                        </th>
+                        <th>
+                            <label>Tipo</label>
+                            <p><?= $model->demandItems[0]->validatedListItem->subfamily->validatedList->label ?></p>
+                        </th>
+                        <th>
+                            <label>Cliente(s)</label>
+                            <?php
+                            foreach ($model->clientes() as $cliente) {
+                                ?>
+                                <p><?= $cliente->name . ' (' . $cliente->organism->short_name . ')' ?></p>
+                                <?php
+                            }
+                            ?>
+                        </th>
+                        <th>
+                            <label>Fecha de creación</label>
+                            <p><?= Yii::$app->formatter->asDate($model->created) ?></p>
+                        </th>
+                        <th>
+                            <label>Estado</label>
+                            <p class="<?= $model->classByStatus() ?>"><b><?= $model->buyRequestStatus->label ?></b></p>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            <label>Comprador asignado</label>
+                            <?php
+                                if($model->buyerAssigned){
+                                    echo "<p>{$model->buyerAssigned->full_name}</p>";
+                                }else{
+                                    echo "<p class='text-danger'>(No asignado)</p>";
+                                }
+                            ?>
+                        </th>
+                        <th >
+                            <label>Especialista tecnico asignado</label>
+                            <?php
+                            if($model->dtSpecialistAssigned){
+                                echo "<p>{$model->dtSpecialistAssigned->full_name}</p>";
+                            }else{
+                                echo "<p class='text-danger'>(No asignado)</p>";
+                            }
+                            ?>
+                        </th>
+                        <th>
+                            <label>Total de productos</label>
+                            <p><?=count($model->getProducts())?></p>
+                        </th>
+                        <th>
+                            <label>Monto</label>
+                            <p><?=$model->ammount(true)?></p>
+                        </th>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'code',
-            'created',
-            'last_update',
-            'created_by',
-            'buy_request_status_id',
-            'bidding_start',
-            'bidding_end',
-            'buy_request_type_id',
-        ],
-    ]) ?>
-
-</div>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

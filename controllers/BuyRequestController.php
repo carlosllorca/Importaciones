@@ -11,7 +11,9 @@ use app\models\BuyRequestSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use Mpdf\Mpdf;
+use Mpdf\Config\ConfigVariables;
+use Mpdf\Config\FontVariables;
 /**
  * BuyRequestController implements the CRUD actions for BuyRequest model.
  */
@@ -178,5 +180,26 @@ class BuyRequestController extends MainController
         Yii::$app->session->setFlash('success','Solicitud aprobada.');
         return $this->redirect(['update','id'=>$model->id]);
     }
+    public function actionGolApproved($id){
+        $model =$this->findModel($id);
+        $model->gol_approved=true;
+        $model->save(false);
+        Yii::$app->session->setFlash('success','Solicitud aprobada.');
+        return $this->redirect(['view','id'=>$model->id]);
+    }
+    public function actionExport($id=false){
+        $model = null;
+        // return the pdf output as per the destination setting
+        Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+
+        Yii::$app->response->headers->add('Content-Type', 'application/pdf');
+        $model = $this->findModel($id);
+
+        $mpdf = new Mpdf();
+        //return $this->renderPartial('/buy-request/export',['model'=>$model]);
+        $mpdf->WriteHTML($this->renderPartial('/buy-request/export'),2);
+        $mpdf->Output();
+    }
+
 
 }

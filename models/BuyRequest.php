@@ -21,10 +21,15 @@ use yii\web\ForbiddenHttpException;
  * @property string $bidding_start
  * @property string $bidding_end
  * @property int $buy_request_type_id
+ * @property int $buyer_assigned
+ * @property int $dt_specialist_assigned
+ * @property boolean $gol_approved
  *
  * @property BuyRequestStatus $buyRequestStatus
  * @property BuyRequestType $buyRequestType
  * @property User $createdBy
+ * @property User $buyerAssigned
+ * @property User $dtSpecialistAssigned
  * @property BuyRequestDocument[] $buyRequestDocuments
  * @property DemandItem[] $demandItems
  * @property Offert[] $offerts
@@ -46,9 +51,10 @@ class BuyRequest extends \yii\db\ActiveRecord
     {
         return [
             [['code', 'created', 'created_by', 'buy_request_status_id', 'buy_request_type_id'], 'required'],
-            [['created', 'last_update', 'bidding_start', 'bidding_end'], 'safe'],
+            [['created', 'last_update', 'bidding_start', 'bidding_end','buyer_assigned','dt_specialist_assigned'], 'safe'],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id'], 'default', 'value' => null],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id'], 'integer'],
+            [['gol_approved'],'boolean'],
             [['code'], 'string', 'max' => 50],
             [['buy_request_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestStatus::className(), 'targetAttribute' => ['buy_request_status_id' => 'id']],
             [['buy_request_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestType::className(), 'targetAttribute' => ['buy_request_type_id' => 'id']],
@@ -96,6 +102,20 @@ class BuyRequest extends \yii\db\ActiveRecord
     public function getCreatedBy()
     {
         return $this->hasOne(User::className(), ['id' => 'created_by']);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBuyerAssigned()
+    {
+        return $this->hasOne(User::className(), ['id' => 'buyer_assigned']);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDtSpecialistAssigned()
+    {
+        return $this->hasOne(User::className(), ['id' => 'dt_specialist_asigned']);
     }
 
     /**
@@ -214,6 +234,23 @@ class BuyRequest extends \yii\db\ActiveRecord
         }
         $this->code=  $availableCode;
         return true;
+    }
+
+    /**
+     * Devuelve arreglo con los clientes asociados a las solicitudes de compra.
+     * @return Client[]
+     */
+    public function clientes(){
+        $clientes = [];
+        $idsClientes=[];
+        foreach ($this->demandItems as $demandItem){
+            if(!in_array($demandItem->demand->client->id,$idsClientes)){
+                array_push($idsClientes,$demandItem->demand->client->id);
+                array_push($clientes,$demandItem->demand->client);
+            }
+
+        }
+        return$clientes;
     }
     public static function comboAvailableBuyRequest($type=false)
     {
