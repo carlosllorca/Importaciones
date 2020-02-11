@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\BuyRequestStatus;
 use app\models\DemandItem;
 use app\models\DemandStatus;
+use Mpdf\Tag\U;
 use Yii;
 use app\models\BuyRequest;
 use app\models\BuyRequestSearch;
@@ -106,6 +107,12 @@ class BuyRequestController extends MainController
         $active = 'demands_associated';
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
+        }
+        if(Yii::$app->user->can('buyrequest/viewassociateddemands')){
+            $active = 'demands_associated';
+
+        }elseif (Yii::$app->user->can('buyrequest/viewproducts')){
+            $active = 'products';
         }
         return $this->render('update', [
             'model' => $model,

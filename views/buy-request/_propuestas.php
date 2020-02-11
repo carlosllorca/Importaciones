@@ -15,6 +15,17 @@
             </p>
         </div>
         <?php
+    }else{
+        if($model->bidding_start==null){
+            ?>
+            <div class="col-xs-12">
+                <p style="text-align: center;margin-top: 10%; font-size: 20px;color: #cecece">
+                    El proceso de licitación para esta orden de compra aún no se ha iniciado.
+                    <a class="link" href="#"><b>¿Desea iniciarlo?</b></a>
+                </p>
+            </div>
+            <?php
+        }
     }
 ?>
 </div>

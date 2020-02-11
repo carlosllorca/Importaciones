@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?=$model->buy_request_type_id==\app\models\BuyRequestType::$NACIONAL_ID?
                     Html::input('hidden',null,json_encode(User::combo(\app\models\Rbac::$COMPRADOR_NACIONAL)),['id'=>'data_comprador']):null?>
                 <?=$model->buy_request_type_id==\app\models\BuyRequestType::$INTERNACIIONAL_ID?
-                    Html::input('text',null,json_encode(User::combo(\app\models\Rbac::$COMPRADOR_INTERNACIONAL)),['id'=>'data_comprador']):null?>
+                    Html::input('hidden',null,json_encode(User::combo(\app\models\Rbac::$COMPRADOR_INTERNACIONAL)),['id'=>'data_comprador']):null?>
                 <?=Html::input('hidden',null,json_encode(User::combo(\app\models\Rbac::$ESP_TECNICO)),['id'=>'data_tecnico'])?>
                 <table class="table table-striped table-bordered detail-view">
                     <tbody>

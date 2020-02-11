@@ -48,6 +48,15 @@ class BuyRequestSearch extends BuyRequest
             'query' => $query,
         ]);
 
+        /**
+         * solo puede ver las ordenes asociadas a él que fueron aprobadas
+         */
+        if(Rbac::getRole()==Rbac::$COMPRADOR_INTERNACIONAL||Rbac::getRole()==Rbac::$COMPRADOR_NACIONAL){
+            $query->where(['buyer_assigned'=>User::userLogged()->id]);
+            $query->andWhere(['gol_approved'=>true]);
+        }
+
+
         $this->load($params);
 
         if (!$this->validate()) {

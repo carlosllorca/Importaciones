@@ -69,7 +69,7 @@
                 foreach ($model->getProducts() as $product){
                     ?>
                     <tr>
-                        <th>Modelo y/o Número de parte del producto</th>
+                        <th><?=$product->product_name?></th>
                         <th><?=$product->quantity?></th>
                         <th><?=$product->price?></th>
                         <th><?=Yii::$app->formatter->asCurrency($product->quantity*$product->price)?></th>
