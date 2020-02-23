@@ -241,6 +241,12 @@ class BuyRequestController extends MainController
 
         return ['success'=>true];
     }
+    public function actionAssignbuyer(){
+
+    }
+    public function actionAssignet(){
+
+    }
 
 
 }

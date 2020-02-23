@@ -23,14 +23,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 ['class' => 'btn btn-success',
                     'data-confirm'=>'¿Confirma que desea aprobar esta solicitud?',
                     'title' => 'Dar aprobación técnica.']) :null?>
-            <?= Yii::$app->user->can('buyrequest/assignuser')&$model->gol_approved?Html::a("<span class='glyphicon glyphicon-user'></span> Comprador",
+            <?= Yii::$app->user->can('buyrequest/assignbuyer')&$model->gol_approved?Html::a("<span class='glyphicon glyphicon-user'></span> Comprador",
                 '#',
                 [
                     'class' => "btn btn-primary",
                     'title' => 'Asignar/Reasignar el comprador que gestionará esta orden.',
                     'onclick'=>'assignUser('.$model->id.',"comprador")'
                 ]) :null?>
-            <?= Yii::$app->user->can('buyrequest/assignuser')&$model->gol_approved?Html::a("<span class='glyphicon glyphicon-user'></span> ET",
+            <?= Yii::$app->user->can('buyrequest/assignet')&$model->gol_approved?Html::a("<span class='glyphicon glyphicon-user'></span> ET",
                 '#',
                 [
                     'class' => 'btn btn-success',

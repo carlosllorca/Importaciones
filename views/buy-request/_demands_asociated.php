@@ -11,6 +11,7 @@
             <thead>
             <tr>
                 <th>Código</th>
+                <th>UEB</th>
                 <th>Entidad</th>
                 <th>Organismo</th>
                 <th>Fecha</th>
@@ -23,6 +24,7 @@
                 ?>
                 <tr>
                     <th><?=$item->demand_code?></th>
+                    <th><?=$item->client->provinceUeb->label?></th>
                     <th><?=$item->client->name?></th>
                     <th><?=$item->client->organism->name?></th>
                     <th><?=Yii::$app->formatter->asDate($item->approved_date)?></th>

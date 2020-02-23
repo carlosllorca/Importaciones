@@ -5,6 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\BuyRequest;
+use yii\web\ForbiddenHttpException;
 
 /**
  * BuyRequestSearch represents the model behind the search form of `app\models\BuyRequest`.
@@ -43,7 +44,28 @@ class BuyRequestSearch extends BuyRequest
         $query = BuyRequest::find();
 
         // add conditions that should always apply here
-
+        switch(Rbac::getRole()){
+            case Rbac::$JEFE_LOGÍSTICA:
+                break;
+            case Rbac::$JEFE_TECNCIO:
+            case Rbac::$JEFE_COMPRAS:
+                $query->andWhere(['gol_approved'=>true]);
+                break;
+            case Rbac::$COMPRADOR_INTERNACIONAL:
+            case Rbac::$COMPRADOR_NACIONAL:
+                $query->andWhere(['gol_approved'=>true]);
+                $query->andWhere(['buyer_assigned'=>User::userLogged()->id]);
+                break;
+            case Rbac::$ESP_TECNICO:
+                $query->andWhere(['gol_approved'=>true]);
+                $query->andWhere(['dt_specialist_asigned'=>User::userLogged()->id]);
+            case Rbac::$GOL:
+                $query->andWhere(['not',['buy_request_status_id'=>BuyRequestStatus::$BORRADOR_ID]]);
+                break;
+            default:
+                throw  new ForbiddenHttpException("Esta vista no está preparada para usuario scon su rol.");
+                break;
+        }
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
