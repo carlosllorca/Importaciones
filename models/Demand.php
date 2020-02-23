@@ -154,6 +154,7 @@ class Demand extends \yii\db\ActiveRecord
     {
         $amount = 0;
         foreach ($this->demandItems as $demandItem) {
+            if($demandItem->cancelled!=true)
             $amount += $demandItem->quantity * $demandItem->price;
         }
         return $amount;

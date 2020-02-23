@@ -25,7 +25,7 @@ class Rbac extends Model
     public static $COMPRADOR_NACIONAL='comprador_nacional';
     public static $COMPRADOR_INTERNACIONAL='comprador_internacional';
     public static $ESPECIALISTA_TECNICO='esp_tecnico';
-    public static $GOL='gol';
+    public static $JEFE_LOGÍSTICA='Jefe_logistica';
     /**
      * @return array the validation rules.
      */

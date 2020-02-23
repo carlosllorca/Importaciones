@@ -45,7 +45,7 @@ class DemandController extends MainController
      */
     public function beforeAction($action)
     {
-        if (in_array($action->id ,[ 'reject','clasify','divide'])) {
+        if (in_array($action->id ,[ 'reject','clasify','divide','cancel-item'])) {
             $this->enableCsrfValidation = false;
         }
 
@@ -62,7 +62,7 @@ class DemandController extends MainController
             case Rbac::$UEB:
                 return $this->_uebIndex();
                 break;
-            case Rbac::$ESP_TECNICO:
+            case Rbac::$JEFE_LOGÍSTICA:
                 return $this->_dtIndex();
                 break;
 
@@ -169,6 +169,25 @@ class DemandController extends MainController
             'model' => $model,
         ]);
     }
+    public function actionCancelItem(){
+        $this->enableCsrfValidation=false;
+        Yii::$app->session->setFlash('active','items');
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $raw_data = Yii::$app->request->getRawBody();
+        $msg= json_decode($raw_data )->msg;
+        $item= json_decode($raw_data )->item;
+        $model = DemandItem::findOne($item);
+        $model->cancelled = true;
+        $model->cancelled_msg=$msg;
+        if($model->validate()){
+            $model->save();
+            return ['success'=>true];
+        }else{
+            return ['success'=>false,'msg'=>json_encode($model->getErrors())];
+        }
+
+
+    }
     public function actionSend($id){
         $model = $this->findModel($id);
         $model->demand_status_id=DemandStatus::ENVIADA_ID;
@@ -256,6 +275,19 @@ class DemandController extends MainController
 
 
         return ['success'=>true];
+    }
+    public function actionDeleteItem($id){
+        $model = DemandItem::findOne($id);
+        $demandId=$model->demand_id;
+        try{
+
+            $model->delete();
+            Yii::$app->session->setFlash('Elemento eliminado correctamente');
+
+        }catch (\Exception $e){
+            Yii::$app->session->setFlash('danger','No ha sido posible eliminar el elemento.');
+        }
+        return $this->redirect(['/demand/demand-products','id'=>$demandId]);
     }
     public function actionClasify(){
         Yii::$app->response->format = Response::FORMAT_JSON;

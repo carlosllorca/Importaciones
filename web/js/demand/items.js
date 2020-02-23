@@ -390,3 +390,68 @@ function divide(item,maxValue){
 
     })
 }
+
+function cancel_item(item){
+    Swal.fire({
+        title: 'Cancelar un producto',
+        text:'Indique el motivo de la cancelación del producto.',
+        input: 'text',
+        inputAttributes: {
+            autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Cancelar producto',
+        showLoaderOnConfirm: true,
+        preConfirm: async (part) => {
+            return new Promise(async (resolve,reject)=>{
+
+                if(part.length==0){
+                    reject(`Indique el motivo de la cancelación del producto.`)
+                }
+                else{
+                    try{
+                        let result = await axios.post('/demand/cancel-item',
+                            {
+                                item:item,
+                                msg:part
+
+                            });
+                        if(result.status==200){
+                            if(result.data.success){
+                                resolve(result.data);
+                            }else{
+                                throw new Error(result.data.error)
+                            }}
+                    }catch (e) {
+                        reject(e)
+                    }
+                }
+
+
+            }).then(response=>{
+                return {success:true};
+            }).catch(error=>{
+                Swal.showValidationMessage(
+                    error
+                )
+            })
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+
+        if(result.dismiss){
+
+
+        }else{
+            swal({
+                title: 'Producto cancelado.',
+                type: 'success',
+                confirmButtonText: 'Aceptar',
+                allowOutsideClick: true
+            })
+            reloadTab()
+
+        }
+
+    })
+}

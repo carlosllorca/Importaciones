@@ -56,6 +56,7 @@ Modal::end();
                                 <th>Cantidad</th>
                                 <th>Precio</th>
                                 <th>Importe</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -73,6 +74,7 @@ Modal::end();
                                     <th><?=$item->quantity?></th>
                                     <th><?=$item->price?></th>
                                     <th><?=$item->price*$item->quantity?></th>
+                                    <th><?=\yii\helpers\Html::a("<span class='glyphicon glyphicon-trash'></span>",['delete-item','id'=>$item->id],['data-confirm'=>'¿Confirma que desea eliminar este producto de la demanda?'])?></th>
                                 </tr>
 
                                 <?php
