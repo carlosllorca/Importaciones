@@ -2,13 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/views/buy-request/_pdf_solicitud_compra.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/buy-request/_pdf_solicitud_compra_productos.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/pdf.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/buy-request/update.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Importaciones.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Importaciones.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/BuyRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BuyRequestController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/DemandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/DemandController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/BuyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestStatus.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/Demand.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Demand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DeploymentPart.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DeploymentPart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/PurchaseReason.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/PurchaseReason.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/SellerRequirement.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/SellerRequirement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/WarrantyTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/WarrantyTime.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/buy-request/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/buy-request/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/demand/_dt_index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand/_dt_index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/site.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,8 +89,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -99,6 +110,7 @@
     <setting file="file://$PROJECT_DIR$/web/js/buy-request/view.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/web/js/demand/_form.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/web/js/demand/items.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/buy-request/update.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
@@ -206,6 +218,9 @@
       <path value="$PROJECT_DIR$/vendor/mpdf/mpdf" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-datepicker" />
+      <path value="$PROJECT_DIR$/vendor/mikehaertl/php-tmpfile" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpexcel" />
+      <path value="$PROJECT_DIR$/vendor/codemix/yii2-excelexport" />
     </include_path>
   </component>
   <component name="ProjectId" id="1V3DOVIWRAPFX6MU97NARgmeyIB" />
@@ -334,7 +349,8 @@
       <workItem from="1582514611928" duration="3768000" />
       <workItem from="1582553214595" duration="71000" />
       <workItem from="1582570550953" duration="5644000" />
-      <workItem from="1582770035422" duration="997000" />
+      <workItem from="1582770035422" duration="11088000" />
+      <workItem from="1582781611190" duration="6709000" />
     </task>
     <task id="LOCAL-00001" summary="Preparando el proyecto">
       <created>1576473614599</created>
@@ -511,7 +527,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582770518253</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Listo lo referente a la demanda">
+      <created>1582771125718</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1582771125718</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -553,7 +576,8 @@
     <MESSAGE value="Cancelar un elemento." />
     <MESSAGE value="Solucionados todos los puntos detectados en la última reunión con el cliente." />
     <MESSAGE value="antes de corregir los errores de la ultima reunion" />
-    <option name="LAST_COMMIT_MESSAGE" value="antes de corregir los errores de la ultima reunion" />
+    <MESSAGE value="Listo lo referente a la demanda" />
+    <option name="LAST_COMMIT_MESSAGE" value="Listo lo referente a la demanda" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2475" y="200" width="800" height="677" key="#Deployment" timestamp="1576472912804">
@@ -604,12 +628,12 @@
     <state x="2992" y="323" key="#xdebugger.evaluate/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581393087857" />
     <state x="852" y="256" width="254" height="593" key="#xdebugger.evaluate/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1576847070634" />
     <state x="2992" y="323" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882354679" />
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2" timestamp="1582770517743">
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2" timestamp="1582771125575">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580268556850" />
     <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1582487604398" />
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582770517743" />
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582771125575" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576871847355" />
     <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1582552812813" />
     <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580970277888" />
@@ -774,10 +798,11 @@
     <state x="2475" y="275" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581399626539" />
     <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576871850381" />
     <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882959131" />
-    <state x="2256" y="169" width="840" height="739" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1580795589233">
+    <state x="2256" y="169" width="840" height="739" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1582771900318">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="672" y="192" width="566" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1576559686639" />
+    <state x="2256" y="169" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582771900318" />
     <state x="376" y="192" width="321" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1576845530248" />
     <state x="2256" y="169" width="840" height="739" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580795589233" />
     <state x="649" y="398" key="com.intellij.ide.util.TipDialog" timestamp="1576977258692">

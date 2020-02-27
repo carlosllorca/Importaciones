@@ -1,0 +1,73 @@
+.title{
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 5px;
+}
+.table{
+    width: 100%;
+    border: 0px;
+    border-collapse: collapse;
+
+}
+td{
+    padding: 5px;
+    border: 1px solid #000;
+}
+.textPrimary{
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+}
+.textBasic{
+    font-size: 12px;
+
+}
+.bordered-green{
+    border: 1px solid #cecece;
+}
+.bordered-black{
+    border: 1px solid #000;
+}
+.row{
+    width: 100%;
+    flex-direction: row;
+
+}
+.col-11{
+    width: 91.62%;
+    float: left;
+}
+.col-10{
+    width: 83%;
+    float: left;
+}
+.col-6{
+    width: 50%;
+    float: left;
+}
+.col-5{
+    width: 41.65%;
+    float: left;
+}
+.col-4{
+    width: 33.3%;
+    float: left;
+}
+.col-3{
+    width: 25%;
+    float: left;
+}
+.col-2{
+    width: 16.67%;
+    float: left;
+}
+.col-1{
+    width: 8.33%;
+    float: left;
+}
+p{
+    margin:0px;
+}

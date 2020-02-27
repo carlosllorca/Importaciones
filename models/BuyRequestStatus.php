@@ -17,6 +17,12 @@ class BuyRequestStatus extends \yii\db\ActiveRecord
 {
     static $BORRADOR_ID=1;
     static $SIN_TRAMITAR_ID=2;
+    static $CANCELADA_ID=3;
+    static $LICITANDO=4;
+    static $EVALUANDO_OFERTAS=5;
+    static $EN_PROCESO=6;
+    static $CERRADA=7;
+
 
     /**
      * {@inheritdoc}

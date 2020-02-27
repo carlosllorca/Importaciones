@@ -15,6 +15,7 @@ use yii\helpers\ArrayHelper;
  */
 class WarrantyTime extends \yii\db\ActiveRecord
 {
+    const UN_ANNO_ID=1;
     /**
      * {@inheritdoc}
      */

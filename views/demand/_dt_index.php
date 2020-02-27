@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                         'demand_code',
-                        'client_id',
+                       
                         [
                             'label' => 'Cliente',
                             'attribute' => 'client_id',
@@ -92,7 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         //'deployment_part_id',
                         //'other_deploy:ntext',
-                        'waranty_time_id:datetime',
+                        //'waranty_time_id:datetime',
                         //'warranty_specification:ntext',
                         //'purchase_reason_id',
                         //'require_replacement_part:boolean',

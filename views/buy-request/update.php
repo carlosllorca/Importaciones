@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
     <div class="card-body" style="padding: 15px">
         <div class="row" style="padding-left: 3rem; padding-right: 3rem;">
             <div class="col-sm-12" style="text-align: right">
-                <?=Yii::$app->user->can('buyrequest/approve')&$model->buy_request_status_id==\app\models\BuyRequestStatus::$BORRADOR_ID?
+                <?=Yii::$app->user->can('buyrequest/approve')&$model->buy_request_status_id==\app\models\BuyRequestStatus::$BORRADOR_ID||$model->buy_request_status_id==\app\models\BuyRequestStatus::$CANCELADA_ID?
                     Html::a("<span class='glyphicon glyphicon-ok'></span>",['approve','id'=>$model->id],
                         [
                             'title'=>'Aprobar solicitud',
@@ -31,17 +31,31 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                             'class'=>'btn btn-success'
                         ])
                     :null?>
+
+                <?= Yii::$app->user->can('buyrequest/export')?Html::a("<i class='center_fa fa fa-file-pdf-o '></i>",
+                    ['export', 'id' => $model->id,'format'=>'pdf'], ['class' => 'btn btn-success','target'=>'_blank' ,'title' => 'Exportar a PDF']):null ?>
+                <?= Yii::$app->user->can('buyrequest/export')?Html::a("<i class='center_fa fa fa-file-excel-o'></i>",
+                    ['export', 'id' => $model->id,'format'=>'xls'], ['class' => "btn btn-success disabled",'target'=>'_blank' ,'title' => 'Exportar a Excel']):null ?>
                 <?=Yii::$app->user->can('buyrequest/delete')&$model->buy_request_status_id==\app\models\BuyRequestStatus::$BORRADOR_ID?
-                    Html::a("<span class='glyphicon glyphicon-remove'></span>",['delete','id'=>$model->id],
+                    Html::a("<span class='glyphicon glyphicon-trash'></span>",['delete','id'=>$model->id],
                         [
-                            'title'=>'Cancelar solicitud',
+                            'title'=>'Eliminar solicitud',
                             'data'=>[
-                                    'confirm'=>'¿Está seguro que desea cancelar esta solicitud?',
+                                    'confirm'=>'¿Está seguro que desea eliminar?',
                                     'method'=>'POST'
                             ],
                             'class'=>'btn btn-danger'
                         ])
                     :null?>
+                <?=Yii::$app->user->can('buyrequest/reject')&($model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$CANCELADA_ID&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$CERRADA)?
+                    Html::a("<span class='glyphicon glyphicon-remove'></span>",'#',
+                        [
+                            'title'=>'Cancelar solicitud',
+                            'onClick'=>"reject({$model->id})",
+                            'class'=>'btn btn-danger'
+                        ])
+                    :null?>
+
 
             </div>
             <div class="col-sm-4 col-md-3">
@@ -59,6 +73,17 @@ $this->params['breadcrumbs'][] = 'Actualizar';
             <div class="col-sm-4 col-md-3">
                 <label>Estado</label>
                 <h5 class="<?=$model->classByStatus()?>"><b><?=$model->buyRequestStatus->label?></b></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" style="padding-left: 3rem;">
+                <?php
+                if($model->buy_request_status_id==\app\models\BuyRequestStatus::$CANCELADA_ID){
+                    ?>
+                    <p class="text-danger" style="margin: 0px"><b><?=$model->buyRequestStatus->label?>: </b><?=$model->cancel_reason?></p>
+                    <?php
+                }
+                ?>
             </div>
         </div>
         <div class="row">
@@ -141,3 +166,6 @@ $this->params['breadcrumbs'][] = 'Actualizar';
     </div>
 </div>
 
+<?php
+$this->registerJsFile('js/buy-request/update.js',['depends'=>\yii\web\JqueryAsset::className()])
+?>

@@ -382,6 +382,76 @@ class Demand extends \yii\db\ActiveRecord
                 break;
         }
     }
+    function strPaymentMethod(){
+        $array = [];
+        foreach (PaymentMethod::find()->all() as $paymentMethod){
+            if($paymentMethod->id==PaymentMethod::OTRO_ID){
+                array_push($array,
+                $this->payment_method_id==$paymentMethod->id?
+                    "(X) {$paymentMethod->label} (especificar): {$this->txtPaymentMethod()}":
+                    "(-) {$paymentMethod->label}"
+                );
+
+            }else{
+                $var = $this->payment_method_id==$paymentMethod->id?
+                    "(X) {$paymentMethod->label}":
+                    "(-) {$paymentMethod->label}";
+                array_push($array,$var);
+            }
+
+        }
+        return implode(' ',$array);
+    }
+    function strDeploymentPart(){
+        $array = [];
+        foreach (DeploymentPart::find()->all() as $deploymentPart){
+            if($deploymentPart->id==DeploymentPart::OTRO_ID){
+                array_push($array,
+                    $this->payment_method_id==$deploymentPart->id?
+                        "(X) {$deploymentPart->label} (especificar): {$this->txtDeploymentPart()}":
+                        "(-) {$deploymentPart->label}"
+                );
+
+            }else{
+                $var = $this->payment_method_id==$deploymentPart->id?
+                    "(X) {$deploymentPart->label}":
+                    "(-) {$deploymentPart->label}";
+                array_push($array,$var);
+            }
+
+        }
+        return implode(' ',$array);
+    }
+    function strBuyReason(){
+        $array = [];
+        foreach (PurchaseReason::find()->all() as $purchaseReason){
+
+                $var = $this->payment_method_id==$purchaseReason->id?
+                    "(X) {$purchaseReason->label}":
+                    "(-) {$purchaseReason->label}";
+                array_push($array,$var);
+
+
+        }
+        return implode(' ',$array);
+    }
+    function strSellerRequirement(){
+        $array = [];
+        foreach (SellerRequirement::find()->all() as $sellerRequirement){
+            if($sellerRequirement->id==SellerRequirement::NINGUNA_ID){
+
+
+            }else{
+                $var = $this->seller_requirement_id==$sellerRequirement->id?
+                    "(X) {$sellerRequirement->label}":
+                    "(-) {$sellerRequirement->label}";
+                array_push($array,$var);
+            }
+
+        }
+        return implode(' ',$array);
+    }
+
 
 
 

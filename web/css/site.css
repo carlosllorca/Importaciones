@@ -151,3 +151,9 @@ select.form-control{
 .card-body{
     padding: 3rem!important;
 }
+.center_fa{
+    margin-top: 0px!important;
+    margin-bottom: 0px!important;
+    top:0px!important;
+}
+

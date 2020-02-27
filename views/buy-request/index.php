@@ -61,11 +61,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'attribute' => 'buy_request_status_id',
                             'filter'=>\app\models\BuyRequestStatus::combo(),
+                            'format' => 'raw',
                             'value' => function($model){
                                 /**
                                  * @var $model \app\models\BuyRequest
                                  */
-                                return $model->buyRequestStatus->label;
+                                return "<b class='{$model->classByStatus()}'>{$model->buyRequestStatus->label}</b>";
                             }
                         ],
 

@@ -24,6 +24,7 @@ use yii\web\ForbiddenHttpException;
  * @property int $buyer_assigned
  * @property int $dt_specialist_asigned
  * @property boolean $gol_approved
+ * @property string $cancel_reason
  *
  * @property BuyRequestStatus $buyRequestStatus
  * @property BuyRequestType $buyRequestType
@@ -55,6 +56,7 @@ class BuyRequest extends \yii\db\ActiveRecord
             [['created_by', 'buy_request_status_id', 'buy_request_type_id'], 'default', 'value' => null],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id'], 'integer'],
             [['gol_approved'],'boolean'],
+            ['cancel_reason','text'],
             [['code'], 'string', 'max' => 50],
             [['buy_request_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestStatus::className(), 'targetAttribute' => ['buy_request_status_id' => 'id']],
             [['buy_request_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestType::className(), 'targetAttribute' => ['buy_request_type_id' => 'id']],
@@ -185,6 +187,9 @@ class BuyRequest extends \yii\db\ActiveRecord
                 break;
             case BuyRequestStatus::$SIN_TRAMITAR_ID:
                 return 'text-primary';
+                break;
+            case BuyRequestStatus::$CANCELADA_ID:
+                return 'text-danger';
                 break;
 
             default:

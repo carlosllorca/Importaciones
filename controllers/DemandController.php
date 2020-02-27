@@ -14,6 +14,7 @@ use app\models\Rbac;
 use app\models\SellerRequirement;
 use app\models\User;
 use app\models\ValidatedListItemSearch;
+use app\models\WarrantyTime;
 use Yii;
 use app\models\Demand;
 use app\models\DemandSearch;
@@ -164,6 +165,7 @@ class DemandController extends MainController
         $model->deployment_part_id=DeploymentPart::UN_PLAZO;
         $model->created_date=date('Y-m-d');
         $model->demand_status_id=DemandStatus::BORRADOR_ID;
+        $model->waranty_time_id=WarrantyTime::UN_ANNO_ID;
         $model->seller_requirement_id=SellerRequirement::NINGUNA_ID;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

@@ -10,6 +10,7 @@ use Yii;
 use app\models\BuyRequest;
 use app\models\BuyRequestSearch;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Mpdf\Mpdf;
@@ -41,7 +42,7 @@ class BuyRequestController extends MainController
      */
     public function beforeAction($action)
     {
-        if (in_array($action->id ,[ 'assign-user'])) {
+        if (in_array($action->id ,[ 'assign-user','reject'])) {
             $this->enableCsrfValidation = false;
         }
 
@@ -196,6 +197,7 @@ class BuyRequestController extends MainController
     public function actionApprove($id){
         $model =$this->findModel($id);
         $model->buy_request_status_id=BuyRequestStatus::$SIN_TRAMITAR_ID;
+        $model->gol_approved=true;
         $model->save(false);
         Yii::$app->session->setFlash('success','Solicitud aprobada.');
         return $this->redirect(['update','id'=>$model->id]);
@@ -207,18 +209,80 @@ class BuyRequestController extends MainController
         Yii::$app->session->setFlash('success','Solicitud aprobada.');
         return $this->redirect(['view','id'=>$model->id]);
     }
-    public function actionExport($id=false){
+    public function actionReject(){
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $raw_data = json_decode(Yii::$app->request->getRawBody());
+        $reason = $raw_data->reason;
+        $id=$raw_data->request;
+        $model =$this->findModel($id);
+        $model->cancel_reason=$reason;
+        $model->buy_request_status_id=BuyRequestStatus::$CANCELADA_ID;
+        $model->save(false);
+        Yii::$app->session->setFlash('danger','Solicitud cancelada.');
+        return ['success'=>true];
+    }
+    public function actionExport($id,$format){
         $model = null;
         // return the pdf output as per the destination setting
         Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
 
         Yii::$app->response->headers->add('Content-Type', 'application/pdf');
         $model = $this->findModel($id);
+        switch ($format){
+            case 'pdf':
+                $this->pdfSolicitudCompra($model);
+                break;
+            case 'xls':
+                $this->xlsSolicitudCompra($model);
+                break;
+            default:
+                throw  new ForbiddenHttpException('Formato incorrecto');
+                break;
+        }
 
-        $mpdf = new Mpdf();
+
+    }
+    private function pdfSolicitudCompra($model){
+        $defaultConfig = (new ConfigVariables())->getDefaults();
+        $fontDirs = $defaultConfig['fontDir'];
+        $defaultFontConfig = (new FontVariables())->getDefaults();
+        $fontData = $defaultFontConfig['fontdata'];
+        $mpdf = new Mpdf([
+            'orientation'=>'L',
+            'format'=>'letter',
+            'fontDir' => array_merge($fontDirs, [
+                '../web/Roboto',
+            ]),
+            'fontdata' => $fontData + [
+                    'roboto' => [
+                        'R' => 'Roboto-Regular.ttf',
+                        'B' => 'Roboto-Bold.ttf',
+                        'I'=>'Roboto-LightItalic.ttf'
+                    ],
+                    'robotoitalic' => [
+                        'R' => 'Roboto-Regular.ttf',
+
+                        'I'=>'Roboto-LightItalic.ttf'
+                    ],
+                    'robotobold' => [
+                        'R' => 'Roboto-Black.ttf',
+                        'B' => 'Roboto-Black.ttf',
+
+                    ]
+                ],
+            'default_font' => 'Roboto'
+            ]);
         //return $this->renderPartial('/buy-request/export',['model'=>$model]);
-        $mpdf->WriteHTML($this->renderPartial('/buy-request/export'),2);
+        $mpdf->SetDisplayMode('fullwidth');
+        $stylesheet = file_get_contents('../web/css/pdf.css'); // external css
+        $mpdf->WriteHTML($stylesheet, 1);
+        $mpdf->WriteHTML($this->renderPartial('/buy-request/_pdf_solicitud_compra',['model'=>$model]),2);
+       $mpdf->AddPage();
+        $mpdf->WriteHTML($this->renderPartial('/buy-request/_pdf_solicitud_compra_productos',['model'=>$model]),2);
         $mpdf->Output();
+    }
+    private function xlsSolicitudCompra(){
+
     }
     public function actionAssignUser(){
         Yii::$app->response->format = Response::FORMAT_JSON;
