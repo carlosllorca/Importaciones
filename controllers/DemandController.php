@@ -8,7 +8,10 @@ use app\models\BuyRequestType;
 use app\models\DemandItem;
 use app\models\DemandItemSearch;
 use app\models\DemandStatus;
+use app\models\DeploymentPart;
+use app\models\PurchaseReason;
 use app\models\Rbac;
+use app\models\SellerRequirement;
 use app\models\User;
 use app\models\ValidatedListItemSearch;
 use Yii;
@@ -157,8 +160,11 @@ class DemandController extends MainController
     {
         $model = new Demand();
         $model->created_by=Yii::$app->user->identity->id;
+        $model->purchase_reason_id=PurchaseReason::$COMPRAR_ID;
+        $model->deployment_part_id=DeploymentPart::UN_PLAZO;
         $model->created_date=date('Y-m-d');
         $model->demand_status_id=DemandStatus::BORRADOR_ID;
+        $model->seller_requirement_id=SellerRequirement::NINGUNA_ID;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->traza->saveLog('Demanda creada','Se ha creado una demanda con ID'.$model->id);

@@ -17,6 +17,7 @@ class DeploymentPart extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    const UN_PLAZO=1;
     const OTRO_ID=5;
     public static function tableName()
     {

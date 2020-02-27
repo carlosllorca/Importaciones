@@ -256,7 +256,7 @@ class Demand extends \yii\db\ActiveRecord
     {
         $availableCode = false;
 
-        $startingCode = "DN-" . date('Y') . "-";
+        $startingCode = "D-" . date('Y') . "-";
         $demands = Demand::find()->where(['not', ['demand_code' => null]])->andWhere(['ilike', 'demand_code', $startingCode])->orderBy(['demand_code' => SORT_ASC])->all();
         $usedCodes = [];
         foreach ($demands as $demand) {
@@ -264,7 +264,7 @@ class Demand extends \yii\db\ActiveRecord
         }
         $next = true;
         for ($i = 1; $next; $i++) {
-            $str = str_pad($i, 5, '0', STR_PAD_LEFT);
+            $str = str_pad($i, 3, '0', STR_PAD_LEFT);
             $currentCode = $startingCode . $str;
             if (!in_array($currentCode, $usedCodes)) {
                 $availableCode = $currentCode;

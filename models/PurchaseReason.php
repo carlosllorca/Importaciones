@@ -14,6 +14,7 @@ use yii\helpers\ArrayHelper;
  */
 class PurchaseReason extends \yii\db\ActiveRecord
 {
+    static $COMPRAR_ID=1;
     /**
      * {@inheritdoc}
      */

@@ -15,6 +15,7 @@ use yii\helpers\ArrayHelper;
  */
 class SellerRequirement extends \yii\db\ActiveRecord
 {
+    const NINGUNA_ID=3;
     /**
      * {@inheritdoc}
      */

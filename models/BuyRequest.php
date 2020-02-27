@@ -226,7 +226,7 @@ class BuyRequest extends \yii\db\ActiveRecord
         }
         $next = true;
         for ($i = 1; $next; $i++) {
-            $str = str_pad($i, 5, '0', STR_PAD_LEFT);
+            $str = str_pad($i, 3, '0', STR_PAD_LEFT);
             $currentCode = $startingCode . $str;
             if (!in_array($currentCode, $used)) {
                 $availableCode = $currentCode;

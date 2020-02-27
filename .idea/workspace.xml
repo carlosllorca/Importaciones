@@ -1,28 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="Solucionados todos los puntos detectados en la última reunión con el cliente.">
-      <change afterPath="$PROJECT_DIR$/controllers/ProviderController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/ProviderSearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/buy-request/_licitacion.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/provider/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/provider/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/provider/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/provider/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/provider/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/provider/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Importaciones.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Importaciones.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/CountryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/CountryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/DemandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/DemandController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/BuyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Country.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Country.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Provider.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Provider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Rbac.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Rbac.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/_propuestas.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_propuestas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/mainMenu.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/mainMenu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Demand.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Demand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DeploymentPart.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DeploymentPart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/PurchaseReason.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/PurchaseReason.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/SellerRequirement.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/SellerRequirement.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,16 +71,6 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="seisa" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="SEISA: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="buy_request: table" type="69fad909:PgImplModel$LocalTable" />
       </path>
     </expand>
     <select />
@@ -358,7 +334,7 @@
       <workItem from="1582514611928" duration="3768000" />
       <workItem from="1582553214595" duration="71000" />
       <workItem from="1582570550953" duration="5644000" />
-      <workItem from="1582770035422" duration="462000" />
+      <workItem from="1582770035422" duration="997000" />
     </task>
     <task id="LOCAL-00001" summary="Preparando el proyecto">
       <created>1576473614599</created>
@@ -528,7 +504,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582487604541</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="antes de corregir los errores de la ultima reunion">
+      <created>1582770518253</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1582770518253</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,7 +552,8 @@
     <MESSAGE value="Antes de iniciar el proceso de licitación" />
     <MESSAGE value="Cancelar un elemento." />
     <MESSAGE value="Solucionados todos los puntos detectados en la última reunión con el cliente." />
-    <option name="LAST_COMMIT_MESSAGE" value="Solucionados todos los puntos detectados en la última reunión con el cliente." />
+    <MESSAGE value="antes de corregir los errores de la ultima reunion" />
+    <option name="LAST_COMMIT_MESSAGE" value="antes de corregir los errores de la ultima reunion" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2475" y="200" width="800" height="677" key="#Deployment" timestamp="1576472912804">
@@ -620,12 +604,12 @@
     <state x="2992" y="323" key="#xdebugger.evaluate/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581393087857" />
     <state x="852" y="256" width="254" height="593" key="#xdebugger.evaluate/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1576847070634" />
     <state x="2992" y="323" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882354679" />
-    <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2" timestamp="1582552812813">
-      <screen x="49" y="27" width="1871" height="1053" />
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2" timestamp="1582770517743">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580268556850" />
     <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1582487604398" />
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581399617195" />
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582770517743" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576871847355" />
     <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1582552812813" />
     <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580970277888" />
