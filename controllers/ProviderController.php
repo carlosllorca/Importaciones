@@ -2,17 +2,18 @@
 
 namespace app\controllers;
 
+use app\models\ProviderValidatedList;
 use Yii;
-use app\models\Country;
-use app\models\CountrySearch;
+use app\models\Provider;
+use app\models\ProviderSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CountryController implements the CRUD actions for Country model.
+ * ProviderController implements the CRUD actions for Provider model.
  */
-class CountryController extends MainController
+class ProviderController extends MainController
 {
     /**
      * {@inheritdoc}
@@ -30,12 +31,12 @@ class CountryController extends MainController
     }
 
     /**
-     * Lists all Country models.
+     * Lists all Provider models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CountrySearch();
+        $searchModel = new ProviderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +46,7 @@ class CountryController extends MainController
     }
 
     /**
-     * Displays a single Country model.
+     * Displays a single Provider model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,16 +59,28 @@ class CountryController extends MainController
     }
 
     /**
-     * Creates a new Country model.
+     * Creates a new Provider model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Country();
+        $model = new Provider();
+        $model->active=true;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success','País agregado');
+            Yii::$app->session->setFlash('success',"Proveedor {$model->name} creado satisfactoriamente.");
+            $insertions = [];
+            foreach ($model->validated_list_associated as $id){
+                array_push($insertions,
+                    [
+                        $model->id,
+                        $id
+                    ]);
+            }
+            Yii::$app->db->createCommand()->batchInsert('provider_validated_list',
+                ['provider_id', 'validated_list_id'], $insertions)
+                ->execute();
             return $this->redirect(['index']);
         }
 
@@ -77,7 +90,7 @@ class CountryController extends MainController
     }
 
     /**
-     * Updates an existing Country model.
+     * Updates an existing Provider model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -86,9 +99,22 @@ class CountryController extends MainController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->loadValidatedList();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success','País modificado.');
+            ProviderValidatedList::deleteAll(['provider_id'=>$model->id]);
+            Yii::$app->session->setFlash('success',"Proveedor {$model->name} actualizado satisfactoriamente.");
+            $insertions = [];
+            foreach ($model->validated_list_associated as $id){
+                array_push($insertions,
+                    [
+                        $model->id,
+                        $id
+                    ]);
+            }
+            Yii::$app->db->createCommand()->batchInsert('provider_validated_list',
+                ['provider_id', 'validated_list_id'], $insertions)
+                ->execute();
             return $this->redirect(['index']);
         }
 
@@ -98,7 +124,7 @@ class CountryController extends MainController
     }
 
     /**
-     * Deletes an existing Country model.
+     * Deletes an existing Provider model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -106,26 +132,21 @@ class CountryController extends MainController
      */
     public function actionDelete($id)
     {
-        try{
-            $this->findModel($id)->delete();
-        }catch (\Exception $exception){
-            Yii::$app->session->setFlash('danger',"No podemos eliminar este elemento. Está siendo utilizado.");
-        }
-
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Country model based on its primary key value.
+     * Finds the Provider model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Country the loaded model
+     * @return Provider the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Country::findOne($id)) !== null) {
+        if (($model = Provider::findOne($id)) !== null) {
             return $model;
         }
 

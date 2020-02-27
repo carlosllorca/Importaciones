@@ -60,6 +60,17 @@ use app\models\Rbac;
                 <?php
 
             }
+            if (Yii::$app->user->can('provider/index')) {
+                ?>
+                <li class="<?= \app\controllers\MainController::determineActive('provider') ?>">
+                    <a class="nav-link" href="/provider/index">
+                        <i class="material-icons">group</i>
+                        <p>Proveedores</p>
+                    </a>
+                </li>
+                <?php
+
+            }
 
             ?>
 

@@ -23,7 +23,8 @@
         "kartik-v/yii2-widget-depdrop": "dev-master",
         "yiisoft/yii2-bootstrap4": "^2.0",
         "miloschuman/yii2-highcharts-widget": "^7.1",
-        "mpdf/mpdf": "^8.0"
+        "mpdf/mpdf": "^8.0",
+        "kartik-v/yii2-widget-datepicker": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

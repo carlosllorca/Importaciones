@@ -39,6 +39,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]) :null?>
             <?= Yii::$app->user->can('buyrequest/export')?Html::a("<span class='glyphicon glyphicon-export'></span>",
                 ['export', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank' ,'title' => 'Exportar a PDF']):null ?>
+            <?= Yii::$app->user->can('buyrequest/update')?Html::a("<span class='glyphicon glyphicon-pencil'></span>",
+                ['update','id'=>$model->id],
+                [
+                    'class' => 'btn btn-success',
+                    'title' => 'Modificar orden de compra',
+
+                ]) :null?>
         </p>
         <div class="row">
             <div class="col-md-12">

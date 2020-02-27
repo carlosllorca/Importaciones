@@ -74,8 +74,8 @@ class BuyRequest extends \yii\db\ActiveRecord
             'last_update' => 'Última actualización',
             'created_by' => 'Creado por',
             'buy_request_status_id' => 'Estado',
-            'bidding_start' => 'Bidding Start',
-            'bidding_end' => 'Bidding End',
+            'bidding_start' => 'Fecha Inicio',
+            'bidding_end' => 'Fecha Fin',
             'buy_request_type_id' => 'Tipo',
         ];
     }
@@ -222,7 +222,7 @@ class BuyRequest extends \yii\db\ActiveRecord
             ->orderBy(['code' => SORT_ASC])->all();
         $used = [];
         foreach ($demands as $demand) {
-            array_push($used, $demand->demand_code);
+            array_push($used, $demand->code);
         }
         $next = true;
         for ($i = 1; $next; $i++) {
@@ -260,5 +260,14 @@ class BuyRequest extends \yii\db\ActiveRecord
             $models=$models->andWhere(['buy_request_type_id'=>$type]);
         }
         return ArrayHelper::map($models->all(),'id','code');
+    }
+    public function arrayValidatedList(){
+        $vl = [];
+        foreach ($this->demandItems as $demandItem){
+            if(!in_array($demandItem->demand->validated_list_id,$vl)){
+                array_push($vl,$demandItem->demand->validated_list_id);
+            }
+        }
+        return $vl;
     }
 }
