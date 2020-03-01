@@ -9,7 +9,7 @@ use app\models\OffertStatus;
 /**
  * OffertStatusSearch represents the model behind the search form of `app\models\OffertStatus`.
  */
-class OffertStatusSearch extends OffertStatus
+class ProviderStatusSearch extends ProviderStatus
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class OffertStatusSearch extends OffertStatus
      */
     public function search($params)
     {
-        $query = OffertStatus::find();
+        $query = ProviderStatus::find();
 
         // add conditions that should always apply here
 

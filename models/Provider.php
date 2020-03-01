@@ -17,6 +17,7 @@ use Yii;
  *
  * @property Country $country
  * @property ProviderValidatedList[] $providerValidatedLists
+ * @property BuyRequestProvider[] $buyRequestProviders
  */
 class Provider extends \yii\db\ActiveRecord
 {
@@ -82,6 +83,13 @@ class Provider extends \yii\db\ActiveRecord
     public function getProviderValidatedLists()
     {
         return $this->hasMany(ProviderValidatedList::className(), ['provider_id' => 'id']);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBuyRequestProviders()
+    {
+        return $this->hasMany(BuyRequestProvider::className(), ['provider_id' => 'id']);
     }
     public static function combo(){
         return ArrayHelper::map(self::find()->orderBy('name')->all(),'id','name');

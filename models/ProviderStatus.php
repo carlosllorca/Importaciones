@@ -5,21 +5,21 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "offert_status".
+ * This is the model class for table "provider_status".
  *
  * @property int $id
  * @property string $label
  *
- * @property Offert[] $offerts
+ * @property BuyRequestProvider[] $buyRequestProviders
  */
-class OffertStatus extends \yii\db\ActiveRecord
+class ProviderStatus extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'offert_status';
+        return 'provider_status';
     }
 
     /**
@@ -29,7 +29,7 @@ class OffertStatus extends \yii\db\ActiveRecord
     {
         return [
             [['label'], 'required'],
-            [['label'], 'string'],
+            [['label'], 'string', 'max' => 50],
         ];
     }
 
@@ -40,18 +40,15 @@ class OffertStatus extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'label' => 'Nombre',
+            'label' => 'Label',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getOfferts()
+    public function getBuyRequestProviders()
     {
-        return $this->hasMany(Offert::className(), ['offert_status_id' => 'id']);
-    }
-    public static function combo(){
-        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
+        return $this->hasMany(BuyRequestProvider::className(), ['provider_status_id' => 'id']);
     }
 }

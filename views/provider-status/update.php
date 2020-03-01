@@ -5,9 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\OffertStatus */
 
-$this->title = 'Crear estado';
-$this->params['breadcrumbs'][] = ['label' => 'Estados de oferta', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Actualizar: ' . $model->label;
+$this->params['breadcrumbs'][] = ['label' => 'Estados de proveedor', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->label, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="card">
     <div class="card-header card-header-primary">

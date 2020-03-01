@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\OffertStatus;
-use app\models\OffertStatusSearch;
+use app\models\ProviderStatus;
+use app\models\ProviderStatusSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * OffertStatusController implements the CRUD actions for OffertStatus model.
+ * ProviderStatusController implements the CRUD actions for ProviderStatus model.
  */
-class OffertStatusController extends MainController
+class ProviderStatusController extends MainController
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class OffertStatusController extends MainController
     }
 
     /**
-     * Lists all OffertStatus models.
+     * Lists all ProviderStatus models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new OffertStatusSearch();
+        $searchModel = new ProviderStatusSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class OffertStatusController extends MainController
     }
 
     /**
-     * Displays a single OffertStatus model.
+     * Displays a single ProviderStatus model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class OffertStatusController extends MainController
     }
 
     /**
-     * Creates a new OffertStatus model.
+     * Creates a new ProviderStatus model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new OffertStatus();
+        $model = new ProviderStatus();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class OffertStatusController extends MainController
     }
 
     /**
-     * Updates an existing OffertStatus model.
+     * Updates an existing ProviderStatus model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class OffertStatusController extends MainController
     }
 
     /**
-     * Deletes an existing OffertStatus model.
+     * Deletes an existing ProviderStatus model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -115,15 +115,15 @@ class OffertStatusController extends MainController
     }
 
     /**
-     * Finds the OffertStatus model based on its primary key value.
+     * Finds the ProviderStatus model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return OffertStatus the loaded model
+     * @return ProviderStatus the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = OffertStatus::findOne($id)) !== null) {
+        if (($model = ProviderStatus::findOne($id)) !== null) {
             return $model;
         }
 

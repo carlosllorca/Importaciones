@@ -8,7 +8,6 @@ use Yii;
  * This is the model class for table "offert".
  *
  * @property int $id
- * @property int $buy_request_id
  * @property int $offert_status_id
  * @property int $upload_by
  * @property string $upload_date
@@ -20,12 +19,11 @@ use Yii;
  * @property bool|null $approved
  * @property string|null $url_evaluation
  * @property bool $winner
+ * @property int $buy_request_provider_id
  *
- * @property BuyRequest $buyRequest
- * @property OffertStatus $offertStatus
+ * @property BuyRequestProvider $buyRequestProvider
  * @property User $uploadBy
  * @property User $evaluatedBy
- * @property RequestStage[] $requestStages
  */
 class Offert extends \yii\db\ActiveRecord
 {
@@ -43,14 +41,13 @@ class Offert extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['buy_request_id', 'offert_status_id', 'upload_by', 'upload_date', 'recived_date', 'expiration_date', 'url_file', 'evaluation_date', 'winner'], 'required'],
-            [['buy_request_id', 'offert_status_id', 'upload_by', 'evaluated_by'], 'default', 'value' => null],
-            [['buy_request_id', 'offert_status_id', 'upload_by', 'evaluated_by'], 'integer'],
+            [['offert_status_id', 'upload_by', 'upload_date', 'recived_date', 'expiration_date', 'url_file', 'evaluation_date', 'winner', 'buy_request_provider_id'], 'required'],
+            [['offert_status_id', 'upload_by', 'evaluated_by', 'buy_request_provider_id'], 'default', 'value' => null],
+            [['offert_status_id', 'upload_by', 'evaluated_by', 'buy_request_provider_id'], 'integer'],
             [['upload_date', 'recived_date', 'expiration_date', 'evaluation_date'], 'safe'],
             [['url_file', 'url_evaluation'], 'string'],
             [['approved', 'winner'], 'boolean'],
-            [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
-            [['offert_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => OffertStatus::className(), 'targetAttribute' => ['offert_status_id' => 'id']],
+            [['buy_request_provider_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestProvider::className(), 'targetAttribute' => ['buy_request_provider_id' => 'id']],
             [['upload_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['upload_by' => 'id']],
             [['evaluated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['evaluated_by' => 'id']],
         ];
@@ -63,7 +60,6 @@ class Offert extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'buy_request_id' => 'Buy Request ID',
             'offert_status_id' => 'Offert Status ID',
             'upload_by' => 'Upload By',
             'upload_date' => 'Upload Date',
@@ -75,23 +71,16 @@ class Offert extends \yii\db\ActiveRecord
             'approved' => 'Approved',
             'url_evaluation' => 'Url Evaluation',
             'winner' => 'Winner',
+            'buy_request_provider_id' => 'Buy Request Provider ID',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getBuyRequest()
+    public function getBuyRequestProvider()
     {
-        return $this->hasOne(BuyRequest::className(), ['id' => 'buy_request_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getOffertStatus()
-    {
-        return $this->hasOne(OffertStatus::className(), ['id' => 'offert_status_id']);
+        return $this->hasOne(BuyRequestProvider::className(), ['id' => 'buy_request_provider_id']);
     }
 
     /**
@@ -108,13 +97,5 @@ class Offert extends \yii\db\ActiveRecord
     public function getEvaluatedBy()
     {
         return $this->hasOne(User::className(), ['id' => 'evaluated_by']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRequestStages()
-    {
-        return $this->hasMany(RequestStage::className(), ['offert_id' => 'id']);
     }
 }

@@ -15,6 +15,8 @@ use yii\helpers\ArrayHelper;
  */
 class PaymentInstrument extends \yii\db\ActiveRecord
 {
+
+    static $CC_A__LA_VISTA=1;
     /**
      * {@inheritdoc}
      */

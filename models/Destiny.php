@@ -15,6 +15,8 @@ use yii\helpers\ArrayHelper;
  */
 class Destiny extends \yii\db\ActiveRecord
 {
+    static $HABANA_ID=1;
+    static $SANTIAGO_ID=2;
     /**
      * {@inheritdoc}
      */

@@ -39,7 +39,7 @@ use yii\web\ForbiddenHttpException;
  * @property User $dtSpecialistAssigned
  * @property BuyRequestDocument[] $buyRequestDocuments
  * @property DemandItem[] $demandItems
- * @property Offert[] $offerts
+ * @property BuyRequestProvider[] $buyRequestProviders
  */
 class BuyRequest extends \yii\db\ActiveRecord
 {
@@ -54,6 +54,7 @@ class BuyRequest extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    const SCENARIO_GENERATE_LICITACION = 'ADD_LICITACION';
     public function rules()
     {
         return [
@@ -62,7 +63,10 @@ class BuyRequest extends \yii\db\ActiveRecord
             [['created_by', 'buy_request_status_id', 'buy_request_type_id'], 'default', 'value' => null],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id','destiny_id','payment_instrument_id','buy_condition_id'], 'integer'],
             [['gol_approved'],'boolean'],
+            [['bidding_start','bidding_end','destiny_id','payment_instrument_id','buy_condition_id'],'required','on'=>self::SCENARIO_GENERATE_LICITACION],
             ['cancel_reason','string'],
+            [['bidding_start','bidding_end'], 'invalidRangeDate'],
+            [['bidding_start','bidding_end'], 'beforeToday'],
             [['code'], 'string', 'max' => 50],
             [['buy_request_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestStatus::className(), 'targetAttribute' => ['buy_request_status_id' => 'id']],
             [['buy_request_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestType::className(), 'targetAttribute' => ['buy_request_type_id' => 'id']],
@@ -71,6 +75,22 @@ class BuyRequest extends \yii\db\ActiveRecord
             [['buy_condition_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyCondition::className(), 'targetAttribute' => ['buy_condition_id' => 'id']],
             [['payment_instrument_id'], 'exist', 'skipOnError' => true, 'targetClass' => PaymentInstrument::className(), 'targetAttribute' => ['payment_instrument_id' => 'id']]
         ];
+    }
+    function invalidRangeDate($attribute)
+    {
+        $start = strtotime($this->bidding_start);
+        $end = strtotime($this->bidding_end);
+        if ($end < $start) {
+            $this->addError($attribute, "El rango de fechas seleccionado no es válido.");
+        }
+    }
+    function beforeToday($attribute)
+    {
+        $start = strtotime($this->$attribute);
+        $end = strtotime(date('d-m-Y'));
+        if ($end < $start) {
+            $this->addError($attribute, "Las fechas no pueden estar en el pasado.");
+        }
     }
 
     /**
@@ -193,9 +213,9 @@ class BuyRequest extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getOfferts()
+    public function getBuyRequestProviders()
     {
-        return $this->hasMany(Offert::className(), ['buy_request_id' => 'id']);
+        return $this->hasMany(BuyRequestProviders::className(), ['buy_request_id' => 'id']);
     }
 
     /**

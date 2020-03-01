@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\OffertStatusSearch */
+/* @var $searchModel app\models\ProviderStatusSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Estado de oferta';
+$this->title = 'Estado del proveedor';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="buy-request-status-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title"><?=$this->title?></h4>
-            <p class="card-category">Estados por los que transita una oferta</p>
+            <p class="card-category">Estados por los que pasa un proveedor en un proceso de licitación</p>
         </div>
         <div class="card-body" style="padding: 15px">
             <div class="p-3">

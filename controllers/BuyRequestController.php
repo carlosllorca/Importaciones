@@ -3,8 +3,11 @@
 namespace app\controllers;
 
 use app\models\BuyRequestStatus;
+use app\models\BuyRequestType;
 use app\models\DemandItem;
 use app\models\DemandStatus;
+use app\models\Destiny;
+use app\models\PaymentInstrument;
 use Mpdf\Tag\U;
 use Yii;
 use app\models\BuyRequest;
@@ -106,6 +109,11 @@ class BuyRequestController extends MainController
     {
         $model = $this->findModel($id);
         $active = 'demands_associated';
+        if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
+            $model->setScenario(BuyRequest::SCENARIO_GENERATE_LICITACION);
+            $model->destiny_id=Destiny::$HABANA_ID;
+            $model->payment_instrument_id=PaymentInstrument::$CC_A__LA_VISTA;
+        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
