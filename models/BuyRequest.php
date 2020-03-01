@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\Exception;
-use yii\db\Expression;
+
 use yii\helpers\ArrayHelper;
 use yii\web\ForbiddenHttpException;
 
@@ -25,7 +25,13 @@ use yii\web\ForbiddenHttpException;
  * @property int $dt_specialist_asigned
  * @property boolean $gol_approved
  * @property string $cancel_reason
+ * @property int $destiny_id
+ * @property int $payment_instrument_id
+ * @property int $buy_condition_id
  *
+ * @property BuyCondition $buyCondition
+ * @property PaymentInstrument $paymentInstrument
+ * @property Destiny $destiny
  * @property BuyRequestStatus $buyRequestStatus
  * @property BuyRequestType $buyRequestType
  * @property User $createdBy
@@ -54,13 +60,16 @@ class BuyRequest extends \yii\db\ActiveRecord
             [['code', 'created', 'created_by', 'buy_request_status_id', 'buy_request_type_id'], 'required'],
             [['created', 'last_update', 'bidding_start', 'bidding_end','buyer_assigned','dt_specialist_assigned'], 'safe'],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id'], 'default', 'value' => null],
-            [['created_by', 'buy_request_status_id', 'buy_request_type_id'], 'integer'],
+            [['created_by', 'buy_request_status_id', 'buy_request_type_id','destiny_id','payment_instrument_id','buy_condition_id'], 'integer'],
             [['gol_approved'],'boolean'],
-            ['cancel_reason','text'],
+            ['cancel_reason','string'],
             [['code'], 'string', 'max' => 50],
             [['buy_request_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestStatus::className(), 'targetAttribute' => ['buy_request_status_id' => 'id']],
             [['buy_request_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestType::className(), 'targetAttribute' => ['buy_request_type_id' => 'id']],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
+            [['destiny_id'], 'exist', 'skipOnError' => true, 'targetClass' => Destiny::className(), 'targetAttribute' => ['destiny_id' => 'id']],
+            [['buy_condition_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyCondition::className(), 'targetAttribute' => ['buy_condition_id' => 'id']],
+            [['payment_instrument_id'], 'exist', 'skipOnError' => true, 'targetClass' => PaymentInstrument::className(), 'targetAttribute' => ['payment_instrument_id' => 'id']]
         ];
     }
 
@@ -79,6 +88,9 @@ class BuyRequest extends \yii\db\ActiveRecord
             'bidding_start' => 'Fecha Inicio',
             'bidding_end' => 'Fecha Fin',
             'buy_request_type_id' => 'Tipo',
+            'destiny_id' => 'Puerto de Destino',
+            'payment_instrument_id' => 'Instrumento de pago',
+            'buy_condition_id' => 'Condición de la compra',
         ];
     }
 
@@ -134,6 +146,30 @@ class BuyRequest extends \yii\db\ActiveRecord
     public function getDemandItems()
     {
         return $this->hasMany(DemandItem::className(), ['buy_request_id' => 'id']);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBuyCondition()
+    {
+        return $this->hasOne(BuyCondition::className(), ['id' => 'buy_condition_id']);
+    }
+    /**
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDestiny()
+    {
+        return $this->hasOne(Destiny::className(), ['id' => 'destiny_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPaymentInstrument()
+    {
+        return $this->hasOne(PaymentInstrument::className(), ['id' => 'payment_instrument_id']);
     }
 
     /**

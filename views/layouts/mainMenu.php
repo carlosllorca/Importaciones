@@ -128,6 +128,9 @@ use app\models\Rbac;
                     <?=$this->render('menu-item',['permission'=>'sellerrequirement','section'=>'seller-requirement','title'=>'Rquerimiento del vendedor'])?>
                     <?=$this->render('menu-item',['permission'=>'um','section'=>'um','title'=>'Unidad de medida'])?>
                     <?=$this->render('menu-item',['permission'=>'warrantytime','section'=>'warranty-time','title'=>'Tiempo de garantía'])?>
+                    <?=$this->render('menu-item',['permission'=>'buycondition','section'=>'buy-condition','title'=>'Condición de compra'])?>
+                    <?=$this->render('menu-item',['permission'=>'destiny','section'=>'destiny','title'=>'Destino'])?>
+                    <?=$this->render('menu-item',['permission'=>'paymentinstrument','section'=>'payment-instrument','title'=>'Instrumento de pago'])?>
 
 
 
