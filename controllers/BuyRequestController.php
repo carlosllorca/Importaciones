@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\BuyRequest;
+use app\models\BuyRequestDocument;
 use app\models\BuyRequestProvider;
 use app\models\BuyRequestSearch;
 use app\models\BuyRequestStatus;
@@ -19,6 +20,7 @@ use Mpdf\Config\ConfigVariables;
 use Mpdf\Config\FontVariables;
 use Mpdf\Mpdf;
 use Yii;
+use yii\bootstrap\Html;
 use yii\filters\VerbFilter;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -144,12 +146,18 @@ class BuyRequestController extends MainController
         }elseif (Yii::$app->user->can('buyrequest/viewproducts')){
             $active = 'products';
         }
+        elseif (Yii::$app->user->can('buyrequest/viewdocuments')){
+            $active = 'documentos';
+        }
 
         if(Yii::$app->request->isPost){
             $active= 'propuestas';
         }
         if(Yii::$app->request->get('provider')){
             $active= 'propuestas';
+        }
+        if(Yii::$app->request->get('section')){
+            $active = Yii::$app->request->get('section');
         }
         return $this->render('update', [
             'model' => $model,
@@ -453,6 +461,36 @@ class BuyRequestController extends MainController
     }
     public function actionViewDocuments(){
 
+    }
+    public function actionSendToMonitoring(){
+
+    }
+    public function actionUploadFileExpedient($id){
+        $model = BuyRequestDocument::findOne($id);
+        if (Yii::$app->request->isPost) {
+            $model->documento = UploadedFile::getInstance($model, 'documento');
+            if($model->documento){
+                $file= $model->upload();
+                if($file){
+                    $model->url_to_file = $file;
+                }
+            }else{
+                $emptyFile=true;
+            }
+        }
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->last_update=date('Y-m-d');
+            $model->last_updated_by=User::userLogged()->id;
+            $model->created_date=date('Y-m-d');
+            $model->save();
+            Yii::$app->session->setFlash('success','Fichero subido correctamente');
+
+            return $this->redirect(['/buy-request/update','id'=>$model->buy_request_id,
+                'section'=>'documentos']);
+
+
+        }
+        return $this->renderAjax('_uploadFileExpedient',['model'=>$model]);
     }
 
 

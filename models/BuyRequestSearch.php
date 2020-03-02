@@ -62,6 +62,10 @@ class BuyRequestSearch extends BuyRequest
             case Rbac::$GOL:
                 $query->andWhere(['not',['buy_request_status_id'=>BuyRequestStatus::$BORRADOR_ID]]);
                 break;
+            case Rbac::$COMITE:
+                $query->andWhere(['buy_request_status_id'=>BuyRequestStatus::$EVALUANDO_OFERTAS]);
+                break;
+
             default:
                 throw  new ForbiddenHttpException("Esta vista no está preparada para usuario scon su rol.");
                 break;

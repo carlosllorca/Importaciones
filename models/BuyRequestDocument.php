@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use kartik\file\FileInput;
 use Yii;
 
 /**
@@ -15,6 +16,7 @@ use Yii;
  * @property string|null $url_to_file
  * @property string|null $custom_file
  * @property int $document_type_id
+ * @property FileInput $documento
  *
  * @property BuyRequest $buyRequest
  * @property DocumentType $documentType
@@ -22,6 +24,7 @@ use Yii;
  */
 class BuyRequestDocument extends \yii\db\ActiveRecord
 {
+    public $documento;
     /**
      * {@inheritdoc}
      */
@@ -39,6 +42,7 @@ class BuyRequestDocument extends \yii\db\ActiveRecord
             [['buy_request_id', 'document_type_id'], 'required'],
             [['buy_request_id', 'last_updated_by', 'document_type_id'], 'default', 'value' => null],
             [['buy_request_id', 'last_updated_by', 'document_type_id'], 'integer'],
+            [['documento'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf,doc,docx','maxSize' => 2048*1024 ],
             [['created_date', 'last_update'], 'safe'],
             [['url_to_file'], 'string'],
             [['custom_file'], 'string', 'max' => 255],
@@ -46,6 +50,16 @@ class BuyRequestDocument extends \yii\db\ActiveRecord
             [['document_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => DocumentType::className(), 'targetAttribute' => ['document_type_id' => 'id']],
             [['last_updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['last_updated_by' => 'id']],
         ];
+    }
+    /*
+     * Subir fichero
+     */
+    public function upload()
+    {
+        $name = Yii::$app->security->generateRandomString().'.'.$this->documento->extension;
+        $this->documento->saveAs('request_files/' .$name);
+        return '/request_files/' .$name;
+
     }
 
     /**

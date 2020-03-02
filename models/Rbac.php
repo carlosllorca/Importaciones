@@ -28,6 +28,7 @@ class Rbac extends Model
     public static $JEFE_COMPRAS='jefe_compras';
     public static $JEFE_TECNCIO='ep_dt';
     public static $GOL='esp_gol';
+    public static $COMITE='comite';
     /**
      * @return array the validation rules.
      */
