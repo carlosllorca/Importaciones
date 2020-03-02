@@ -28,6 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
+                    'rowOptions' => function($model){
+                        if(!$model->active){
+                            return ['class'=>'danger'];
+                        }
+                    },
                     'filterModel' => $searchModel,
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
@@ -35,8 +40,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         'label',
                         'required:boolean',
+                        'active:boolean',
 
-                        ['class' => 'yii\grid\ActionColumn'],
+                        [
+                                'class' => 'yii\grid\ActionColumn',
+                                'template' => '{update} {delete}'
+                        ],
                     ],
                 ]); ?>
 

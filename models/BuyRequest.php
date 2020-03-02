@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use kartik\file\FileInput;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\Exception;
@@ -28,6 +29,12 @@ use yii\web\ForbiddenHttpException;
  * @property int $destiny_id
  * @property int $payment_instrument_id
  * @property int $buy_condition_id
+ * @property string $blank_contract_url
+ * @property string $pliego_url
+ * @property string $buyer_fundamentation_url
+ * @property FileInput $blank_contract
+ * @property FileInput $pliego
+ * @property FileInput $buyer_fundamentation
  *
  * @property BuyCondition $buyCondition
  * @property PaymentInstrument $paymentInstrument
@@ -55,16 +62,21 @@ class BuyRequest extends \yii\db\ActiveRecord
      * {@inheritdoc}
      */
     const SCENARIO_GENERATE_LICITACION = 'ADD_LICITACION';
+    public $blank_contract;
+    public $pliego;
+    public $buyer_fundamentation;
     public function rules()
     {
         return [
             [['code', 'created', 'created_by', 'buy_request_status_id', 'buy_request_type_id'], 'required'],
-            [['created', 'last_update', 'bidding_start', 'bidding_end','buyer_assigned','dt_specialist_assigned'], 'safe'],
+            [['created', 'last_update', 'bidding_start', 'bidding_end','buyer_assigned','dt_specialist_assigned',
+                'blank_contract_id','pliego_id','buyer_fundamentation_id'], 'safe'],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id'], 'default', 'value' => null],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id','destiny_id','payment_instrument_id','buy_condition_id'], 'integer'],
             [['gol_approved'],'boolean'],
             [['bidding_start','bidding_end','destiny_id','payment_instrument_id','buy_condition_id'],'required','on'=>self::SCENARIO_GENERATE_LICITACION],
             ['cancel_reason','string'],
+            [['blank_contract','pliego','buyer_fundamentation'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf,doc,docx','maxSize' => 2048*1024 ],
             [['bidding_start','bidding_end'], 'invalidRangeDate'],
             [['bidding_start','bidding_end'], 'beforeToday'],
             [['code'], 'string', 'max' => 50],
@@ -91,6 +103,16 @@ class BuyRequest extends \yii\db\ActiveRecord
         if ($date < $today) {
             $this->addError($attribute, "La fecha no puede estar en el pasado.");
         }
+    }
+    /*
+    * Subir fichero
+    */
+    public function upload($file)
+    {
+        $name = Yii::$app->security->generateRandomString().'.'.$this->oferta->extension;
+        $this->oferta->saveAs('buy_request/' .$name);
+        return '/buy_request/' .$name;
+
     }
 
     /**
@@ -343,5 +365,31 @@ class BuyRequest extends \yii\db\ActiveRecord
         $now= strtotime(date('Y-m-d'));
         return $now>=$start&&$now<=$end;
 
+    }
+    public function biddingEnd()
+    {
+        $end = strtotime($this->bidding_end);
+        $now= strtotime(date('Y-m-d'));
+        return $now>$end;
+    }
+    public function getWinners(){
+        $winners=[];
+        foreach ($this->buyRequestProviders as $buyRequestProvider){
+            if($buyRequestProvider->winner)
+                array_push($winners ,$buyRequestProvider);
+        }
+        return $winners;
+    }
+
+    /**
+     * @return BuyRequestProvider[]
+     */
+    public function getFinalistas(){
+        $winners=[];
+        foreach ($this->buyRequestProviders as $buyRequestProvider){
+            if($buyRequestProvider->provider_status_id==ProviderStatus::$OFERTA_APROBADA_ID)
+                array_push($winners ,$buyRequestProvider);
+        }
+        return $winners;
     }
 }

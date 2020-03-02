@@ -15,6 +15,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'label')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'required')->checkbox() ?>
+    <?= $form->field($model, 'active')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

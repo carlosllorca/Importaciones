@@ -11,11 +11,13 @@ use Yii;
  * @property int $buy_request_id
  * @property int $provider_id
  * @property int $provider_status_id
+ * @property boolean $winner
  *
  * @property BuyRequest $buyRequest
  * @property Provider $provider
  * @property ProviderStatus $providerStatus
  * @property Offert[] $offerts
+ * @property Offert $approvedOffert
  */
 class BuyRequestProvider extends \yii\db\ActiveRecord
 {
@@ -36,6 +38,7 @@ class BuyRequestProvider extends \yii\db\ActiveRecord
             [['buy_request_id', 'provider_id', 'provider_status_id'], 'required'],
             [['buy_request_id', 'provider_id', 'provider_status_id'], 'default', 'value' => null],
             [['buy_request_id', 'provider_id', 'provider_status_id'], 'integer'],
+            ['winner','boolean'],
             [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
             [['provider_id'], 'exist', 'skipOnError' => true, 'targetClass' => Provider::className(), 'targetAttribute' => ['provider_id' => 'id']],
             [['provider_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProviderStatus::className(), 'targetAttribute' => ['provider_status_id' => 'id']],
@@ -52,6 +55,7 @@ class BuyRequestProvider extends \yii\db\ActiveRecord
             'buy_request_id' => 'Buy Request ID',
             'provider_id' => 'Provider ID',
             'provider_status_id' => 'Provider Status ID',
+            'winner' => 'Ganador',
         ];
     }
 
@@ -86,4 +90,12 @@ class BuyRequestProvider extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Offert::className(), ['buy_request_provider_id' => 'id']);
     }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getApprovedOffert()
+    {
+        return $this->hasOne(Offert::className(), ['buy_request_provider_id' => 'id'])->where(['offert.approved'=>true]);
+    }
+
 }

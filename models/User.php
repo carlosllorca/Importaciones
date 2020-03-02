@@ -24,6 +24,7 @@ use yii\web\IdentityInterface;
  *
  * @property BuyRequest[] $buyRequests
  * @property BuyRequestDocument[] $buyRequestDocuments
+ * @property DocumentTypePermission[] $documentTypePermissions
  * @property Demand[] $demands
  * @property Demand[] $demandsApproved
  * @property Log[] $logs
@@ -129,6 +130,36 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function getDemands()
     {
         return $this->hasMany(Demand::className(), ['created_by' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDocumentTypePermissions()
+    {
+        return $this->hasMany(DocumentTypePermission::className(), ['user_id' => 'id']);
+    }
+    /**
+     * @return DocumentTypePermission[]
+     */
+    public function activesDocumentTypePermission()
+    {
+        $array = [];
+        foreach ($this->documentTypePermissions as $documentTypePermission){
+            if($documentTypePermission->documentType->active){
+                array_push($array,$documentTypePermission);
+            }
+
+        }
+        return $array;
+    }
+    public function arrayDocumentType()
+    {
+        $array = [];
+        foreach ($this->documentTypePermissions as $documentTypePermission){
+            array_push($array,$documentTypePermission->document_type_id);
+        }
+        return $array;
     }
 
     /**

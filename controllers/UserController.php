@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\DocumentTypePermission;
 use app\models\Rbac;
 use Yii;
 use app\models\User;
@@ -98,6 +99,8 @@ class UserController extends MainController
     {
         $model = $this->findModel($id);
         $current = $model->rol= Rbac::getRole($model->username);
+        $newPerm  =new DocumentTypePermission();
+        $newPerm->user_id=$id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
             if($current!=$model->rol){
@@ -109,6 +112,7 @@ class UserController extends MainController
         }
         return $this->render('update', [
             'model' => $model,
+            'newPerm'=>$newPerm
         ]);
     }
 
@@ -159,5 +163,41 @@ class UserController extends MainController
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    public function actionAddFileAccess(){
+            $model = new DocumentTypePermission();
+             if ($model->load(Yii::$app->request->post())) {
+                 $docType = $model->document_type_id;
+                 foreach ($docType as $item){
+
+                     $nm= new DocumentTypePermission();
+                     $nm->user_id=$model->user_id;
+                     $nm->document_type_id=$item;
+                     $nm->allow_view=$model->allow_view;
+                     $nm->allow_update=$model->allow_update;
+                     $nm->save(false);
+                 }
+                 return $this->redirect(['update','id'=>$model->user_id]);
+             }
+    }
+    public function actionDeleteDocumentAccess($id){
+        $model = DocumentTypePermission::findOne($id);
+        $user =$model->user_id;
+        try{
+            $model->delete();
+            Yii::$app->session->setFlash('success','Elemento eliminado.');
+        }catch (\Exception $e){
+            Yii::$app->session->setFlash('danger','No fue posible eliminar este elemento. Inténtelo de nuevo más tarde.');
+        }
+        return $this->redirect(['update','id'=>$user]);
+    }
+    public function actionUpdateDocumentAccess($id){
+        $model = DocumentTypePermission::findOne($id);
+        if ($model->load(Yii::$app->request->post())&&$model->validate()) {
+            $model->save();
+            Yii::$app->session->setFlash('success','Permiso actualizado');
+            return $this->redirect(['update','id'=>$model->user_id]);
+        }
+        return $this->renderAjax("_updatePermDocForm",['model'=>$model]);
     }
 }

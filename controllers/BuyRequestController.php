@@ -429,6 +429,9 @@ class BuyRequestController extends MainController
 
         return $this->renderAjax('_evaluate_offert',['model'=>$model]);
     }
+    public function actionSelectWinners(){
+
+    }
 
 
 }

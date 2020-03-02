@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models;
-
+use yii\helpers\ArrayHelper;
 use Yii;
 
 /**
@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property string $label
  * @property bool $required
+ * @property bool $active
  *
  * @property BuyRequestDocument[] $buyRequestDocuments
  * @property DocumentTypePermission[] $documentTypePermissions
@@ -19,6 +20,9 @@ class DocumentType extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    const PLIEGO_ID=1;
+    const PREFORMA_ID=2;
+    const FUNDAMENTACION_COMPRA_ID=3;
     public static function tableName()
     {
         return 'document_type';
@@ -31,7 +35,7 @@ class DocumentType extends \yii\db\ActiveRecord
     {
         return [
             [['label'], 'required'],
-            [['required'], 'boolean'],
+            [['required','active'], 'boolean'],
             [['label'], 'string', 'max' => 150],
         ];
     }
@@ -45,6 +49,7 @@ class DocumentType extends \yii\db\ActiveRecord
             'id' => 'ID',
             'label' => 'Nombre',
             'required' => 'Requerido',
+            'active' => 'Activo',
         ];
     }
 
@@ -63,7 +68,9 @@ class DocumentType extends \yii\db\ActiveRecord
     {
         return $this->hasMany(DocumentTypePermission::className(), ['document_type_id' => 'id']);
     }
-    public static function combo(){
-        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
+    public static function combo($differentTo=[]){
+        return ArrayHelper::map(self::find()->where(['active'=>true])
+            ->andWhere(['not',['id'=>$differentTo]])
+            ->orderBy('label')->all(),'id','label');
     }
 }

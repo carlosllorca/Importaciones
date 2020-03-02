@@ -55,9 +55,12 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                 ?>
 
             </p>
+
             <?= $this->render('_form', [
                 'model' => $model,
+                'newPerm'=>$newPerm
             ]) ?>
+
         </div>
     </div>
 </div>

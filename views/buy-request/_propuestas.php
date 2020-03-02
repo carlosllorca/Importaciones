@@ -5,9 +5,15 @@
 
 /* @var $model \app\models\BuyRequest|\yii\db\ActiveRecord */
 
+use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+if(Yii::$app->user->can('buyrequest/selectwinners')&&$model->biddingEnd()&&count($model->getWinners())==0){
+    echo $this->render('_select_winners',['model'=>$model]);
+}
+
 ?>
+
 
     <div class="row">
         <div class="col-md-12">
@@ -64,6 +70,15 @@ use yii\widgets\ActiveForm;
 
                         </div>
                         <div class="col-sm-3">
+                            <?=Yii::$app->user->can('buyrequest/selectwinners')&&$model->biddingEnd()&&count($model->getWinners())==0?
+                            Html::button('Seleccionar ganadores',
+                                [
+                                    'class'=>'btn btn-primary',
+                                    'data-toggle'=>"modal",
+                                    'data-target'=>"#select-winners-modal"
+                                ]):null
+                            ?>
+
 
                         </div>
                     </div>
@@ -89,7 +104,7 @@ use yii\widgets\ActiveForm;
                                         <th><?=$buyRequestProvider->provider->country->label?></th>
                                         <th><?=$buyRequestProvider->providerStatus->label?></th>
                                         <th>
-                                            <?=\yii\helpers\Html::a("<span class='glyphicon glyphicon-eye-open'></span>",
+                                            <?= Html::a("<span class='glyphicon glyphicon-eye-open'></span>",
                                             '#',['title'=>'Ver','onclick'=>'showProvider('.$buyRequestProvider->id.')']
                                             )?>
 
