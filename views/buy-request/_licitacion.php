@@ -17,11 +17,11 @@ use yii\helpers\Html;
     <div class="col-sm-2"></div>
 
 
-    <div class="col-sm-4" style="text-align: center; padding: 0px 12px;border: 1px solid #cecece;border-right: 0px">
+    <div class="col-sm-4" style="text-align: center; padding: 0px 12px;">
         <?= $form->field($model, 'bidding_start')->textInput(['type'=>'date','style'=>['text-align'=>'center']])?>
 
     </div>
-    <div class="col-sm-4" style="text-align: center; padding: 0px 12px;border: 1px solid #cecece;border-left: 0px">
+    <div class="col-sm-4" style="text-align: center; padding: 0px 12px;">
         <?= $form->field($model, 'bidding_end')->textInput(['type'=>'date','style'=>['text-align'=>'center']])?>
     </div>
 
@@ -88,6 +88,6 @@ use yii\helpers\Html;
     ])?>
 </div>
 <?php
-$this->registerJsFile('/js/buy-request/_licitacion.js',['depends'=>\yii\web\JqueryAsset::className()]);
+
 ?>
                                                                                                                                         

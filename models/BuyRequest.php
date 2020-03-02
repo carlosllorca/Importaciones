@@ -86,10 +86,10 @@ class BuyRequest extends \yii\db\ActiveRecord
     }
     function beforeToday($attribute)
     {
-        $start = strtotime($this->$attribute);
-        $end = strtotime(date('d-m-Y'));
-        if ($end < $start) {
-            $this->addError($attribute, "Las fechas no pueden estar en el pasado.");
+        $date = strtotime($this->$attribute);
+        $today = strtotime(date('Y-m-d'));
+        if ($date < $today) {
+            $this->addError($attribute, "La fecha no puede estar en el pasado.");
         }
     }
 
@@ -215,7 +215,7 @@ class BuyRequest extends \yii\db\ActiveRecord
      */
     public function getBuyRequestProviders()
     {
-        return $this->hasMany(BuyRequestProviders::className(), ['buy_request_id' => 'id']);
+        return $this->hasMany(BuyRequestProvider::className(), ['buy_request_id' => 'id']);
     }
 
     /**
@@ -330,5 +330,18 @@ class BuyRequest extends \yii\db\ActiveRecord
             }
         }
         return $vl;
+    }
+
+    /**
+     * Licitación activa?
+     * @return bool
+     */
+    function biddingActive()
+    {
+        $start = strtotime($this->bidding_start);
+        $end = strtotime($this->bidding_end);
+        $now= strtotime(date('Y-m-d'));
+        return $now>=$start&&$now<=$end;
+
     }
 }

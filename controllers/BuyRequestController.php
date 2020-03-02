@@ -2,12 +2,18 @@
 
 namespace app\controllers;
 
+use app\models\BuyRequestProvider;
 use app\models\BuyRequestStatus;
 use app\models\BuyRequestType;
 use app\models\DemandItem;
 use app\models\DemandStatus;
 use app\models\Destiny;
+use app\models\Offert;
 use app\models\PaymentInstrument;
+use app\models\Provider;
+use app\models\ProviderStatus;
+use app\models\ProviderValidatedList;
+use app\models\User;
 use Mpdf\Tag\U;
 use Yii;
 use app\models\BuyRequest;
@@ -20,6 +26,8 @@ use Mpdf\Mpdf;
 use Mpdf\Config\ConfigVariables;
 use Mpdf\Config\FontVariables;
 use yii\web\Response;
+use yii\web\UploadedFile;
+use yii\widgets\ActiveForm;
 
 /**
  * BuyRequestController implements the CRUD actions for BuyRequest model.
@@ -114,7 +122,23 @@ class BuyRequestController extends MainController
             $model->destiny_id=Destiny::$HABANA_ID;
             $model->payment_instrument_id=PaymentInstrument::$CC_A__LA_VISTA;
         }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if(!$model->buyRequestProviders){
+                foreach (Provider::related($model->arrayValidatedList()) as $provider){
+                    $m=new BuyRequestProvider();
+                    $m->buy_request_id=$model->id;
+                    $m->provider_id=$provider->id;
+                    $m->provider_status_id=ProviderStatus::$SOLICITUD_ENVIADA_ID;
+                    $m->save();
+                }
+            }
+            $active= 'propuestas';
+            return $this->render('update', [
+                'model' => $model,
+                'active'=>$active
+            ]);
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
         if(Yii::$app->user->can('buyrequest/viewassociateddemands')){
@@ -123,10 +147,25 @@ class BuyRequestController extends MainController
         }elseif (Yii::$app->user->can('buyrequest/viewproducts')){
             $active = 'products';
         }
+
+        if(Yii::$app->request->isPost){
+            $active= 'propuestas';
+        }
+        if(Yii::$app->request->get('provider')){
+            $active= 'propuestas';
+        }
         return $this->render('update', [
             'model' => $model,
             'active'=>$active
         ]);
+    }
+    public function actionProviderDetails($id){
+        $model = BuyRequestProvider::findOne($id);
+        $newOffert= new Offert();
+        $newOffert->upload_date=date('Y-m-d');
+        $newOffert->upload_by=User::userLogged()->id;
+        $newOffert->buy_request_provider_id=$model->id;
+        return $this->renderAjax('_provider_details',['model'=>$model,'newOffert'=>$newOffert]);
     }
 
     /**
@@ -301,13 +340,13 @@ class BuyRequestController extends MainController
         $model = $this->findModel($request);
         if($rol=='comprador'){
             $model->buyer_assigned=(int)($user);
-            $model->save();
+            $model->save(false);
             Yii::$app->session->setFlash('success','Órden asignada al comprador '.$model->buyerAssigned->full_name.'.');
         }
         elseif ($rol=='et'){
 
             $model->dt_specialist_asigned=(int)($user);
-            $model->save();
+            $model->save(false);
             Yii::$app->session->setFlash('success','Órden asignada al especialista técnico '.$model->dtSpecialistAssigned->full_name.'.');
         }
 
@@ -318,6 +357,77 @@ class BuyRequestController extends MainController
     }
     public function actionAssignet(){
 
+    }
+    public function actionUploadOffert(){
+
+    }
+    public function actionSaveOfert(){
+        $model = new Offert();
+
+        if (Yii::$app->request->isPost) {
+            $model->oferta = UploadedFile::getInstance($model, 'oferta');
+            if($model->oferta){
+                $file= $model->upload();
+                if($file){
+                    $model->url_file = $file;
+                }
+            }else{
+                $emptyFile=true;
+            }
+
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->save();
+            $model->buyRequestProvider->provider_status_id=ProviderStatus::$OFERTA_RECIBIDA_ID;
+            $model->buyRequestProvider->save(false);
+            return $this->redirect(['/buy-request/update','id'=>$model->buyRequestProvider->buy_request_id,
+                'provider'=>$model->buy_request_provider_id]);
+
+
+        }else{
+            var_dump($model->getErrors());
+        }
+    }
+    public function actionValidateOfert(){
+        $model = new Offert();
+
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+            Yii::$app->end();
+        }
+    }
+    public function actionEvaluateOffert($id){
+        $model= Offert::findOne($id);
+        if (Yii::$app->request->isPost) {
+            $model->evaluacion = UploadedFile::getInstance($model, 'evaluacion');
+            if($model->evaluacion){
+                $file= $model->uploadEvaluation();
+                if($file){
+                    $model->url_evaluation = $file;
+                }
+            }else{
+                $emptyFile=true;
+            }
+        }
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->evaluation_date=date('Y-m-d');
+            $model->evaluated_by=User::userLogged()->id;
+            $model->save();
+            if($model->approved){
+                $model->buyRequestProvider->provider_status_id=ProviderStatus::$OFERTA_APROBADA_ID;
+            }else{
+                $model->buyRequestProvider->provider_status_id=ProviderStatus::$OFERTA_RECHAZADA_ID;
+            }
+            $model->buyRequestProvider->save(false);
+            return $this->redirect(['/buy-request/update','id'=>$model->buyRequestProvider->buy_request_id,
+                'provider'=>$model->buy_request_provider_id]);
+
+
+        }
+
+        return $this->renderAjax('_evaluate_offert',['model'=>$model]);
     }
 
 

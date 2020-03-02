@@ -70,3 +70,13 @@ select{
     -webkit-appearance: menulist!important;
     -moz-appearance: menulist!important;
 }
+.kv-fileinput-caption{
+    width: 40%!important;
+}
+.input-group-append{
+    width: 60%;
+}
+.fileinput-remove-button{
+    max-width: 45%;
+    margin-right: 2%!important;
+}

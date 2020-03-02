@@ -14,6 +14,11 @@ use Yii;
  */
 class ProviderStatus extends \yii\db\ActiveRecord
 {
+    static $SOLICITUD_ENVIADA_ID=1;
+    static $OFERTA_RECIBIDA_ID=2;
+    static $OFERTA_APROBADA_ID=3;
+    static $OFERTA_RECHAZADA_ID=4;
+
     /**
      * {@inheritdoc}
      */
