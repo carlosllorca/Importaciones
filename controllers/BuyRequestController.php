@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\BuyRequest;
 use app\models\BuyRequestProvider;
+use app\models\BuyRequestSearch;
 use app\models\BuyRequestStatus;
 use app\models\BuyRequestType;
 use app\models\DemandItem;
@@ -12,19 +14,14 @@ use app\models\Offert;
 use app\models\PaymentInstrument;
 use app\models\Provider;
 use app\models\ProviderStatus;
-use app\models\ProviderValidatedList;
 use app\models\User;
-use Mpdf\Tag\U;
-use Yii;
-use app\models\BuyRequest;
-use app\models\BuyRequestSearch;
-use yii\web\Controller;
-use yii\web\ForbiddenHttpException;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use Mpdf\Mpdf;
 use Mpdf\Config\ConfigVariables;
 use Mpdf\Config\FontVariables;
+use Mpdf\Mpdf;
+use Yii;
+use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\web\UploadedFile;
 use yii\widgets\ActiveForm;
@@ -429,7 +426,32 @@ class BuyRequestController extends MainController
 
         return $this->renderAjax('_evaluate_offert',['model'=>$model]);
     }
-    public function actionSelectWinners(){
+    public function actionSelectWinners($id){
+        $model = $this->findModel($id);
+
+        if (Yii::$app->request->isPost) {
+            $url = $model->loadInitialExpedientFilesUrl();
+        }
+
+        if ($model->load(Yii::$app->request->post()) ) {
+                foreach ($model->ganadores as $ganadore){
+                    $winner = BuyRequestProvider::findOne($ganadore);
+                    $winner->winner=true;
+                    $winner->save();
+
+                }
+                $model->buy_request_status_id=BuyRequestStatus::$EVALUANDO_OFERTAS;
+                $model->save(false);
+                $model->generateFiledTree($url);
+                Yii::$app->session->setFlash('success','Hemos presentado el expediente correctamente. Se ha generado el árbol de documentos necesarios para la aprobación.');
+                return $this->redirect(['/buy-request/update', 'id' => $model->id]);
+
+        }else{
+            Yii::$app->session->setFlash('danger','Ocurrió un error procesando los datos. Inténtelo de nuevo más tarde.');
+            return $this->redirect(['/buy-request/update', 'id' => $model->id]);
+        }
+    }
+    public function actionViewDocuments(){
 
     }
 

@@ -1,3 +1,6 @@
+$(function () {
+    selectWinners();
+})
 let reject = function (item) {
     swal({
         title: 'Indique el motivo.',
@@ -47,8 +50,17 @@ let reject = function (item) {
     }).then((result) => {
 
     })
+}
+function selectWinners() {
+    $('.check_provider').on('change', (event) => {
+        let values = [];
+        for (let i = 0; i < $('.check_provider').length; i++) {
+            if ($($('.check_provider')[i]).is(':checked')) {
+                values.push($($('.check_provider')[i]).attr('provider'))
+            }
+        }
+        console.log(values)
+        $('#buyrequest-ganadores').val(values)
 
-
-
-
+    })
 }

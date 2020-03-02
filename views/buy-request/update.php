@@ -121,6 +121,15 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                                             <?php
                                         }
                                         ?>
+                                        <?php
+                                        if(Yii::$app->user->can('buyrequest/viewdocuments')&&$model->buyRequestDocuments){
+                                            ?>
+                                            <li class="<?= $active == 'documentos' ? 'active' : null ?>">
+                                                <a href="#documentos" data-toggle="tab">Documentos</a>
+                                            </li>
+                                            <?php
+                                        }
+                                        ?>
                                     </ul>
                                 </div>
 
@@ -152,6 +161,16 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                                     ?>
                                     <div class="tab-pane <?= $active == 'propuestas' ? 'active' : null ?>" id="propuestas">
                                         <?php echo $this->render('_propuestas', ['model' => $model]); ?>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+
+                                <?php
+                                if(Yii::$app->user->can('buyrequest/viewdocuments')){
+                                    ?>
+                                    <div class="tab-pane <?= $active == 'documentos' ? 'active' : null ?>" id="documentos">
+                                        <?php echo $this->render('_documentos', ['model' => $model]); ?>
                                     </div>
                                     <?php
                                 }

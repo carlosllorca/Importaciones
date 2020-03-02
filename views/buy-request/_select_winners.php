@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
         <?php
         $form = ActiveForm::begin([
             'options' => ['enctype'=>'multipart/form-data'],
-            'action' => 'select-winners','id'=>'select-winners'
+            'action' => 'select-winners?id='.$model->id,'id'=>'select-winners'
         ]);
         ?>
         <div class="modal-content">
@@ -26,6 +26,9 @@ use yii\widgets\ActiveForm;
             </div>
             <div class="modal-body">
                 <div class="row">
+                    <div>
+                        <?= $form->field($model, 'ganadores')->dropDownList($model->comboFinalistas(),['multiple'=>true])?>
+                    </div>
                     <div class="col-sm-12">
                         <table class="table table-striped table-bordered">
                             <thead>
@@ -43,7 +46,7 @@ use yii\widgets\ActiveForm;
                                 foreach ($model->getFinalistas() as $buyRequestProvider){
                                     ?>
                                     <tr>
-                                        <th><?=Html::checkbox($buyRequestProvider->id,false,['class'=>'check_provider','provider'=>$model->id])?></th>
+                                        <th><?=Html::checkbox($buyRequestProvider->id,false,['class'=>'check_provider','provider'=>$buyRequestProvider->id])?></th>
                                         <th><?=$buyRequestProvider->provider->name?></th>
                                         <th><?=$buyRequestProvider->provider->country->label?></th>
                                         <th><?= Html::a('Descargar',$buyRequestProvider->approvedOffert->url_file,['target'=>'_blank'])?></th>

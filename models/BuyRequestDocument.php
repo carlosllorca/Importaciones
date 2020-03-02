@@ -88,4 +88,5 @@ class BuyRequestDocument extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'last_updated_by']);
     }
+
 }
