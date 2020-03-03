@@ -123,6 +123,7 @@ class BuyRequestController extends MainController
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->buy_request_status_id=BuyRequestStatus::$LICITANDO;
             if(!$model->buyRequestProviders){
                 foreach (Provider::related($model->arrayValidatedList()) as $provider){
                     $m=new BuyRequestProvider();

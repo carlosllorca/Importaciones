@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                         'label',
+                        'responsable',
                         'required:boolean',
                         'active:boolean',
 

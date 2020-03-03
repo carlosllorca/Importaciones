@@ -18,7 +18,7 @@ class DocumentTypeSearch extends DocumentType
     {
         return [
             [['id'], 'integer'],
-            [['label'], 'safe'],
+            [['label','responsable'], 'safe'],
             [['required','active'], 'boolean'],
         ];
     }
@@ -65,6 +65,7 @@ class DocumentTypeSearch extends DocumentType
         ]);
 
         $query->andFilterWhere(['ilike', 'label', $this->label]);
+        $query->andFilterWhere(['ilike', 'responsable', $this->label]);
 
         return $dataProvider;
     }

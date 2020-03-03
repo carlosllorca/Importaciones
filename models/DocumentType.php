@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property string $label
+ * @property string $responsable
  * @property bool $required
  * @property bool $active
  *
@@ -34,9 +35,10 @@ class DocumentType extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['label'], 'required'],
+            [['label','responsable'], 'required'],
             [['required','active'], 'boolean'],
             [['label'], 'string', 'max' => 150],
+            [['responsable'], 'string', 'max' => 100],
         ];
     }
 

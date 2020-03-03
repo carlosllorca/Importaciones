@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/views/buy-request/_uploadFileExpedient.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/js/buy-request/_documentos.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/BuyRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BuyRequestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestDocument.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestDocument.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestSearch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Rbac.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Rbac.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/DemandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/DemandController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DocumentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DocumentTypeSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentTypeSearch.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/buy-request/_documentos.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_documentos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/buy-request/_select_winners.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_select_winners.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/buy-request/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/document-type/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/document-type/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/document-type/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/document-type/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +83,7 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="buy_request_document: table" type="69fad909:PgImplModel$LocalTable" />
+        <item name="document_type: table" type="69fad909:PgImplModel$LocalTable" />
       </path>
     </expand>
     <select />
@@ -362,7 +364,10 @@
       <workItem from="1582994914459" duration="7196000" />
       <workItem from="1583034967828" duration="56562000" />
       <workItem from="1583166024575" duration="1591000" />
-      <workItem from="1583167806265" duration="3394000" />
+      <workItem from="1583167806265" duration="5593000" />
+      <workItem from="1583173460835" duration="1086000" />
+      <workItem from="1583185256638" duration="662000" />
+      <workItem from="1583249322545" duration="610000" />
     </task>
     <task id="LOCAL-00001" summary="Preparando el proyecto">
       <created>1576473614599</created>
@@ -588,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583141207832</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Subir ficheros">
+      <created>1583171252458</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1583171252458</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -608,7 +620,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Menu principal y detalles de maquetación." />
     <MESSAGE value="Menu nomencladores" />
     <MESSAGE value="Listos los nomencladores" />
     <MESSAGE value="Envio de Demanda" />
@@ -633,7 +644,8 @@
     <MESSAGE value="Licitar listo" />
     <MESSAGE value="Gestion de archivos lista." />
     <MESSAGE value="Gestion de documentos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gestion de documentos" />
+    <MESSAGE value="Subir ficheros" />
+    <option name="LAST_COMMIT_MESSAGE" value="Subir ficheros" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2475" y="200" width="800" height="677" key="#Deployment" timestamp="1576472912804">
@@ -691,14 +703,14 @@
     <state x="3340" y="375" key="#xdebugger.evaluate/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583137607543" />
     <state x="852" y="256" width="254" height="593" key="#xdebugger.evaluate/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1576847070634" />
     <state x="2992" y="323" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882354679" />
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2" timestamp="1583141207632">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2" timestamp="1583171252250">
+      <screen x="49" y="27" width="1871" height="1053" />
     </state>
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580268556850" />
     <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1582487604398" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582788400503" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583141207632" />
-    <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1582552812813" />
+    <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583171252250" />
     <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580970277888" />
     <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/49.27.1871.1053@49.27.1871.1053" timestamp="1578979741565" />
     <state x="221" y="159" key="CommitChangelistDialog2/49.27.3791.1053@49.27.3791.1053" timestamp="1583031668628" />
@@ -855,20 +867,21 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2369" y="187" key="SettingsEditor/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576771251806" />
-    <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1581399626539">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="590" y="295" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1583171256309">
+      <screen x="49" y="27" width="1871" height="1053" />
     </state>
     <state x="2475" y="275" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580268560510" />
     <state x="2475" y="275" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581399626539" />
     <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576871850381" />
+    <state x="590" y="295" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583171256309" />
     <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882959131" />
-    <state x="2256" y="169" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1583136264292">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="376" y="192" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1583173352016">
+      <screen x="49" y="27" width="1871" height="1053" />
     </state>
     <state x="672" y="192" width="566" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1576559686639" />
     <state x="2256" y="169" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582771900318" />
     <state x="2256" y="169" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583136264292" />
-    <state x="376" y="192" width="321" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1576845530248" />
+    <state x="376" y="192" width="321" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583173352016" />
     <state x="2256" y="169" width="840" height="739" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580795589233" />
     <state x="649" y="398" key="com.intellij.ide.util.TipDialog" timestamp="1576977258692">
       <screen x="49" y="27" width="1871" height="1053" />

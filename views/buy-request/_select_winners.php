@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div>
+                    <div class="hidden">
                         <?= $form->field($model, 'ganadores')->dropDownList($model->comboFinalistas(),['multiple'=>true])?>
                     </div>
                     <div class="col-sm-12">

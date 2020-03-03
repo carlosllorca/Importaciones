@@ -68,8 +68,8 @@ use yii\helpers\Html; ?>
                 ?>
                 <tr>
                     <th><?= $buyRequestDocument->documentType->label ?></th>
-                    <th>-</th>
-                    <th><?= $buyRequestDocument->url_to_file ? 'SUBIDO' : 'PENDIENTE' ?></th>
+                    <th><?= $buyRequestDocument->documentType->responsable ?></th>
+                    <th><?= $buyRequestDocument->url_to_file ? '<b class="text-success">SUBIDO</b>' : '<b class="text-danger">PENDIENTE</b>' ?></th>
                     <th><?= $buyRequestDocument->url_to_file ? $buyRequestDocument->lastUpdatedBy->full_name : '-' ?></th>
                     <th><?= $buyRequestDocument->url_to_file ? Yii::$app->formatter->asDate($buyRequestDocument->last_update) : '-' ?></th>
                     <th>

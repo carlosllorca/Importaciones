@@ -330,16 +330,8 @@ class DemandController extends MainController
                 ]);
                 $request_number=$buyRequest->code;
                 break;
-            case 'nacional_exist':
-                $request=$raw_data->solicitud;
-                DemandItem::updateAll([
-                    'buy_request_id'=>$request,
-                ],[
-                    'id'=>$items
-                ]);
-
-                break;
             case 'internacional_exist':
+            case 'nacional_exist':
                 $request=$raw_data->solicitud;
                 DemandItem::updateAll([
                     'buy_request_id'=>$request,
@@ -373,6 +365,13 @@ class DemandController extends MainController
         }
         Yii::$app->session->setFlash('active','items');
         $demand = Demand::findOne($demand_id);
+        if($demand->demand_status_id==DemandStatus::ENVIADA_ID){
+          $demand->demand_status_id=DemandStatus::ACEPTADA_ID;
+          $demand->save();
+              //todo:Enviar email notificando
+            Yii::$app->traza->saveLog('Demanda aceptada','La Demanda '.$demand->demand_code. ' ha sido aceptada');
+            Yii::$app->session->setFlash('success','Demanda aceptada');
+        }
         if(count($demand->sinClasificar())==0){
             $demand->demand_status_id=DemandStatus::TRAMITADA_ID;
             $demand->save();

@@ -11,11 +11,21 @@ use yii\widgets\ActiveForm;
 <div class="document-type-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <div class="row">
+        <div class="col-sm-6"><?= $form->field($model, 'label')->textInput(['maxlength' => true]) ?></div>
+        <div class="col-sm-6"><?= $form->field($model, 'responsable')->textInput(['maxlength' => true]) ?></div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'required')->checkbox() ?>
 
-    <?= $form->field($model, 'label')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'active')->checkbox() ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'required')->checkbox() ?>
-    <?= $form->field($model, 'active')->checkbox() ?>
+
+
+
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
