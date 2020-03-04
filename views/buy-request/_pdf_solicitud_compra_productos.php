@@ -21,7 +21,7 @@
         $item = 1;
         $total =0;
         foreach ($model->getProducts() as $product){
-            $total+=round($product->price*$product->quantity,2);
+            $total=$total+round($product->price*$product->quantity,2);
             $pr = \app\models\ValidatedListItem::findOne(['product_name'=>$product->product_name]);
             ?>
             <tr>
@@ -32,7 +32,7 @@
                 <td style="text-align: center"><p class="textBasic" ><?=$pr->um->label?></p></td>
                 <td style="text-align: center"><p class="textBasic" ><?=$product->quantity?></p></td>
                 <td style="text-align: center"><p class="textBasic" ><?=$product->price?></p></td>
-                <td style="text-align: center"><p class="textBasic" ><?=$total?></p></td>
+                <td style="text-align: center"><p class="textBasic" ><?=round($product->price*$product->quantity,2)?></p></td>
             </tr>
             <?php
             $item++;

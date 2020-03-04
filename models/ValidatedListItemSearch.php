@@ -17,7 +17,7 @@ class ValidatedListItemSearch extends ValidatedListItem
     public function rules()
     {
         return [
-            [['id', 'um_id', 'subfamily_id'], 'integer'],
+            [['id', 'um_id', 'validated_list_id'], 'integer'],
             [['seisa_code', 'product_name', 'tecnic_description'], 'safe'],
             [['price'], 'number'],
         ];
@@ -42,7 +42,7 @@ class ValidatedListItemSearch extends ValidatedListItem
     public function search($params,$vl)
     {
         $query = ValidatedListItem::find();
-        $query->innerJoinWith('subfamily')->andWhere(['subfamily.validated_list_id'=>$vl]);
+        $query->andWhere(['validated_list_id'=>$vl]);
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -63,7 +63,7 @@ class ValidatedListItemSearch extends ValidatedListItem
             'price' => $this->price,
 
             'um_id' => $this->um_id,
-            'subfamily_id' => $this->subfamily_id,
+            'subfamily_id' => $this->validated_list_id,
         ]);
 
         $query->andFilterWhere(['ilike', 'seisa_code', $this->seisa_code])

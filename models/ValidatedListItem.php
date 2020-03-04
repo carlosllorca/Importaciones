@@ -15,11 +15,11 @@ use yii\helpers\ArrayHelper;
  * @property float $price
 
  * @property int $um_id
- * @property int|null $subfamily_id
+ * @property int|null $validated_list_id
  *
  * @property CertificationValidatedListItem[] $certificationValidatedListItems
  * @property DemandItem[] $demandItems
- * @property Subfamily $subfamily
+ * @property ValidatedList $validatedList
  * @property Um $um
  */
 class ValidatedListItem extends \yii\db\ActiveRecord
@@ -40,7 +40,7 @@ class ValidatedListItem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['seisa_code', 'product_name', 'tecnic_description', 'price',  'um_id','subfamily_id'], 'required'],
+            [['product_name', 'tecnic_description', 'price',  'um_id'], 'required'],
             [['tecnic_description'], 'string'],
             [['price'], 'number'],
             [['certificados'], 'safe'],
@@ -49,7 +49,7 @@ class ValidatedListItem extends \yii\db\ActiveRecord
             [['seisa_code'], 'string', 'max' => 50],
             [['product_name'], 'string', 'max' => 200],
             [['seisa_code'], 'unique'],
-            [['subfamily_id'], 'exist', 'skipOnError' => true, 'targetClass' => Subfamily::className(), 'targetAttribute' => ['subfamily_id' => 'id']],
+            [['validated_list_id'], 'exist', 'skipOnError' => true, 'targetClass' => ValidatedList::className(), 'targetAttribute' => ['subfamily_id' => 'id']],
             [['um_id'], 'exist', 'skipOnError' => true, 'targetClass' => Um::className(), 'targetAttribute' => ['um_id' => 'id']],
         ];
     }
@@ -104,9 +104,9 @@ class ValidatedListItem extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSubfamily()
+    public function getValidatedList()
     {
-        return $this->hasOne(Subfamily::className(), ['id' => 'subfamily_id']);
+        return $this->hasOne(ValidatedList::className(), ['id' => 'validated_list_id']);
     }
 
     /**
@@ -117,7 +117,7 @@ class ValidatedListItem extends \yii\db\ActiveRecord
         return $this->hasOne(Um::className(), ['id' => 'um_id']);
     }
     public static function combo($vl){
-        return ArrayHelper::map(ValidatedListItem::find()->innerJoinWith('subfamily')->where(['subfamily.validated_list_id'=>$vl])->all(),'id','product_name');
+        return ArrayHelper::map(ValidatedListItem::find()->where(['validated_list_id'=>$vl])->all(),'id','product_name');
     }
 
     /**

@@ -11,7 +11,7 @@ use kartik\file\FileInput;
 
  * @property int $upload_by
  * @property string $upload_date
- * @property string $recived_date
+
  * @property string $expiration_date
  * @property string $url_file
  * @property int|null $evaluated_by
@@ -45,13 +45,13 @@ class Offert extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [[ 'upload_by', 'upload_date', 'recived_date', 'expiration_date', 'url_file', 'buy_request_provider_id'], 'required'],
+            [[ 'upload_by', 'upload_date', 'expiration_date', 'url_file', 'buy_request_provider_id'], 'required'],
             [[ 'upload_by', 'evaluated_by', 'buy_request_provider_id'], 'default', 'value' => null],
             [['upload_by', 'evaluated_by', 'buy_request_provider_id'], 'integer'],
             [['oferta'], 'file', 'skipOnEmpty' => true, 'extensions' => 'xls,xlsx','maxSize' => 2048*1024 ],
             [['evaluacion'], 'file', 'skipOnEmpty' => true, 'extensions' => 'doc,docx,pdf','maxSize' => 2048*1024 ],
            // ['oferta','required'],
-            [['upload_date', 'recived_date', 'expiration_date', 'evaluation_date'], 'safe'],
+            [['upload_date', 'expiration_date', 'evaluation_date'], 'safe'],
             [['url_file', 'url_evaluation'], 'string'],
             [['approved', 'winner'], 'boolean'],
             [['oferta','evaluacion'], 'uploadFileRequired'],
@@ -96,7 +96,7 @@ class Offert extends \yii\db\ActiveRecord
 
             'upload_by' => 'Subido por',
             'upload_date' => 'Fecha de creación',
-            'recived_date' => 'Recivido',
+
             'expiration_date' => 'Expira',
             'url_file' => 'Url File',
             'evaluated_by' => 'Evaluado por',

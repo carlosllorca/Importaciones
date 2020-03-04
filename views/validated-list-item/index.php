@@ -32,11 +32,7 @@ use yii\widgets\Pjax;
             'product_name',
             'tecnic_description:ntext',
             'price',
-            [
-                'attribute' => 'subfamily_id',
-                'filter' => \app\models\Subfamily::combo($model->id),
-                'value' => 'subfamily.label'
-            ],
+
             //'validated_list_id',
             //'um_id',
             //'subfamily_id',

@@ -12,7 +12,7 @@ use yii\helpers\ArrayHelper;
  *
  * @property Demand[] $demands
  * @property ProviderValidatedList[] $providerValidatedLists
- * @property Subfamily[] $subfamilies
+ * @property ValidatedListItem[] $validatedListItems
  */
 class ValidatedList extends \yii\db\ActiveRecord
 {
@@ -65,7 +65,7 @@ class ValidatedList extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSubfamilies()
+    public function getValidatedListItems()
     {
         return $this->hasMany(Subfamily::className(), ['validated_list_id' => 'id']);
     }

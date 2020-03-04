@@ -37,9 +37,7 @@ use yii\widgets\ActiveForm;
                         <?= $form->field($newOffert, 'upload_by')->textInput()?>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6">
-                            <?= $form->field($newOffert, 'recived_date')->textInput(['type' => 'date']) ?>
-                        </div>
+
                         <div class="col-sm-6">
                             <?= $form->field($newOffert, 'expiration_date')->textInput(['type' => 'date']) ?>
                         </div>
@@ -143,7 +141,7 @@ use yii\widgets\ActiveForm;
                         foreach ($model->offerts as $offert){
                             ?>
                             <tr>
-                                <th><?=Yii::$app->formatter->asDate($offert->recived_date)?></th>
+                                <th><?=Yii::$app->formatter->asDate($offert->upload_date)?></th>
                                 <th><?=Yii::$app->formatter->asDate($offert->expiration_date)?></th>
                                 <th><?= Html::a('Descargar',$offert->url_file,['target'=>'_blank'])?></th>
                                 <th>

@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </th>
                         <th>
                             <label>Tipo</label>
-                            <p><?= $model->demandItems[0]->validatedListItem->subfamily->validatedList->label ?></p>
+                            <p><?= $model->demandItems[0]->validatedListItem->validatedList->label ?></p>
                         </th>
                         <th>
                             <label>Cliente(s)</label>

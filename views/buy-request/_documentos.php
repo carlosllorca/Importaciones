@@ -35,10 +35,16 @@ use yii\helpers\Html; ?>
             ?>
             <p style="text-align: right">
                 <?= Html::a('Enviar a seguimiento', '#', ['class' => 'btn btn-primary disabled']) ?>
+                <?= Html::a('Subir otro documento', '#',
+                    [
+                            'class' => 'btn btn-primary',
+                            'title'=>'Puedes subir un documento que no esté referido en la lista.'
+                    ]) ?>
             </p>
             <?php
         }
         ?>
+
 
     </div>
 
