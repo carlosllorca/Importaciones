@@ -17,39 +17,30 @@ use yii\web\UploadedFile;
  * @property int $id
  * @property string $code
  * @property string $created
- * @property string $last_update
+ * @property string|null $last_update
  * @property int $created_by
  * @property int $buy_request_status_id
- * @property string $bidding_start
- * @property string $bidding_end
  * @property int $buy_request_type_id
- * @property int $buyer_assigned
- * @property int $dt_specialist_asigned
- * @property boolean $gol_approved
- * @property boolean $dt_approved
- * @property boolean $buy_approved
-
- * @property string $cancel_reason
- * @property int $destiny_id
- * @property int $payment_instrument_id
- * @property int $buy_condition_id
+ * @property string|null $approved_date
+ * @property int|null $approved_by
+ * @property string|null $cancel_reason
 
  * @property FileInput $blank_contract
  * @property FileInput $pliego
  * @property FileInput $buyer_fundamentation
  *
- * @property BuyCondition $buyCondition
- * @property PaymentInstrument $paymentInstrument
- * @property Destiny $destiny
  * @property BuyRequestStatus $buyRequestStatus
  * @property BuyRequestType $buyRequestType
  * @property User $createdBy
- * @property User $buyerAssigned
- * @property User $dtSpecialistAssigned
+ * @property User $approvedBy
  * @property BuyRequestDocument[] $buyRequestDocuments
- * @property DemandItem[] $demandItems
+ * @property BuyRequestInternational[] $buyRequestInternationals
  * @property BuyRequestProvider[] $buyRequestProviders
+ * @property DemandItem[] $demandItems
+ * @property EmailNotify[] $emailNotifies
+ * @property RequestStage[] $requestStages
  */
+ 
 class BuyRequest extends \yii\db\ActiveRecord
 {
     /**
@@ -63,66 +54,26 @@ class BuyRequest extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    const SCENARIO_GENERATE_LICITACION = 'ADD_LICITACION';
-    public $blank_contract;
-    public $pliego;
-    public $buyer_fundamentation;
-    public $ganadores;
-    static  $seller_fields  =[
-            DocumentType::FUNDAMENTACION_COMPRA_ID=>'buyer_fundamentation',
-            DocumentType::PLIEGO_ID=>'pliego',
-            DocumentType::PREFORMA_ID=>'blank_contract',
 
-        ];
+
     public function rules()
     {
         return [
             [['code', 'created', 'created_by', 'buy_request_status_id', 'buy_request_type_id'], 'required'],
-            [['created', 'last_update', 'bidding_start', 'bidding_end','buyer_assigned','dt_specialist_assigned',
-                'ganadores'], 'safe'],
-            [['created_by', 'buy_request_status_id', 'buy_request_type_id'], 'default', 'value' => null],
-            [['created_by', 'buy_request_status_id', 'buy_request_type_id','destiny_id','payment_instrument_id','buy_condition_id'], 'integer'],
-            [['gol_approved','dt_approved','buy_approved'],'boolean'],
-            [['bidding_start','bidding_end','destiny_id','payment_instrument_id','buy_condition_id'],'required','on'=>self::SCENARIO_GENERATE_LICITACION],
-            ['cancel_reason','string'],
-            [['blank_contract','pliego','buyer_fundamentation'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf,doc,docx','maxSize' => 2048*1024 ],
-            [['bidding_start','bidding_end'], 'invalidRangeDate'],
-            [['bidding_start','bidding_end'], 'beforeToday'],
+            [['created', 'last_update', 'approved_date','ganadores'], 'safe'],
+            [['created_by', 'buy_request_status_id', 'buy_request_type_id', 'approved_by'], 'default', 'value' => null],
+            [['created_by', 'buy_request_status_id', 'buy_request_type_id', 'approved_by'], 'integer'],
+            [['cancel_reason'], 'string'],
             [['code'], 'string', 'max' => 50],
+
             [['buy_request_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestStatus::className(), 'targetAttribute' => ['buy_request_status_id' => 'id']],
             [['buy_request_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestType::className(), 'targetAttribute' => ['buy_request_type_id' => 'id']],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
-            [['destiny_id'], 'exist', 'skipOnError' => true, 'targetClass' => Destiny::className(), 'targetAttribute' => ['destiny_id' => 'id']],
-            [['buy_condition_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyCondition::className(), 'targetAttribute' => ['buy_condition_id' => 'id']],
-            [['payment_instrument_id'], 'exist', 'skipOnError' => true, 'targetClass' => PaymentInstrument::className(), 'targetAttribute' => ['payment_instrument_id' => 'id']]
+            [['approved_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['approved_by' => 'id']],
         ];
     }
-    function invalidRangeDate($attribute)
-    {
-        $start = strtotime($this->bidding_start);
-        $end = strtotime($this->bidding_end);
-        if ($end < $start) {
-            $this->addError($attribute, "El rango de fechas seleccionado no es válido.");
-        }
-    }
-    function beforeToday($attribute)
-    {
-        $date = strtotime($this->$attribute);
-        $today = strtotime(date('Y-m-d'));
-        if ($date < $today) {
-            $this->addError($attribute, "La fecha no puede estar en el pasado.");
-        }
-    }
-    /*
-     * Subir fichero
-     */
-    public function upload($file)
-    {
-        $name = Yii::$app->security->generateRandomString().'.'.$this->$file->extension;
-        $this->$file->saveAs('request_files/' .$name);
-        return '/request_files/' .$name;
 
-    }
+
 
     /**
      * {@inheritdoc}
@@ -144,7 +95,6 @@ class BuyRequest extends \yii\db\ActiveRecord
             'buy_condition_id' => 'Condición de la compra',
         ];
     }
-
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -168,19 +118,13 @@ class BuyRequest extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
+
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getBuyerAssigned()
+    public function getApprovedBy()
     {
-        return $this->hasOne(User::className(), ['id' => 'buyer_assigned']);
-    }
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDtSpecialistAssigned()
-    {
-        return $this->hasOne(User::className(), ['id' => 'dt_specialist_asigned']);
+        return $this->hasOne(User::className(), ['id' => 'approved_by']);
     }
 
     /**
@@ -190,6 +134,48 @@ class BuyRequest extends \yii\db\ActiveRecord
     {
         return $this->hasMany(BuyRequestDocument::className(), ['buy_request_id' => 'id']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBuyRequestInternationals()
+    {
+        return $this->hasMany(BuyRequestInternational::className(), ['buy_request_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBuyRequestProviders()
+    {
+        return $this->hasMany(BuyRequestProvider::className(), ['buy_request_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDemandItems()
+    {
+        return $this->hasMany(DemandItem::className(), ['buy_request_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEmailNotifies()
+    {
+        return $this->hasMany(EmailNotify::className(), ['buy_request_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRequestStages()
+    {
+        return $this->hasMany(RequestStage::className(), ['buy_request_id' => 'id']);
+    }
+
+
 
     /**
      * @return BuyRequestDocument[]
@@ -205,37 +191,6 @@ class BuyRequest extends \yii\db\ActiveRecord
         return $items;
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDemandItems()
-    {
-        return $this->hasMany(DemandItem::className(), ['buy_request_id' => 'id']);
-    }
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getBuyCondition()
-    {
-        return $this->hasOne(BuyCondition::className(), ['id' => 'buy_condition_id']);
-    }
-    /**
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDestiny()
-    {
-        return $this->hasOne(Destiny::className(), ['id' => 'destiny_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getPaymentInstrument()
-    {
-        return $this->hasOne(PaymentInstrument::className(), ['id' => 'payment_instrument_id']);
-    }
 
     /**
      * Demandas asociadas a las solicitudes de compra
@@ -255,13 +210,7 @@ class BuyRequest extends \yii\db\ActiveRecord
             ->groupBy(['validated_list_item.id','demand_item.price'])->all();
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getBuyRequestProviders()
-    {
-        return $this->hasMany(BuyRequestProvider::className(), ['buy_request_id' => 'id']);
-    }
+
 
     /**
      * Monto total de la orden de compra.
@@ -377,24 +326,7 @@ class BuyRequest extends \yii\db\ActiveRecord
         return $vl;
     }
 
-    /**
-     * Licitación activa?
-     * @return bool
-     */
-    function biddingActive()
-    {
-        $start = strtotime($this->bidding_start);
-        $end = strtotime($this->bidding_end);
-        $now= strtotime(date('Y-m-d'));
-        return $now>=$start&&$now<=$end;
 
-    }
-    public function biddingEnd()
-    {
-        $end = strtotime($this->bidding_end);
-        $now= strtotime(date('Y-m-d'));
-        return $now>$end;
-    }
     public function getWinners(){
         $winners=[];
         foreach ($this->buyRequestProviders as $buyRequestProvider){
@@ -445,18 +377,26 @@ class BuyRequest extends \yii\db\ActiveRecord
      */
     public function generateFiledTree($fileUploaded){
         //todo: Mejorar este método teniendo en cuenta los ficheros reales del tipo de solicitud. Modelar esto en BD
-        $fields = DocumentType::find()->where(['active'=>true])->all();
-        foreach ($fields as $field){
-            $doc = new BuyRequestDocument();
-            $doc->document_type_id=$field->id;
-            $doc->buy_request_id=$this->id;
-            if(isset(self::$seller_fields[$field->id])&&$fileUploaded[self::$seller_fields[$field->id]]){
-                $doc->url_to_file=$fileUploaded[self::$seller_fields[$field->id]];
-                $doc->last_updated_by=User::userLogged()->id;
-                $doc->last_update=date('Y-m-d');
-            }
-            $doc->save(false);
+
+        switch ($this->buy_request_type_id){
+            case (BuyRequestType::$INTERNACIIONAL_ID):
+                $fields = DocumentType::find()->where(['active'=>true])->all();
+                foreach ($fields as $field){
+                    $doc = new BuyRequestDocument();
+                    $doc->document_type_id=$field->id;
+                    $doc->buy_request_id=$this->id;
+                    if(isset(self::$seller_fields[$field->id])&&$fileUploaded[self::$seller_fields[$field->id]]){
+                        $doc->url_to_file=$fileUploaded[self::$seller_fields[$field->id]];
+                        $doc->last_updated_by=User::userLogged()->id;
+                        $doc->last_update=date('Y-m-d');
+                    }
+                    $doc->save(false);
+                }
+                break;
+
+
         }
+
 
     }
 

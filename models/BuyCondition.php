@@ -11,7 +11,7 @@ use yii\helpers\ArrayHelper;
  * @property int $id
  * @property string $label
  *
- * @property BuyRequest[] $buyRequests
+ * @property BuyRequestInternational[] $buyRequestInternationals
  */
 class BuyCondition extends \yii\db\ActiveRecord
 {
@@ -48,9 +48,9 @@ class BuyCondition extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getBuyRequests()
+    public function getBuyRequestInternationals()
     {
-        return $this->hasMany(BuyRequest::className(), ['buy_condition_id' => 'id']);
+        return $this->hasMany(BuyRequestInternational::className(), ['buy_condition_id' => 'id']);
     }
     /**
      * Combo estado de las solicitudes

@@ -11,7 +11,8 @@ use yii\helpers\ArrayHelper;
  * @property int $id
  * @property string $label
  *
- * @property BuyRequest[] $buyRequests
+ * @property BuyRequestInternational[] $buyRequestInternationals
+
  */
 class PaymentInstrument extends \yii\db\ActiveRecord
 {
@@ -50,9 +51,9 @@ class PaymentInstrument extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getBuyRequests()
+    public function getBuyRequestInternationals()
     {
-        return $this->hasMany(BuyRequest::className(), ['payment_instrument_id' => 'id']);
+        return $this->hasMany(BuyRequestInternational::className(), ['payment_instrument_id' => 'id']);
     }
     /**
      * Combo estado de las solicitudes
