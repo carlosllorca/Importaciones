@@ -14,6 +14,7 @@ use Yii;
  * @property bool $active
  * @property string $contact_name
  * @property string $contact_email
+ * @property string $observation
  *
  * @property Country $country
  * @property ProviderValidatedList[] $providerValidatedLists
@@ -38,7 +39,7 @@ class Provider extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'country_id', 'address', 'contact_name', 'contact_email'], 'required'],
-            [['name', 'address', 'contact_name', 'contact_email'], 'string'],
+            [['name', 'address', 'contact_name', 'contact_email','observation'], 'string'],
             ['validated_list_associated','almostOne'],
             [['country_id'], 'default', 'value' => null],
             [['country_id'], 'integer'],
@@ -66,6 +67,7 @@ class Provider extends \yii\db\ActiveRecord
             'validated_list_associated'=>'Listados validados asociados',
             'contact_name' => 'Persona de contacto',
             'contact_email' => 'Email de contacto',
+            'observation' => 'Observaciones',
         ];
     }
 

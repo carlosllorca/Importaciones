@@ -17,6 +17,9 @@ use yii\web\IdentityInterface;
 
  * @property string $password
  * @property string $confirm_password
+ * @property string $cargo
+ * @property string $phone_number
+ * @property string $digital_signature
  * @property string $created_at
  * @property string|null $last_login
  * @property boolean $active
@@ -63,7 +66,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['rol'], 'required'],
             [['active'], 'boolean'],
             [['username'], 'string', 'max' => 25],
-            [['full_name'], 'string', 'max' => 150],
+            [['phone_number'], 'string', 'max' => 20],
+            [['phone_number'], 'string', 'max' => 20],
+            [['full_name','cargo'], 'string', 'max' => 150],
+            [['full_name','cargo','digital_signature_url'], 'string', 'max' => 150],
 
             [['email'], 'string', 'max' => 50],
             [['province_ueb'], 'required',
@@ -102,6 +108,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'confirm_password' => 'Confirmar Contraseña',
             'created_at' => 'Creado',
             'last_login' => 'Último acceso',
+            'digital_signature' => 'Firma digital',
             'province_ueb' => 'UEB',
             'active' => 'Activo',
         ];

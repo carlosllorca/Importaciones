@@ -35,6 +35,7 @@ use yii\widgets\ActiveForm;
   <div class="row">
         <div class="col-sm-6 col-md-4">  <?= $form->field($model, 'contact_name')->textInput() ?></div>
         <div class="col-sm-6 col-md-4">  <?= $form->field($model, 'contact_email')->textInput() ?></div>
+        <div class="col-sm-6 col-md-4">  <?= $form->field($model, 'observation')->textInput() ?></div>
         <div class="col-sm-12"> <?= $form->field($model, 'active')->checkbox() ?></div>
 
   </div>

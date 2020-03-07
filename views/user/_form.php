@@ -52,6 +52,12 @@ if (!$model->isNewRecord) {
         <div class="col-sm-6 col-md-4">
             <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
         </div>
+        <div class="col-sm-6 col-md-4">
+            <?= $form->field($model, 'cargo')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true]) ?>
+        </div>
 
 
         <div class="col-sm-6 col-md-4">

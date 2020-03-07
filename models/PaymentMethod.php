@@ -9,6 +9,8 @@ use Yii;
  *
  * @property int $id
  * @property string $label
+ * @property string $description
+ * @property boolean $active
  *
  * @property Demand[] $demands
  */
@@ -29,8 +31,10 @@ class PaymentMethod extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['label'], 'required'],
+            [['label','active'], 'required'],
             [['label'], 'string', 'max' => 150],
+            [['description'], 'string'],
+            [['active'], 'boolean'],
         ];
     }
 
@@ -42,6 +46,8 @@ class PaymentMethod extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'label' => 'Nombre',
+            'description' => 'Descripción',
+            'active' => 'Activo',
         ];
     }
 
@@ -53,6 +59,6 @@ class PaymentMethod extends \yii\db\ActiveRecord
         return $this->hasMany(Demand::className(), ['payment_method_id' => 'id']);
     }
     public static function combo(){
-        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
+        return ArrayHelper::map(self::find()->where(['active'=>true])->orderBy('label')->all(),'id','label');
     }
 }

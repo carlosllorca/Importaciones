@@ -26,6 +26,9 @@ use yii\web\UploadedFile;
  * @property int $buyer_assigned
  * @property int $dt_specialist_asigned
  * @property boolean $gol_approved
+ * @property boolean $dt_approved
+ * @property boolean $buy_approved
+
  * @property string $cancel_reason
  * @property int $destiny_id
  * @property int $payment_instrument_id
@@ -79,7 +82,7 @@ class BuyRequest extends \yii\db\ActiveRecord
                 'ganadores'], 'safe'],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id'], 'default', 'value' => null],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id','destiny_id','payment_instrument_id','buy_condition_id'], 'integer'],
-            [['gol_approved'],'boolean'],
+            [['gol_approved','dt_approved','buy_approved'],'boolean'],
             [['bidding_start','bidding_end','destiny_id','payment_instrument_id','buy_condition_id'],'required','on'=>self::SCENARIO_GENERATE_LICITACION],
             ['cancel_reason','string'],
             [['blank_contract','pliego','buyer_fundamentation'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf,doc,docx','maxSize' => 2048*1024 ],
