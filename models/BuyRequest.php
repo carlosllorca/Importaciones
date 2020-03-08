@@ -34,7 +34,7 @@ use yii\web\UploadedFile;
  * @property User $createdBy
  * @property User $approvedBy
  * @property BuyRequestDocument[] $buyRequestDocuments
- * @property BuyRequestInternational[] $buyRequestInternationals
+ * @property BuyRequestInternational $buyRequestInternational
  * @property BuyRequestProvider[] $buyRequestProviders
  * @property DemandItem[] $demandItems
  * @property EmailNotify[] $emailNotifies
@@ -138,9 +138,9 @@ class BuyRequest extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getBuyRequestInternationals()
+    public function getBuyRequestInternational()
     {
-        return $this->hasMany(BuyRequestInternational::className(), ['buy_request_id' => 'id']);
+        return $this->hasOne(BuyRequestInternational::className(), ['buy_request_id' => 'id']);
     }
 
     /**

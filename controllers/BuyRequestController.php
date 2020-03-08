@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\BuyRequest;
 use app\models\BuyRequestDocument;
+use app\models\BuyRequestInternational;
 use app\models\BuyRequestProvider;
 use app\models\BuyRequestSearch;
 use app\models\BuyRequestStatus;
@@ -15,6 +16,7 @@ use app\models\Offert;
 use app\models\PaymentInstrument;
 use app\models\Provider;
 use app\models\ProviderStatus;
+use app\models\Rbac;
 use app\models\User;
 use Mpdf\Config\ConfigVariables;
 use Mpdf\Config\FontVariables;
@@ -115,11 +117,15 @@ class BuyRequestController extends MainController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        if((Rbac::getRole()==Rbac::$ESP_TECNICO||Rbac::getRole()==Rbac::$COMPRADOR_INTERNACIONAL)&&(!$model->buyRequestInternational->buy_approved_by||!$model->buyRequestInternational->dt_approved_by)){
+            Yii::$app->session->setFlash('warning','Esta orden aún no ha sido aprobada para su edición.');
+            return $this->redirect(['view','id'=>$model->id]);
+        }
         $active = 'demands_associated';
         if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
-            $model->setScenario(BuyRequest::SCENARIO_GENERATE_LICITACION);
-            $model->destiny_id=Destiny::$HABANA_ID;
-            $model->payment_instrument_id=PaymentInstrument::$CC_A__LA_VISTA;
+           // $model->setScenario(BuyRequest::SCENARIO_GENERATE_LICITACION);
+//            $model->destiny_id=Destiny::$HABANA_ID;
+//            $model->payment_instrument_id=PaymentInstrument::$CC_A__LA_VISTA;
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -250,7 +256,16 @@ class BuyRequestController extends MainController
     public function actionApprove($id){
         $model =$this->findModel($id);
         $model->buy_request_status_id=BuyRequestStatus::$SIN_TRAMITAR_ID;
-        $model->gol_approved=true;
+        $model->approved_by=User::userLogged()->id;
+        $model->approved_date=date('Y-m-d');
+        switch ($model->buy_request_type_id) {
+            case (BuyRequestType::$INTERNACIIONAL_ID):
+                $bri= new BuyRequestInternational();
+                $bri->buy_request_id=$model->id;
+                $bri->save(false);
+                break;
+        }
+
         $model->save(false);
         Yii::$app->session->setFlash('success','Solicitud aprobada.');
         return $this->redirect(['update','id'=>$model->id]);
@@ -259,6 +274,26 @@ class BuyRequestController extends MainController
         $model =$this->findModel($id);
         $model->gol_approved=true;
         $model->save(false);
+        Yii::$app->session->setFlash('success','Solicitud aprobada.');
+        return $this->redirect(['view','id'=>$model->id]);
+    }
+    public function actionDtApproved($id){
+        $model =$this->findModel($id);
+        if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
+            $model->buyRequestInternational->dt_approved_by=User::userLogged()->id;
+            $model->buyRequestInternational->dt_approved_date=date('Y-m-d');
+            $model->buyRequestInternational->save(false);
+        }
+        Yii::$app->session->setFlash('success','Solicitud aprobada.');
+        return $this->redirect(['view','id'=>$model->id]);
+    }
+    public function actionBuyApproved($id){
+        $model =$this->findModel($id);
+        if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
+            $model->buyRequestInternational->buy_approved_by=User::userLogged()->id;
+            $model->buyRequestInternational->buy_approved_date=date('Y-m-d');
+            $model->buyRequestInternational->save(false);
+        }
         Yii::$app->session->setFlash('success','Solicitud aprobada.');
         return $this->redirect(['view','id'=>$model->id]);
     }
@@ -345,15 +380,15 @@ class BuyRequestController extends MainController
         $user=$raw_data->user;
         $model = $this->findModel($request);
         if($rol=='comprador'){
-            $model->buyer_assigned=(int)($user);
-            $model->save(false);
-            Yii::$app->session->setFlash('success','Órden asignada al comprador '.$model->buyerAssigned->full_name.'.');
+            $model->buyRequestInternational->buyer_assigned=(int)($user);
+            $model->buyRequestInternational->save(false);
+            Yii::$app->session->setFlash('success','Órden asignada al comprador '.$model->buyRequestInternational->buyerAssigned->full_name.'.');
         }
         elseif ($rol=='et'){
 
-            $model->dt_specialist_asigned=(int)($user);
-            $model->save(false);
-            Yii::$app->session->setFlash('success','Órden asignada al especialista técnico '.$model->dtSpecialistAssigned->full_name.'.');
+            $model->buyRequestInternational->dt_specialist_assigned=(int)($user);
+            $model->buyRequestInternational->save(false);
+            Yii::$app->session->setFlash('success','Órden asignada al especialista técnico '.$model->buyRequestInternational->dtSpecialistAssigned->full_name.'.');
         }
 
         return ['success'=>true];

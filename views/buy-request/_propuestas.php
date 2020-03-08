@@ -8,7 +8,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-if(Yii::$app->user->can('buyrequest/selectwinners')&&$model->biddingEnd()&&count($model->getWinners())==0){
+if(Yii::$app->user->can('buyrequest/selectwinners')&&$model->buyRequestInternational->biddingEnd()&&count($model->getWinners())==0){
     echo $this->render('_select_winners',['model'=>$model]);
 }
 
@@ -17,7 +17,7 @@ if(Yii::$app->user->can('buyrequest/selectwinners')&&$model->biddingEnd()&&count
 
     <div class="row">
         <div class="col-md-12">
-            <div class="<?=$model->bidding_start&&!$model->buyRequestProviders?'':'hidden'?>" id="licitacion_form">
+            <div class="<?=$model->buyRequestInternational->bidding_start&&!$model->buyRequestProviders?'':'hidden'?>" id="licitacion_form">
                 <?php $form = ActiveForm::begin(); ?>
                 <div class="row" style="margin: auto;padding-top: 2%;padding-bottom: 2%">
                     <div class="col-sm-12 col-md-8"
@@ -43,7 +43,7 @@ if(Yii::$app->user->can('buyrequest/selectwinners')&&$model->biddingEnd()&&count
         } else {
             if (!$model->buyRequestProviders) {
                 ?>
-                <div class="col-xs-12 <?=$model->bidding_start?'hidden':''?>" id="no-data">
+                <div class="col-xs-12 <?=$model->buyRequestInternational->bidding_start?'hidden':''?>" id="no-data">
                     <p class="" style="text-align: center;margin-top: 10%; font-size: 20px;color: #cecece">
                         El proceso de licitación para esta orden de compra aún no se ha iniciado.
                         <a class="link" href="#" onclick="showForm()"><b>¿Desea iniciarlo?</b></a>
@@ -56,21 +56,21 @@ if(Yii::$app->user->can('buyrequest/selectwinners')&&$model->biddingEnd()&&count
                     <div class="row"  >
                         <div class="col-sm-3">
                             <label style="color: #0e0e0e">Período de licitación desde:</label>
-                            <p style="font-weight: bold"><?=Yii::$app->formatter->asDate($model->bidding_start)?></p>
+                            <p style="font-weight: bold"><?=Yii::$app->formatter->asDate($model->buyRequestInternational->bidding_start)?></p>
 
                         </div>
                         <div class="col-sm-3">
                             <label style="color: #0e0e0e">Período de licitación hasta:</label>
-                            <p style="font-weight: bold"><?=Yii::$app->formatter->asDate($model->bidding_end)?></p>
+                            <p style="font-weight: bold"><?=Yii::$app->formatter->asDate($model->buyRequestInternational->bidding_end)?></p>
 
                         </div>
                         <div class="col-sm-3">
                             <label style="color: #0e0e0e">Estado:</label>
-                            <p class="<?=$model->biddingActive()?'text-success':'text-danger'?>" style="font-weight: bold"><?=$model->biddingActive()?'ACTIVO':'NO ACTIVO'?></p>
+                            <p class="<?=$model->buyRequestInternational->biddingActive()?'text-success':'text-danger'?>" style="font-weight: bold"><?=$model->buyRequestInternational->biddingActive()?'ACTIVO':'NO ACTIVO'?></p>
 
                         </div>
                         <div class="col-sm-3">
-                            <?=Yii::$app->user->can('buyrequest/selectwinners')&&$model->biddingEnd()&&count($model->getWinners())==0?
+                            <?=Yii::$app->user->can('buyrequest/selectwinners')&&$model->buyRequestInternational->biddingEnd()&&count($model->getWinners())==0?
                             Html::button('Seleccionar ganadores',
                                 [
                                     'class'=>'btn btn-primary',

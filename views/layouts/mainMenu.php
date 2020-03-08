@@ -131,6 +131,7 @@ use app\models\Rbac;
                     <?=$this->render('menu-item',['permission'=>'buycondition','section'=>'buy-condition','title'=>'Condición de compra'])?>
                     <?=$this->render('menu-item',['permission'=>'destiny','section'=>'destiny','title'=>'Destino'])?>
                     <?=$this->render('menu-item',['permission'=>'paymentinstrument','section'=>'payment-instrument','title'=>'Instrumento de pago'])?>
+                    <?=$this->render('menu-item',['permission'=>'documentstatus','section'=>'document-status','title'=>'Estados de los documentos'])?>
 
 
 

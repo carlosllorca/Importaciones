@@ -18,31 +18,31 @@ use yii\helpers\Html;
 
 
     <div class="col-sm-4" style="text-align: center; padding: 0px 12px;">
-        <?= $form->field($model, 'bidding_start')->textInput(['type'=>'date','style'=>['text-align'=>'center']])?>
+        <?= $form->field($model->buyRequestInternational, 'bidding_start')->textInput(['type'=>'date','style'=>['text-align'=>'center']])?>
 
     </div>
     <div class="col-sm-4" style="text-align: center; padding: 0px 12px;">
-        <?= $form->field($model, 'bidding_end')->textInput(['type'=>'date','style'=>['text-align'=>'center']])?>
+        <?= $form->field($model->buyRequestInternational, 'bidding_end')->textInput(['type'=>'date','style'=>['text-align'=>'center']])?>
     </div>
 
 
 </div>
 <div class="row">
     <div class="col-sm-4">
-        <?= $form->field($model, 'destiny_id')->widget(\kartik\select2\Select2::className(),
+        <?= $form->field($model->buyRequestInternational, 'destiny_id')->widget(\kartik\select2\Select2::className(),
             [
                     'data' => \app\models\Destiny::combo()
             ])?>
     </div>
     <div class="col-sm-4">
-        <?= $form->field($model, 'payment_instrument_id')->widget(\kartik\select2\Select2::className(),
+        <?= $form->field($model->buyRequestInternational, 'payment_instrument_id')->widget(\kartik\select2\Select2::className(),
             [
                 'data' => \app\models\PaymentInstrument::combo(),
 
             ])?>
     </div>
     <div class="col-sm-4">
-        <?= $form->field($model, 'buy_condition_id')->widget(\kartik\select2\Select2::className(),
+        <?= $form->field($model->buyRequestInternational, 'buy_condition_id')->widget(\kartik\select2\Select2::className(),
             [
                 'data' => \app\models\BuyCondition::combo(),
                 'options' => [

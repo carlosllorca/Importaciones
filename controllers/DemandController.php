@@ -67,6 +67,7 @@ class DemandController extends MainController
                 return $this->_uebIndex();
                 break;
             case Rbac::$JEFE_LOGÍSTICA:
+            case Rbac::$LOGISTICA_ID:
                 return $this->_dtIndex();
                 break;
 

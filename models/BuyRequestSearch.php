@@ -19,7 +19,7 @@ class BuyRequestSearch extends BuyRequest
     {
         return [
             [['id', 'created_by', 'buy_request_status_id', 'buy_request_type_id'], 'integer'],
-            [['code', 'created', 'last_update', 'bidding_start', 'bidding_end'], 'safe'],
+            [['code', 'created', 'last_update'], 'safe'],
         ];
     }
 
@@ -46,22 +46,30 @@ class BuyRequestSearch extends BuyRequest
         // add conditions that should always apply here
         switch(Rbac::getRole()){
             case Rbac::$JEFE_LOGÍSTICA:
+            case Rbac::$LOGISTICA_ID:
                 break;
             case Rbac::$JEFE_TECNCIO:
+                $query->innerJoinWith('buyRequestInternational');
+                $query->andWhere(['not',['approved_date'=>null]]);
+                break;
+
             case Rbac::$JEFE_COMPRAS:
-                $query->andWhere(['gol_approved'=>true]);
+                $query->innerJoinWith('buyRequestInternational');
+                $query->andWhere(['not',['buy_request_international.dt_approved_by'=>null]]);
                 break;
             case Rbac::$COMPRADOR_INTERNACIONAL:
+                $query->innerJoinWith('buyRequestInternational');
+                $query->andWhere(['buy_request_international.buyer_assigned'=>User::userLogged()->id]);
+
             case Rbac::$COMPRADOR_NACIONAL:
-                $query->andWhere(['gol_approved'=>true]);
+                $query->innerJoinWith('buyRequestInternational');
                 $query->andWhere(['buyer_assigned'=>User::userLogged()->id]);
                 break;
             case Rbac::$ESP_TECNICO:
-                $query->andWhere(['gol_approved'=>true]);
-                $query->andWhere(['dt_specialist_asigned'=>User::userLogged()->id]);
-            case Rbac::$GOL:
-                $query->andWhere(['not',['buy_request_status_id'=>BuyRequestStatus::$BORRADOR_ID]]);
+                $query->innerJoinWith('buyRequestInternational');
+                $query->andWhere(['buy_request_international.dt_specialist_assigned'=>User::userLogged()->id]);
                 break;
+
             case Rbac::$COMITE:
                 $query->andWhere(['buy_request_status_id'=>BuyRequestStatus::$EVALUANDO_OFERTAS]);
                 break;
@@ -74,13 +82,7 @@ class BuyRequestSearch extends BuyRequest
             'query' => $query,
         ]);
 
-        /**
-         * solo puede ver las ordenes asociadas a él que fueron aprobadas
-         */
-        if(Rbac::getRole()==Rbac::$COMPRADOR_INTERNACIONAL||Rbac::getRole()==Rbac::$COMPRADOR_NACIONAL){
-            $query->where(['buyer_assigned'=>User::userLogged()->id]);
-            $query->andWhere(['gol_approved'=>true]);
-        }
+
 
 
         $this->load($params);
@@ -98,8 +100,7 @@ class BuyRequestSearch extends BuyRequest
             'last_update' => $this->last_update,
             'created_by' => $this->created_by,
             'buy_request_status_id' => $this->buy_request_status_id,
-            'bidding_start' => $this->bidding_start,
-            'bidding_end' => $this->bidding_end,
+
             'buy_request_type_id' => $this->buy_request_type_id,
         ]);
 

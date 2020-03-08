@@ -19,7 +19,7 @@ use yii\web\IdentityInterface;
  * @property string $confirm_password
  * @property string $cargo
  * @property string $phone_number
- * @property string $digital_signature
+ * @property string $digital_signature_url
  * @property string $created_at
  * @property string|null $last_login
  * @property boolean $active

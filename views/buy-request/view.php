@@ -18,19 +18,31 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="card-body" style="padding: 15px">
         <p style="text-align: right">
-            <?= Yii::$app->user->can('buyrequest/golapproved')&&$model->gol_approved!=true?Html::a("<span class='glyphicon glyphicon-ok'></span>",
+            <?= Yii::$app->user->can('buyrequest/golapproved')&&!$model->approved_by?Html::a("<span class='glyphicon glyphicon-ok'></span>",
                 ['gol-approved', 'id' => $model->id],
                 ['class' => 'btn btn-success',
                     'data-confirm'=>'¿Confirma que desea aprobar esta solicitud?',
                     'title' => 'Dar aprobación técnica.']) :null?>
-            <?= Yii::$app->user->can('buyrequest/assignbuyer')&$model->gol_approved?Html::a("<span class='glyphicon glyphicon-user'></span> Comprador",
+            <?= Yii::$app->user->can('buyrequest/assignbuyer')?Html::a("<span class='glyphicon glyphicon-user'></span> Comprador",
                 '#',
                 [
                     'class' => "btn btn-primary",
                     'title' => 'Asignar/Reasignar el comprador que gestionará esta orden.',
                     'onclick'=>'assignUser('.$model->id.',"comprador")'
                 ]) :null?>
-            <?= Yii::$app->user->can('buyrequest/assignet')&$model->gol_approved?Html::a("<span class='glyphicon glyphicon-user'></span> ET",
+            <?= Yii::$app->user->can('buyrequest/buyapproved')&&!$model->buyRequestInternational->buy_approved_by?
+                Html::a("<span class='glyphicon glyphicon-ok'></span>",
+                    ['buy-approved', 'id' => $model->id],
+                    ['class' => 'btn btn-success',
+                        'data-confirm'=>'¿Confirma que desea aprobar esta solicitud?',
+                        'title' => 'Dar aprobación técnica.']) :null?>
+            <?= Yii::$app->user->can('buyrequest/dtapproved')&&!$model->buyRequestInternational->dt_approved_by?
+                Html::a("<span class='glyphicon glyphicon-ok'></span>",
+                ['dt-approved', 'id' => $model->id],
+                ['class' => 'btn btn-success',
+                    'data-confirm'=>'¿Confirma que desea aprobar esta solicitud?',
+                    'title' => 'Dar aprobación técnica.']) :null?>
+            <?= Yii::$app->user->can('buyrequest/assignet')?Html::a("<span class='glyphicon glyphicon-user'></span> ET",
                 '#',
                 [
                     'class' => 'btn btn-success',
@@ -88,8 +100,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         <th colspan="2">
                             <label>Comprador asignado</label>
                             <?php
-                                if($model->buyerAssigned){
-                                    echo "<p>{$model->buyerAssigned->full_name}</p>";
+                                if($model->buyRequestInternational&&$model->buyRequestInternational->buyer_assigned){
+                                    echo "<p>{$model->buyRequestInternational->buyerAssigned->full_name}</p>";
                                 }else{
                                     echo "<p class='text-danger'>(No asignado)</p>";
                                 }
@@ -98,8 +110,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         <th >
                             <label>Especialista tecnico asignado</label>
                             <?php
-                            if($model->dtSpecialistAssigned){
-                                echo "<p>{$model->dtSpecialistAssigned->full_name}</p>";
+                            if($model->buyRequestInternational&&$model->buyRequestInternational->dt_specialist_assigned){
+                                echo "<p>{$model->buyRequestInternational->dtSpecialistAssigned->full_name}</p>";
                             }else{
                                 echo "<p class='text-danger'>(No asignado)</p>";
                             }

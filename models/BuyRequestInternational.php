@@ -28,6 +28,8 @@ use Yii;
  *
  * @property BuyCondition $buyCondition
  * @property BuyRequest $buyRequest
+ * @property User $buyerAssigned
+ * @property User $dtSpecialistAssigned
  * @property Destiny $destiny
  * @property PaymentInstrument $paymentInstrument
  * @property User $buyApprovedBy
@@ -140,6 +142,34 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
     {
         return $this->hasOne(BuyRequest::className(), ['id' => 'buy_request_id']);
     }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBuyerAssigned()
+    {
+        return $this->hasOne(User::className(), ['id' => 'buyer_assigned']);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBuyApprovedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'buy_approved_by']);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDtSpecialistAssigned()
+    {
+        return $this->hasOne(User::className(), ['id' => 'dt_specialist_assigned']);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDtApprovedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'dt_approved_by']);
+    }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -157,21 +187,8 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
         return $this->hasOne(PaymentInstrument::className(), ['id' => 'payment_instrument_id']);
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getBuyApprovedBy()
-    {
-        return $this->hasOne(User::className(), ['id' => 'buy_approved_by']);
-    }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDtApprovedBy()
-    {
-        return $this->hasOne(User::className(), ['id' => 'dt_approved_by']);
-    }
+
     /**
      * Licitación activa?
      * @return bool
