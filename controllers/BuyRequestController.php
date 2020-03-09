@@ -129,7 +129,7 @@ class BuyRequestController extends MainController
 
             $form = $model->buyRequestInternational;
             $form->setScenario(BuyRequestInternational::SCENARIO_GENERATE_LICITACION);
-            $form->notifyProviders();
+
             if ($form->load(Yii::$app->request->post()) && $form->save()) {
                 $model->buy_request_status_id=BuyRequestStatus::$LICITANDO;
 
@@ -144,6 +144,7 @@ class BuyRequestController extends MainController
                             $m->save();
                         }
                     };
+                $form->notifyProviders();
 
 
                 $model->save(false);
@@ -544,6 +545,9 @@ class BuyRequestController extends MainController
 
         }
         return $this->renderAjax('_uploadFileExpedient',['model'=>$model]);
+    }
+    public function actionChangeBidding(){
+
     }
 
 

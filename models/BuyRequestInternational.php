@@ -71,7 +71,7 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
             [['bidding_start', 'bidding_end', 'buy_approved_date', 'dt_approved_date','ganadores'], 'safe'],
             [['message','bidding_start','bidding_end','buy_condition_id'],'required','on'=>self::SCENARIO_GENERATE_LICITACION],
             [['bidding_start','bidding_end'], 'invalidRangeDate'],
-            [['bidding_start','bidding_end'], 'beforeToday'],
+            [['bidding_end'], 'beforeToday'],
             [['blank_contract','pliego','buyer_fundamentation'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf,doc,docx','maxSize' => 2048*1024 ],
             [['buy_condition_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyCondition::className(), 'targetAttribute' => ['buy_condition_id' => 'id']],
             [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
@@ -218,28 +218,34 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
         }
         $urlFile = Yii::$app->xlsModels->xlsSolicitudOfertas($this->buyRequest);
 
-//        try {
-//            Yii::$app->mailer->compose()
-//                ->setFrom([Yii::$app->params['senderName'] => Yii::$app->params['senderEmail']])
-//                ->setBcc($providerEmails)
-//                ->setHtmlBody($this->message)
-//                ->setTo([$this->buyApprovedBy->email, $this->buyerAssigned->email])
-//                ->setReplyTo([$this->buyApprovedBy->email, $this->buyerAssigned->email])
-//                //->attach() todo:'Prepar adjunto..
-//                ->setSubject('Solicitud de ofertas No. ' . $this->buyRequest->code)
-//                ->send();
-//            $model = new EmailNotify();
-//            $model->buy_request_id=$this->buy_request_id;
-//            $model->bidding_start=$this->bidding_start;
-//            $model->bidding_end=$this->bidding_end;
-//            $model->sended_date=date('Y-m-d');
-//            $model->body=$this->message;
-//            //$model->attachment=
-//            $model->save();
-//        }catch (\Exception $e){
-//            Yii::$app->session->setFlash('Error','Error notificando a proveedores. Inténtelo de nuevo más tarde.');
-//            return false;
-//        }
+        try {
+            Yii::$app->mailer->compose()
+                ->setFrom([ Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                ->setBcc($providerEmails)
+                ->setHtmlBody($this->message)
+                ->setTo([$this->buyApprovedBy->email, $this->buyerAssigned->email])
+                ->setReplyTo([$this->buyApprovedBy->email, $this->buyerAssigned->email])
+                ->attach($urlFile)
+                ->setSubject('Solicitud de ofertas No. ' . $this->buyRequest->code)
+                ->send();
+            $model = new EmailNotify();
+            $model->buy_request_id=$this->buy_request_id;
+            $model->bidding_start=$this->bidding_start;
+            $model->bidding_end=$this->bidding_end;
+            $model->sended_date=date('Y-m-d');
+            $model->body=$this->message;
+            $model->attachment=$urlFile;
+            if($model->validate()){
+                $model->save();
+            }else{
+                Yii::$app->session->setFlash('danger','Ocurrió un problema al guardar la información de la licitación.');
+            }
+
+
+        }catch (\Exception $e){
+            Yii::$app->session->setFlash('danger','Error notificando a proveedores. Inténtelo de nuevo más tarde.');
+            return false;
+        }
 
     }
 }

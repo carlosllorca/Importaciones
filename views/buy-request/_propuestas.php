@@ -47,7 +47,14 @@ if(Yii::$app->user->can('buyrequest/selectwinners')&&$model->buyRequestInternati
                 <div class="col-xs-12 <?=$model->buyRequestInternational->bidding_start?'hidden':''?>" id="no-data">
                     <p class="" style="text-align: center;margin-top: 10%; font-size: 20px;color: #cecece">
                         El proceso de licitación para esta orden de compra aún no se ha iniciado.
-                        <a class="link" href="#" onclick="showForm()"><b>¿Desea iniciarlo?</b></a>
+                        <?php
+                            if(Yii::$app->user->can('buyrequest/changebidding')){
+                                ?>
+                                <a class="link" href="#" onclick="showForm()"><b>¿Desea iniciarlo?</b></a>
+                                <?php
+                            }
+                        ?>
+
                     </p>
                 </div>
                 <?php
@@ -71,6 +78,14 @@ if(Yii::$app->user->can('buyrequest/selectwinners')&&$model->buyRequestInternati
 
                         </div>
                         <div class="col-sm-3">
+                            <?=Yii::$app->user->can('buyrequest/changebidding')?
+                                Html::button('Cambiar datos de la licitación',
+                                    [
+                                        'class'=>'btn btn-primary',
+                                        'onclick'=>'showForm()'
+                                    ]):null
+                            ?>
+
                             <?=Yii::$app->user->can('buyrequest/selectwinners')&&$model->buyRequestInternational->biddingEnd()&&count($model->getWinners())==0?
                             Html::button('Seleccionar ganadores',
                                 [
