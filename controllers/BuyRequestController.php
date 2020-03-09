@@ -21,8 +21,11 @@ use app\models\User;
 use Mpdf\Config\ConfigVariables;
 use Mpdf\Config\FontVariables;
 use Mpdf\Mpdf;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use Yii;
-use yii\bootstrap\Html;
+use PhpOffice\PhpSpreadsheet\Reader\Html;
 use yii\filters\VerbFilter;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -314,14 +317,14 @@ class BuyRequestController extends MainController
         // return the pdf output as per the destination setting
         Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
 
-        Yii::$app->response->headers->add('Content-Type', 'application/pdf');
+
         $model = $this->findModel($id);
         switch ($format){
             case 'pdf':
                 $this->pdfSolicitudCompra($model);
                 break;
             case 'xls':
-                $this->xlsSolicitudCompra($model);
+                Yii::$app->xlsModels->xlsSolicitudCompra($model);
                 break;
             default:
                 throw  new ForbiddenHttpException('Formato incorrecto');
@@ -331,10 +334,12 @@ class BuyRequestController extends MainController
 
     }
     private function pdfSolicitudCompra($model){
+        Yii::$app->response->headers->add('Content-Type', 'application/pdf');
         $defaultConfig = (new ConfigVariables())->getDefaults();
         $fontDirs = $defaultConfig['fontDir'];
         $defaultFontConfig = (new FontVariables())->getDefaults();
         $fontData = $defaultFontConfig['fontdata'];
+
         $mpdf = new Mpdf([
             'orientation'=>'L',
             'format'=>'letter',
@@ -369,9 +374,7 @@ class BuyRequestController extends MainController
         $mpdf->WriteHTML($this->renderPartial('/buy-request/_pdf_solicitud_compra_productos',['model'=>$model]),2);
         $mpdf->Output();
     }
-    private function xlsSolicitudCompra(){
 
-    }
     public function actionAssignUser(){
         Yii::$app->response->format = Response::FORMAT_JSON;
         $raw_data = json_decode(Yii::$app->request->getRawBody());

@@ -81,29 +81,28 @@ $this->title=$model->code;
         </tr>
         <tr>
             <td colspan="5" style="padding: 0px 5px">
-                <p class="textBasic" style="font-weight: bold" >Por la Dirección de Aseguramiento a la Producción:</p>
+                <p class="textBasic" style="font-weight: bold" >Por la Dirección logística:</p>
             </td>
         </tr>
         <tr>
-            <td style="padding: 0px 5px"><p class="textBasic">Elaborado por:</p></td>
+            <td colspan="2" style="padding: 0px 5px"><p class="textBasic">Elaborado por:</p></td>
             <td style="padding: 0px 5px"><p class="textBasic"></p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"></p></td>
-            <td style="padding: 0px 5px"><p class="textBasic">Aprobado por:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"></p></td>
+            <td style="padding: 0px 5px" colspan="2"><p class="textBasic">Aprobado por:</p></td>
+
         </tr>
         <tr>
             <td style="padding: 0px 5px"><p class="textBasic">Nombre:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"></p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->createdBy->full_name?></p></td>
             <td style="padding: 0px 5px"><p class="textBasic"></p></td>
             <td style="padding: 0px 5px"><p class="textBasic">Nombre:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"></p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->approvedBy->full_name?></p></td>
         </tr>
         <tr>
             <td style="padding: 0px 5px"><p class="textBasic">Cargo:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic">Especialista Logistico</p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->createdBy->cargo?></p></td>
             <td style="padding: 0px 5px"><p class="textBasic"></p></td>
             <td style="padding: 0px 5px"><p class="textBasic">Cargo:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic">Esp Ppal  Gpo  Logística GOL</p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->approvedBy->cargo?></p></td>
         </tr>
         <tr>
             <td style="padding: 0px 5px"><p class="textBasic">Firma:</p></td>
@@ -114,10 +113,10 @@ $this->title=$model->code;
         </tr>
         <tr>
             <td style="padding: 0px 5px"><p class="textBasic">Fecha:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"></p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=Yii::$app->formatter->asDate($model->created)?></p></td>
             <td style="padding: 0px 5px"><p class="textBasic"></p></td>
             <td style="padding: 0px 5px"><p class="textBasic">Fecha:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"></p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=Yii::$app->formatter->asDate($model->approved_date)?></p></td>
         </tr>
         <tr>
             <td colspan="5" style="padding: 0px 5px">
@@ -125,25 +124,25 @@ $this->title=$model->code;
             </td>
         </tr>
         <tr>
-            <td style="padding: 0px 5px"><p class="textBasic">Recibido por:</p></td>
+            <td style="padding: 0px 5px" colspan="2"><p class="textBasic">Recibido por:</p></td>
+
             <td style="padding: 0px 5px"><p class="textBasic"></p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"></p></td>
-            <td style="padding: 0px 5px"><p class="textBasic">Aprobado por:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"></p></td>
+            <td style="padding: 0px 5px" colspan="2"><p class="textBasic">Aprobado por:</p></td>
+
         </tr>
         <tr>
             <td style="padding: 0px 5px"><p class="textBasic">Nombre:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"></p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->buyRequestInternational->buyerAssigned->full_name?></p></td>
             <td style="padding: 0px 5px"><p class="textBasic"></p></td>
             <td style="padding: 0px 5px"><p class="textBasic">Nombre:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"></p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->buyRequestInternational->buyApprovedBy->full_name?></p></td>
         </tr>
         <tr>
             <td style="padding: 0px 5px"><p class="textBasic">Cargo:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic">Esp. Gestion Comercial</p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->buyRequestInternational->buyerAssigned->cargo?></p></td>
             <td style="padding: 0px 5px"><p class="textBasic"></p></td>
             <td style="padding: 0px 5px"><p class="textBasic">Cargo:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic">Director de LAD</p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->buyRequestInternational->buyApprovedBy->cargo?></p></td>
         </tr>
         <tr>
             <td style="padding: 0px 5px"><p class="textBasic">Firma:</p></td>
@@ -154,10 +153,10 @@ $this->title=$model->code;
         </tr>
         <tr>
             <td style="padding: 0px 5px"><p class="textBasic">Fecha:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"></p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=Yii::$app->formatter->asDate($model->buyRequestInternational->buy_approved_date)?></p></td>
             <td style="padding: 0px 5px"><p class="textBasic"></p></td>
             <td style="padding: 0px 5px"><p class="textBasic">Fecha:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"></p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=Yii::$app->formatter->asDate($model->buyRequestInternational->buy_approved_date)?></p></td>
         </tr>
     </table>
 </div>

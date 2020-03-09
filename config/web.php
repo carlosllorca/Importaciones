@@ -32,6 +32,9 @@ $config = [
         'traza'=>[
             'class' => 'app\components\TrazaComponent',
         ],
+        'xlsModels'=>[
+            'class' => 'app\components\XlsModelsComponent',
+        ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],

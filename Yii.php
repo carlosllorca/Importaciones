@@ -16,6 +16,7 @@ class Yii extends \yii\BaseYii
  * Used for properties that are identical for both WebApplication and ConsoleApplication
  *
  * @property \app\components\TrazaComponent $traza The auth manager for this application. Null is returned if auth manager is not configured. This property is read-only. Extended component.
+ * @property \app\components\XlsModelsComponent $xlsModels The auth manager for this application. Null is returned if auth manager is not configured. This property is read-only. Extended component.
 
  * @property \app\components\Mailer $mailer The mailer component. This property is read-only. Extended component.
  */

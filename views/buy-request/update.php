@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                         <?= Yii::$app->user->can('buyrequest/export')?Html::a("<i class='center_fa fa fa-file-pdf-o '></i>",
                             ['export', 'id' => $model->id,'format'=>'pdf'], ['class' => 'btn btn-success','target'=>'_blank' ,'title' => 'Exportar a PDF']):null ?>
                         <?= Yii::$app->user->can('buyrequest/export')?Html::a("<i class='center_fa fa fa-file-excel-o'></i>",
-                            ['export', 'id' => $model->id,'format'=>'xls'], ['class' => "btn btn-success disabled",'target'=>'_blank' ,'title' => 'Exportar a Excel']):null ?>
+                            ['export', 'id' => $model->id,'format'=>'xls'], ['class' => "btn btn-success",'target'=>'_blank' ,'title' => 'Exportar a Excel']):null ?>
                         <?php
                     }
                 ?>

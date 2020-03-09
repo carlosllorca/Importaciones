@@ -382,14 +382,18 @@ class Demand extends \yii\db\ActiveRecord
                 break;
         }
     }
-    function strPaymentMethod(){
+    function strPaymentMethod($withSpaces=false){
         $array = [];
         foreach (PaymentMethod::find()->all() as $paymentMethod){
             if($paymentMethod->id==PaymentMethod::OTRO_ID){
-                array_push($array,
-                $this->payment_method_id==$paymentMethod->id?
+                $var =$this->payment_method_id==$paymentMethod->id?
                     "(X) {$paymentMethod->label} (especificar): {$this->txtPaymentMethod()}":
-                    "(-) {$paymentMethod->label}"
+                    "(-) {$paymentMethod->label}";
+                if($withSpaces){
+                    $var.="\n";
+                }
+                array_push($array,
+                $var
                 );
 
             }else{
