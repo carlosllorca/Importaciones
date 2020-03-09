@@ -1,6 +1,7 @@
 <?php
 /**
  * @var $model BuyRequest
+ * @var $fLicitacion \app\models\BuyRequestInternational
  * @var  $this \yii\web\View
  *
  */
@@ -18,31 +19,31 @@ use yii\helpers\Html;
 
 
     <div class="col-sm-4" style="text-align: center; padding: 0px 12px;">
-        <?= $form->field($model->buyRequestInternational, 'bidding_start')->textInput(['type'=>'date','style'=>['text-align'=>'center']])?>
+        <?= $form->field($fLicitacion, 'bidding_start')->textInput(['type'=>'date','style'=>['text-align'=>'center']])?>
 
     </div>
     <div class="col-sm-4" style="text-align: center; padding: 0px 12px;">
-        <?= $form->field($model->buyRequestInternational, 'bidding_end')->textInput(['type'=>'date','style'=>['text-align'=>'center']])?>
+        <?= $form->field($fLicitacion, 'bidding_end')->textInput(['type'=>'date','style'=>['text-align'=>'center']])?>
     </div>
 
 
 </div>
 <div class="row">
     <div class="col-sm-4">
-        <?= $form->field($model->buyRequestInternational, 'destiny_id')->widget(\kartik\select2\Select2::className(),
+        <?= $form->field($fLicitacion, 'destiny_id')->widget(\kartik\select2\Select2::className(),
             [
                     'data' => \app\models\Destiny::combo()
             ])?>
     </div>
     <div class="col-sm-4">
-        <?= $form->field($model->buyRequestInternational, 'payment_instrument_id')->widget(\kartik\select2\Select2::className(),
+        <?= $form->field($fLicitacion, 'payment_instrument_id')->widget(\kartik\select2\Select2::className(),
             [
                 'data' => \app\models\PaymentInstrument::combo(),
 
             ])?>
     </div>
     <div class="col-sm-4">
-        <?= $form->field($model->buyRequestInternational, 'buy_condition_id')->widget(\kartik\select2\Select2::className(),
+        <?= $form->field($fLicitacion, 'buy_condition_id')->widget(\kartik\select2\Select2::className(),
             [
                 'data' => \app\models\BuyCondition::combo(),
                 'options' => [
@@ -78,6 +79,11 @@ use yii\helpers\Html;
             ?>
             </tbody>
         </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <?= $form->field($fLicitacion, 'message')->textarea()?>
     </div>
 </div>
 <div class="button-container" style="text-align: right">

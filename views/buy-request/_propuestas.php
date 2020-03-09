@@ -4,6 +4,7 @@
 /* @var $this \yii\web\View */
 
 /* @var $model \app\models\BuyRequest|\yii\db\ActiveRecord */
+/* @var $fLicitacion \app\models\BuyRequestInternational|\yii\db\ActiveRecord */
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -17,13 +18,13 @@ if(Yii::$app->user->can('buyrequest/selectwinners')&&$model->buyRequestInternati
 
     <div class="row">
         <div class="col-md-12">
-            <div class="<?=$model->buyRequestInternational->bidding_start&&!$model->buyRequestProviders?'':'hidden'?>" id="licitacion_form">
+            <div class="<?=$fLicitacion->bidding_start&&!$model->buyRequestProviders?'':'hidden'?>" id="licitacion_form">
                 <?php $form = ActiveForm::begin(); ?>
                 <div class="row" style="margin: auto;padding-top: 2%;padding-bottom: 2%">
                     <div class="col-sm-12 col-md-8"
                          style="background-color: white; border: 1px solid #cecece;margin: auto;padding: 25px">
                         <h4 class="title" style="text-align: center; margin: auto">Iniciar proceso de licitación</h4>
-                        <?= $this->render('_licitacion', ['model' => $model, 'form' => $form]) ?>
+                        <?= $this->render('_licitacion', ['model' => $model, 'form' => $form,'fLicitacion'=>$fLicitacion]) ?>
                     </div>
                 </div>
                 <?php ActiveForm::end(); ?>

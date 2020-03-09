@@ -126,30 +126,43 @@ class BuyRequestController extends MainController
         }
         $active = 'demands_associated';
         if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
+
+            $form = $model->buyRequestInternational;
+            $form->setScenario(BuyRequestInternational::SCENARIO_GENERATE_LICITACION);
+            $form->notifyProviders();
+            if ($form->load(Yii::$app->request->post()) && $form->save()) {
+                $model->buy_request_status_id=BuyRequestStatus::$LICITANDO;
+
+                    foreach (Provider::related($model->arrayValidatedList()) as $provider){
+                        if(BuyRequestProvider::find()->where(['buy_request_id'=>$model->id])
+                            ->andWhere(['provider_id'=>$provider->id])->one()){
+                        }else{
+                            $m=new BuyRequestProvider();
+                            $m->buy_request_id=$model->id;
+                            $m->provider_id=$provider->id;
+                            $m->provider_status_id=ProviderStatus::$SOLICITUD_ENVIADA_ID;
+                            $m->save();
+                        }
+                    };
+
+
+                $model->save(false);
+                $active= 'propuestas';
+                return $this->render('update', [
+                    'form'=>$form,
+                    'model' => $model,
+                    'active'=>$active
+                ]);
+
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
            // $model->setScenario(BuyRequest::SCENARIO_GENERATE_LICITACION);
 //            $model->destiny_id=Destiny::$HABANA_ID;
 //            $model->payment_instrument_id=PaymentInstrument::$CC_A__LA_VISTA;
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model->buy_request_status_id=BuyRequestStatus::$LICITANDO;
-            if(!$model->buyRequestProviders){
-                foreach (Provider::related($model->arrayValidatedList()) as $provider){
-                    $m=new BuyRequestProvider();
-                    $m->buy_request_id=$model->id;
-                    $m->provider_id=$provider->id;
-                    $m->provider_status_id=ProviderStatus::$SOLICITUD_ENVIADA_ID;
-                    $m->save();
-                }
-            }
-            $active= 'propuestas';
-            return $this->render('update', [
-                'model' => $model,
-                'active'=>$active
-            ]);
 
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
         if(Yii::$app->user->can('buyrequest/viewassociateddemands')){
             $active = 'demands_associated';
 
@@ -171,6 +184,7 @@ class BuyRequestController extends MainController
         }
         return $this->render('update', [
             'model' => $model,
+            'form'=>$form,
             'active'=>$active
         ]);
     }

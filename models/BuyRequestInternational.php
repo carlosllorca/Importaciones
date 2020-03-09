@@ -21,6 +21,7 @@ use Yii;
  * @property int|null $destiny_id
  * @property int|null $payment_instrument_id
  * @property int|null $buy_condition_id
+ * @property string|null $message
  *
  * @property FileInput $blank_contract
  * @property FileInput $pliego
@@ -42,6 +43,7 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
     public $pliego;
     public $buyer_fundamentation;
     public $ganadores;
+    public $message;
     static  $seller_fields  =[
         DocumentType::FUNDAMENTACION_COMPRA_ID=>'buyer_fundamentation',
         DocumentType::PLIEGO_ID=>'pliego',
@@ -67,6 +69,7 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
             [['buy_request_id', 'buyer_assigned', 'buy_approved_by', 'dt_specialist_assigned', 'dt_approved_by', 'destiny_id', 'payment_instrument_id', 'buy_condition_id'], 'default', 'value' => null],
             [['buy_request_id', 'buyer_assigned', 'buy_approved_by', 'dt_specialist_assigned', 'dt_approved_by', 'destiny_id', 'payment_instrument_id', 'buy_condition_id'], 'integer'],
             [['bidding_start', 'bidding_end', 'buy_approved_date', 'dt_approved_date','ganadores'], 'safe'],
+            [['message','bidding_start','bidding_end','buy_condition_id'],'required','on'=>self::SCENARIO_GENERATE_LICITACION],
             [['bidding_start','bidding_end'], 'invalidRangeDate'],
             [['bidding_start','bidding_end'], 'beforeToday'],
             [['blank_contract','pliego','buyer_fundamentation'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf,doc,docx','maxSize' => 2048*1024 ],
@@ -113,17 +116,18 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'buy_request_id' => 'Buy Request ID',
-            'bidding_start' => 'Bidding Start',
-            'bidding_end' => 'Bidding End',
+            'bidding_start' => 'Inicio',
+            'bidding_end' => 'Fin',
             'buyer_assigned' => 'Buyer Assigned',
             'buy_approved_by' => 'Buy Approved By',
             'buy_approved_date' => 'Buy Approved Date',
             'dt_specialist_assigned' => 'Dt Specialist Assigned',
             'dt_approved_date' => 'Dt Approved Date',
             'dt_approved_by' => 'Dt Approved By',
-            'destiny_id' => 'Destiny ID',
-            'payment_instrument_id' => 'Payment Instrument ID',
-            'buy_condition_id' => 'Buy Condition ID',
+            'destiny_id' => 'Destino',
+            'payment_instrument_id' => 'Instrumento de pago',
+            'buy_condition_id' => 'Condición de la compra',
+            'message'=>'Cuerpo del mensaje'
         ];
     }
 
@@ -206,5 +210,36 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
         $end = strtotime($this->bidding_end);
         $now= strtotime(date('Y-m-d'));
         return $now>$end;
+    }
+    public function notifyProviders(){
+        $providerEmails= [];
+        foreach ($this->buyRequest->buyRequestProviders as $buyRequestProvider){
+            array_push($providerEmails,$buyRequestProvider->provider->contact_email);
+        }
+        $urlFile = Yii::$app->xlsModels->xlsSolicitudOfertas($this->buyRequest);
+
+//        try {
+//            Yii::$app->mailer->compose()
+//                ->setFrom([Yii::$app->params['senderName'] => Yii::$app->params['senderEmail']])
+//                ->setBcc($providerEmails)
+//                ->setHtmlBody($this->message)
+//                ->setTo([$this->buyApprovedBy->email, $this->buyerAssigned->email])
+//                ->setReplyTo([$this->buyApprovedBy->email, $this->buyerAssigned->email])
+//                //->attach() todo:'Prepar adjunto..
+//                ->setSubject('Solicitud de ofertas No. ' . $this->buyRequest->code)
+//                ->send();
+//            $model = new EmailNotify();
+//            $model->buy_request_id=$this->buy_request_id;
+//            $model->bidding_start=$this->bidding_start;
+//            $model->bidding_end=$this->bidding_end;
+//            $model->sended_date=date('Y-m-d');
+//            $model->body=$this->message;
+//            //$model->attachment=
+//            $model->save();
+//        }catch (\Exception $e){
+//            Yii::$app->session->setFlash('Error','Error notificando a proveedores. Inténtelo de nuevo más tarde.');
+//            return false;
+//        }
+
     }
 }

@@ -167,7 +167,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                                 if(Yii::$app->user->can('buyrequest/viewpropuestas')&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID){
                                     ?>
                                     <div class="tab-pane <?= $active == 'propuestas' ? 'active' : null ?>" id="propuestas">
-                                        <?php echo $this->render('_propuestas', ['model' => $model]); ?>
+                                        <?php echo $this->render('_propuestas', ['model' => $model,'fLicitacion'=>$form]); ?>
                                     </div>
                                     <?php
                                 }
