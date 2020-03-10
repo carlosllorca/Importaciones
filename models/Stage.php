@@ -9,8 +9,12 @@ use Yii;
  *
  * @property int $id
  * @property int $label
+ * @property int $order
+ * @property int $buy_request_type_id
+ * @property bool $active
  *
  * @property RequestStage[] $requestStages
+ * @property BuyRequestType $buyRequestType
  */
 class Stage extends \yii\db\ActiveRecord
 {
@@ -28,9 +32,12 @@ class Stage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['label'], 'required'],
-            [['label'], 'default', 'value' => null],
-            [['label'], 'integer'],
+            [['label', 'order', 'buy_request_type_id'], 'required'],
+            [['label', 'order', 'buy_request_type_id'], 'default', 'value' => null],
+            [['label', 'order', 'buy_request_type_id'], 'integer'],
+            [['active'], 'boolean'],
+            [['order', 'buy_request_type_id'], 'unique', 'targetAttribute' => ['order', 'buy_request_type_id']],
+            [['buy_request_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestType::className(), 'targetAttribute' => ['buy_request_type_id' => 'id']],
         ];
     }
 
@@ -42,6 +49,9 @@ class Stage extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'label' => 'Label',
+            'order' => 'Order',
+            'buy_request_type_id' => 'Buy Request Type ID',
+            'active' => 'Active',
         ];
     }
 
@@ -51,5 +61,13 @@ class Stage extends \yii\db\ActiveRecord
     public function getRequestStages()
     {
         return $this->hasMany(RequestStage::className(), ['stage_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBuyRequestType()
+    {
+        return $this->hasOne(BuyRequestType::className(), ['id' => 'buy_request_type_id']);
     }
 }

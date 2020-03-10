@@ -15,16 +15,22 @@ use Yii;
  * @property string|null $last_update
  * @property string|null $url_to_file
  * @property string|null $custom_file
+
  * @property int $document_type_id
+ * @property int $document_status_id
+ * @property boolean $evaluation
  * @property FileInput $documento
  *
  * @property BuyRequest $buyRequest
+ * @property DocumentStatus $documentStatus
  * @property DocumentType $documentType
  * @property User $lastUpdatedBy
  */
 class BuyRequestDocument extends \yii\db\ActiveRecord
 {
     public $documento;
+    public $evaluation;
+    const SCENARIO_CUSTOM_DOCUMENT='SECENARIO_CUSTOM_DOCUMENT';
     /**
      * {@inheritdoc}
      */
@@ -39,13 +45,17 @@ class BuyRequestDocument extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['buy_request_id', 'document_type_id'], 'required'],
+            [['buy_request_id','document_status_id'], 'required'],
             [['buy_request_id', 'last_updated_by', 'document_type_id'], 'default', 'value' => null],
             [['buy_request_id', 'last_updated_by', 'document_type_id'], 'integer'],
+            [['evaluation'], 'boolean'],
+            [['custom_file'], 'required','on'=>self::SCENARIO_CUSTOM_DOCUMENT],
+            [['custom_file'], 'string','max'=>50],
+
             [['documento'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf,doc,docx','maxSize' => 2048*1024 ],
             [['created_date', 'last_update'], 'safe'],
             [['url_to_file'], 'string'],
-            [['custom_file'], 'string', 'max' => 255],
+
             [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
             [['document_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => DocumentType::className(), 'targetAttribute' => ['document_type_id' => 'id']],
             [['last_updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['last_updated_by' => 'id']],
@@ -70,11 +80,13 @@ class BuyRequestDocument extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'buy_request_id' => 'Buy Request ID',
-            'last_updated_by' => 'Last Updated By',
-            'created_date' => 'Created Date',
-            'last_update' => 'Last Update',
-            'url_to_file' => 'Url To File',
-            'custom_file' => 'Custom File',
+            'last_updated_by' => 'Actualizado por',
+            'created_date' => 'Creado',
+            'last_update' => 'Última actualización',
+            'evaluation' => '¿Evaluación positiva?',
+            'url_to_file' => 'URL',
+            'custom_file' => 'Nombre del archivo',
+
             'document_type_id' => 'Document Type ID',
         ];
     }
@@ -93,6 +105,13 @@ class BuyRequestDocument extends \yii\db\ActiveRecord
     public function getDocumentType()
     {
         return $this->hasOne(DocumentType::className(), ['id' => 'document_type_id']);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDocumentStatus()
+    {
+        return $this->hasOne(DocumentStatus::className(), ['id' => 'document_status_id']);
     }
 
     /**

@@ -110,7 +110,7 @@ use yii\widgets\ActiveForm;
             </div>
             <div class="col-sm-4 p-5">
                 <?php
-                    if(Yii::$app->user->can('buyrequest/uploadoffert')&&$model->buyRequest->biddingActive()){
+                    if(Yii::$app->user->can('buyrequest/uploadoffert')&&$model->buyRequest->buyRequestInternational->biddingActive()){
                       ?>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generate_ofert">
@@ -149,7 +149,7 @@ use yii\widgets\ActiveForm;
                                 </th>
                                 <th><?=$offert->evaluation_date?Yii::$app->formatter->asDate($offert->evaluation_date):'-'?></th>
                                 <th><?=$offert->evaluation_date?Yii::$app->formatter->asBoolean($offert->approved):'-'?></th>
-                                <th><?=Yii::$app->user->can('buyrequest/evaluateoffert')&&!$offert->evaluated_by?Html::a("<span class='glyphicon glyphicon-ok' title='Evaluar'></span>",'#',
+                                <th><?=Yii::$app->user->can('buyrequest/evaluateoffert')&&!$model->buyRequest->getWinners()?Html::a("<span class='glyphicon glyphicon-ok' title='Evaluar'></span>",'#',
                                     [
                                             'data-toggle'=>"modal",
                                             'onclick'=> "evaluateOffert({$offert->id})",

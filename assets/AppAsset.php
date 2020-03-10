@@ -33,7 +33,7 @@ class AppAsset extends AssetBundle
         'js/axios.min.js',
     ];
     public $depends = [
-        'yii\web\YiiAsset',
+       // 'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
 }

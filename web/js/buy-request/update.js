@@ -60,7 +60,7 @@ function selectWinners() {
             }
         }
         console.log(values)
-        $('#buyrequest-ganadores').val(values)
+        $('#select-ganadores').val(values)
 
     })
 }

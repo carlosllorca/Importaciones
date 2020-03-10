@@ -13,6 +13,13 @@ use yii\widgets\ActiveForm;
     ]);
     ?>
     <div class="row">
+
+        <div class="col-sm-12 <?=$model->document_type_id?null:"hidden"?>">
+            <?= $form->field($model, 'evaluation')->checkbox()->label(false)?>
+        </div>
+        <div class="col-sm-12 <?=$model->document_type_id?"hidden":""?>">
+            <?= $form->field($model, 'custom_file')->textInput(['maxlength'=>true])?>
+        </div>
         <div class="col-sm-12">
             <?= $form->field($model, 'documento')->widget(\kartik\file\FileInput::className(),[
                 'options'=>['required'=>true],

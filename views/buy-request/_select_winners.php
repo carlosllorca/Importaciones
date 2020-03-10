@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 
 
 /* @var $this \yii\web\View */
-/* @var $model \app\models\BuyRequest|\yii\db\ActiveRecord */
+/* @var $model \app\models\BuyRequestInternational|\yii\db\ActiveRecord */
 ?>
 
 <!-- Modal -->
@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
             <div class="modal-body">
                 <div class="row">
                     <div class="hidden">
-                        <?= $form->field($model->buyRequestInternational, 'ganadores')->dropDownList($model->comboFinalistas(),['multiple'=>true])?>
+                        <?= $form->field($model, 'ganadores')->dropDownList($model->buyRequest->comboFinalistas(),['multiple'=>true,'id'=>'select-ganadores'])?>
                     </div>
                     <div class="col-sm-12">
                         <table class="table table-striped table-bordered">
@@ -43,7 +43,7 @@ use yii\widgets\ActiveForm;
                             </thead>
                             <tbody>
                             <?php
-                                foreach ($model->getFinalistas() as $buyRequestProvider){
+                                foreach ($model->buyRequest->getFinalistas() as $buyRequestProvider){
                                     ?>
                                     <tr>
                                         <th><?=Html::checkbox($buyRequestProvider->id,false,['class'=>'check_provider','provider'=>$buyRequestProvider->id])?></th>
@@ -63,7 +63,7 @@ use yii\widgets\ActiveForm;
 
                 <div class="row">
                     <div class="col-sm-6 p-3">
-                        <?= $form->field($model->buyRequestInternational, 'blank_contract')->widget(\kartik\file\FileInput::className(),[
+                        <?= $form->field($model, 'blank_contract')->widget(\kartik\file\FileInput::className(),[
                             'options'=>['required'=>true],
                             'pluginOptions' =>[
                                 'showPreview' => false,
@@ -79,7 +79,7 @@ use yii\widgets\ActiveForm;
                         ])->label('Preforma de contrato') ?>
                     </div>
                     <div class="col-sm-6 p-3">
-                        <?= $form->field($model->buyRequestInternational, 'pliego')->widget(\kartik\file\FileInput::className(),[
+                        <?= $form->field($model, 'pliego')->widget(\kartik\file\FileInput::className(),[
                             'options'=>['required'=>true],
                             'pluginOptions' =>[
                                 'showPreview' => false,
@@ -95,7 +95,7 @@ use yii\widgets\ActiveForm;
                         ])->label('Pliego de concurrencias') ?>
                     </div>
                     <div class="col-sm-6 p-3">
-                        <?= $form->field($model->buyRequestInternational, 'buyer_fundamentation')->widget(\kartik\file\FileInput::className(),[
+                        <?= $form->field($model, 'buyer_fundamentation')->widget(\kartik\file\FileInput::className(),[
                             'options'=>['required'=>true],
                             'pluginOptions' =>[
                                 'showPreview' => false,

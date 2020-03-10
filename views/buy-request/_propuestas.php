@@ -10,7 +10,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 if(Yii::$app->user->can('buyrequest/selectwinners')&&$model->buyRequestInternational->biddingEnd()&&count($model->getWinners())==0){
-    echo $this->render('_select_winners',['model'=>$model]);
+    echo $this->render('_select_winners',['model'=>$fLicitacion]);
 }
 
 ?>
@@ -78,10 +78,11 @@ if(Yii::$app->user->can('buyrequest/selectwinners')&&$model->buyRequestInternati
 
                         </div>
                         <div class="col-sm-3">
-                            <?=Yii::$app->user->can('buyrequest/changebidding')?
-                                Html::button('Cambiar datos de la licitación',
+                            <?=Yii::$app->user->can('buyrequest/changebidding')&&!$model->getWinners()?
+                                Html::button("<span class='glyphicon glyphicon-pencil'></span>",
                                     [
                                         'class'=>'btn btn-primary',
+                                        'title'=>'Modificar licitación',
                                         'onclick'=>'showForm()'
                                     ]):null
                             ?>

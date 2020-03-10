@@ -55,4 +55,20 @@ class DocumentStatus extends \yii\db\ActiveRecord
     {
         return $this->hasMany(BuyRequestDocument::className(), ['document_status_id' => 'id']);
     }
+    public function classByStatus(){
+    switch ($this->id){
+        case self::$PENDIENTE_ID:
+        return 'text-warning text-uppercase';
+            break;
+        case self::$APROBADO_ID:
+            return 'text-success text-uppercase';
+            break;
+        case self::$RECHAZADO_ID:
+            return 'text-danger text-uppercase';
+            break;
+        default:
+            return '';
+            break;
+    }
+}
 }

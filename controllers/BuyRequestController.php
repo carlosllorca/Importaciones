@@ -12,6 +12,7 @@ use app\models\BuyRequestType;
 use app\models\DemandItem;
 use app\models\DemandStatus;
 use app\models\Destiny;
+use app\models\DocumentStatus;
 use app\models\Offert;
 use app\models\PaymentInstrument;
 use app\models\Provider;
@@ -489,7 +490,7 @@ class BuyRequestController extends MainController
         return $this->renderAjax('_evaluate_offert',['model'=>$model]);
     }
     public function actionSelectWinners($id){
-        $model = $this->findModel($id);
+        $model = BuyRequestInternational::findOne($id);
 
         if (Yii::$app->request->isPost) {
             $url = $model->loadInitialExpedientFilesUrl();
@@ -502,15 +503,15 @@ class BuyRequestController extends MainController
                     $winner->save();
 
                 }
-                $model->buy_request_status_id=BuyRequestStatus::$EVALUANDO_OFERTAS;
+                $model->buyRequest->buy_request_status_id=BuyRequestStatus::$EVALUANDO_OFERTAS;
                 $model->save(false);
                 $model->generateFiledTree($url);
                 Yii::$app->session->setFlash('success','Hemos presentado el expediente correctamente. Se ha generado el árbol de documentos necesarios para la aprobación.');
-                return $this->redirect(['/buy-request/update', 'id' => $model->id]);
+                return $this->redirect(['/buy-request/update', 'id' => $model->buyRequest->id]);
 
         }else{
             Yii::$app->session->setFlash('danger','Ocurrió un error procesando los datos. Inténtelo de nuevo más tarde.');
-            return $this->redirect(['/buy-request/update', 'id' => $model->id]);
+            return $this->redirect(['/buy-request/update', 'id' => $model->buy_request_id]);
         }
     }
     public function actionViewDocuments(){
@@ -520,7 +521,16 @@ class BuyRequestController extends MainController
 
     }
     public function actionUploadFileExpedient($id){
-        $model = BuyRequestDocument::findOne($id);
+        if($id!='false'){
+            $model = BuyRequestDocument::findOne($id);
+        }else{
+            $model = new BuyRequestDocument();
+            $model->setScenario(BuyRequestDocument::SCENARIO_CUSTOM_DOCUMENT);
+            $model->document_status_id=DocumentStatus::$APROBADO_ID;
+            $model->evaluation=true;
+            $model->buy_request_id=(int)Yii::$app->request->get('expediente');
+        }
+
         if (Yii::$app->request->isPost) {
             $model->documento = UploadedFile::getInstance($model, 'documento');
             if($model->documento){
@@ -533,6 +543,12 @@ class BuyRequestController extends MainController
             }
         }
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if($model->evaluation){
+                $model->document_status_id=DocumentStatus::$APROBADO_ID;
+            }else{
+                $model->document_status_id=DocumentStatus::$RECHAZADO_ID;
+            }
+
             $model->last_update=date('Y-m-d');
             $model->last_updated_by=User::userLogged()->id;
             $model->created_date=date('Y-m-d');
@@ -547,6 +563,9 @@ class BuyRequestController extends MainController
         return $this->renderAjax('_uploadFileExpedient',['model'=>$model]);
     }
     public function actionChangeBidding(){
+
+    }
+    public function actionUploadOtherDocs(){
 
     }
 

@@ -184,7 +184,10 @@ class BuyRequest extends \yii\db\ActiveRecord
     {
         $items =[];
         foreach ($this->buyRequestDocuments as $buyRequestDocument){
-            if($buyRequestDocument->documentType->active&&$buyRequestDocument->documentType->userLoggedCanView()){
+            if(!$buyRequestDocument->document_type_id&&Yii::$app->user->can('buyrequest/uploadotherdocs')){
+                array_push($items,$buyRequestDocument);
+            }
+            else if($buyRequestDocument->documentType&&$buyRequestDocument->documentType->active&&$buyRequestDocument->documentType->userLoggedCanView()){
                 array_push($items,$buyRequestDocument);
             }
         }
@@ -354,50 +357,15 @@ class BuyRequest extends \yii\db\ActiveRecord
             ->andWhere(['buy_request_id'=>$this->id])->all(),'id',function($model){return $model->provider->name;}
         );
     }
-    public function loadInitialExpedientFilesUrl(){
-        $a = ['buyer_fundamentation','pliego','blank_contract'];
-        $url=[];
-        foreach ($a as $i){
-            $this->$i = UploadedFile::getInstance($this, $i);
-            if($this->$i){
-                $file= $this->upload($i);
-                if($file){
-                    $url[$i]= $file;
-                }
-            }else{
-                $url[$i]=false;
-            }
+    public function allDocumentOk(){
+        foreach ($this->buyRequestDocuments as $buyRequestDocument){
+            if($buyRequestDocument->document_status_id!=DocumentStatus::$APROBADO_ID)
+                return false;
         }
-        return $url;
-
+        return true;
     }
 
-    /**
-     * Generar el árbol de documentos necesarios del expediente.
-     */
-    public function generateFiledTree($fileUploaded){
-        //todo: Mejorar este método teniendo en cuenta los ficheros reales del tipo de solicitud. Modelar esto en BD
-
-        switch ($this->buy_request_type_id){
-            case (BuyRequestType::$INTERNACIIONAL_ID):
-                $fields = DocumentType::find()->where(['active'=>true])->all();
-                foreach ($fields as $field){
-                    $doc = new BuyRequestDocument();
-                    $doc->document_type_id=$field->id;
-                    $doc->buy_request_id=$this->id;
-                    if(isset(self::$seller_fields[$field->id])&&$fileUploaded[self::$seller_fields[$field->id]]){
-                        $doc->url_to_file=$fileUploaded[self::$seller_fields[$field->id]];
-                        $doc->last_updated_by=User::userLogged()->id;
-                        $doc->last_update=date('Y-m-d');
-                    }
-                    $doc->save(false);
-                }
-                break;
 
 
-        }
-
-
-    }
 
 }

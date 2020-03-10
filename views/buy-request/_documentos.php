@@ -34,10 +34,19 @@ use yii\helpers\Html; ?>
         if (Yii::$app->user->can('buyrequest/sendtomonitoring')) {
             ?>
             <p style="text-align: right">
-                <?= Html::a('Enviar a seguimiento', '#', ['class' => 'btn btn-primary disabled']) ?>
+                <?= Html::a('Enviar a seguimiento', ['buyrequest/sendtomonitoring','id'=>$model->id],
+                    $model->allDocumentOk()?
+                        [
+                                'class' => 'btn btn-primary',
+                                'data-confirm'=>'¿Confirma que desea iniciar el ciclo de transportación para esta orden?'
+                        ]
+                        :['class' => 'btn btn-primary disabled']) ?>
                 <?= Html::a('Subir otro documento', '#',
                     [
                             'class' => 'btn btn-primary',
+                            'onclick'=> "uploadFileExpedient(false,".$model->id.")",
+                            'data-toggle'=>"modal",
+                             'data-target'=>"#upload-file-expedient",
                             'title'=>'Puedes subir un documento que no esté referido en la lista.'
                     ]) ?>
             </p>
@@ -73,20 +82,21 @@ use yii\helpers\Html; ?>
             foreach ($model->documentsUser() as $buyRequestDocument) {
                 ?>
                 <tr>
-                    <th><?= $buyRequestDocument->documentType->label ?></th>
-                    <th><?= $buyRequestDocument->documentType->responsable ?></th>
-                    <th><?= $buyRequestDocument->url_to_file ? '<b class="text-success">SUBIDO</b>' : '<b class="text-danger">PENDIENTE</b>' ?></th>
+                    <th><?=$buyRequestDocument->documentType? $buyRequestDocument->documentType->label:$buyRequestDocument->custom_file ?></th>
+                    <th><?= $buyRequestDocument->documentType?$buyRequestDocument->documentType->responsable:$buyRequestDocument->lastUpdatedBy->full_name ?></th>
+                    <th><b class="<?=$buyRequestDocument->documentStatus->classByStatus()?>"><?=$buyRequestDocument->documentStatus->label?></b></th>
                     <th><?= $buyRequestDocument->url_to_file ? $buyRequestDocument->lastUpdatedBy->full_name : '-' ?></th>
                     <th><?= $buyRequestDocument->url_to_file ? Yii::$app->formatter->asDate($buyRequestDocument->last_update) : '-' ?></th>
                     <th>
                         <?= $buyRequestDocument->url_to_file ? Html::a("<span class='glyphicon glyphicon-download'></span>", $buyRequestDocument->url_to_file, ['target' => '_blank', 'title' => 'Descargar']) : '' ?>
-                        <?=$buyRequestDocument->documentType->userLoggedCanUpdate()?
+                        <?=$buyRequestDocument->documentType&&$buyRequestDocument->documentType->userLoggedCanUpdate()||!$buyRequestDocument->documentType?
+
                             Html::a("<span class='glyphicon glyphicon-upload'></span>", '#',
                                 [
 
                                     'title' => 'Subir archivo',
                                     'data-toggle'=>"modal",
-                                    'onclick'=> "uploadFileExpedient({$buyRequestDocument->id})",
+                                    'onclick'=> "uploadFileExpedient(false,{$buyRequestDocument->id})",
                                     'data-target'=>"#upload-file-expedient"
                                 ]) : ''?>
                     </th>
