@@ -8,8 +8,9 @@ use Yii;
  * This is the model class for table "stage".
  *
  * @property int $id
- * @property int $label
+ * @property string $label
  * @property int $order
+ * @property int $duration
  * @property int $buy_request_type_id
  * @property bool $active
  *
@@ -33,9 +34,10 @@ class Stage extends \yii\db\ActiveRecord
     {
         return [
             [['label', 'order', 'buy_request_type_id'], 'required'],
-            [['label', 'order', 'buy_request_type_id'], 'default', 'value' => null],
-            [['label', 'order', 'buy_request_type_id'], 'integer'],
+            [['order', 'buy_request_type_id'], 'default', 'value' => null],
+            [['order', 'buy_request_type_id','duration'], 'integer'],
             [['active'], 'boolean'],
+            [['label'], 'string', 'max' => 255],
             [['order', 'buy_request_type_id'], 'unique', 'targetAttribute' => ['order', 'buy_request_type_id']],
             [['buy_request_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestType::className(), 'targetAttribute' => ['buy_request_type_id' => 'id']],
         ];
@@ -48,10 +50,11 @@ class Stage extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'label' => 'Label',
-            'order' => 'Order',
-            'buy_request_type_id' => 'Buy Request Type ID',
-            'active' => 'Active',
+            'label' => 'Nombre',
+            'order' => 'Orden',
+            'buy_request_type_id' => 'Tipo de solicitud',
+            'active' => 'Activo',
+            'duration' => 'Duración',
         ];
     }
 

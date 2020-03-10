@@ -1,8 +1,9 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Html;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\StageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -13,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="buy-request-status-index">
     <div class="card">
         <div class="card-header card-header-primary">
-            <h4 class="card-title"><?=$this->title?></h4>
+            <h4 class="card-title"><?= $this->title ?></h4>
             <p class="card-category">Hitos por los que transita una oferta</p>
         </div>
         <div class="card-body" style="padding: 15px">
@@ -31,7 +32,23 @@ $this->params['breadcrumbs'][] = $this->title;
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
                         'label',
-                        ['class' => 'yii\grid\ActionColumn'],
+                        'order',
+                        [
+                            'attribute' => 'buy_request_type_id',
+                            'filter' => \app\models\BuyRequestType::combo(),
+                            'value' => function ($model) {
+                                return $model->buyRequestType->label;
+                            }
+
+                        ],
+                        'duration',
+                        'active:boolean',
+
+                        [
+                                'class' => 'yii\grid\ActionColumn',
+                            'template' => '{update}{delete}'
+
+                        ],
                     ],
                 ]); ?>
                 <?php Pjax::end(); ?>

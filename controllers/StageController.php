@@ -67,7 +67,8 @@ class StageController extends MainController
         $model = new Stage();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success','Registro creado correctamente');
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -87,7 +88,8 @@ class StageController extends MainController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success','Registro actualizado correctamente');
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

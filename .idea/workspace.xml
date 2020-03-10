@@ -2,22 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/web/css/seisa.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/AppAsset.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/AppAsset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/BuyRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BuyRequestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestDocument.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestDocument.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestInternational.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestInternational.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DocumentStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Rbac.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Rbac.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/_documentos.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_documentos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/_propuestas.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_propuestas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/_provider_details.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_provider_details.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/_select_winners.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_select_winners.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/_uploadFileExpedient.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_uploadFileExpedient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/StageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/StageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Stage.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Stage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/StageSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/StageSearch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/stage/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/stage/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/stage/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/stage/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/css/plantilla.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/plantilla.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/buy-request/_documentos.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/buy-request/_documentos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/buy-request/update.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/buy-request/update.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,15 +44,55 @@
         <item name="seisa" type="feb32156:DbDataSourceImpl" />
         <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="seisa" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="SEISA: database" type="162271b6:PgImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="seisa" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="SEISA: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="seisa" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="SEISA: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="seisa" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="SEISA: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="seisa" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="SEISA: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="stage: table" type="69fad909:PgImplModel$LocalTable" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="Jquery" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -234,15 +267,16 @@
     <property name="yiicFile" value="" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$/components" />
       <recent name="$PROJECT_DIR$/views/document-status" />
       <recent name="$PROJECT_DIR$/views/user" />
       <recent name="$PROJECT_DIR$/views/payment-instrument" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/css" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
@@ -344,7 +378,7 @@
       <workItem from="1583690024312" duration="3088000" />
       <workItem from="1583707598551" duration="19259000" />
       <workItem from="1583766147149" duration="3557000" />
-      <workItem from="1583793874854" duration="15705000" />
+      <workItem from="1583793874854" duration="18395000" />
     </task>
     <task id="LOCAL-00001" summary="Preparando el proyecto">
       <created>1576473614599</created>
@@ -626,7 +660,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583770077438</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Antes de empezar con los hitos">
+      <created>1583816030409</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1583816030409</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,7 +687,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="dividir productos" />
     <MESSAGE value="Solicitudes tramitadas" />
     <MESSAGE value="Agregando Crud Buy request" />
     <MESSAGE value="Refinamientos al controlador." />
@@ -671,7 +711,8 @@
     <MESSAGE value="Listo el modelo de solicitud de compra internacional en formatos pdf y xls." />
     <MESSAGE value="Solicitud de ofertas listo" />
     <MESSAGE value="Funcionalidad para modificar el tiempo de la licitación" />
-    <option name="LAST_COMMIT_MESSAGE" value="Funcionalidad para modificar el tiempo de la licitación" />
+    <MESSAGE value="Antes de empezar con los hitos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Antes de empezar con los hitos" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2475" y="200" width="800" height="677" key="#Deployment" timestamp="1576472912804">
@@ -733,13 +774,13 @@
     <state x="3340" y="375" key="#xdebugger.evaluate/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583811224125" />
     <state x="852" y="256" width="254" height="593" key="#xdebugger.evaluate/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1576847070634" />
     <state x="2992" y="323" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882354679" />
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2" timestamp="1583816002116">
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2" timestamp="1583816030118">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580268556850" />
     <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1582487604398" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582788400503" />
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583816002116" />
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583816030118" />
     <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583547290406" />
     <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580970277888" />
     <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/49.27.1871.1053@49.27.1871.1053" timestamp="1583770077124" />
@@ -906,12 +947,12 @@
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583171256309" />
     <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882959131" />
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/49.27.1871.1053@49.27.1871.1053" timestamp="1583770086860" />
-    <state x="2256" y="169" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1583810103495">
+    <state x="2256" y="169" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1583817869376">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="672" y="192" width="566" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1576559686639" />
     <state x="2256" y="169" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582771900318" />
-    <state x="2256" y="169" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583810103495" />
+    <state x="2256" y="169" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583817869376" />
     <state x="376" y="192" width="321" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583299941970" />
     <state x="2256" y="169" width="840" height="739" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580795589233" />
     <state x="649" y="398" key="com.intellij.ide.util.TipDialog" timestamp="1576977258692">

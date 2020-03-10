@@ -17,7 +17,9 @@ class StageSearch extends Stage
     public function rules()
     {
         return [
-            [['id', 'label'], 'integer'],
+            [['id', 'order', 'buy_request_type_id'], 'integer'],
+            [['label'], 'safe'],
+            [['active'], 'boolean'],
         ];
     }
 
@@ -54,12 +56,20 @@ class StageSearch extends Stage
             // $query->where('0=1');
             return $dataProvider;
         }
+        if(!isset($params['sort'])){
+            $query->orderBy('buy_request_type_id, order');
+        }
+
 
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'label' => $this->label,
+            'order' => $this->order,
+            'buy_request_type_id' => $this->buy_request_type_id,
+            'active' => $this->active,
         ]);
+
+        $query->andFilterWhere(['ilike', 'label', $this->label]);
 
         return $dataProvider;
     }

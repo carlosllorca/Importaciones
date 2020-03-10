@@ -25,6 +25,7 @@ class AppAsset extends AssetBundle
         'sA/sweetalert.css',
         'css/material-dashboard.min.css',
         'css/plantilla.css',
+        'css/seisa.css',
         'css/MaterialIcons.css',
     ];
     public $js = [
