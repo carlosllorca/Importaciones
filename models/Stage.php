@@ -73,4 +73,13 @@ class Stage extends \yii\db\ActiveRecord
     {
         return $this->hasOne(BuyRequestType::className(), ['id' => 'buy_request_type_id']);
     }
+
+    /**
+     * @param $orderType
+     * @return Stage[]|array|\yii\db\ActiveRecord[]
+     */
+    public static function getStagesByOrderType($orderType){
+        return self::find()->where(['active'=>true])->andWhere(['buy_request_type_id'=>$orderType])->orderBy('order ASC')->all();
+
+    }
 }

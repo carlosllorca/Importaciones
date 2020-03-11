@@ -34,7 +34,7 @@ use yii\helpers\Html; ?>
         if (Yii::$app->user->can('buyrequest/sendtomonitoring')) {
             ?>
             <p style="text-align: right">
-                <?= Html::a('Enviar a seguimiento', ['buyrequest/sendtomonitoring','id'=>$model->id],
+                <?= Html::a('Enviar a seguimiento', ['/buy-request/send-to-monitoring','id'=>$model->id],
                     $model->allDocumentOk()?
                         [
                                 'class' => 'btn btn-primary',

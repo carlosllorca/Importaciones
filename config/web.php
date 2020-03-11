@@ -24,7 +24,7 @@ $config = [
             'language'=>'es-ES',
             'thousandSeparator' => '.',
             'decimalSeparator' => ',',
-            'dateFormat' => 'dd-MM-Y',
+            'dateFormat' => 'dd/MM/Y',
             'datetimeFormat' => 'd/M/Y hh:i:ss a',
             'currencyCode' => '$',
 

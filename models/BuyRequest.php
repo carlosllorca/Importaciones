@@ -174,6 +174,23 @@ class BuyRequest extends \yii\db\ActiveRecord
     {
         return $this->hasMany(RequestStage::className(), ['buy_request_id' => 'id']);
     }
+    public function requestStageOrdenados()
+    {
+        return RequestStage::find()->innerJoinWith('stage')->where(['stage.active'=>true])->orderBy('stage.order')->all();
+    }
+    public function currentStage(){
+
+        foreach ($this->requestStageOrdenados() as $requestStage){
+            if(!$requestStage->real_end)
+                return $requestStage;
+            $last = $requestStage;
+        }
+        return new RequestStage();
+    }
+    public function cicloCompletado(){
+        return RequestStage::find()->where(['buy_request_id'=>$this->id])->andWhere(['real_end'=>null])->count()==0;
+
+    }
 
 
 
@@ -364,6 +381,16 @@ class BuyRequest extends \yii\db\ActiveRecord
         }
         return true;
     }
+    public function lastUploadDocumentDate(){
+        $lastDate=0;
+        foreach ($this->buyRequestDocuments as $buyRequestDocument){
+            if(strtotime($buyRequestDocument->last_update)>$lastDate)
+                $lastDate=strtotime($buyRequestDocument->last_update);
+        }
+        return date('Y-m-d',$lastDate);
+
+    }
+
 
 
 

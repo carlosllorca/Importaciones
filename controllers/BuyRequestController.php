@@ -18,6 +18,8 @@ use app\models\PaymentInstrument;
 use app\models\Provider;
 use app\models\ProviderStatus;
 use app\models\Rbac;
+use app\models\RequestStage;
+use app\models\Stage;
 use app\models\User;
 use Mpdf\Config\ConfigVariables;
 use Mpdf\Config\FontVariables;
@@ -517,7 +519,50 @@ class BuyRequestController extends MainController
     public function actionViewDocuments(){
 
     }
-    public function actionSendToMonitoring(){
+    public function actionSendToMonitoring($id){
+        $model = $this->findModel($id);
+        if($model->allDocumentOk()){
+            $model->buy_request_status_id=BuyRequestStatus::$EN_PROCESO;
+            $model->save(false);
+            $current = $model->lastUploadDocumentDate();
+            foreach (Stage::getStagesByOrderType($model->buy_request_type_id) as $stage){
+                $rs=new RequestStage();
+                $rs->buy_request_id=$id;
+                $rs->stage_id=$stage->id;
+                $rs->date_created=date('Y-m-d');
+                $rs->date_start=$current;
+                $next = date('Y-m-d',strtotime($current."+ {$rs->stage->duration} days"));
+                $rs->date_end=$next;
+                $rs->save(false);
+                $current=$next;
+            }
+            Yii::$app->session->setFlash('success','El ciclo de transportación ha sido iniciado. Por favor verifique las fechas de cumplimiento de cada hito.');
+            return $this->redirect(['/buy-request/update', 'id' => $model->id,'section'=>'transportation']);
+
+        }else{
+            Yii::$app->session->setFlash('danger','No es posible terminar la evaluación de ofertas hasta que estén todos los documentos subidos y aprobados.');
+            return $this->redirect(['/buy-request/update', 'id' => $model->id]);
+        }
+
+
+    }
+    public function actionStageSuccess($id){
+        $model= RequestStage::findOne($id);
+        $model->real_end=date('Y-m-d');
+        $model->save();
+        if($model->buyRequest->cicloCompletado()){
+            $model->buyRequest->buy_request_status_id=BuyRequestStatus::$CERRADA;
+            $model->buyRequest->save(false);
+            Yii::$app->session->setFlash('success','Has concluido el último hito. La orden ha sido cerrada.');
+        }
+        else{
+            Yii::$app->session->setFlash('success','Hito marcado como cumplido.');
+        }
+
+        return $this->redirect(['/buy-request/update', 'id' => $model->buy_request_id,'section'=>'transportation']);
+
+    }
+    public function actionChangeBidding(){
 
     }
     public function actionUploadFileExpedient($id){
@@ -562,10 +607,14 @@ class BuyRequestController extends MainController
         }
         return $this->renderAjax('_uploadFileExpedient',['model'=>$model]);
     }
-    public function actionChangeBidding(){
+    public function actionUpdateStage(){
 
     }
+
     public function actionUploadOtherDocs(){
+
+    }
+    public function actionViewTransportation(){
 
     }
 

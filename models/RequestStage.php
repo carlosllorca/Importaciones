@@ -14,6 +14,7 @@ use Yii;
  * @property string|null $real_end
  * @property int $stage_id
  * @property int $buy_request_id
+ * @property string $details
  *
  * @property BuyRequest $buyRequest
  * @property Stage $stage
@@ -38,6 +39,7 @@ class RequestStage extends \yii\db\ActiveRecord
             [['date_created', 'date_start', 'date_end', 'real_end'], 'safe'],
             [['stage_id', 'buy_request_id'], 'default', 'value' => null],
             [['stage_id', 'buy_request_id'], 'integer'],
+            [['details'], 'string'],
             [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
             [['stage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Stage::className(), 'targetAttribute' => ['stage_id' => 'id']],
         ];
@@ -50,10 +52,11 @@ class RequestStage extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'date_created' => 'Date Created',
-            'date_start' => 'Date Start',
-            'date_end' => 'Date End',
-            'real_end' => 'Real End',
+            'date_created' => 'Fecha creado',
+            'date_start' => 'Fecha inicio',
+            'date_end' => 'Fecha Fin',
+            'real_end' => 'Cumplido',
+            'details' => 'Observaciones',
             'stage_id' => 'Stage ID',
             'buy_request_id' => 'Buy Request ID',
         ];
@@ -67,6 +70,7 @@ class RequestStage extends \yii\db\ActiveRecord
         return $this->hasOne(BuyRequest::className(), ['id' => 'buy_request_id']);
     }
 
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -74,4 +78,5 @@ class RequestStage extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Stage::className(), ['id' => 'stage_id']);
     }
+
 }
