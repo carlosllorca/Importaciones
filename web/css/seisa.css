@@ -5,6 +5,9 @@
 span.glyphicon{
     color: #f66b0d!important;
 }
+.btn > .glyphicon{
+     color: #fff!important;
+ }
 th>a,td>a{
     color: #f66b0d!important;
 }

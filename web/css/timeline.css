@@ -40,9 +40,6 @@ h2 {
     margin: 40px 0;
     position: relative;
 }
-#timeline p {
-    margin: 0 0 15px;
-}
 
 .date {
     margin-top: -10px;
@@ -101,14 +98,7 @@ h2 {
     top: 50%;
     margin-top: -17px;
 }
-.content p {
-    max-height: 0;
-    color: transparent;
-    text-align: justify;
-    word-break: break-word;
-    hyphens: auto;
-    overflow: hidden;
-}
+
 .contentData {
     max-height: 0;
     color: #333333;

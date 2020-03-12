@@ -24,7 +24,30 @@ use yii\helpers\Html; ?>
 
     </div>
 </div>
+<?php
+if($model->allDocumentOk()){
+    ?>
+    <!-- Modal -->
+    <div class="modal fade" style="margin-top: 20%" id="transport-form" tabindex="-1" role="dialog" aria-labelledby="Iniciar ciclo de transportación" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Iniciar ciclo de transportación</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="bodyTransport">
 
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <?php
+}
+?>
 
 
 
@@ -34,11 +57,14 @@ use yii\helpers\Html; ?>
         if (Yii::$app->user->can('buyrequest/sendtomonitoring')) {
             ?>
             <p style="text-align: right">
-                <?= Html::a('Enviar a seguimiento', ['/buy-request/send-to-monitoring','id'=>$model->id],
+                <?= Html::a('Enviar a seguimiento', ['#','id'=>$model->id],
                     $model->allDocumentOk()?
                         [
                                 'class' => 'btn btn-primary',
-                                'data-confirm'=>'¿Confirma que desea iniciar el ciclo de transportación para esta orden?'
+                                'data-toggle'=>"modal",
+                                'data-target'=>"#transport-form",
+                                'onclick'=> "transportForm({$model->id})",
+
                         ]
                         :['class' => 'btn btn-primary disabled']) ?>
                 <?= Html::a('Subir otro documento', '#',
@@ -96,7 +122,7 @@ use yii\helpers\Html; ?>
 
                                     'title' => 'Subir archivo',
                                     'data-toggle'=>"modal",
-                                    'onclick'=> "uploadFileExpedient(false,{$buyRequestDocument->id})",
+                                    'onclick'=> "uploadFileExpedient({$buyRequestDocument->id})",
                                     'data-target'=>"#upload-file-expedient"
                                 ]) : ''?>
                     </th>

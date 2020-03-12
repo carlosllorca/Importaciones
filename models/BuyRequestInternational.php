@@ -22,6 +22,8 @@ use yii\web\UploadedFile;
  * @property int|null $destiny_id
  * @property int|null $payment_instrument_id
  * @property int|null $buy_condition_id
+ * @property int|null $transport_days
+ * @property int|null $build_days
  * @property string|null $message
  *
  * @property FileInput $blank_contract
@@ -40,6 +42,7 @@ use yii\web\UploadedFile;
 class BuyRequestInternational extends \yii\db\ActiveRecord
 {
     const SCENARIO_GENERATE_LICITACION = 'ADD_LICITACION';
+    const SCENARIO_START_TRANSPORTATION = 'START_TRANSPORTATION';
     public $blank_contract;
     public $pliego;
     public $buyer_fundamentation;
@@ -71,8 +74,10 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
             [['buy_request_id', 'buyer_assigned', 'buy_approved_by', 'dt_specialist_assigned', 'dt_approved_by', 'destiny_id', 'payment_instrument_id', 'buy_condition_id'], 'integer'],
             [['bidding_start', 'bidding_end', 'buy_approved_date', 'dt_approved_date','ganadores'], 'safe'],
             [['message','bidding_start','bidding_end','buy_condition_id'],'required','on'=>self::SCENARIO_GENERATE_LICITACION],
+            [['transport_days','build_days'],'required','on'=>self::SCENARIO_START_TRANSPORTATION],
+            [['transport_days','build_days'],'integer','min'=>0,'max'=>999],
             [['bidding_start','bidding_end'], 'invalidRangeDate'],
-            [['bidding_end'], 'beforeToday'],
+            [['bidding_end'], 'beforeToday','on'=>self::SCENARIO_GENERATE_LICITACION],
             [['blank_contract','pliego','buyer_fundamentation'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf,doc,docx','maxSize' => 2048*1024 ],
             [['buy_condition_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyCondition::className(), 'targetAttribute' => ['buy_condition_id' => 'id']],
             [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
@@ -128,7 +133,9 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
             'destiny_id' => 'Destino',
             'payment_instrument_id' => 'Instrumento de pago',
             'buy_condition_id' => 'Condición de la compra',
-            'message'=>'Cuerpo del mensaje'
+            'message'=>'Cuerpo del mensaje',
+            'transport_days'=>'Dias de transportación',
+            'build_days'=>'Dias para que la producción esté lista'
         ];
     }
 

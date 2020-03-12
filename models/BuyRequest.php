@@ -176,7 +176,7 @@ class BuyRequest extends \yii\db\ActiveRecord
     }
     public function requestStageOrdenados()
     {
-        return RequestStage::find()->innerJoinWith('stage')->where(['stage.active'=>true])->orderBy('stage.order')->all();
+        return RequestStage::find()->innerJoinWith('stage')->where(['stage.active'=>true])->andWhere(['buy_request_id'=>$this->id])->orderBy('stage.order')->all();
     }
     public function currentStage(){
 

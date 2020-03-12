@@ -82,3 +82,6 @@ select{
     max-width: 45%;
     margin-right: 2%!important;
 }
+.has-error > .help-block {
+    display: table!important;
+}

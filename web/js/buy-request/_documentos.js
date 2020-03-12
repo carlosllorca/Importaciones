@@ -9,3 +9,9 @@ function uploadFileExpedient(id,expediente=false){
     }
 
 }
+function transportForm(id){
+
+        $('#bodyTransport').load(`/buy-request/send-to-monitoring?id=${id}`)
+
+
+}

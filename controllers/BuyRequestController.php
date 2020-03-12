@@ -129,12 +129,11 @@ class BuyRequestController extends MainController
         }
         $active = 'demands_associated';
         if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
-
-            $form = $model->buyRequestInternational;
-            $form->setScenario(BuyRequestInternational::SCENARIO_GENERATE_LICITACION);
-
-            if ($form->load(Yii::$app->request->post()) && $form->save()) {
-                $model->buy_request_status_id=BuyRequestStatus::$LICITANDO;
+            if($model->buyRequestInternational){
+                $form = $model->buyRequestInternational;
+                $form->setScenario(BuyRequestInternational::SCENARIO_GENERATE_LICITACION);
+                if ($form->load(Yii::$app->request->post()) && $form->save()) {
+                    $model->buy_request_status_id=BuyRequestStatus::$LICITANDO;
 
                     foreach (Provider::related($model->arrayValidatedList()) as $provider){
                         if(BuyRequestProvider::find()->where(['buy_request_id'=>$model->id])
@@ -147,19 +146,25 @@ class BuyRequestController extends MainController
                             $m->save();
                         }
                     };
-                $form->notifyProviders();
+                    $form->notifyProviders();
 
 
-                $model->save(false);
-                $active= 'propuestas';
-                return $this->render('update', [
-                    'form'=>$form,
-                    'model' => $model,
-                    'active'=>$active
-                ]);
+                    $model->save(false);
+                    $active= 'propuestas';
+                    return $this->render('update', [
+                        'form'=>$form,
+                        'model' => $model,
+                        'active'=>$active
+                    ]);
 
-                return $this->redirect(['view', 'id' => $model->id]);
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+
+            }else{
+                $form=new BuyRequestInternational();
             }
+
+
 
            // $model->setScenario(BuyRequest::SCENARIO_GENERATE_LICITACION);
 //            $model->destiny_id=Destiny::$HABANA_ID;
@@ -519,25 +524,44 @@ class BuyRequestController extends MainController
     public function actionViewDocuments(){
 
     }
+    public function actionValidateMonitoring($id){
+        $model = BuyRequestInternational::findOne($id);
+        $model->setScenario(BuyRequestInternational::SCENARIO_START_TRANSPORTATION);
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+            \Yii::$app->end();
+        }
+    }
     public function actionSendToMonitoring($id){
         $model = $this->findModel($id);
         if($model->allDocumentOk()){
-            $model->buy_request_status_id=BuyRequestStatus::$EN_PROCESO;
-            $model->save(false);
-            $current = $model->lastUploadDocumentDate();
-            foreach (Stage::getStagesByOrderType($model->buy_request_type_id) as $stage){
-                $rs=new RequestStage();
-                $rs->buy_request_id=$id;
-                $rs->stage_id=$stage->id;
-                $rs->date_created=date('Y-m-d');
-                $rs->date_start=$current;
-                $next = date('Y-m-d',strtotime($current."+ {$rs->stage->duration} days"));
-                $rs->date_end=$next;
-                $rs->save(false);
-                $current=$next;
+            $form =BuyRequestInternational::findOne($model->buyRequestInternational->id);
+            $form->setScenario(BuyRequestInternational::SCENARIO_START_TRANSPORTATION);
+
+            if ($form->load(Yii::$app->request->post()) && $form->save()) {
+                $model->buy_request_status_id=BuyRequestStatus::$EN_PROCESO;
+                $model->save(false);
+                $current = $model->lastUploadDocumentDate();
+                $d= $form->build_days-21;
+                $current = date('Y-m-d',strtotime($current."+ {$d} days"));
+                foreach (Stage::getStagesByOrderType($model->buy_request_type_id) as $stage){
+                    $rs=new RequestStage();
+                    $rs->buy_request_id=$id;
+                    $rs->stage_id=$stage->id;
+                    $rs->date_created=date('Y-m-d');
+                    $rs->date_start=$current;
+                    $next = date('Y-m-d',strtotime($current."+ {$rs->stage->duration} days"));
+                    $rs->date_end=$next;
+                    $rs->save(false);
+                    $current=$next;
+                }
+                Yii::$app->session->setFlash('success','El ciclo de transportación ha sido iniciado. Por favor verifique las fechas de cumplimiento de cada hito.');
+                return $this->redirect(['/buy-request/update', 'id' => $model->id,'section'=>'transportation']);
             }
-            Yii::$app->session->setFlash('success','El ciclo de transportación ha sido iniciado. Por favor verifique las fechas de cumplimiento de cada hito.');
-            return $this->redirect(['/buy-request/update', 'id' => $model->id,'section'=>'transportation']);
+            return $this->renderAjax('_formTransportacion',['model'=>$form]);
+
 
         }else{
             Yii::$app->session->setFlash('danger','No es posible terminar la evaluación de ofertas hasta que estén todos los documentos subidos y aprobados.');
