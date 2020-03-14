@@ -56,7 +56,12 @@ use yii\helpers\Url;
                 <div class="col-md-4" style="text-align: left">
                     <?= $form->field($model, 'payment_method_id')->widget(Select2::classname(), [
                         'data' => \app\models\PaymentMethod::combo(),
-                        'options' => ['placeholder' => 'Seleccione ...','id'=>'payment_method'],
+                        'options' => [
+                                'placeholder' => 'Seleccione ...',
+                             'options' => \app\models\PaymentMethod::extraData(),
+
+                            'id'=>'payment_method'
+                        ],
 
                         'pluginEvents'=>[
                             "change" => "function(el) { validar('payment_method') }",

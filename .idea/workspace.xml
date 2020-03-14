@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/seisa.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/seisa.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/PaymentMethod.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/PaymentMethod.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/demand/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/payment-method/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/payment-method/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/demand/_form.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/demand/_form.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +250,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="enableYiiStorm" value="true" />
     <property name="langName" value="en" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/config" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../4contest-master" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -380,7 +384,8 @@
       <workItem from="1583983840965" duration="6289000" />
       <workItem from="1584019527678" duration="29000" />
       <workItem from="1584193702529" duration="1975000" />
-      <workItem from="1584218605509" duration="491000" />
+      <workItem from="1584218605509" duration="1494000" />
+      <workItem from="1584220620222" duration="6689000" />
     </task>
     <task id="LOCAL-00001" summary="Preparando el proyecto">
       <created>1576473614599</created>
@@ -690,7 +695,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583990306248</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="estilo naranja en los textbox">
+      <created>1584219207614</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1584219207614</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -710,7 +722,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Refinamientos al controlador." />
     <MESSAGE value="Aprobar demanda.&#10;rechazar demanda.&#10;Actualizar demanda" />
     <MESSAGE value="exportar" />
     <MESSAGE value="Asignar especialista técnico y comprador" />
@@ -735,7 +746,8 @@
     <MESSAGE value="Antes de empezar con los hitos" />
     <MESSAGE value="Definidos los hitos de las solicitudes internacionales" />
     <MESSAGE value="Fin del ciclo, pendiente la opción modificar hito" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fin del ciclo, pendiente la opción modificar hito" />
+    <MESSAGE value="estilo naranja en los textbox" />
+    <option name="LAST_COMMIT_MESSAGE" value="estilo naranja en los textbox" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2475" y="200" width="800" height="677" key="#Deployment" timestamp="1576472912804">
@@ -797,13 +809,13 @@
     <state x="3014" y="385" key="#xdebugger.evaluate/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583988012766" />
     <state x="852" y="256" width="254" height="593" key="#xdebugger.evaluate/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1576847070634" />
     <state x="2992" y="323" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882354679" />
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2" timestamp="1583990306047">
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2" timestamp="1584219207320">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580268556850" />
     <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1582487604398" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582788400503" />
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583990306047" />
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584219207320" />
     <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583547290406" />
     <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580970277888" />
     <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/49.27.1871.1053@49.27.1871.1053" timestamp="1583770077124" />
@@ -812,10 +824,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="562" height="568" key="DebuggerActiveHint/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583907273064" />
-    <state x="2663" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1583806146475">
+    <state x="2663" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1584220342809">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2663" y="310" width="424" height="484" key="FileChooserDialogImpl/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583806146475" />
+    <state x="2663" y="310" width="424" height="484" key="FileChooserDialogImpl/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584220342809" />
     <state width="1874" height="343" key="GridCell.Tab.0.bottom" timestamp="1583990310680">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

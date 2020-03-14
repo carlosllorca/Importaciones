@@ -160,3 +160,7 @@ select.form-control{
 .select2-container--krajee .select2-selection--multiple .select2-search--inline .select2-search__field{
     width: 100%!important;
 }
+/* Popover Body */
+.popover-content {
+    font-size: 15px;
+}

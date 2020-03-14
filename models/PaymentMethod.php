@@ -61,4 +61,13 @@ class PaymentMethod extends \yii\db\ActiveRecord
     public static function combo(){
         return ArrayHelper::map(self::find()->where(['active'=>true])->orderBy('label')->all(),'id','label');
     }
+    public static function extraData(){
+        /**
+         * @var $model TypeProject
+         */
+
+        $a =  ArrayHelper::map(self::find()->all(),'id',function($model){return ['item'=>$model->id,'label'=>$model->label,'description'=>$model->description];});
+
+        return $a;
+    }
 }
