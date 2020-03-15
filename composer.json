@@ -18,16 +18,17 @@
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
-        "ramosisw/yii2-material-dashboard": "dev-master",
+
         "kartik-v/yii2-widget-select2": "dev-master",
         "kartik-v/yii2-widget-depdrop": "dev-master",
-        "yiisoft/yii2-bootstrap4": "^2.0",
+
         "miloschuman/yii2-highcharts-widget": "^7.1",
         "mpdf/mpdf": "^8.0",
         "kartik-v/yii2-widget-datepicker": "dev-master",
         "kartik-v/yii2-widget-fileinput": "dev-master",
         "phpoffice/phpspreadsheet": "^1.11",
-      "ext-zip": "*"
+      "ext-zip": "*",
+        "ricar2ce/yii2-material-theme": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

@@ -3,6 +3,9 @@
 h4{
     font-size: 2.3em!important;
 }
+h5,.h5{
+    font-size: 18px !important;
+}
 
 .navbar .navbar-nav .nav-item .nav-link .fa, .navbar .navbar-nav .nav-item .nav-link .material-icons {
     font-size: 1.25rem;
@@ -84,4 +87,53 @@ select{
 }
 .has-error > .help-block {
     display: table!important;
+}
+
+
+    .sidebar-mini .sidebar {
+        width: 260px;
+    }
+.sidebar-mini .sidebar:not(:hover)>div>ul>li>ul.show {
+    display: none!important;
+}
+.container{
+    max-width: 100%!important;
+}
+.card .card-header .nav-tabs {
+    padding: 0;
+    font-size: 14px!important;
+}
+.tab-content{
+    border: 1px solid #ddd!important;
+}
+.card{
+    font-size: 14px!important;
+}
+.form-group .bmd-label-static {
+    top:0px!important;
+    font-size: 14px!important;
+}
+.form-control{
+    padding-top: 50px!important;
+    padding-bottom: 20px!important;
+}
+.content{
+    background-color: #eee!important;
+}
+.navbar{
+    background-color: #eee!important;
+}
+
+.form-control{
+    border:0px!important;
+}
+.form-control:focus{
+
+    box-shadow: none!important;
+
+}
+select.form-control{
+    padding-top: 0px!important;
+    padding-bottom: 0px!important;
+    margin-top: 27px!important;
 }

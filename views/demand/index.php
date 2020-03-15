@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         //'demand_status_id',
                         //'created_by',
 
-                        ['class' => 'yii\grid\ActionColumn'],
+                        ['class' => 'rce\material\grid\ActionColumn'],
                     ],
                 ]); ?>
 

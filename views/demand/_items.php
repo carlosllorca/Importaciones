@@ -117,14 +117,14 @@ use yii\web\JqueryAsset;
                     ],
                     $model->demand_status_id==\app\models\DemandStatus::RECHAZADA_ID?['value'=>function(){return 'Demanda rechazada';}]:
                     [
-                        'class' => 'yii\grid\ActionColumn',
+                        'class' => 'rce\material\grid\ActionColumn',
                         'template' => '{divide} {cancel-item}',
                         'buttons' => [
                             'divide' => function ($url, $model) {
                                 /**
                                  * @var $model DemandItem
                                  */
-                                return $model->status() == 'Sin clasificar' ? Html::a('<span class="glyphicon glyphicon-duplicate"></span>', '#',
+                                return $model->status() == 'Sin clasificar' ? Html::a('<span class="fa fa-duplicate"></span>', '#',
                                     [
                                         'title' => 'Dividir. Al dividir puedes enviar un mismo producto a dos destinos diferentes.',
                                         'onclick' => 'divide(' . $model->id . ',' . $model->quantity . ')'
@@ -134,7 +134,7 @@ use yii\web\JqueryAsset;
                                 /**
                                  * @var $model DemandItem
                                  */
-                                return $model->status() == 'Sin clasificar' ? Html::a('<span class="glyphicon glyphicon-remove"></span>', '#',
+                                return $model->status() == 'Sin clasificar' ? Html::a('<span class="fa fa-remove"></span>', '#',
                                     [
                                         'title' => 'Cancelar un producto.',
                                         'onclick' => 'cancel_item(' . $model->id . ')'

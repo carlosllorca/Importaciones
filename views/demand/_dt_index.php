@@ -111,7 +111,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         //'created_by',
 
                         [
-                                'class' => 'yii\grid\ActionColumn',
+                                'class' => 'rce\material\grid\ActionColumn',
                                 'template' => '{view}{approve}{reject}{update}{delete}',
                                 'visibleButtons' => [
                                     'update'=>function ($model, $key, $index) {

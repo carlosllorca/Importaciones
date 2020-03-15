@@ -12,22 +12,30 @@ use kartik\select2\Select2;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <div class="row">
+        <div class="col-sm-6">
+            <?= $form->field($model, 'validated_list_item_id')->widget(Select2::classname(), [
+                'data' => \app\models\ValidatedListItem::combo($vl),
+
+                'options' => ['placeholder' => 'Seleccione ...','id'=>'validated_list_item_id'],
+                'pluginEvents'=>[
+                    "change" => "function(el) { cargarDetalles('validated_list_item_id') }",
+                ]
+            ]);?>
+        </div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'quantity')->textInput(['type'=>'number'])->label('Cantidad') ?>
+        </div>
+    </div>
 
 
-    <?= $form->field($model, 'validated_list_item_id')->widget(Select2::classname(), [
-        'data' => \app\models\ValidatedListItem::combo($vl),
-        'options' => ['placeholder' => 'Seleccione ...','id'=>'validated_list_item_id'],
-        'pluginEvents'=>[
-            "change" => "function(el) { cargarDetalles('validated_list_item_id') }",
-        ]
-    ]);?>
     <div id="product-details">
 
     </div>
 
     <?= $form->field($model, 'price')->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'quantity')->textInput(['type'=>'number'])->label('Cantidad') ?>
+
 
 
 

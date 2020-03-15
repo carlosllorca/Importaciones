@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'label',
                         'validatedList.label',
 
-                        ['class' => 'yii\grid\ActionColumn'],
+                        ['class' => 'rce\material\grid\ActionColumn'],
                     ],
                 ]); ?>
                 <?php Pjax::end(); ?>

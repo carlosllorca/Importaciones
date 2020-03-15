@@ -1,5 +1,6 @@
 <?php
 
+use yii\bootstrap\Tabs;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 
@@ -27,21 +28,21 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-12" style="text-align: right">
-                    <?=Yii::$app->user->can('demand/approve')&&$model->demand_status_id==\app\models\DemandStatus::ENVIADA_ID?
-                        Html::a('<i class="glyphicon glyphicon-ok"></i>',["approve",'id'=>$model->id,'return'=>'/demand/view?id='.$model->id],
+                    <?= Yii::$app->user->can('demand/approve') && $model->demand_status_id == \app\models\DemandStatus::ENVIADA_ID ?
+                        Html::a('<i class="glyphicon glyphicon-ok"></i>', ["approve", 'id' => $model->id, 'return' => '/demand/view?id=' . $model->id],
                             [
-                                'title'=>'Aprobar demanda',
-                                'class'=>'btn btn-success',
-                                'data-confirm'=>'¿Confirma que desea aprobar la demanda?'
-                            ]):null
+                                'title' => 'Aprobar demanda',
+                                'class' => 'btn btn-success',
+                                'data-confirm' => '¿Confirma que desea aprobar la demanda?'
+                            ]) : null
                     ?>
-                    <?=Yii::$app->user->can('demand/reject')&&$model->demand_status_id==\app\models\DemandStatus::ENVIADA_ID?
-                        Html::a('<i class="glyphicon glyphicon-remove"></i>',"#",
+                    <?= Yii::$app->user->can('demand/reject') && $model->demand_status_id == \app\models\DemandStatus::ENVIADA_ID ?
+                        Html::a('<i class="glyphicon glyphicon-remove"></i>', "#",
                             [
-                                'title'=>'Rechazar demanda',
-                                'class'=>'btn btn-danger',
-                                'onclick'=>"rejectDemand({$model->id})"
-                            ]):null
+                                'title' => 'Rechazar demanda',
+                                'class' => 'btn btn-danger',
+                                'onclick' => "rejectDemand({$model->id})"
+                            ]) : null
                     ?>
 
                 </div>
@@ -80,11 +81,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
             <?php
-            if($model->demand_status_id==\app\models\DemandStatus::RECHAZADA_ID){
+            if ($model->demand_status_id == \app\models\DemandStatus::RECHAZADA_ID) {
                 ?>
                 <div class="row">
                     <div class="col-sm-12">
-                        <p class="text-danger"><b style="font-weight: bold">MOTIVO DE RECHAZO: </b><?=$model->rejected_reason?> </p>
+                        <p class="text-danger"><b style="font-weight: bold">MOTIVO DE
+                                RECHAZO: </b><?= $model->rejected_reason ?> </p>
                     </div>
                 </div>
 
@@ -95,40 +97,35 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row p-0 m-0 mt-3">
                 <div class="card-nav-tabs" style="width: 100%">
                     <div class="card-header m-0 p-0">
-                        <div class="nav-tabs-navigation">
+                        <?php
+                        echo Tabs::widget([
+                            'items' => [
+                                [
+                                    'label' => 'Requerimientos',
+                                    'content' => $this->render('_requerimientos', ['model' => $model]),
+                                    'active' => $active == 'requirements'
+                                ],
+                                [
+                                    'label' => 'Otros detalles',
+                                    'content' => $this->render('_details', ['model' => $model]),
+                                    //'headerOptions' => [...],
 
-                            <div class="nav-tabs-wrapper">
-                                <ul class="nav nav-tabs" data-tabs="tabs">
-                                    <li class="<?= $active == 'requirements' ? 'active' : null ?>">
-                                        <a href="#requirements" data-toggle="tab">Requerimientos</a>
-                                    </li>
-                                    <li class="">
-                                        <a href="#details" class="" data-toggle="tab">Otros detalles</a>
-                                    </li>
-                                    <li class="<?= $active == 'items' ? 'active' : null ?>">
-                                        <a href="#items" data-toggle="tab">Relación de productos<span
-                                                    class="badge badge-inma-tab <?= count($model->sinClasificar()) ? '' : 'hidden' ?>"><?= count($model->sinClasificar()) ?></span></a>
-                                    </li>
-                                </ul>
-                            </div>
+                                ], [
+                                    'label' => 'Relación de productos',
+                                    'content' => $this->render('_items', ['model' => $model, 'searchModel' => $searchModel,
+                                        'dataProvider' => $dataProvider]),
+                                    'active' => $active == 'items'
+                                    //'headerOptions' => [...],
 
-                        </div>
+                                ],
+
+                            ],
+                        ]);
+                        ?>
+
                     </div>
 
-                    <div class="card-content p-0" style="background: #F2F2F2;min-height: 500px">
-                        <div class="tab-content">
-                            <div class="tab-pane <?= $active == 'requirements' ? 'active' : null ?>" id="requirements">
-                                <?php echo $this->render('_requerimientos', ['model' => $model]); ?>
-                            </div>
-                            <div class="tab-pane " id="details">
-                                <?php echo $this->render('_details', ['model' => $model]); ?>
-                            </div>
-                            <div class="tab-pane <?= $active == 'items' ? 'active' : null ?>" id="items">
-                                <?php echo $this->render('_items', ['model' => $model, 'searchModel' => $searchModel,
-                                    'dataProvider' => $dataProvider]); ?>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
@@ -137,7 +134,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php
         echo $this->registerJsFile('/js/demand/items.js', ['depends' => \yii\web\JqueryAsset::className()]);
-        if($model->demand_status_id==\app\models\DemandStatus::ENVIADA_ID){
+        if ($model->demand_status_id == \app\models\DemandStatus::ENVIADA_ID) {
             echo $this->registerJsFile('/js/demand/index.js', ['depends' => \yii\web\JqueryAsset::className()]);
         }
         ?>

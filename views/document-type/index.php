@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'active:boolean',
 
                         [
-                                'class' => 'yii\grid\ActionColumn',
+                                'class' => 'rce\material\grid\ActionColumn',
                                 'template' => '{update} {delete}'
                         ],
                     ],

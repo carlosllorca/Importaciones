@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'short_name',
                         'name',
 
-                        ['class' => 'yii\grid\ActionColumn'],
+                        ['class' => 'rce\material\grid\ActionColumn'],
                     ],
                 ]); ?>
 

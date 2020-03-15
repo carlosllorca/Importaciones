@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         //'buy_request_type_id',
 
                         [
-                            'class' => 'yii\grid\ActionColumn',
+                            'class' => 'rce\material\grid\ActionColumn',
                             'visibleButtons' => [
                                 'view'=>function(){
                                     return Yii::$app->user->can('buyrequest/view');

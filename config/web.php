@@ -18,6 +18,17 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '123',
         ],
+        'assetManager' => [
+            'bundles' => [
+                'rce\material\Assets' => [
+                    'siteTitle' => 'SEISA',
+                    'sidebarColor' => 'azure',
+                    'sidebarBackgroundColor' => 'white',
+                    'sidebarBackgroundImage' => 'img url'
+                ],
+            ],
+        ],
+
         'formatter' => [
             'class' => 'yii\i18n\Formatter',
             'locale' => 'es-ES', //ej. 'es-ES'

@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'filter' => \app\models\CertificationType::combo(),
                             'value' => function($model){return $model->certificationType->label;}
                         ],
-                        ['class' => 'yii\grid\ActionColumn'],
+                        ['class' => 'rce\material\grid\ActionColumn'],
                     ],
                 ]); ?>
 

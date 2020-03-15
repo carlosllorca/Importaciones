@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'active:boolean',
 
                         [
-                                'class' => 'yii\grid\ActionColumn',
+                                'class' => 'rce\material\grid\ActionColumn',
                                 'template' => '{update} {disable}',
                                 'buttons'=>[
                                         'disable'=>function($url,$model){
@@ -61,17 +61,19 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     if($model->active){
                                                         $msg = "¿Confirma que desea desactivar este usuario?";
                                                         return Html::a(
-                                                            "<span class='glyphicon glyphicon-remove'/>",[$url],
+                                                            "<i class='material-icons'>person_outline</i><div class='ripple-container'></div>",[$url],
                                                             [
                                                                 'data-confirm'=>$msg,
+                                                                'class'=>'btn btn-primary btn-simple btn-xs',
                                                                 'title'=>'Desactivar usuario'
                                                             ]);
                                                     }else{
                                                         $msg = "¿Confirma que desea activar este usuario?";
                                                         return Html::a(
-                                                            "<span class='glyphicon glyphicon-ok'/>",[$url],
+                                                            "<i class='material-icons'>person</i><div class='ripple-container'></div>",[$url],
                                                             [
                                                                 'data-confirm'=>$msg,
+                                                                'class'=>'btn btn-primary btn-simple btn-xs',
                                                                 'title'=>'activar usuario'
                                                             ]);
                                                     }

@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'organism_id',
                         //'province_ueb',
 
-                        ['class' => 'yii\grid\ActionColumn'],
+                        ['class' => 'rce\material\grid\ActionColumn'],
                     ],
                 ]); ?>
 

@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         //'province_ueb',
 
                         [
-                                'class' => 'yii\grid\ActionColumn',
+                                'class' => 'rce\material\grid\ActionColumn',
                                 'template'=>'{update} {delete}'
                         ],
                     ],

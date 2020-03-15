@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ['class' => 'yii\grid\SerialColumn'],
                         'label',
                         [
-                            'class' => 'yii\grid\ActionColumn',
+                            'class' => 'rce\material\grid\ActionColumn',
                             'template' => '{update} {delete}'
                         ],
 

@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'quantity',
             //'buy_request_id',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'rce\material\grid\ActionColumn'],
         ],
     ]); ?>
 

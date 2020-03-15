@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'allow_view:boolean',
             'allow_update:boolean',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'rce\material\grid\ActionColumn'],
         ],
     ]); ?>
 

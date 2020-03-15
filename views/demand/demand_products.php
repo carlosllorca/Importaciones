@@ -6,17 +6,7 @@ use yii\bootstrap4\Modal;
 /* @var $model \app\models\Demand */
 
 $this->title='Añadir productos';
-Modal::begin([
-    //'title' => 'Modificar pregunta',
-    'id' => 'modal-update-question',
-    'toggleButton' => ['label' => 'click me', 'id' => 'update-question', 'class' => 'hidden '],
-]);
-?>
-<div id="modal-content">
 
-</div>
-<?php
-Modal::end();
 ?>
 <div class="card">
     <div class="card-header card-header-primary">
@@ -26,13 +16,13 @@ Modal::end();
     <div class="card-body" style="padding: 15px">
         <div class="p-3">
            <p style="text-align: right">
-               <?=\yii\helpers\Html::a('<span class="glyphicon glyphicon-plus"></span> Agregar producto',['/demand-item/create','vl'=>$model->id],
+               <?=\yii\helpers\Html::a('<span class="fa fa-plus"></span> Agregar producto',['/demand-item/create','vl'=>$model->id],
                    [
                        'class'=>'btn btn-success',
                        'title'=>'Agregar producto',
 
                    ])?>
-               <?=\yii\helpers\Html::a('<i class="glyphicon glyphicon-send"></i> Enviar demanda',['send','id'=>$model->id],
+               <?=\yii\helpers\Html::a('<i class="fa fa-send"></i> Enviar demanda',['send','id'=>$model->id],
                    [
                        'class'=>'btn btn-primary',
                        'title'=>'Enviar demanda',

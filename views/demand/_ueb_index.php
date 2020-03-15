@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-body" style="padding: 15px">
             <div class="p-3">
                 <p>
-                    <?= Html::a('<span class="glyphicon glyphicon-plus"/>', ['create'], ['class' => 'btn btn-success','title'=>'Nueva demanda']) ?>
+                    <?= Html::a('<span class="fa fa-plus"/>', ['create'], ['class' => 'btn btn-success','title'=>'Nueva demanda']) ?>
                 </p>
 
                 <?php Pjax::begin(); ?>
@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         //'created_by',
 
                         [
-                                'class' => 'yii\grid\ActionColumn',
+                                'class' => 'rce\material\grid\ActionColumn',
                                 'visibleButtons' => [
                                     'update'=>function ($model, $key, $index) {
                                         return ($model->demand_status_id === \app\models\DemandStatus::BORRADOR_ID||$model->demand_status_id === \app\models\DemandStatus::RECHAZADA_ID);

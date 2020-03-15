@@ -38,7 +38,7 @@ use yii\widgets\Pjax;
             //'subfamily_id',
 
             [
-                    'class' => 'yii\grid\ActionColumn',
+                    'class' => 'rce\material\grid\ActionColumn',
                     'template' => '{update} {delete}',
 
                     'urlCreator' => function($action,$model,$key){
