@@ -473,6 +473,16 @@ class BuyRequestController extends MainController
             Yii::$app->end();
         }
     }
+    public function actionValidateEvaluateOfert($id){
+        $model = Offert::findOne($id);
+        $model->setScenario(Offert::$SCENARIO_EVALUATE_OFFERT);
+
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+            Yii::$app->end();
+        }
+    }
     public function actionEvaluateOffert($id){
         $model= Offert::findOne($id);
         if (Yii::$app->request->isPost) {
