@@ -29,13 +29,14 @@ Modal::end();
                <?=\yii\helpers\Html::a('<span class="glyphicon glyphicon-plus"></span> Agregar producto',['/demand-item/create','vl'=>$model->id],
                    [
                        'class'=>'btn btn-success',
-                       'title'=>'Enviar demanda',
+                       'title'=>'Agregar producto',
 
                    ])?>
-               <?=\yii\helpers\Html::a('<span class="glyphicon glyphicon-send"></span> Enviar demanda',['send','id'=>$model->id],
+               <?=\yii\helpers\Html::a('<i class="glyphicon glyphicon-send"></i> Enviar demanda',['send','id'=>$model->id],
                    [
                        'class'=>'btn btn-primary',
                        'title'=>'Enviar demanda',
+
                        'data-confirm'=>'¿Confirma que desea enviar la demanda?'
                    ])?>
 
@@ -104,7 +105,3 @@ Modal::end();
         </div>
     </div>
 </div>
-
-<?php
-$this->registerJsFile('/js/openModal.js',['depends'=>\yii\web\JqueryAsset::className()])
-?>

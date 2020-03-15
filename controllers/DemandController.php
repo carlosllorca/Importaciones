@@ -95,7 +95,7 @@ class DemandController extends MainController
             'dataProvider' => $dataProvider,
         ]);
     }
-    public function actionApprove($id){
+    public function actionApprove($id,$return=false){
         $model = $this->findModel($id);
         $model->demand_status_id=DemandStatus::ACEPTADA_ID;
         $model->approved_by=Yii::$app->user->identity->id;
@@ -103,6 +103,9 @@ class DemandController extends MainController
         $model->save(false);
         Yii::$app->traza->saveLog('Demanda aceptada','La Demanda '.$model->demand_code. ' ha sido aceptada');
         Yii::$app->session->setFlash('success','Demanda aceptada');
+        if($return){
+            return $this->redirect($return);
+        }
         return $this->redirect('index');
         //todo: Enviar email a la UEB para notificar.
 
@@ -242,7 +245,7 @@ class DemandController extends MainController
         $demandItem= new DemandItem();
         $demandItem->demand_id=$model->id;
 
-        return $this->render('demand_products',['model'=>$model,'demandItem'=>$demandItem]);
+        return $this->render('demand_products',['model'=>$model]);
 
     }
 

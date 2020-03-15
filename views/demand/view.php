@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Html;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
@@ -21,9 +22,29 @@ $this->params['breadcrumbs'][] = $this->title;
             <h4 class="card-title"><?= $this->title ?></h4>
             <p class="card-category"></p>
         </div>
+
         <?php Pjax::begin(['id' => 'titulos', 'timeout' => 5000]) ?>
         <div class="card-body">
             <div class="row">
+                <div class="col-sm-12" style="text-align: right">
+                    <?=Yii::$app->user->can('demand/approve')&&$model->demand_status_id==\app\models\DemandStatus::ENVIADA_ID?
+                        Html::a('<i class="glyphicon glyphicon-ok"></i>',["approve",'id'=>$model->id,'return'=>'/demand/view?id='.$model->id],
+                            [
+                                'title'=>'Aprobar demanda',
+                                'class'=>'btn btn-success',
+                                'data-confirm'=>'¿Confirma que desea aprobar la demanda?'
+                            ]):null
+                    ?>
+                    <?=Yii::$app->user->can('demand/reject')&&$model->demand_status_id==\app\models\DemandStatus::ENVIADA_ID?
+                        Html::a('<i class="glyphicon glyphicon-remove"></i>',"#",
+                            [
+                                'title'=>'Rechazar demanda',
+                                'class'=>'btn btn-danger',
+                                'onclick'=>"rejectDemand({$model->id})"
+                            ]):null
+                    ?>
+
+                </div>
                 <div class="col-md-3">
                     <label>Código</label>
                     <h5><?= $model->demand_code ?></h5>
@@ -58,6 +79,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     <h5><?= Yii::$app->formatter->asCurrency($model->totalAmount()) ?></h5>
                 </div>
             </div>
+            <?php
+            if($model->demand_status_id==\app\models\DemandStatus::RECHAZADA_ID){
+                ?>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p class="text-danger"><b style="font-weight: bold">MOTIVO DE RECHAZO: </b><?=$model->rejected_reason?> </p>
+                    </div>
+                </div>
+
+                <?php
+            }
+            ?>
 
             <div class="row p-0 m-0 mt-3">
                 <div class="card-nav-tabs" style="width: 100%">
@@ -103,7 +136,10 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <?php
-        echo $this->registerJsFile('/js/demand/items.js', ['depends' => \yii\web\JqueryAsset::className()])
+        echo $this->registerJsFile('/js/demand/items.js', ['depends' => \yii\web\JqueryAsset::className()]);
+        if($model->demand_status_id==\app\models\DemandStatus::ENVIADA_ID){
+            echo $this->registerJsFile('/js/demand/index.js', ['depends' => \yii\web\JqueryAsset::className()]);
+        }
         ?>
         <?php Pjax::end() ?>
 

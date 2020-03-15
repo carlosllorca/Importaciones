@@ -30,11 +30,12 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'sA/sweetalert.min.js',
-        'js/yii_overrides.js',
+
         'js/axios.min.js',
+        'js/yii_overrides.js',
     ];
     public $depends = [
-       // 'yii\web\YiiAsset',
+        'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
 }
