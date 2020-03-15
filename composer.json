@@ -26,7 +26,8 @@
         "mpdf/mpdf": "^8.0",
         "kartik-v/yii2-widget-datepicker": "dev-master",
         "kartik-v/yii2-widget-fileinput": "dev-master",
-        "phpoffice/phpspreadsheet": "^1.11"
+        "phpoffice/phpspreadsheet": "^1.11",
+      "ext-zip": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

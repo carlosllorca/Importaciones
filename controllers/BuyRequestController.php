@@ -29,12 +29,14 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use Yii;
 use PhpOffice\PhpSpreadsheet\Reader\Html;
+use yii\db\Exception;
 use yii\filters\VerbFilter;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\web\UploadedFile;
 use yii\widgets\ActiveForm;
+use ZipArchive;
 
 /**
  * BuyRequestController implements the CRUD actions for BuyRequest model.
@@ -316,6 +318,8 @@ class BuyRequestController extends MainController
     public function actionBuyApproved($id){
         $model =$this->findModel($id);
         if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
+            $model->buy_request_status_id=BuyRequestStatus::$LICITANDO;
+            $model->save(false);
             $model->buyRequestInternational->buy_approved_by=User::userLogged()->id;
             $model->buyRequestInternational->buy_approved_date=date('Y-m-d');
             $model->buyRequestInternational->save(false);
@@ -335,24 +339,27 @@ class BuyRequestController extends MainController
         Yii::$app->session->setFlash('danger','Solicitud cancelada.');
         return ['success'=>true];
     }
-    public function actionExport($id,$format){
+    public function actionExport($id){
         $model = null;
         // return the pdf output as per the destination setting
         Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
 
 
         $model = $this->findModel($id);
-        switch ($format){
-            case 'pdf':
-                $this->pdfSolicitudCompra($model);
-                break;
-            case 'xls':
-                Yii::$app->xlsModels->xlsSolicitudCompra($model);
-                break;
-            default:
-                throw  new ForbiddenHttpException('Formato incorrecto');
-                break;
+
+        $this->pdfSolicitudCompra($model);
+        $xls =  Yii::$app->xlsModels->xlsSolicitudCompra($model);
+
+        $files = ['tmp/'.$model->code.'.pdf',$xls];
+        $zipname = 'tmp/'.$model->code.'.zip';
+        $zip = new ZipArchive();
+        $zip->open($zipname,ZipArchive::CREATE);
+        foreach ($files as $file) {
+            $zip->addFile($file);
         }
+        $zip->close();
+        $this->downloadFile('tmp/'.$model->code.'.zip');
+
 
 
     }
@@ -393,9 +400,10 @@ class BuyRequestController extends MainController
         $stylesheet = file_get_contents('../web/css/pdf.css'); // external css
         $mpdf->WriteHTML($stylesheet, 1);
         $mpdf->WriteHTML($this->renderPartial('/buy-request/_pdf_solicitud_compra',['model'=>$model]),2);
-       $mpdf->AddPage();
-        $mpdf->WriteHTML($this->renderPartial('/buy-request/_pdf_solicitud_compra_productos',['model'=>$model]),2);
-        $mpdf->Output();
+//       $mpdf->AddPage();
+//        $mpdf->WriteHTML($this->renderPartial('/buy-request/_pdf_solicitud_compra_productos',['model'=>$model]),2);
+
+        $mpdf->Output('tmp/'.$model->code.'.pdf');
     }
 
     public function actionAssignUser(){

@@ -32,14 +32,12 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                         ])
                     :null?>
                 <?php
-                    if($model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$CANCELADA_ID){
+                    if($model->buy_request_status_id!=\app\models\BuyRequestStatus::$SIN_TRAMITAR_ID&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$CANCELADA_ID){
                         ?>
 
-                        <?= Yii::$app->user->can('buyrequest/export')?Html::a("<i class='center_fa fa fa-file-pdf-o '></i>",
-                            ['export', 'id' => $model->id,'format'=>'pdf'], ['class' => 'btn btn-success','target'=>'_blank' ,'title' => 'Exportar a PDF']):null ?>
-                        <?= Yii::$app->user->can('buyrequest/export')?Html::a("<i class='center_fa fa fa-file-excel-o'></i>",
-                            ['export', 'id' => $model->id,'format'=>'xls'], ['class' => "btn btn-success",'target'=>'_blank' ,'title' => 'Exportar a Excel']):null ?>
-                        <?php
+                        <?= Yii::$app->user->can('buyrequest/export')?Html::a("<i class='center_fa fa fa-download '></i>",
+                            ['export', 'id' => $model->id], ['class' => 'btn btn-success','target'=>'_blank' ,'title' => 'Exportar solicitud de compra']):null ?>
+                             <?php
                     }
                 ?>
 

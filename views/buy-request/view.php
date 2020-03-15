@@ -49,8 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'title' => 'Asignar/Reasignar el especialista técnico que evaulará las ofertas.',
                     'onclick'=>'assignUser('.$model->id.',"et")'
                 ]) :null?>
-            <?= Yii::$app->user->can('buyrequest/export')?Html::a("<span class='glyphicon glyphicon-export'></span>",
-                ['export', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank' ,'title' => 'Exportar a PDF']):null ?>
+
             <?= Yii::$app->user->can('buyrequest/update')?Html::a("<span class='glyphicon glyphicon-pencil'></span>",
                 ['update','id'=>$model->id],
                 [
@@ -58,6 +57,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     'title' => 'Modificar orden de compra',
 
                 ]) :null?>
+            <?php
+            if($model->buy_request_status_id!=\app\models\BuyRequestStatus::$SIN_TRAMITAR_ID&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$CANCELADA_ID){
+                ?>
+
+                <?= Yii::$app->user->can('buyrequest/export')?Html::a("<i class='center_fa fa fa-download '></i>",
+                    ['export', 'id' => $model->id], ['class' => 'btn btn-success','target'=>'_blank' ,'title' => 'Exportar solicitud de compra']):null ?>
+                <?php
+            }
+            ?>
         </p>
         <div class="row">
             <div class="col-md-12">

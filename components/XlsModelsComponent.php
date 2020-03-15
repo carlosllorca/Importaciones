@@ -39,163 +39,10 @@ class XlsModelsComponent extends \yii\base\Component
      */
     public function xlsSolicitudCompra($model)
     {
+        $this->download=false;
         $this->start([30, 40, 10, 30, 40],$model->code);
-        $this->titleColumn('SOLICITUD DE COMPRAS', 4);
-        $this->breakLine();
-        $this->cellBold();
-        $this->span(0,1);
-        $this->paint('UEB/Cliente:');
-        $this->setCurrent('B',2);
-        $this->span(1,1);
-        $clientes ='';
-        foreach ($model->clientes() as $cliente){
-            $clientes=$cliente->provinceUeb->label.'/'.$cliente->name."\n";
-        }
-        $this->paint($clientes);
-        $this->setCurrent('D',2);
-        $this->span(1,0);
-        $this->paint('Solicitud No:'.$model->code);
-        $this->breakLine();
-        $this->setCurrent('D',$this->row);
-        $this->span(1,0);
-        $this->paint('Fecha Sol:'.Yii::$app->formatter->asDate($model->approved_date));
-        $this->breakLine();
-        $this->titleColumn('REQUERIMIENTOS DE LA COMPRA');
-        $this->breakLine();
-        $this->cellBold();
-        $this->setHeight(30);
-        $this->paint('A ejecutar con:');
-        $this->span(3,0);
-        $this->paint($model->demandItems[0]->demand->strPaymentMethod(true));
-        $this->breakLine();
-        $this->cellBold();
-        $this->paint('Las entregas se necesitan en:');
-        $this->span(3,0);
-        $this->paint($model->demandItems[0]->demand->strDeploymentPart());
-        $this->breakLine();
-        $this->cellBold();
-        $this->paint('Especificaciones de la garantía:');
-        $this->span(1,0);
-        $this->paint($model->demandItems[0]->demand->warrantySpecification());
-        $this->setCurrent('D',$this->row);
-        $this->cellBold();
-        $this->paint('Tiempo de garantía');
-        $this->cellBold();
-        $this->paint($model->demandItems[0]->demand->txtWarrantyTime());
-        $this->breakLine();
-        $this->titleColumn("MOTIVO DE LA COMPRA");
-        $this->breakLine();
-        $this->span(4,0);
-        $this->paint($model->demandItems[0]->demand->strBuyReason());
-        $this->breakLine();
-        $this->titleColumn('PIEZAS DE REPUESTO, POST GARANTÍA, ASISTENCIA TÉCNICA Y CAPACITACIÓN');
-        $this->breakLine();
-        $this->setHeight(30);
-        $this->paint('Requiere kit de piezas de repuesto: ');
-        $this->paint($model->demandItems[0]->demand->require_replacement_part?'(X) SI  ( ) NO':'( ) SI  (X) NO');
-        $this->span(2);
-        $l=$model->demandItems[0]->demand->replacement_part_details?$model->demandItems[0]->demand->replacement_part_details:'-';
-        $this->paint("(cantidades, código y descripción del fabricante):\n{$l}");
-        $this->breakLine();
-        $this->setHeight(30);
-        $this->paint("Requiere servicio o\n venta post garantía:");
-        $this->paint($model->demandItems[0]->demand->require_post_warranty?'(X) SI  ( ) NO':'( ) SI  (X) NO');
-        $this->span(2);
-        $l=$model->demandItems[0]->demand->post_warranty_details?$model->demandItems[0]->demand->post_warranty_details:'-';
-        $this->paint("(Plazo y condiciones para la post garantía):\n{$l}");
-        $this->breakLine();
-        $this->setHeight(30);
-        $this->paint("Detalles y alcance de la \nasistencia técnica:");
-        $this->paint($model->demandItems[0]->demand->require_technic_asistance?'(X) SI  ( ) NO':'( ) SI  (X) NO');
-        $this->span(2);
-        $l=$model->demandItems[0]->demand->technic_asistance_details?$model->demandItems[0]->demand->technic_asistance_details:'-';
-        $this->paint("(Detalle y alcance de la asistencia técnica):\n{$l}");
-        $this->breakLine();
-        $this->span(1);
-        $this->setHeight(30);
-        $l=$model->demandItems[0]->demand->strSellerRequirement();
-        $this->paint("Indicar si se requiere por parte del Vendedor:\n{$l}");
-        $this->setCurrent('C',$this->row);
-        $this->span(1);
-        $this->paint("Alcance requerido:\n");
-        $this->setCurrent('E',$this->row);
-        $this->paint($model->demandItems[0]->demand->seller_requirement_details);
-        $this->breakLine();
-        $this->span(4);
-        $this->setHeight(40);
-        $this->alignTop();
-        $this->paint("Observaciones: Adjunto listado con los productos a compras.\n{$model->demandItems[0]->demand->observation}");
-        $this->breakLine();
-        $this->span(4);
-        $this->cellBold();
-        $this->paint("Por la Dirección Logística:");
-        $this->breakLine();
-        $this->span(2);
-        $this->paint("Elaborado por:");
-        $this->setCurrent('D',$this->row);
-        $this->span(2);
-        $this->paint("Aprobador por:");
-        $this->breakLine();
-        $this->paint('Nombre');
-        $this->paint($model->createdBy->full_name);
-        $this->paint('');
-        $this->paint('Nombre:');
-        $this->paint($model->approvedBy->full_name);
-        $this->breakLine();
-        $this->paint('Cargo');
-        $this->paint($model->createdBy->cargo);
-        $this->paint('');
-        $this->paint('Cargo:');
-        $this->paint($model->approvedBy->cargo);
-        $this->breakLine();
-        $this->paint('Firma');
-        $this->paint('');
-        $this->paint('');
-        $this->paint('Firma:');
-        $this->paint('');
-        $this->breakLine();
-        $this->paint('Fecha');
-        $this->paint(Yii::$app->formatter->asDate($model->created));
-        $this->paint('');
-        $this->paint('Fecha:');
-        $this->paint(Yii::$app->formatter->asDate($model->approved_date));
-        $this->breakLine();
-        $this->span(4);
-        $this->cellBold();
-        $this->paint("Por la UEB compras:");
-        $this->breakLine();
-        $this->span(2);
-        $this->paint("Recibido por:");
-        $this->setCurrent('D',$this->row);
-        $this->span(2);
-        $this->paint("Aprobador por:");
-        $this->breakLine();
-        $this->paint('Nombre');
-        $this->paint($model->buyRequestInternational->buyerAssigned->full_name);
-        $this->paint('');
-        $this->paint('Nombre:');
-        $this->paint($model->buyRequestInternational->buyApprovedBy->full_name);
-        $this->breakLine();
-        $this->paint('Cargo');
-        $this->paint($model->buyRequestInternational->buyerAssigned->cargo);
-        $this->paint('');
-        $this->paint('Cargo:');
-        $this->paint($model->buyRequestInternational->buyApprovedBy->cargo);
-        $this->breakLine();
-        $this->paint('Firma');
-        $this->paint('');
-        $this->paint('');
-        $this->paint('Firma:');
-        $this->paint('');
-        $this->breakLine();
-        $this->paint('Fecha');
-        $this->paint(Yii::$app->formatter->asDate($model->buyRequestInternational->buy_approved_date));
-        $this->paint('');
-        $this->paint('Fecha:');
-        $this->paint(Yii::$app->formatter->asDate($model->buyRequestInternational->buy_approved_date));
-        $this->breakLine();
-
         $this->addSheet('Productos');
+        $this->removeSheet(0);
         $this->setCurrent('A',1);
         $this->setHeight(40);
         $this->setColumnWidth([5,40,60,20,10,15,15,15]);
@@ -243,7 +90,10 @@ class XlsModelsComponent extends \yii\base\Component
         $this->setCurrent('H',$this->row);
         $this->cellBold();
         $this->paint(Yii::$app->formatter->asCurrency($total));
-        $this->end();
+        $url ='tmp/'.$model->code.'.xls';
+        $this->end($url);
+        return $url;
+
 
 
 
@@ -442,15 +292,6 @@ class XlsModelsComponent extends \yii\base\Component
             $item++;
 
         }
-
-
-
-
-
-
-
-
-
         $url ='offert_request/'.Yii::$app->security->generateRandomString().'.xls';
         $this->end($url);
         return $url;
@@ -491,6 +332,9 @@ class XlsModelsComponent extends \yii\base\Component
             ->getAlignment()->setWrapText(true);
         $this->sheet->setTitle($sheetName);
 
+    }
+    private function removeSheet($sheet){
+        $this->spreadsheet->removeSheetByIndex($sheet);
     }
 
     private function titleColumn($text, $colspan = 4,$rowHeight=30)
