@@ -8,11 +8,16 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\bootstrap\Modal;
 
-if(Yii::$app->user->can('buyrequest/selectwinners')&&$model->buyRequestInternational->biddingEnd()&&count($model->getWinners())==0){
-    echo $this->render('_select_winners',['model'=>$fLicitacion]);
-}
+Modal::begin([
+   // 'header' => '<h2>Hello world</h2>',
+    'toggleButton' => ['label' => 'click me','id'=>'ajax-modal','class'=>'hidden'],
+]);
 
+echo '<div id="modal-content"></div>';
+
+Modal::end();
 ?>
 
 
@@ -60,7 +65,7 @@ if(Yii::$app->user->can('buyrequest/selectwinners')&&$model->buyRequestInternati
                 <?php
             }else{
                 ?>
-                <div class="col-xs-12 p-5">
+                <div class="col-xs-12 p-5" id="details-licitation">
                     <div class="row"  >
                         <div class="col-sm-3">
                             <label style="color: #0e0e0e">Período de licitación desde:</label>
@@ -91,8 +96,9 @@ if(Yii::$app->user->can('buyrequest/selectwinners')&&$model->buyRequestInternati
                             Html::button('Seleccionar ganadores',
                                 [
                                     'class'=>'btn btn-primary',
-                                    'data-toggle'=>"modal",
-                                    'data-target'=>"#select-winners-modal"
+                                    'title'=>'Seleccionar ganadores',
+                                    'onClick'=>'ganadores('.$model->buyRequestInternational->id.')'
+
                                 ]):null
                             ?>
 

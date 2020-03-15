@@ -8,26 +8,16 @@ use yii\widgets\ActiveForm;
 /* @var $model \app\models\BuyRequestInternational|\yii\db\ActiveRecord */
 ?>
 
-<!-- Modal -->
-<div class="modal fade" style="margin-top: 20%" id="select-winners-modal" tabindex="-1" role="dialog" aria-labelledby="Seleccionar ganadores" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
         <?php
         $form = ActiveForm::begin([
             'options' => ['enctype'=>'multipart/form-data'],
             'action' => 'select-winners?id='.$model->id,'id'=>'select-winners'
         ]);
         ?>
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Seleccionar ganador(es)</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
+
                 <div class="row">
-                    <div class="hidden">
-                        <?= $form->field($model, 'ganadores')->dropDownList($model->buyRequest->comboFinalistas(),['multiple'=>true,'id'=>'select-ganadores'])?>
+                    <div class="col-sm-12">
+                        <?= $form->field($model, 'ganadores')->dropDownList($model->buyRequest->comboFinalistas(),['multiple'=>true,'id'=>'select-ganadores','class'=>'hidden'])->label(false)?>
                     </div>
                     <div class="col-sm-12">
                         <table class="table table-striped table-bordered">
@@ -59,12 +49,13 @@ use yii\widgets\ActiveForm;
                             </tbody>
                         </table>
                     </div>
+
                 </div>
 
                 <div class="row">
                     <div class="col-sm-6 p-3">
                         <?= $form->field($model, 'blank_contract')->widget(\kartik\file\FileInput::className(),[
-                            'options'=>['required'=>true],
+                            //'options'=>['required'=>true],
                             'pluginOptions' =>[
                                 'showPreview' => false,
                                 'allowEmpty'=>false,
@@ -80,7 +71,7 @@ use yii\widgets\ActiveForm;
                     </div>
                     <div class="col-sm-6 p-3">
                         <?= $form->field($model, 'pliego')->widget(\kartik\file\FileInput::className(),[
-                            'options'=>['required'=>true],
+                           // 'options'=>['required'=>true],
                             'pluginOptions' =>[
                                 'showPreview' => false,
                                 'allowEmpty'=>false,
@@ -96,7 +87,7 @@ use yii\widgets\ActiveForm;
                     </div>
                     <div class="col-sm-6 p-3">
                         <?= $form->field($model, 'buyer_fundamentation')->widget(\kartik\file\FileInput::className(),[
-                            'options'=>['required'=>true],
+                           // 'options'=>['required'=>true],
                             'pluginOptions' =>[
                                 'showPreview' => false,
                                 'allowEmpty'=>false,
@@ -115,13 +106,11 @@ use yii\widgets\ActiveForm;
                 </div>
 
 
-            </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 <button type="submit" class="btn btn-success">Presentar</button>
             </div>
-        </div>
+
         <?php ActiveForm::end(); ?>
-    </div>
-</div>
 

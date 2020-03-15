@@ -42,6 +42,7 @@ use yii\web\UploadedFile;
 class BuyRequestInternational extends \yii\db\ActiveRecord
 {
     const SCENARIO_GENERATE_LICITACION = 'ADD_LICITACION';
+    const SCENARIO_SELECT_WINNERS = 'select_winners';
     const SCENARIO_START_TRANSPORTATION = 'START_TRANSPORTATION';
     public $blank_contract;
     public $pliego;
@@ -78,6 +79,8 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
             [['transport_days','build_days'],'integer','min'=>0,'max'=>999],
             [['bidding_start','bidding_end'], 'invalidRangeDate'],
             [['bidding_end'], 'beforeToday','on'=>self::SCENARIO_GENERATE_LICITACION],
+            [['blank_contract','pliego','buyer_fundamentation'], 'required','on'=>self::SCENARIO_SELECT_WINNERS],
+            [['ganadores'], 'required','on'=>self::SCENARIO_SELECT_WINNERS,'message'=>'Debe seleccionar un ganador.'],
             [['blank_contract','pliego','buyer_fundamentation'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf,doc,docx','maxSize' => 2048*1024 ],
             [['buy_condition_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyCondition::className(), 'targetAttribute' => ['buy_condition_id' => 'id']],
             [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
@@ -125,6 +128,8 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
             'bidding_start' => 'Inicio',
             'bidding_end' => 'Fin',
             'buyer_assigned' => 'Buyer Assigned',
+            'blank_contract'=>'Preforma de contrato',
+            'buyer_fundamentation'=>'Fundamentación de la compra',
             'buy_approved_by' => 'Buy Approved By',
             'buy_approved_date' => 'Buy Approved Date',
             'dt_specialist_assigned' => 'Dt Specialist Assigned',

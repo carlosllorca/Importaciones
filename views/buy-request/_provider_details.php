@@ -10,7 +10,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 ?>
-<div class="container" style="background-color: white; padding: 15px">
+<div class="container" style="background-color: white; padding: 15px;border: 1px solid #eee;border-radius: 5px">
+
 
 
 
@@ -113,7 +114,7 @@ use yii\widgets\ActiveForm;
                     if(Yii::$app->user->can('buyrequest/uploadoffert')&&$model->buyRequest->buyRequestInternational->biddingActive()){
                       ?>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generate_ofert">
+                        <button type="button" class="btn btn-primary" onclick="generateOffert(<?=$model->id?>)">
                             Generar oferta
                         </button>
                         <?php

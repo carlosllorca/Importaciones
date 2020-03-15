@@ -342,7 +342,7 @@ class BuyRequestController extends MainController
     public function actionExport($id){
         $model = null;
         // return the pdf output as per the destination setting
-        Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+       // Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
 
 
         $model = $this->findModel($id);
@@ -436,8 +436,13 @@ class BuyRequestController extends MainController
     public function actionUploadOffert(){
 
     }
-    public function actionSaveOfert(){
+    public function actionSaveOfert($id){
         $model = new Offert();
+        $model->setScenario(Offert::$SCENARIO_UPLOAD_OFFERT);
+        $model->buy_request_provider_id=$id;
+        $model->upload_date=date('Y-m-d');
+        $model->upload_by=User::userLogged()->id;
+
 
         if (Yii::$app->request->isPost) {
             $model->oferta = UploadedFile::getInstance($model, 'oferta');
@@ -445,6 +450,7 @@ class BuyRequestController extends MainController
                 $file= $model->upload();
                 if($file){
                     $model->url_file = $file;
+                    $model->setScenario(Offert::SCENARIO_DEFAULT);
                 }
             }else{
                 $emptyFile=true;
@@ -460,9 +466,8 @@ class BuyRequestController extends MainController
                 'provider'=>$model->buy_request_provider_id]);
 
 
-        }else{
-            var_dump($model->getErrors());
         }
+        return $this->renderAjax('_uploadOffert',['newOffert'=>$model]);
     }
     public function actionValidateOfert(){
         $model = new Offert();
@@ -485,6 +490,7 @@ class BuyRequestController extends MainController
     }
     public function actionEvaluateOffert($id){
         $model= Offert::findOne($id);
+        $model->setScenario(Offert::$SCENARIO_EVALUATE_OFFERT);
         if (Yii::$app->request->isPost) {
             $model->evaluacion = UploadedFile::getInstance($model, 'evaluacion');
             if($model->evaluacion){
@@ -492,6 +498,7 @@ class BuyRequestController extends MainController
                 if($file){
                     $model->url_evaluation = $file;
                 }
+                $model->setScenario(Offert::SCENARIO_DEFAULT);
             }else{
                 $emptyFile=true;
             }
@@ -516,9 +523,11 @@ class BuyRequestController extends MainController
     }
     public function actionSelectWinners($id){
         $model = BuyRequestInternational::findOne($id);
+        $model->setScenario(BuyRequestInternational::SCENARIO_SELECT_WINNERS);
 
         if (Yii::$app->request->isPost) {
             $url = $model->loadInitialExpedientFilesUrl();
+            $model->setScenario(BuyRequestInternational::SCENARIO_DEFAULT);
         }
 
         if ($model->load(Yii::$app->request->post()) ) {
@@ -534,10 +543,9 @@ class BuyRequestController extends MainController
                 Yii::$app->session->setFlash('success','Hemos presentado el expediente correctamente. Se ha generado el árbol de documentos necesarios para la aprobación.');
                 return $this->redirect(['/buy-request/update', 'id' => $model->buyRequest->id]);
 
-        }else{
-            Yii::$app->session->setFlash('danger','Ocurrió un error procesando los datos. Inténtelo de nuevo más tarde.');
-            return $this->redirect(['/buy-request/update', 'id' => $model->buy_request_id]);
         }
+        return $this->renderAjax('_select_winners',['model'=>$model]);
+
     }
     public function actionViewDocuments(){
 

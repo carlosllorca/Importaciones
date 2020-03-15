@@ -33,6 +33,7 @@ class Offert extends \yii\db\ActiveRecord
      * {@inheritdoc}
      */
     static $SCENARIO_EVALUATE_OFFERT='evaluate_offert';
+    static $SCENARIO_UPLOAD_OFFERT='upload_offert';
     public $oferta;
     public $evaluacion;
     public static function tableName()
@@ -51,8 +52,8 @@ class Offert extends \yii\db\ActiveRecord
             [['upload_by', 'evaluated_by', 'buy_request_provider_id'], 'integer'],
             [['oferta'], 'file', 'skipOnEmpty' => true, 'extensions' => 'xls,xlsx','maxSize' => 2048*1024 ],
             [['evaluacion'], 'file', 'skipOnEmpty' => true, 'extensions' => 'doc,docx,pdf','maxSize' => 2048*1024 ],
-           // ['oferta','required'],
-            [['approved'],'required','on'=>self::$SCENARIO_EVALUATE_OFFERT],
+            ['oferta','required','on'=>self::$SCENARIO_UPLOAD_OFFERT],
+            [['approved','evaluacion'],'required','on'=>self::$SCENARIO_EVALUATE_OFFERT],
             [['upload_date', 'expiration_date', 'evaluation_date'], 'safe'],
             [['url_file', 'url_evaluation'], 'string'],
             [['approved', 'winner'], 'boolean'],

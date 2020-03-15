@@ -23,7 +23,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
         //'css/fontawesome.min.css',
         'sA/sweetalert.css',
-        'css/material-dashboard.min.css',
+       // 'css/material-dashboard.min.css',
         'css/plantilla.css',
         'css/seisa.css',
        // 'css/MaterialIcons.css',

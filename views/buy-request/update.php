@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-
+use yii\bootstrap\Tabs;
 /* @var $this yii\web\View */
 /* @var $model app\models\BuyRequest */
 /* @var $active string */
@@ -93,116 +93,48 @@ $this->params['breadcrumbs'][] = 'Actualizar';
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <div class="row p-0 m-0 mt-3">
-                    <div class="card-nav-tabs" style="width: 100%">
-                        <div class="card-header m-0 p-0">
-                            <div class="nav-tabs-navigation">
-                                <div class="nav-tabs-wrapper">
-                                    <ul class="nav nav-tabs" data-tabs="tabs">
-                                        <?php
-                                                if(Yii::$app->user->can('buyrequest/viewassociateddemands')){
-                                                    ?>
-                                                    <li class="<?= $active == 'demands_associated' ? 'active' : null ?>">
-                                                        <a href="#demands_associated" data-toggle="tab">Demandas asociadas</a>
-                                                    </li>
-                                                    <?php
-                                                }
-                                        ?>
-                                        <?php
-                                        if(Yii::$app->user->can('buyrequest/viewproducts')){
-                                            ?>
-                                            <li class="<?= $active == 'products' ? 'active' : null ?>">
-                                                <a href="#products" class="" data-toggle="tab">Productos</a>
-                                            </li>
-                                            <?php
-                                        }
-                                        ?>
-                                        <?php
-                                        if(Yii::$app->user->can('buyrequest/viewpropuestas')&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID){
-                                            ?>
-                                            <li class="<?= $active == 'propuestas' ? 'active' : null ?>">
-                                                <a href="#propuestas" data-toggle="tab">Propuestas de proveedores</a>
-                                            </li>
-                                            <?php
-                                        }
-                                        ?>
-                                        <?php
-                                        if(Yii::$app->user->can('buyrequest/viewdocuments')&&$model->buyRequestDocuments){
-                                            ?>
-                                            <li class="<?= $active == 'documentos' ? 'active' : null ?>">
-                                                <a href="#documentos" data-toggle="tab">Documentos</a>
-                                            </li>
-                                            <?php
-                                        }
-                                        ?>
-                                        <?php
-                                        if(Yii::$app->user->can('buyrequest/viewtransportation')&&$model->requestStages){
-                                            ?>
-                                            <li class="<?= $active == 'transportation' ? 'active' : null ?>">
-                                                <a href="#transportation" data-toggle="tab">Hitos</a>
-                                            </li>
-                                            <?php
-                                        }
-                                        ?>
-                                    </ul>
-                                </div>
 
-                            </div>
-                        </div>
+                    <?php
+                    echo Tabs::widget([
+                        'items' => [
+                            [
+                                'label' => 'Demandas asociadas',
+                                'content' =>$this->render('_demands_asociated', ['model' => $model]),
+                                'visible'=>Yii::$app->user->can('buyrequest/viewassociateddemands'),
+                                'active' =>  $active == 'demands_associated'
+                            ],
+                            [
+                                'label' => 'Productos',
+                                'content' =>$this->render('_products', ['model' => $model]),
+                                'visible'=>Yii::$app->user->can('buyrequest/viewproducts'),
+                                'active' =>   $active == 'products'
+                            ],
+                            [
+                                'label' => 'Propuestas',
+                                'content' =>Yii::$app->user->can('buyrequest/viewpropuestas')&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID? $this->render('_propuestas', ['model' => $model,'fLicitacion'=>$form]):'',
+                                'visible'=>Yii::$app->user->can('buyrequest/viewpropuestas')&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID,
+                                'active'=>$active == 'propuestas'
 
-                        <div class="card-content p-0" style="background: #F2F2F2;min-height: 500px">
-                            <div class="tab-content">
-                                <?php
-                                if(Yii::$app->user->can('buyrequest/viewassociateddemands')){
-                                    ?>
-                                    <div class="tab-pane <?= $active == 'demands_associated' ? 'active' : null ?>" id="demands_associated">
-                                        <?php echo $this->render('_demands_asociated', ['model' => $model]); ?>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-                                <?php
-                                if(Yii::$app->user->can('buyrequest/viewproducts')){
-                                    ?>
-                                    <div class="tab-pane <?= $active == 'products' ? 'active' : null ?>" id="products">
-                                        <?php echo $this->render('_products', ['model' => $model]); ?>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-                                <?php
-                                if(Yii::$app->user->can('buyrequest/viewpropuestas')&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID){
-                                    ?>
-                                    <div class="tab-pane <?= $active == 'propuestas' ? 'active' : null ?>" id="propuestas">
-                                        <?php echo $this->render('_propuestas', ['model' => $model,'fLicitacion'=>$form]); ?>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
+                            ],
+                            [
+                                'label' => 'Documentos',
+                                'content' =>Yii::$app->user->can('buyrequest/viewdocuments')&&$model->buyRequestDocuments?$this->render('_documentos', ['model' => $model]):'',
+                                'visible'=>Yii::$app->user->can('buyrequest/viewdocuments')&&$model->buyRequestDocuments,
+                                'active'=>$active == 'documentos'
+                            ],
+                            [
+                                'label' => 'Hitos',
+                                'content' =>Yii::$app->user->can('buyrequest/viewtransportation')&&$model->requestStages?$this->render('_hitos', ['model' => $model]):'',
+                                'visible'=>Yii::$app->user->can('buyrequest/viewtransportation')&&$model->requestStages,
+                                'active'=>$active == 'transportation'
+                            ]
 
-                                <?php
-                                if(Yii::$app->user->can('buyrequest/viewdocuments')){
-                                    ?>
-                                    <div class="tab-pane <?= $active == 'documentos' ? 'active' : null ?>" id="documentos">
-                                        <?php echo $this->render('_documentos', ['model' => $model]); ?>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
 
-                                <?php
-                                if(Yii::$app->user->can('buyrequest/viewtransportation')){
-                                    ?>
-                                    <div class="tab-pane <?= $active == 'transportation' ? 'active' : null ?>" id="transportation">
-                                        <?php echo $this->render('_hitos', ['model' => $model]); ?>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        ],
+                    ]);
+                    ?>
+
+
             </div>
         </div>
 

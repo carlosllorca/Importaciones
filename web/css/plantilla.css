@@ -137,3 +137,19 @@ select.form-control{
     padding-bottom: 0px!important;
     margin-top: 27px!important;
 }
+.nav-tabs{
+    border-bottom: 0px!important;
+}
+.tab-content {
+    min-height: 400px;
+}
+.table thead tr th {
+    font-size: 14px!important;
+}
+.form-control{
+    font-size: 14px!important;
+}
+.kv-fileinput-caption{
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+}

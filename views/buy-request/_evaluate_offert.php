@@ -11,8 +11,7 @@ use yii\widgets\ActiveForm;
         'options' => ['enctype' => 'multipart/form-data'],
         // 'action' => 'save-ofert',
         'id' => 'evaluate-ofert',
-        'enableAjaxValidation' => true,
-        'validateOnSubmit' => true,
+
 
         'validationUrl' => Url::toRoute('/buy-request/validate-evaluate-ofert?id=' . $model->id)
     ]);
@@ -57,7 +56,7 @@ use yii\widgets\ActiveForm;
 
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">Cancelar</button>
         <button type="submit" data-confirm="¿Confirma que desea enviar la evaluación?" class="btn btn-success">Guardar
             evaluación
         </button>

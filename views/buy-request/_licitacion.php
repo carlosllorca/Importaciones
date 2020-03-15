@@ -32,6 +32,7 @@ use yii\helpers\Html;
     <div class="col-sm-4">
         <?= $form->field($fLicitacion, 'destiny_id')->widget(\kartik\select2\Select2::className(),
             [
+
                     'data' => \app\models\Destiny::combo()
             ])?>
     </div>
@@ -40,12 +41,14 @@ use yii\helpers\Html;
             [
                 'data' => \app\models\PaymentInstrument::combo(),
 
+
             ])?>
     </div>
     <div class="col-sm-4">
         <?= $form->field($fLicitacion, 'buy_condition_id')->widget(\kartik\select2\Select2::className(),
             [
                 'data' => \app\models\BuyCondition::combo(),
+
                 'options' => [
                         'placeholder'=>'Seleccione...'
                 ]

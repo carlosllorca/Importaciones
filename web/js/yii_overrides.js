@@ -49,3 +49,17 @@ function openToogleMenu(ev){
         $(ev.target).parent().addClass("open")
     }
 }
+function closeModal() {
+
+    var restos = $('.modal-backdrop');
+
+    for(var i = 0; i<restos.length;i++){
+        $($('.modal-backdrop')[i]).remove();
+    }
+    var restos = $('.modal-backdrop');
+
+    for(var i = 0; i<restos.length;i++){
+        $($('.modal-backdrop')[i]).remove();
+    }
+
+}
