@@ -93,9 +93,10 @@ $this->params['breadcrumbs'][] = 'Actualizar';
         </div>
         <div class="row">
             <div class="col-xs-12">
-
+                <div>
                     <?php
                     echo Tabs::widget([
+
                         'items' => [
                             [
                                 'label' => 'Demandas asociadas',
@@ -133,13 +134,13 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                         ],
                     ]);
                     ?>
-
+                </div>
 
             </div>
         </div>
-
     </div>
 </div>
+
 
 <?php
 $this->registerJsFile('js/buy-request/update.js',['depends'=>\yii\web\JqueryAsset::className()])

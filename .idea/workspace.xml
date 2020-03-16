@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Importaciones.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Importaciones.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/BuyRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BuyRequestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestDocument.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestDocument.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/buy-request/_documentos.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_documentos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/_uploadFileExpedient.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_uploadFileExpedient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/buy-request/_formTransportacion.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_formTransportacion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/buy-request/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/update.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/js/buy-request/_documentos.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/buy-request/_documentos.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,6 +215,8 @@
       <path value="$PROJECT_DIR$/vendor/mervick/yii2-material-design-icons" />
       <path value="$PROJECT_DIR$/vendor/npm-asset/bootstrap" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap4" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-tabs-x" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-tabs-x" />
     </include_path>
   </component>
   <component name="ProjectId" id="1V3DOVIWRAPFX6MU97NARgmeyIB" />
@@ -373,14 +377,7 @@
       <workItem from="1584218605509" duration="1494000" />
       <workItem from="1584220620222" duration="23193000" />
       <workItem from="1584248118454" duration="20000" />
-      <workItem from="1584248484722" duration="30988000" />
-    </task>
-    <task id="LOCAL-00003" summary="adicionando todos los modelos">
-      <created>1576553155010</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1576553155010</updated>
+      <workItem from="1584248484722" duration="36140000" />
     </task>
     <task id="LOCAL-00004" summary="Añadido sweet alert, solucionando con js bug de la plantilla que esconde el mensaje de error">
       <created>1576557972348</created>
@@ -718,7 +715,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584316697742</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Flujo de subida de documentos listo">
+      <created>1584322397443</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1584322397443</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -738,7 +742,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Solucionados todos los puntos detectados en la última reunión con el cliente." />
     <MESSAGE value="antes de corregir los errores de la ultima reunion" />
     <MESSAGE value="Listo lo referente a la demanda" />
     <MESSAGE value="Modelo solicitud de compra. Exportado a PDF" />
@@ -763,7 +766,8 @@
     <MESSAGE value="Exportar solicitud de compra desde la vista update y la vista view" />
     <MESSAGE value="Grid de solicitud de compras listo" />
     <MESSAGE value="Solucionado flujo en plantillas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Solucionado flujo en plantillas" />
+    <MESSAGE value="Flujo de subida de documentos listo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Flujo de subida de documentos listo" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2475" y="200" width="800" height="677" key="#Deployment" timestamp="1576472912804">
@@ -829,13 +833,13 @@
     <state x="3014" y="385" key="#xdebugger.evaluate/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583988012766" />
     <state x="852" y="256" width="254" height="593" key="#xdebugger.evaluate/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1576847070634" />
     <state x="2992" y="323" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882354679" />
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2" timestamp="1584316697611">
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2" timestamp="1584322397315">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580268556850" />
     <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1582487604398" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582788400503" />
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584316697611" />
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584322397315" />
     <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583547290406" />
     <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580970277888" />
     <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/49.27.1871.1053@49.27.1871.1053" timestamp="1583770077124" />

@@ -571,9 +571,15 @@ class BuyRequestController extends MainController
                 $model->buy_request_status_id=BuyRequestStatus::$EN_PROCESO;
                 $model->save(false);
                 $current = $model->lastUploadDocumentDate();
-                $d= $form->build_days-21;
-                $current = date('Y-m-d',strtotime($current."+ {$d} days"));
+
                 foreach (Stage::getStagesByOrderType($model->buy_request_type_id) as $stage){
+                    if($stage->order==2){
+                        $d= $form->build_days-21;
+                        $current = date('Y-m-d',strtotime($current."+ {$d} days"));
+                    }elseif ($stage->order==8){
+                        $d= $form->transport_days;
+                        $current = date('Y-m-d',strtotime($current."+ {$d} days"));
+                    }
                     $rs=new RequestStage();
                     $rs->buy_request_id=$id;
                     $rs->stage_id=$stage->id;

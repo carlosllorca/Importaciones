@@ -7,10 +7,9 @@ use yii\widgets\ActiveForm;
 ?>
 <?php $form = ActiveForm::begin(
     [
-        'enableAjaxValidation' => true,
-        'validateOnSubmit' => true,
-        'id'=>'add-coauthor-form',
-        //'action' => '/communication/save-author',
+
+        'id'=>'start-licitation-form',
+       // 'action' => '/communication/save-author',
         'options' => ['class'=>'add-coauthor-form form-modal'],
         'validationUrl' => Url::toRoute('/buy-request/validate-monitoring?id='.$model->id)
     ]
@@ -19,9 +18,13 @@ use yii\widgets\ActiveForm;
     <div class="col-sm-6"><?=$form->field($model,'transport_days')->textInput(['type'=>'number','min'=>1,'max'=>999])?></div>
     <div class="col-sm-6"><?=$form->field($model,'build_days')->textInput(['type'=>'number','min'=>1,'max'=>999])?></div>
     <div class="col-sm-12">
-        <div class="button-container">
-            <?=\yii\helpers\Html::submitButton('Generar',['class'=>'btn btn-success','data-confirm'=>'¿Confirma que desea iniciar el ciclo de transportación para esta orden?'])?>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">Cancelar</button>
+            <button type="submit" data-confirm="¿Confirma que desea iniciar el cliclo de transportación?" class="btn btn-success">
+                Generar
+            </button>
         </div>
+
     </div>
 </div>
 <?php \yii\widgets\ActiveForm::end();?>

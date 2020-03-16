@@ -14,7 +14,8 @@ function subirArchivo(id,expediente=false){
 }
 function transportForm(id){
 
-        $('#bodyTransport').load(`/buy-request/send-to-monitoring?id=${id}`)
+        $('#modal-content-documents').load(`/buy-request/send-to-monitoring?id=${id}`)
+    $('#ajax-modal-documents').click();
 
 
 }

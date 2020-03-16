@@ -17,30 +17,7 @@ echo '<div id="modal-content-documents"></div>';
 Modal::end();
 
 ?>
-<?php
-if($model->allDocumentOk()){
-    ?>
-    <!-- Modal -->
-    <div class="modal fade" style="margin-top: 20%" id="transport-form" tabindex="-1" role="dialog" aria-labelledby="Iniciar ciclo de transportación" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" >Iniciar ciclo de transportación</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" id="bodyTransport">
 
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-    <?php
-}
-?>
 
 
 
