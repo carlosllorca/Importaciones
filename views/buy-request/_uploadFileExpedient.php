@@ -7,9 +7,11 @@ use yii\widgets\ActiveForm;
 
 ?>
 <div>
+
     <?php
     $form = ActiveForm::begin([
         'options' => ['enctype'=>'multipart/form-data'],
+        'id'=>'upload_file'
     ]);
     ?>
     <div class="row">
@@ -22,15 +24,15 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-sm-12">
             <?= $form->field($model, 'documento')->widget(\kartik\file\FileInput::className(),[
-                'options'=>['required'=>true],
+                //'options'=>['required'=>true],
                 'pluginOptions' =>[
                     'showPreview' => false,
                     'allowEmpty'=>false,
                     'showCancel'=>false,
                     'showUpload'=>false,
                     'browseLabel' => 'Explorar',
-                    'browseIcon'=>'<i class="glyphicon glyphicon-folder-open mr-2"></i>',
-                    'removeIcon' => '<i class="glyphicon glyphicon-trash"></i> ',
+                    'browseIcon'=>'<i class="fa fa-folder-open mr-2"></i>',
+                    'removeIcon' => '<i class="fa fa-trash"></i> ',
                     'mainClass' => 'input-group-xl',
                     'showCaption' => true,
                 ]
@@ -38,9 +40,13 @@ use yii\widgets\ActiveForm;
         </div>
 
     </div>
-    <div class="button-container">
-        <?=\yii\helpers\Html::submitButton('Aceptar',['class'=>'btn btn-primary'])?>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">Cancelar</button>
+        <button type="submit" data-confirm="¿Confirma que desea subir el documento?" class="btn btn-success">
+            Guardar
+        </button>
     </div>
+
     <?php
 
     ActiveForm::end(); ?>

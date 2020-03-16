@@ -1,12 +1,15 @@
 $(function () {
 
 })
-function uploadFileExpedient(id,expediente=false){
+function subirArchivo(id,expediente=false){
+
+
     if(expediente){
-        $('#bodyUploadFile').load(`/buy-request/upload-file-expedient?id=false&expediente=${expediente}`)
+        $('#modal-content-documents').load(`/buy-request/upload-file-expedient?id=false&expediente=${expediente}`)
     }else{
-        $('#bodyUploadFile').load(`/buy-request/upload-file-expedient?id=${id}`)
+        $('#modal-content-documents').load(`/buy-request/upload-file-expedient?id=${id}`)
     }
+    $('#ajax-modal-documents').click();
 
 }
 function transportForm(id){

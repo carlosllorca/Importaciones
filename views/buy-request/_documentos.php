@@ -5,25 +5,18 @@
 
 /* @var $model \app\models\BuyRequest|\yii\db\ActiveRecord */
 
-use yii\helpers\Html; ?>
-<!-- Modal -->
-<div class="modal fade" style="margin-top: 20%" id="upload-file-expedient" tabindex="-1" role="dialog" aria-labelledby="Subir archivo al expediente" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" >Subir archivo al expediente</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="bodyUploadFile">
+use yii\helpers\Html;
+use yii\bootstrap\Modal;
+Modal::begin([
+    // 'header' => '<h2>Hello world</h2>',
+    'toggleButton' => ['label' => 'click me','id'=>'ajax-modal-documents','class'=>'hidden'],
+]);
 
-            </div>
+echo '<div id="modal-content-documents"></div>';
 
-        </div>
+Modal::end();
 
-    </div>
-</div>
+?>
 <?php
 if($model->allDocumentOk()){
     ?>
@@ -70,9 +63,8 @@ if($model->allDocumentOk()){
                 <?= Html::a('Subir otro documento', '#',
                     [
                             'class' => 'btn btn-primary',
-                            'onclick'=> "uploadFileExpedient(false,".$model->id.")",
-                            'data-toggle'=>"modal",
-                             'data-target'=>"#upload-file-expedient",
+                            'onclick'=> "subirArchivo(false,".$model->id.")",
+
                             'title'=>'Puedes subir un documento que no esté referido en la lista.'
                     ]) ?>
             </p>
@@ -121,9 +113,9 @@ if($model->allDocumentOk()){
                                 [
 
                                     'title' => 'Subir archivo',
-                                    'data-toggle'=>"modal",
-                                    'onclick'=> "uploadFileExpedient({$buyRequestDocument->id})",
-                                    'data-target'=>"#upload-file-expedient"
+
+                                    'onclick'=> "subirArchivo({$buyRequestDocument->id})",
+
                                 ]) : ''?>
                     </th>
                 </tr>

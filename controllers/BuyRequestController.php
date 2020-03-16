@@ -538,6 +538,7 @@ class BuyRequestController extends MainController
 
                 }
                 $model->buyRequest->buy_request_status_id=BuyRequestStatus::$EVALUANDO_OFERTAS;
+                $model->buyRequest->save(false);
                 $model->save(false);
                 $model->generateFiledTree($url);
                 Yii::$app->session->setFlash('success','Hemos presentado el expediente correctamente. Se ha generado el árbol de documentos necesarios para la aprobación.');
@@ -618,8 +619,10 @@ class BuyRequestController extends MainController
     public function actionUploadFileExpedient($id){
         if($id!='false'){
             $model = BuyRequestDocument::findOne($id);
+            $model->setScenario(BuyRequestDocument::SCENARIO_UPLOAD_DOCUMENT);
         }else{
             $model = new BuyRequestDocument();
+
             $model->setScenario(BuyRequestDocument::SCENARIO_CUSTOM_DOCUMENT);
             $model->document_status_id=DocumentStatus::$APROBADO_ID;
             $model->evaluation=true;
@@ -632,6 +635,7 @@ class BuyRequestController extends MainController
                 $file= $model->upload();
                 if($file){
                     $model->url_to_file = $file;
+                    $model->setScenario(BuyRequestInternational::SCENARIO_DEFAULT);
                 }
             }else{
                 $emptyFile=true;

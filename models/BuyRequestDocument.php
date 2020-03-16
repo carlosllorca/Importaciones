@@ -31,6 +31,7 @@ class BuyRequestDocument extends \yii\db\ActiveRecord
     public $documento;
     public $evaluation;
     const SCENARIO_CUSTOM_DOCUMENT='SECENARIO_CUSTOM_DOCUMENT';
+    const SCENARIO_UPLOAD_DOCUMENT='SECENARIO_UPLOAD_DOCUMENT';
     /**
      * {@inheritdoc}
      */
@@ -49,7 +50,8 @@ class BuyRequestDocument extends \yii\db\ActiveRecord
             [['buy_request_id', 'last_updated_by', 'document_type_id'], 'default', 'value' => null],
             [['buy_request_id', 'last_updated_by', 'document_type_id'], 'integer'],
             [['evaluation'], 'boolean'],
-            [['custom_file'], 'required','on'=>self::SCENARIO_CUSTOM_DOCUMENT],
+            [['custom_file','documento'], 'required','on'=>self::SCENARIO_CUSTOM_DOCUMENT],
+            [['documento'], 'required','on'=>self::SCENARIO_UPLOAD_DOCUMENT],
             [['custom_file'], 'string','max'=>50],
 
             [['documento'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf,doc,docx','maxSize' => 2048*1024 ],
