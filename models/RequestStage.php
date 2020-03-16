@@ -11,6 +11,7 @@ use Yii;
  * @property string $date_created
  * @property string $date_start
  * @property string $date_end
+ * @property string $nextHitoDate;
  * @property string|null $real_end
  * @property int $stage_id
  * @property int $buy_request_id
@@ -28,6 +29,7 @@ class RequestStage extends \yii\db\ActiveRecord
     {
         return 'request_stage';
     }
+    public $nextHitoDate;
 
     /**
      * {@inheritdoc}
@@ -39,7 +41,7 @@ class RequestStage extends \yii\db\ActiveRecord
             [['date_created', 'date_start', 'date_end', 'real_end'], 'safe'],
             [['stage_id', 'buy_request_id'], 'default', 'value' => null],
             [['stage_id', 'buy_request_id'], 'integer'],
-            [['details'], 'string'],
+            [['details','nextHitoDate'], 'string'],
             [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
             [['stage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Stage::className(), 'targetAttribute' => ['stage_id' => 'id']],
         ];
@@ -57,6 +59,7 @@ class RequestStage extends \yii\db\ActiveRecord
             'date_end' => 'Fecha Fin',
             'real_end' => 'Cumplido',
             'details' => 'Observaciones',
+            'nextHitoDate' => 'Fecha de inicio del próximo hito',
             'stage_id' => 'Stage ID',
             'buy_request_id' => 'Buy Request ID',
         ];
@@ -77,6 +80,21 @@ class RequestStage extends \yii\db\ActiveRecord
     public function getStage()
     {
         return $this->hasOne(Stage::className(), ['id' => 'stage_id']);
+    }
+
+    /**
+     * Devuelve el siguiente hito
+     * @return RequestStage|bool
+     */
+    public function nextHito(){
+        $model = self::find()->where(['buy_request_id'=>$this->buy_request_id])
+            ->innerJoinWith('stage')
+            ->where(['stage.order'=>($this->stage->order+1)])
+            ->one();
+        if($model)
+            return $model;
+        else
+            return false;
     }
 
 }

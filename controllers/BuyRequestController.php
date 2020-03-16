@@ -603,20 +603,78 @@ class BuyRequestController extends MainController
 
 
     }
-    public function actionStageSuccess($id){
+    function dias_pasados($fecha_inicial,$fecha_final)
+    {
+        $dias = (strtotime($fecha_inicial)-strtotime($fecha_final))/86400;
+        $dias = abs($dias); $dias = floor($dias);
+        return $dias;
+    }
+    public function updateStage($id){
+
+
+    }
+    public function actionStageSuccess($id,$setSuccess=true){
         $model= RequestStage::findOne($id);
-        $model->real_end=date('Y-m-d');
-        $model->save();
-        if($model->buyRequest->cicloCompletado()){
-            $model->buyRequest->buy_request_status_id=BuyRequestStatus::$CERRADA;
-            $model->buyRequest->save(false);
-            Yii::$app->session->setFlash('success','Has concluido el último hito. La orden ha sido cerrada.');
-        }
-        else{
-            Yii::$app->session->setFlash('success','Hito marcado como cumplido.');
+        $nextHito = $model->nextHito();
+        if($nextHito){
+            $model->nextHitoDate=$model->nextHito()->date_start;
         }
 
-        return $this->redirect(['/buy-request/update', 'id' => $model->buy_request_id,'section'=>'transportation']);
+        if ($model->load(Yii::$app->request->post()) ) {
+            if($setSuccess===true){
+                $model->real_end=date('Y-m-d');
+            }
+
+            $dateStart= date('Y-m-d',strtotime($model->nextHitoDate));
+            $model->save();
+            if($nextHito&&$nextHito->date_start!=$dateStart){
+                $dias = $this->dias_pasados($dateStart,$nextHito->date_start);
+                $back=false;
+                if(strtotime($dateStart)<strtotime($nextHito->date_start)){
+                    $back=true;
+                }
+                $m=$nextHito;
+                do{
+                    if($back){
+                        $m->date_start=date('Y-m-d',strtotime($m->date_start."- {$dias} days"));
+                        $m->date_end=date('Y-m-d',strtotime($m->date_end."- {$dias} days"));
+                    }else{
+                        $m->date_start=date('Y-m-d',strtotime($m->date_start."+ {$dias} days"));
+                        $m->date_end=date('Y-m-d',strtotime($m->date_end."+ {$dias} days"));
+                    }
+
+                    $m->save(false);
+                    $m=$m->nextHito();
+
+
+                    }while($m!=false);
+            }
+
+
+            if($model->buyRequest->cicloCompletado()){
+                $model->buyRequest->buy_request_status_id=BuyRequestStatus::$CERRADA;
+                $model->buyRequest->save(false);
+                Yii::$app->session->setFlash('success','Has concluido el último hito. La orden ha sido cerrada.');
+            }
+            else{
+                if($setSuccess===true){
+                    Yii::$app->session->setFlash('success','Hito marcado como cumplido.');
+                }else{
+                    Yii::$app->session->setFlash('warning','Hito modificado.');
+                }
+
+            }
+
+            return $this->redirect(['/buy-request/update', 'id' => $model->buy_request_id,'section'=>'transportation']);
+        }
+        return $this->renderAjax('_formHito',['model'=>$model]);
+
+
+
+
+
+
+
 
     }
     public function actionChangeBidding(){
