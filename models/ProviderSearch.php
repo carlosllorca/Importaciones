@@ -17,7 +17,7 @@ class ProviderSearch extends Provider
     public function rules()
     {
         return [
-            [['id', 'country_id'], 'integer'],
+            [['id', 'country_id','buy_request_type_id'], 'integer'],
             [['name', 'address', 'contact_name', 'contact_email'], 'safe'],
             [['active'], 'boolean'],
         ];
@@ -62,6 +62,7 @@ class ProviderSearch extends Provider
             'id' => $this->id,
             'country_id' => $this->country_id,
             'active' => $this->active,
+            'buy_request_type_id'=>$this->buy_request_type_id
         ]);
 
         $query->andFilterWhere(['ilike', 'name', $this->name])

@@ -18,7 +18,7 @@ class DocumentTypeSearch extends DocumentType
     {
         return [
             [['id'], 'integer'],
-            [['label','responsable'], 'safe'],
+            [['label','responsable','buy_request_type_id'], 'safe'],
             [['required','active'], 'boolean'],
         ];
     }
@@ -62,6 +62,7 @@ class DocumentTypeSearch extends DocumentType
             'id' => $this->id,
             'required' => $this->required,
             'active' => $this->active,
+            'buy_request_type_id'=>$this->buy_request_type_id
         ]);
 
         $query->andFilterWhere(['ilike', 'label', $this->label]);

@@ -137,7 +137,7 @@ class BuyRequestController extends MainController
                 if ($form->load(Yii::$app->request->post()) && $form->save()) {
                     $model->buy_request_status_id=BuyRequestStatus::$LICITANDO;
 
-                    foreach (Provider::related($model->arrayValidatedList()) as $provider){
+                    foreach (Provider::related($model->arrayValidatedList(),$model->buy_request_type_id) as $provider){
                         if(BuyRequestProvider::find()->where(['buy_request_id'=>$model->id])
                             ->andWhere(['provider_id'=>$provider->id])->one()){
                         }else{

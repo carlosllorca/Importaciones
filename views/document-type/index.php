@@ -40,6 +40,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         'label',
                         'responsable',
+                        [
+                                'attribute' => 'buy_request_type_id',
+                            'filter' => \app\models\BuyRequestType::combo(),
+                                'value' => 'buyRequestType.label'
+                        ],
+                        'responsable',
                         'required:boolean',
                         'active:boolean',
 

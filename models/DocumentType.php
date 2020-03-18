@@ -12,9 +12,11 @@ use Yii;
  * @property string $responsable
  * @property bool $required
  * @property bool $active
+ * @property int $buy_request_type_id
  *
  * @property BuyRequestDocument[] $buyRequestDocuments
  * @property DocumentTypePermission[] $documentTypePermissions
+ * @property BuyRequestType $buyRequestType
  */
 class DocumentType extends \yii\db\ActiveRecord
 {
@@ -35,10 +37,12 @@ class DocumentType extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['label','responsable'], 'required'],
+            [['label','responsable','buy_request_type_id'], 'required'],
             [['required','active'], 'boolean'],
             [['label'], 'string', 'max' => 150],
             [['responsable'], 'string', 'max' => 100],
+            [['buy_request_type_id'], 'integer'],
+            [['buy_request_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestType::className(), 'targetAttribute' => ['buy_request_type_id' => 'id']],
         ];
     }
 
@@ -52,6 +56,7 @@ class DocumentType extends \yii\db\ActiveRecord
             'label' => 'Nombre',
             'required' => 'Requerido',
             'active' => 'Activo',
+            'buy_request_type_id' => 'Tipo de solicitud asociada',
         ];
     }
 
@@ -69,6 +74,15 @@ class DocumentType extends \yii\db\ActiveRecord
     public function getDocumentTypePermissions()
     {
         return $this->hasMany(DocumentTypePermission::className(), ['document_type_id' => 'id']);
+    }
+    /**
+     * Gets query for [[BuyRequestType]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBuyRequestType()
+    {
+        return $this->hasOne(BuyRequestType::className(), ['id' => 'buy_request_type_id']);
     }
     public static function combo($differentTo=[]){
         return ArrayHelper::map(self::find()->where(['active'=>true])
@@ -89,4 +103,5 @@ class DocumentType extends \yii\db\ActiveRecord
         }
         return false;
     }
+
 }

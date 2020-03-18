@@ -228,10 +228,10 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
      * Generar el árbol de documentos necesarios del expediente.
      */
     public function generateFiledTree($fileUploaded){
-        //todo: Mejorar este método teniendo en cuenta los ficheros reales del tipo de solicitud. Modelar esto en BD
 
 
-                $fields = DocumentType::find()->where(['active'=>true])->all();
+
+                $fields = DocumentType::find()->where(['active'=>true])->andWhere(['buy_request_type_id'=>BuyRequestType::$INTERNACIIONAL_ID])->all();
                 foreach ($fields as $field){
                     $doc = new BuyRequestDocument();
                     $doc->document_type_id=$field->id;

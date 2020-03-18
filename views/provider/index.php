@@ -38,6 +38,11 @@ $this->params['breadcrumbs'][] = $this->title;
                             'filter' => \app\models\Country::combo(),
                             'value' => 'country.label'
                         ],
+                        [
+                            'attribute' => 'buy_request_type_id',
+                            'filter' => \app\models\BuyRequestType::combo(),
+                            'value' => 'buyRequestType.label'
+                        ],
                         'address:ntext',
                         'contact_name',
                         //'contact_email:email',

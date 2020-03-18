@@ -16,6 +16,10 @@ use yii\widgets\ActiveForm;
                 'data'=>\app\models\Country::combo(),
                 'options' => ['placeholder'=>'Seleccione']
             ]) ?></div>
+        <div class="col-sm-6 col-md-4"><?= $form->field($model, 'buy_request_type_id')->widget(\kartik\select2\Select2::className(),[
+                'data' => \app\models\BuyRequestType::combo(),
+                'options' => ['placeholder'=>'Seleccione ...']
+            ]) ?></div>
 
     </div>
     <div class="row">

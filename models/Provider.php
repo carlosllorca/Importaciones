@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property string $name
  * @property int $country_id
+ * @property int $buy_request_type_id
  * @property string $address
  * @property bool $active
  * @property string $contact_name
@@ -19,6 +20,7 @@ use Yii;
  * @property Country $country
  * @property ProviderValidatedList[] $providerValidatedLists
  * @property BuyRequestProvider[] $buyRequestProviders
+ * @property BuyRequestType $buyRequestType
  */
 class Provider extends \yii\db\ActiveRecord
 {
@@ -38,13 +40,14 @@ class Provider extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'country_id', 'address', 'contact_name', 'contact_email'], 'required'],
+            [['name', 'country_id', 'address', 'contact_name', 'contact_email','buy_request_type_id'], 'required'],
             [['name', 'address', 'contact_name', 'contact_email','observation'], 'string'],
             ['validated_list_associated','almostOne'],
             [['country_id'], 'default', 'value' => null],
             [['country_id'], 'integer'],
             [['active'], 'boolean'],
             [['country_id'], 'exist', 'skipOnError' => true, 'targetClass' => Country::className(), 'targetAttribute' => ['country_id' => 'id']],
+            [['buy_request_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestType::className(), 'targetAttribute' => ['buy_request_type_id' => 'id']],
         ];
     }
     public function almostOne($attribute){
@@ -68,6 +71,7 @@ class Provider extends \yii\db\ActiveRecord
             'contact_name' => 'Persona de contacto',
             'contact_email' => 'Email de contacto',
             'observation' => 'Observaciones',
+            'buy_request_type_id' => 'Tipo de solicitud',
         ];
     }
 
@@ -77,6 +81,15 @@ class Provider extends \yii\db\ActiveRecord
     public function getCountry()
     {
         return $this->hasOne(Country::className(), ['id' => 'country_id']);
+    }
+    /**
+     * Gets query for [[BuyRequestType]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBuyRequestType()
+    {
+        return $this->hasOne(BuyRequestType::className(), ['id' => 'buy_request_type_id']);
     }
 
     /**
@@ -102,10 +115,11 @@ class Provider extends \yii\db\ActiveRecord
      * @param $validatedLists
      * @return Provider[]|array|\yii\db\ActiveRecord[]
      */
-    public static function related($validatedLists){
+    public static function related($validatedLists,$buyRequestType){
 
         $models = self::find()->innerJoinWith('providerValidatedLists')
-        ->where(['provider_validated_list.validated_list_id'=>$validatedLists])
+            ->andWhere(['buy_request_type_id'=>$buyRequestType])
+        ->andWhere(['provider_validated_list.validated_list_id'=>$validatedLists])
             ->andWhere(['active'=>true])
             ->groupBy('provider.id')->all();
 
