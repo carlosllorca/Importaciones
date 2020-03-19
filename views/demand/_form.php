@@ -64,10 +64,10 @@ use yii\helpers\Url;
                         ],
 
                         'pluginEvents'=>[
-                            "change" => "function(el) { validar('payment_method') }",
+                            "select2:select" => "function(el,val) { validar('payment_method');createTooltips(el.params.data.id) }",
                         ]
                     ]);?>
-                    <div id="details-payment_method" class="<?=$model->payment_method_id!=\app\models\PaymentMethod::OTRO_ID?'hidden':''?>">
+                    <div id="details-payment_method" class="hidden">
                         <?= $form->field($model, 'other_execution')->textarea(['rows' => 2])->label('Especifique') ?>
                     </div>
 
@@ -147,10 +147,7 @@ use yii\helpers\Url;
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-5" style="text-align: left">
-                    <?= $form->field($model, 'require_post_warranty')->checkbox() ?>
-                    <div id="field-demand-require_post_warranty" class="<?=$model->require_post_warranty?'':"hidden"?>">
-                        <?= $form->field($model, 'post_warranty_details')->textarea(['rows' => 3]) ?>
-                    </div>
+
 
                 </div>
 

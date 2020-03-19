@@ -66,7 +66,7 @@ class PaymentMethod extends \yii\db\ActiveRecord
          * @var $model TypeProject
          */
 
-        $a =  ArrayHelper::map(self::find()->all(),'id',function($model){return ['item'=>$model->id,'label'=>$model->label,'description'=>$model->description];});
+        $a =  ArrayHelper::map(self::find()->all(),'id',function($model){return ['item'=>$model->id,'label'=>$model->label,'description'=>nl2br($model->description)];});
 
         return $a;
     }
