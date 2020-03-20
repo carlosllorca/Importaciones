@@ -69,7 +69,7 @@ use yii\helpers\Html;
             </thead>
             <tbody>
             <?php
-            foreach (Provider::related($model->arrayValidatedList()) as $provider){
+            foreach (Provider::related($model->arrayValidatedList(),\app\models\BuyRequestType::$INTERNACIIONAL_ID) as $provider){
                ?>
                 <tr>
 

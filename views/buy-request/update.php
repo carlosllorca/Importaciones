@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\Tabs;
+use app\components\TabPanel;
 /* @var $this yii\web\View */
 /* @var $model app\models\BuyRequest */
 /* @var $active string */
@@ -91,11 +91,10 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                 ?>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div>
+
+
                     <?php
-                    echo Tabs::widget([
+                    echo TabPanel::widget([
 
                         'items' => [
                             [
@@ -134,14 +133,13 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                         ],
                     ]);
                     ?>
-                </div>
 
-            </div>
-        </div>
+
+
     </div>
 </div>
 
 
 <?php
-$this->registerJsFile('js/buy-request/update.js',['depends'=>\yii\web\JqueryAsset::className()])
+//$this->registerJsFile('js/buy-request/update.js',['depends'=>\yii\web\JqueryAsset::className()])
 ?>

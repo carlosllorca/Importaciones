@@ -1,6 +1,5 @@
 <?php
 
-use yii\bootstrap\Tabs;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 
@@ -29,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row">
                 <div class="col-sm-12" style="text-align: right">
                     <?= Yii::$app->user->can('demand/approve') && $model->demand_status_id == \app\models\DemandStatus::ENVIADA_ID ?
-                        Html::a('<i class="glyphicon glyphicon-ok"></i>', ["approve", 'id' => $model->id, 'return' => '/demand/view?id=' . $model->id],
+                        Html::a('<i class="fa fa-check"></i>', ["approve", 'id' => $model->id, 'return' => '/demand/view?id=' . $model->id],
                             [
                                 'title' => 'Aprobar demanda',
                                 'class' => 'btn btn-success',
@@ -37,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]) : null
                     ?>
                     <?= Yii::$app->user->can('demand/reject') && $model->demand_status_id == \app\models\DemandStatus::ENVIADA_ID ?
-                        Html::a('<i class="glyphicon glyphicon-remove"></i>', "#",
+                        Html::a('<i class="fa fa-remove"></i>', "#",
                             [
                                 'title' => 'Rechazar demanda',
                                 'class' => 'btn btn-danger',
@@ -95,50 +94,56 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
 
             <div class="row p-0 m-0 mt-3">
-                <div class="card-nav-tabs" style="width: 100%">
-                    <div class="card-header m-0 p-0">
-                        <?php
-                        echo Tabs::widget([
-                            'items' => [
-                                [
-                                    'label' => 'Requerimientos',
-                                    'content' => $this->render('_requerimientos', ['model' => $model]),
-                                    'active' => $active == 'requirements'
-                                ],
-                                [
-                                    'label' => 'Otros detalles',
-                                    'content' => $this->render('_details', ['model' => $model]),
-                                    //'headerOptions' => [...],
+                    <div class="col-xs-12 " style="width: 100%">
+                        <nav>
+                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link <?= $active == 'requirements' ? 'active' : null ?>"
+                                   id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                                   aria-controls="nav-home" aria-selected="true">Requerimientos</a>
+                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                                   role="tab" aria-controls="nav-profile" aria-selected="false">Otros detalles</a>
+                                <a class="nav-item nav-link"
+                                   id="nav-contact-tab" <?= $active == 'tabs' ? 'active' : null ?> data-toggle="tab"
+                                   href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Items</a>
 
-                                ], [
-                                    'label' => 'Relación de productos',
-                                    'content' => $this->render('_items', ['model' => $model, 'searchModel' => $searchModel,
-                                        'dataProvider' => $dataProvider]),
-                                    'active' => $active == 'items'
-                                    //'headerOptions' => [...],
+                            </div>
+                        </nav>
+                        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                            <div class="tab-pane fade <?= $active == 'requirements' ? 'show active' : null ?>"
+                                 id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <?= $this->render('_requerimientos', ['model' => $model]) ?>
+                            </div>
+                            <div class="tab-pane fade <?= $active == 'details' ? 'show active' : null ?>"
+                                 id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <?= $this->render('_details', ['model' => $model]) ?>
+                            </div>
+                            <div class="tab-pane fade <?= $active == 'items' ? 'show active' : null ?>" id="nav-contact"
+                                 role="tabpanel" aria-labelledby="nav-contact-tab">
+                                <?= $this->render('_items', ['model' => $model, 'searchModel' => $searchModel,
+                                    'dataProvider' => $dataProvider]) ?>
+                            </div>
 
-                                ],
-
-                            ],
-                        ]);
-                        ?>
+                        </div>
 
                     </div>
 
-
-                </div>
             </div>
 
 
         </div>
-
-        <?php
-        echo $this->registerJsFile('/js/demand/items.js', ['depends' => \yii\web\JqueryAsset::className()]);
-        if ($model->demand_status_id == \app\models\DemandStatus::ENVIADA_ID) {
-            echo $this->registerJsFile('/js/demand/index.js', ['depends' => \yii\web\JqueryAsset::className()]);
-        }
-        ?>
-        <?php Pjax::end() ?>
-
     </div>
+
+
+</div>
+
+<?php
+echo $this->registerJsFile('/js/demand/items.js', ['depends' => \yii\web\JqueryAsset::className()]);
+echo $this->registerCssFile('/css/tabs.css');
+if ($model->demand_status_id == \app\models\DemandStatus::ENVIADA_ID) {
+    echo $this->registerJsFile('/js/demand/index.js', ['depends' => \yii\web\JqueryAsset::className()]);
+}
+?>
+<?php Pjax::end() ?>
+
+</div>
 </div>

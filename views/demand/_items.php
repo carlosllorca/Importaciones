@@ -13,7 +13,7 @@ use yii\web\JqueryAsset;
 ?>
 
 <div class="row p-5">
-    <div class="col-12 ">
+    <div class="col-sm-12 ">
         <div style="text-align: right" class="disabled">
 
 

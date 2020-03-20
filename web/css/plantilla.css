@@ -157,3 +157,15 @@ select.form-control{
 .hidden{
     display: none!important;
 }
+.btn.btn-danger {
+    color: #fff!important;
+}
+.btn.btn-success {
+    color: #fff!important;
+}
+.dropdown-importaciones {
+
+    margin: 5px 0px;
+    font-size: 14px!important;
+    padding: 7px 5px !important;
+}

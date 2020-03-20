@@ -24,6 +24,12 @@ use yii\web\UploadedFile;
  * @property string|null $approved_date
  * @property int|null $approved_by
  * @property string|null $cancel_reason
+ *  @property int|null $buyer_assigned
+ * @property int|null $buy_approved_by
+ * @property string|null $buy_approved_date
+ * @property int|null $dt_specialist_assigned
+ * @property string|null $dt_approved_date
+ * @property int|null $dt_approved_by
 
  * @property FileInput $blank_contract
  * @property FileInput $pliego
@@ -39,6 +45,10 @@ use yii\web\UploadedFile;
  * @property DemandItem[] $demandItems
  * @property EmailNotify[] $emailNotifies
  * @property RequestStage[] $requestStages
+ *  @property User $buyerAssigned
+ * @property User $buyApprovedBy
+ * @property User $dtSpecialistAssigned
+ * @property User $dtApprovedBy
  */
  
 class BuyRequest extends \yii\db\ActiveRecord
@@ -61,8 +71,8 @@ class BuyRequest extends \yii\db\ActiveRecord
         return [
             [['code', 'created', 'created_by', 'buy_request_status_id', 'buy_request_type_id'], 'required'],
             [['created', 'last_update', 'approved_date','ganadores'], 'safe'],
-            [['created_by', 'buy_request_status_id', 'buy_request_type_id', 'approved_by'], 'default', 'value' => null],
-            [['created_by', 'buy_request_status_id', 'buy_request_type_id', 'approved_by'], 'integer'],
+            [['created_by', 'buy_request_status_id', 'buy_request_type_id', 'approved_by', 'buyer_assigned', 'buy_approved_by', 'dt_specialist_assigned', 'dt_approved_by'], 'default', 'value' => null],
+            [['created_by', 'buy_request_status_id', 'buy_request_type_id', 'approved_by','buyer_assigned', 'buy_approved_by', 'dt_specialist_assigned', 'dt_approved_by'], 'integer'],
             [['cancel_reason'], 'string'],
             [['code'], 'string', 'max' => 50],
 
@@ -70,6 +80,11 @@ class BuyRequest extends \yii\db\ActiveRecord
             [['buy_request_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestType::className(), 'targetAttribute' => ['buy_request_type_id' => 'id']],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
             [['approved_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['approved_by' => 'id']],
+
+            [['buyer_assigned'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['buyer_assigned' => 'id']],
+            [['buy_approved_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['buy_approved_by' => 'id']],
+            [['dt_specialist_assigned'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['dt_specialist_assigned' => 'id']],
+            [['dt_approved_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['dt_approved_by' => 'id']],
         ];
     }
 
@@ -165,6 +180,45 @@ class BuyRequest extends \yii\db\ActiveRecord
     public function getEmailNotifies()
     {
         return $this->hasMany(EmailNotify::className(), ['buy_request_id' => 'id']);
+    }
+    /**
+     * Gets query for [[BuyerAssigned]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBuyerAssigned()
+    {
+        return $this->hasOne(User::className(), ['id' => 'buyer_assigned']);
+    }
+
+    /**
+     * Gets query for [[BuyApprovedBy]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBuyApprovedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'buy_approved_by']);
+    }
+
+    /**
+     * Gets query for [[DtSpecialistAssigned]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDtSpecialistAssigned()
+    {
+        return $this->hasOne(User::className(), ['id' => 'dt_specialist_assigned']);
+    }
+
+    /**
+     * Gets query for [[DtApprovedBy]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDtApprovedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'dt_approved_by']);
     }
 
     /**

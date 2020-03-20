@@ -33,7 +33,7 @@
                         <th><?=Yii::$app->formatter->asCurrency($product->quantity*$product->price)?></th>
                         <th>
                             <?=Yii::$app->user->can('buyrequest/removeitem')?\yii\helpers\Html::a(
-                                '<span class="glyphicon glyphicon-trash">',
+                                '<span class="fa fa-trash">',
                                 ['/buy-request/remove-item','item'=>$product->id],
                                 [
                                     'title'=>'Eliminar item de la solicitud.',

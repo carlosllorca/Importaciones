@@ -1,6 +1,6 @@
 <?php
 
-use yii\bootstrap\Modal;
+use yii\bootstrap4\Modal;
 
 /* @var $this \yii\web\View */
 /* @var $model \app\models\BuyRequest|\yii\db\ActiveRecord */

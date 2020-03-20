@@ -52,8 +52,8 @@ use yii\widgets\ActiveForm;
                                     'showCancel'=>false,
                                     'showUpload'=>false,
                                     'browseLabel' => 'Explorar',
-                                    'browseIcon'=>'<i class="glyphicon glyphicon-folder-open mr-2"></i>',
-                                    'removeIcon' => '<i class="glyphicon glyphicon-trash"></i> ',
+                                    'browseIcon'=>'<i class="fa fa-folder-open mr-2"></i>',
+                                    'removeIcon' => '<i class="fa fa-trash"></i> ',
                                     'mainClass' => 'input-group-xl',
                                     'showCaption' => true,
                                 ]
@@ -146,15 +146,15 @@ use yii\widgets\ActiveForm;
                                 <th><?=Yii::$app->formatter->asDate($offert->expiration_date)?></th>
                                 <th><?= Html::a('Descargar',$offert->url_file,['target'=>'_blank'])?></th>
                                 <th>
-                                    <?=$offert->url_evaluation?Html::a("<span class='glyphicon glyphicon-download'></span>",$offert->url_evaluation,['target'=>'_blank']):'-'?>
+                                    <?=$offert->url_evaluation?Html::a("<span class='fa fa-download'></span>",$offert->url_evaluation,['target'=>'_blank']):'-'?>
                                 </th>
                                 <th><?=$offert->evaluation_date?Yii::$app->formatter->asDate($offert->evaluation_date):'-'?></th>
                                 <th><?=$offert->evaluation_date?Yii::$app->formatter->asBoolean($offert->approved):'-'?></th>
-                                <th><?=Yii::$app->user->can('buyrequest/evaluateoffert')&&!$model->buyRequest->getWinners()?Html::a("<span class='glyphicon glyphicon-ok' title='Evaluar'></span>",'#',
+                                <th><?=Yii::$app->user->can('buyrequest/evaluateoffert')&&!$model->buyRequest->getWinners()?Html::a("<span class='fa fa-check' title='Evaluar'></span>",'#',
                                     [
-                                            'data-toggle'=>"modal",
+
                                             'onclick'=> "evaluateOffert({$offert->id})",
-                                            'data-target'=>"#evaluate-offert"
+
                                     ]):''?></th>
                             </tr>
                             <?php

@@ -9,8 +9,9 @@
 .contenedor_hitos {
 
     margin: 0 20px;
-    padding: 0 15%;
-    font-size: 100%;
+    padding: 0 3%;
+    width: 100%;
+
 
     color: #f66b0d;
 
@@ -65,7 +66,7 @@ h2 {
 }
 
 .content {
-    max-height: 20px;
+
     padding: 50px 20px 0;
     border-color: transparent;
     border-width: 2px;
@@ -113,6 +114,7 @@ h2 {
     position: absolute;
     z-index: 100;
     cursor: pointer;
+    margin-left: 10px;
     top: 20px;
     transition: transform 0.2s linear;
 }

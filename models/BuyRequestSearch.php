@@ -49,25 +49,25 @@ class BuyRequestSearch extends BuyRequest
             case Rbac::$LOGISTICA_ID:
                 break;
             case Rbac::$JEFE_TECNCIO:
-                $query->innerJoinWith('buyRequestInternational');
+
+                //$query->innerJoinWith('buyRequestInternational');
                 $query->andWhere(['not',['approved_date'=>null]]);
                 break;
 
             case Rbac::$JEFE_COMPRAS:
-                $query->innerJoinWith('buyRequestInternational');
-                $query->andWhere(['not',['buy_request_international.dt_approved_by'=>null]]);
+
+                $query->andWhere(['not',['dt_approved_by'=>null]]);
                 break;
             case Rbac::$COMPRADOR_INTERNACIONAL:
                 $query->innerJoinWith('buyRequestInternational');
                 $query->andWhere(['buy_request_international.buyer_assigned'=>User::userLogged()->id]);
 
             case Rbac::$COMPRADOR_NACIONAL:
-                $query->innerJoinWith('buyRequestInternational');
-                $query->andWhere(['buyer_assigned'=>User::userLogged()->id]);
+
+                $query->andWhere(['buyer_assigned'=>User::userLogged()->id])->andWhere(['buy_request_type_id'=>BuyRequestType::$NACIONAL_ID]);
                 break;
             case Rbac::$ESP_TECNICO:
-                $query->innerJoinWith('buyRequestInternational');
-                $query->andWhere(['buy_request_international.dt_specialist_assigned'=>User::userLogged()->id]);
+                $query->andWhere(['dt_specialist_assigned'=>User::userLogged()->id]);
                 break;
 
             case Rbac::$COMITE:

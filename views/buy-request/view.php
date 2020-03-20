@@ -18,31 +18,31 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="card-body" style="padding: 15px">
         <p style="text-align: right">
-            <?= Yii::$app->user->can('buyrequest/golapproved')&&!$model->approved_by?Html::a("<span class='glyphicon glyphicon-ok'></span>",
+            <?= Yii::$app->user->can('buyrequest/golapproved')&&!$model->approved_by?Html::a("<span class='fa fa-ckeck'></span>",
                 ['gol-approved', 'id' => $model->id],
                 ['class' => 'btn btn-success',
                     'data-confirm'=>'¿Confirma que desea aprobar esta solicitud?',
                     'title' => 'Dar aprobación técnica.']) :null?>
-            <?= Yii::$app->user->can('buyrequest/assignbuyer')?Html::a("<span class='glyphicon glyphicon-user'></span> Comprador",
+            <?= Yii::$app->user->can('buyrequest/assignbuyer')?Html::a("<span class='fa fa-user'></span> Comprador",
                 '#',
                 [
                     'class' => "btn btn-primary",
                     'title' => 'Asignar/Reasignar el comprador que gestionará esta orden.',
                     'onclick'=>'assignUser('.$model->id.',"comprador")'
                 ]) :null?>
-            <?= Yii::$app->user->can('buyrequest/buyapproved')&&!$model->buyRequestInternational->buy_approved_by?
-                Html::a("<span class='glyphicon glyphicon-ok'></span>",
+            <?= Yii::$app->user->can('buyrequest/buyapproved')&&!$model->buy_approved_by?
+                Html::a("<span class='fa fa-check'></span>",
                     ['buy-approved', 'id' => $model->id],
                     ['class' => 'btn btn-success',
                         'data-confirm'=>'¿Confirma que desea aprobar esta solicitud?',
                         'title' => 'Dar aprobación técnica.']) :null?>
-            <?= Yii::$app->user->can('buyrequest/dtapproved')&&!$model->buyRequestInternational->dt_approved_by?
-                Html::a("<span class='glyphicon glyphicon-ok'></span>",
+            <?= Yii::$app->user->can('buyrequest/dtapproved')&&!$model->dt_approved_by?
+                Html::a("<span class='fa fa-check'></span>",
                 ['dt-approved', 'id' => $model->id],
                 ['class' => 'btn btn-success',
                     'data-confirm'=>'¿Confirma que desea aprobar esta solicitud?',
                     'title' => 'Dar aprobación técnica.']) :null?>
-            <?= Yii::$app->user->can('buyrequest/assignet')?Html::a("<span class='glyphicon glyphicon-user'></span> ET",
+            <?= Yii::$app->user->can('buyrequest/assignet')?Html::a("<span class='fa fa-user'></span> ET",
                 '#',
                 [
                     'class' => 'btn btn-success',
@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'onclick'=>'assignUser('.$model->id.',"et")'
                 ]) :null?>
 
-            <?= Yii::$app->user->can('buyrequest/update')?Html::a("<span class='glyphicon glyphicon-pencil'></span>",
+            <?= Yii::$app->user->can('buyrequest/update')?Html::a("<span class='fa fa-pencil'></span>",
                 ['update','id'=>$model->id],
                 [
                     'class' => 'btn btn-success',
@@ -108,8 +108,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         <th colspan="2">
                             <label>Comprador asignado</label>
                             <?php
-                                if($model->buyRequestInternational&&$model->buyRequestInternational->buyer_assigned){
-                                    echo "<p>{$model->buyRequestInternational->buyerAssigned->full_name}</p>";
+                                if($model->buyer_assigned){
+                                    echo "<p>{$model->buyerAssigned->full_name}</p>";
                                 }else{
                                     echo "<p class='text-danger'>(No asignado)</p>";
                                 }
@@ -118,8 +118,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         <th >
                             <label>Especialista tecnico asignado</label>
                             <?php
-                            if($model->buyRequestInternational&&$model->buyRequestInternational->dt_specialist_assigned){
-                                echo "<p>{$model->buyRequestInternational->dtSpecialistAssigned->full_name}</p>";
+                            if($model->dt_specialist_assigned){
+                                echo "<p>{$model->dtSpecialistAssigned->full_name}</p>";
                             }else{
                                 echo "<p class='text-danger'>(No asignado)</p>";
                             }
@@ -138,7 +138,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <tr>
                         <th colspan="5">
                             <label>Productos</label><div class="p-4">
-                                <table class="table tab-content">
+                                <table class="table table-condensed">
                                     <thead>
                                     <tr>
                                         <th style="width: 60%">

@@ -26,6 +26,14 @@ $config = [
                     'sidebarBackgroundColor' => 'white',
                     'sidebarBackgroundImage' => 'img url'
                 ],
+                'yii\bootstrap\BootstrapAsset' => [
+                    'css' => [],
+                    'js'=>[]
+                ],
+                'yii\bootstrap\Bootstrap4Asset' => [
+                    'css' => [],
+                    'js'=>[]
+                ],
             ],
         ],
 

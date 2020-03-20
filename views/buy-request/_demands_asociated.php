@@ -27,7 +27,7 @@
                     <th><?=$item->client->provinceUeb->label?></th>
                     <th><?=$item->client->name?></th>
                     <th><?=$item->client->organism->name?></th>
-                    <th><?=Yii::$app->formatter->asDate($item->approved_date)?></th>
+                    <th><?=Yii::$app->formatter->asDate($item->created_date)?></th>
                     <th><b class="text-uppercase <?= $item->classByStatus()?>"
                             style="font-family: Roboto-bold"><?= $item->demandStatus->label ?></b></th>
                 </tr>

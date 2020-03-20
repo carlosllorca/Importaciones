@@ -8,7 +8,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\bootstrap\Modal;
+use yii\bootstrap4\Modal;
 
 Modal::begin([
    // 'header' => '<h2>Hello world</h2>',
@@ -22,7 +22,7 @@ Modal::end();
 
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style="width: 100%;">
             <div class="<?=$fLicitacion->bidding_start&&!$model->buyRequestProviders?'':'hidden'?>" id="licitacion_form">
                 <?php $form = ActiveForm::begin(); ?>
                 <div class="row" style="margin: auto;padding-top: 2%;padding-bottom: 2%">
@@ -65,7 +65,7 @@ Modal::end();
                 <?php
             }else{
                 ?>
-                <div class="col-xs-12 p-5" id="details-licitation">
+                <div class="col-xs-12 p-5" id="details-licitation" style="width: 100%;">
                     <div class="row"  >
                         <div class="col-sm-3">
                             <label style="color: #0e0e0e">Período de licitación desde:</label>
@@ -84,7 +84,7 @@ Modal::end();
                         </div>
                         <div class="col-sm-3">
                             <?=Yii::$app->user->can('buyrequest/changebidding')&&!$model->getWinners()?
-                                Html::button("<span class='glyphicon glyphicon-pencil'></span>",
+                                Html::button("<span class='fa fa-pencil'></span>",
                                     [
                                         'class'=>'btn btn-primary',
                                         'title'=>'Modificar licitación',
@@ -127,7 +127,7 @@ Modal::end();
                                         <th><?=$buyRequestProvider->provider->country->label?></th>
                                         <th><?=$buyRequestProvider->providerStatus->label?></th>
                                         <th>
-                                            <?= Html::a("<span class='glyphicon glyphicon-eye-open'></span>",
+                                            <?= Html::a("<span class='fa fa-eye'></span>",
                                             '#',['title'=>'Ver','onclick'=>'showProvider('.$buyRequestProvider->id.')']
                                             )?>
 

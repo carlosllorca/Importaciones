@@ -6,9 +6,11 @@
 /* @var $model \app\models\BuyRequest|\yii\db\ActiveRecord */
 
 use yii\helpers\Html;
-use yii\bootstrap\Modal;
+use yii\bootstrap4\Modal;
 Modal::begin([
     // 'header' => '<h2>Hello world</h2>',
+    'title' =>'Subir documento',
+    'id' => 'modal-documentos',
     'toggleButton' => ['label' => 'click me','id'=>'ajax-modal-documents','class'=>'hidden'],
 ]);
 

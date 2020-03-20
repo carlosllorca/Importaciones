@@ -132,17 +132,17 @@ $this->title=$model->code;
         </tr>
         <tr>
             <td style="padding: 0px 5px"><p class="textBasic">Nombre:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->buyRequestInternational->buyerAssigned->full_name?></p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->buyerAssigned->full_name?></p></td>
             <td style="padding: 0px 5px"><p class="textBasic"></p></td>
             <td style="padding: 0px 5px"><p class="textBasic">Nombre:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->buyRequestInternational->buyApprovedBy->full_name?></p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->buyApprovedBy->full_name?></p></td>
         </tr>
         <tr>
             <td style="padding: 0px 5px"><p class="textBasic">Cargo:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->buyRequestInternational->buyerAssigned->cargo?></p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->buyerAssigned->cargo?></p></td>
             <td style="padding: 0px 5px"><p class="textBasic"></p></td>
             <td style="padding: 0px 5px"><p class="textBasic">Cargo:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->buyRequestInternational->buyApprovedBy->cargo?></p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=$model->buyApprovedBy->cargo?></p></td>
         </tr>
         <tr>
             <td style="padding: 0px 5px"><p class="textBasic">Firma:</p></td>
@@ -153,10 +153,10 @@ $this->title=$model->code;
         </tr>
         <tr>
             <td style="padding: 0px 5px"><p class="textBasic">Fecha:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"><?=Yii::$app->formatter->asDate($model->buyRequestInternational->buy_approved_date)?></p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=Yii::$app->formatter->asDate($model->buy_approved_date)?></p></td>
             <td style="padding: 0px 5px"><p class="textBasic"></p></td>
             <td style="padding: 0px 5px"><p class="textBasic">Fecha:</p></td>
-            <td style="padding: 0px 5px"><p class="textBasic"><?=Yii::$app->formatter->asDate($model->buyRequestInternational->buy_approved_date)?></p></td>
+            <td style="padding: 0px 5px"><p class="textBasic"><?=Yii::$app->formatter->asDate($model->buy_approved_date)?></p></td>
         </tr>
     </table>
 </div>
