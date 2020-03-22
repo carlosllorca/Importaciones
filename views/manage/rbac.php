@@ -43,10 +43,10 @@ $this->title = Yii::t('app', 'Control de acceso');
                     <?=$m->description;?>
                 </td>
                 <td class="tree-action">
-                    <a title="Ver" href="<?=Yii::$app->urlManager->createUrl(['manage/view','id'=>$m->name])?>"><span class=" glyphicon glyphicon-search"></span> </a>
-                    <a title="Editar" href="<?=Yii::$app->urlManager->createUrl(['manage/update-role','id'=>$m->name])?>"><span class=" glyphicon glyphicon-pencil"></span> </a>
+                    <a title="Ver" href="<?=Yii::$app->urlManager->createUrl(['manage/view','id'=>$m->name])?>"><span class=" fa fa-search"></span> </a>
+                    <a title="Editar" href="<?=Yii::$app->urlManager->createUrl(['manage/update-role','id'=>$m->name])?>"><span class=" fa fa-pencil"></span> </a>
                     <?= Html::a(Yii::t('app', ''), ['delete', 'id' => $m->name], [
-                        'class' => 'glyphicon glyphicon-trash',
+                        'class' => 'fa fa-trash',
                         "title" => 'Eliminar',
                         'data' => [
                             'confirm' => Yii::t('app', 'Está seguro que desea eliminar este Rol?'),

@@ -101,17 +101,17 @@ use yii\widgets\ActiveForm;
     <p style="text-align: center; background-color: white" class="title">DETALLES DEL PROVEEDOR</p>
     <div style="width: 100%; border: 1px solid #fefefe">
         <div class="row">
-            <div class="col-sm-4 p-5">
+            <div class="col-sm-4">
                 <label>Nombre</label>
                 <p><?=$model->provider->name?></p>
             </div>
-            <div class="col-sm-4 p-5" >
+            <div class="col-sm-4" >
                 <label>País</label>
                 <p><?=$model->provider->country->label?></p>
             </div>
-            <div class="col-sm-4 p-5">
+            <div class="col-sm-4">
                 <?php
-                    if(Yii::$app->user->can('buyrequest/uploadoffert')&&$model->buyRequest->buyRequestInternational->biddingActive()){
+                    if($model->buyRequest->buy_request_type_id==\app\models\BuyRequestType::$INTERNACIIONAL_ID&&Yii::$app->user->can('buyrequest/uploadoffert')&&$model->buyRequest->buyRequestInternational->biddingActive()){
                       ?>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" onclick="generateOffert(<?=$model->id?>)">

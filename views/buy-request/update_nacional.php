@@ -2,7 +2,7 @@
 
 use app\components\TabPanel;
 use yii\helpers\Html;
-use yii\bootstrap\Tabs;
+use yii\bootstrap4\Modal;
 /* @var $this yii\web\View */
 /* @var $model app\models\BuyRequest */
 /* @var $active string */
@@ -11,6 +11,16 @@ $this->title = 'Actualizar solicitud de compra ';
 $this->params['breadcrumbs'][] = ['label' => 'Solicitudes de compra', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->code, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
+Modal::begin([
+    // 'header' => '<h2>Hello world</h2>',
+    'title' =>'Subir documento',
+    'id' => 'modal-documentos',
+    'toggleButton' => ['label' => 'click me','id'=>'ajax-modal-nacional','class'=>'hidden'],
+]);
+
+echo '<div id="modal-content-nacional"></div>';
+
+Modal::end();
 ?>
     <div class="card">
         <div class="card-header card-header-primary">
@@ -112,10 +122,10 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                                 ],
                                 [
                                     'label' => 'Propuestas',
-                                    'content' =>Yii::$app->user->can('buyrequest/viewpropuestas')&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID? $this->render('_propuestas', ['model' => $model,'fLicitacion'=>$form]):'',
+                                    'content' =>Yii::$app->user->can('buyrequest/viewpropuestas')&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID?
+                                        $this->render('_propuestas_nacional', ['model' => $model]):'',
                                     'visible'=>Yii::$app->user->can('buyrequest/viewpropuestas')&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID,
                                     'active'=>$active == 'propuestas'
-
                                 ],
                                 [
                                     'label' => 'Documentos',
@@ -129,57 +139,10 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                                     'visible'=>Yii::$app->user->can('buyrequest/viewtransportation')&&$model->requestStages,
                                     'active'=>$active == 'transportation'
                                 ]
+
                             ]
                     ])
                     ?>
-
-
-
-
-
-<!--                    <div>-->
-<!--                        --><?php
-//                        echo Tabs::widget([
-//
-//                            'items' => [
-//                                [
-//                                    'label' => 'Demandas asociadas',
-//                                    'content' =>$this->render('_demands_asociated', ['model' => $model]),
-//                                    'visible'=>Yii::$app->user->can('buyrequest/viewassociateddemands'),
-//                                    'active' =>  $active == 'demands_associated'
-//                                ],
-//                                [
-//                                    'label' => 'Productos',
-//                                    'content' =>$this->render('_products', ['model' => $model]),
-//                                    'visible'=>Yii::$app->user->can('buyrequest/viewproducts'),
-//                                    'active' =>   $active == 'products'
-//                                ],
-//                                [
-//                                    'label' => 'Propuestas',
-//                                    'content' =>Yii::$app->user->can('buyrequest/viewpropuestas')&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID? $this->render('_propuestas', ['model' => $model,'fLicitacion'=>$form]):'',
-//                                    'visible'=>Yii::$app->user->can('buyrequest/viewpropuestas')&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID,
-//                                    'active'=>$active == 'propuestas'
-//
-//                                ],
-//                                [
-//                                    'label' => 'Documentos',
-//                                    'content' =>Yii::$app->user->can('buyrequest/viewdocuments')&&$model->buyRequestDocuments?$this->render('_documentos', ['model' => $model]):'',
-//                                    'visible'=>Yii::$app->user->can('buyrequest/viewdocuments')&&$model->buyRequestDocuments,
-//                                    'active'=>$active == 'documentos'
-//                                ],
-//                                [
-//                                    'label' => 'Hitos',
-//                                    'content' =>Yii::$app->user->can('buyrequest/viewtransportation')&&$model->requestStages?$this->render('_hitos', ['model' => $model]):'',
-//                                    'visible'=>Yii::$app->user->can('buyrequest/viewtransportation')&&$model->requestStages,
-//                                    'active'=>$active == 'transportation'
-//                                ]
-//
-//
-//                            ],
-//                        ]);
-//                        ?>
-<!--                    </div>-->
-
                 </div>
             </div>
         </div>
@@ -187,5 +150,5 @@ $this->params['breadcrumbs'][] = 'Actualizar';
 
 
 <?php
-$this->registerJsFile('js/buy-request/update.js',['depends'=>\yii\web\JqueryAsset::className()])
+$this->registerJsFile('js/buy-request/updateNacional.js',['depends'=>\yii\web\JqueryAsset::className()])
 ?>

@@ -26,11 +26,11 @@ use yii\widgets\ActiveForm;
         </div>
 
         <div class="col-md-3">
-            <?= $form->field($model, 'duration')->textInput(['type'=>'number','min'=>0])?>
+            <?= $form->field($model, 'duration')->textInput()?>
 
         </div>
         <div class="col-md-3">
-            <?= $form->field($model, 'order')->textInput(['type'=>'number','min'=>1])?>
+            <?= $form->field($model, 'order')->textInput()?>
 
         </div>
     </div>

@@ -54,9 +54,9 @@ Modal::end();
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="button-container" style="text-align: right">
-                                        <?=Yii::$app->user->can('buyrequest/stagesuccess')&&$current->id==$requestStage->id&&!$requestStage->real_end?\yii\helpers\Html::button("<i class='glyphicon glyphicon-ok'></i>",
+                                        <?=Yii::$app->user->can('buyrequest/stagesuccess')&&$current->id==$requestStage->id&&!$requestStage->real_end?\yii\helpers\Html::button("<i class='fa fa-check'></i>",
                                             ['title'=>'Marcar como hito realizado','onclick'=> 'closeHito('.$requestStage->id.' )','class'=>"btn btn-success btn-xs"]):null?>
-                                        <?=Yii::$app->user->can('buyrequest/updatestage')&&!$requestStage->real_end?\yii\helpers\Html::button("<i class='glyphicon glyphicon-pencil'></i>",
+                                        <?=Yii::$app->user->can('buyrequest/updatestage')&&!$requestStage->real_end?\yii\helpers\Html::button("<i class='fa fa-pencil'></i>",
                                             ['title'=>'Modificar hito','onclick'=> 'updateHito('.$requestStage->id.' )','class'=>"btn btn-primary btn-xs"]):null?>
                                     </div>
                                 </div>

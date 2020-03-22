@@ -62,8 +62,8 @@ use yii\widgets\ActiveForm;
                                 'showCancel'=>false,
                                 'showUpload'=>false,
                                 'browseLabel' => 'Explorar',
-                                'browseIcon'=>'<i class="glyphicon glyphicon-folder-open mr-2"></i>',
-                                'removeIcon' => '<i class="glyphicon glyphicon-trash"></i> ',
+                                'browseIcon'=>'<i class="fa fa-folder-open mr-2"></i>',
+                                'removeIcon' => '<i class="fa fa-trash"></i> ',
                                 'mainClass' => 'input-group-xl',
                                 'showCaption' => true,
                             ]
@@ -78,8 +78,8 @@ use yii\widgets\ActiveForm;
                                 'showCancel'=>false,
                                 'showUpload'=>false,
                                 'browseLabel' => 'Explorar',
-                                'browseIcon'=>'<i class="glyphicon glyphicon-folder-open mr-2"></i>',
-                                'removeIcon' => '<i class="glyphicon glyphicon-trash"></i> ',
+                                'browseIcon'=>'<i class="fa fa-folder-open mr-2"></i>',
+                                'removeIcon' => '<i class="fa fa-trash"></i> ',
                                 'mainClass' => 'input-group-xl',
                                 'showCaption' => true,
                             ]
@@ -94,8 +94,8 @@ use yii\widgets\ActiveForm;
                                 'showCancel'=>false,
                                 'showUpload'=>false,
                                 'browseLabel' => 'Explorar',
-                                'browseIcon'=>'<i class="glyphicon glyphicon-folder-open mr-2"></i>',
-                                'removeIcon' => '<i class="glyphicon glyphicon-trash"></i> ',
+                                'browseIcon'=>'<i class="fa fa-folder-open mr-2"></i>',
+                                'removeIcon' => '<i class="fa fa-trash"></i> ',
                                 'mainClass' => 'input-group-xl',
                                 'showCaption' => true,
                             ]

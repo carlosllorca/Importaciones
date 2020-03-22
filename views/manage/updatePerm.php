@@ -29,8 +29,8 @@ function action($task,$children,$role){
     if(success($task,$children)!='success'){
         $route=Yii::$app->urlManager->createUrl(['updateRole','action'=>'add']);
 
-        echo '<button  name="'.$task['name'].'" onClick="addRol(this)" id="add-'.generateId($task['name']).'"><span class="glyphicon glyphicon-remove-circle"></span></button>';
-        echo '<button  hidden name="'.$task['name'].'" onClick="deleteRol(this)" id="del-'.generateId($task['name']).'"><span class="glyphicon glyphicon-ok""></span></button>';
+        echo '<button  name="'.$task['name'].'" onClick="addRol(this)" id="add-'.generateId($task['name']).'"><span class="fa fa-remove"></span></button>';
+        echo '<button  hidden name="'.$task['name'].'" onClick="deleteRol(this)" id="del-'.generateId($task['name']).'"><span class="fa fa-check""></span></button>';
 
     }
 
@@ -38,15 +38,15 @@ function action($task,$children,$role){
         $route=Yii::$app->urlManager->createUrl(['updateRole','action'=>'delete','auth'=>$task['name'],'role'=>$role->name]);
 
         if(substr_compare($task['name'], "manage", 0, 6, true) != 0 /*&& $role->name != $_GET['role']*/){
-            echo '<button   hidden name="'.$task['name'].'" onClick="addRol(this)" id="add-'.generateId($task['name']).'"><span class="glyphicon glyphicon-remove-circle"></span></button>';
-            echo '<button  name="'.$task['name'].'" onClick="deleteRol(this)" id="del-'.generateId($task['name']).'"><span class="glyphicon glyphicon-ok""></span></button>';
+            echo '<button   hidden name="'.$task['name'].'" onClick="addRol(this)" id="add-'.generateId($task['name']).'"><span class="fa fa-remove"></span></button>';
+            echo '<button  name="'.$task['name'].'" onClick="deleteRol(this)" id="del-'.generateId($task['name']).'"><span class="fa fa-check""></span></button>';
         }
         else{
             $authManager = Yii::$app->authManager;
             $checkUsr = $authManager->getRolesByUser(Yii::$app->user->id);
             if(!in_array($role,$checkUsr)){
-                echo '<button   hidden name="'.$task['name'].'" onClick="addRol(this)" id="add-'.generateId($task['name']).'"><span class="glyphicon glyphicon-remove-circle"></span></button>';
-                echo '<button  name="'.$task['name'].'" onClick="deleteRol(this)" id="del-'.generateId($task['name']).'"><span class="glyphicon glyphicon-ok""></span></button>';
+                echo '<button   hidden name="'.$task['name'].'" onClick="addRol(this)" id="add-'.generateId($task['name']).'"><span class="fa fa-remove"></span></button>';
+                echo '<button  name="'.$task['name'].'" onClick="deleteRol(this)" id="del-'.generateId($task['name']).'"><span class="fa fa-check""></span></button>';
             }
         }
     }

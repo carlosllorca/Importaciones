@@ -25,6 +25,7 @@ class DocumentType extends \yii\db\ActiveRecord
      */
     const PLIEGO_ID=1;
     const PREFORMA_ID=2;
+    const PREFORMA_NACIONAL_ID=15;
     const FUNDAMENTACION_COMPRA_ID=3;
     public static function tableName()
     {
@@ -86,8 +87,9 @@ class DocumentType extends \yii\db\ActiveRecord
     }
     public static function combo($differentTo=[]){
         return ArrayHelper::map(self::find()->where(['active'=>true])
-            ->andWhere(['not',['id'=>$differentTo]])
-            ->orderBy('label')->all(),'id','label');
+            ->innerJoinWith('buyRequestType')
+            ->andWhere(['not',['document_type.id'=>$differentTo]])
+            ->orderBy('label')->all(),'id','label',function($model){return $model->buyRequestType->label; });
     }
     public function userLoggedCanView(){
         $model = DocumentTypePermission::findOne(['document_type_id'=>$this->id,'user_id'=>User::userLogged()->id]);

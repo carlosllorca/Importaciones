@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
     ?>
     <div class="row">
         <div class="col-sm-12">
-            <?=$form->field($model,'nextHitoDate')->textInput(['type'=>'date'])?>
+            <?=$model->nextHitoDate?$form->field($model,'nextHitoDate')->textInput(['type'=>'date']):null?>
 
         </div>
         <div class="col-sm-12">

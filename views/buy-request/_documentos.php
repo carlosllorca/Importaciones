@@ -85,10 +85,10 @@ Modal::end();
                     <th><?= $buyRequestDocument->url_to_file ? $buyRequestDocument->lastUpdatedBy->full_name : '-' ?></th>
                     <th><?= $buyRequestDocument->url_to_file ? Yii::$app->formatter->asDate($buyRequestDocument->last_update) : '-' ?></th>
                     <th>
-                        <?= $buyRequestDocument->url_to_file ? Html::a("<span class='glyphicon glyphicon-download'></span>", $buyRequestDocument->url_to_file, ['target' => '_blank', 'title' => 'Descargar']) : '' ?>
+                        <?= $buyRequestDocument->url_to_file ? Html::a("<span class='fa fa-download'></span>", $buyRequestDocument->url_to_file, ['target' => '_blank', 'title' => 'Descargar']) : '' ?>
                         <?=$buyRequestDocument->documentType&&$buyRequestDocument->documentType->userLoggedCanUpdate()||!$buyRequestDocument->documentType?
 
-                            Html::a("<span class='glyphicon glyphicon-upload'></span>", '#',
+                            Html::a("<span class='fa fa-upload'></span>", '#',
                                 [
 
                                     'title' => 'Subir archivo',

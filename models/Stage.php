@@ -36,6 +36,7 @@ class Stage extends \yii\db\ActiveRecord
             [['label', 'order', 'buy_request_type_id'], 'required'],
             [['order', 'buy_request_type_id'], 'default', 'value' => null],
             [['order', 'buy_request_type_id','duration'], 'integer'],
+            [['order','duration'],'integer','min'=>0],
             [['active'], 'boolean'],
             [['label'], 'string', 'max' => 255],
             [['order', 'buy_request_type_id'], 'unique', 'targetAttribute' => ['order', 'buy_request_type_id']],
