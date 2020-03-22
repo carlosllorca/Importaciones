@@ -30,13 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     'title' => 'Asignar/Reasignar el comprador que gestionará esta orden.',
                     'onclick'=>'assignUser('.$model->id.',"comprador")'
                 ]) :null?>
-            <?= Yii::$app->user->can('buyrequest/buyapproved')&&!$model->buy_approved_by?
+            <?= Yii::$app->user->can('buyrequest/buyapproved')&&!$model->buy_approved_by&&$model->buyer_assigned?
                 Html::a("<span class='fa fa-check'></span>",
                     ['buy-approved', 'id' => $model->id],
                     ['class' => 'btn btn-success',
                         'data-confirm'=>'¿Confirma que desea aprobar esta solicitud?',
                         'title' => 'Dar aprobación técnica.']) :null?>
-            <?= Yii::$app->user->can('buyrequest/dtapproved')&&!$model->dt_approved_by?
+            <?= Yii::$app->user->can('buyrequest/dtapproved')&&!$model->dt_approved_by&&$model->dt_specialist_assigned?
                 Html::a("<span class='fa fa-check'></span>",
                 ['dt-approved', 'id' => $model->id],
                 ['class' => 'btn btn-success',

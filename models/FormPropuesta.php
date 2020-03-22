@@ -43,7 +43,8 @@ class FormPropuesta extends Model
     {
         return [
             'provider'=>'Proveedor',
-            'oferta'=>'Oferta'
+            'oferta'=>'Oferta',
+            'expiration_date'=>'Fecha de expiración'
         ];
     }
     /*

@@ -29,23 +29,39 @@ Modal::end();
         if (Yii::$app->user->can('buyrequest/sendtomonitoring')) {
             ?>
             <p style="text-align: right">
-                <?= Html::a('Enviar a seguimiento', ['#','id'=>$model->id],
-                    $model->allDocumentOk()?
-                        [
-                                'class' => 'btn btn-primary',
-                                'data-toggle'=>"modal",
-                                'data-target'=>"#transport-form",
-                                'onclick'=> "transportForm({$model->id})",
+                <?php
+                    if($model->buy_request_status_id==\app\models\BuyRequestStatus::$EVALUANDO_OFERTAS&&$model->buy_request_type_id==\app\models\BuyRequestType::$INTERNACIIONAL_ID){
+                        echo Html::a('Enviar a seguimiento', ['#','id'=>$model->id],
+                            $model->allDocumentOk()?
+                                [
+                                    'class' => 'btn btn-primary',
+                                    'data-toggle'=>"modal",
+                                    'data-target'=>"#transport-form",
+                                    'onclick'=> "transportForm({$model->id})",
 
-                        ]
-                        :['class' => 'btn btn-primary disabled']) ?>
-                <?= Html::a('Subir otro documento', '#',
+                                ]
+                                :['class' => 'btn btn-primary disabled']);
+                    }else if($model->buy_request_status_id==\app\models\BuyRequestStatus::$EVALUANDO_OFERTAS){
+                        echo Html::a('Enviar a seguimiento', ['/buy-request/send-to-monitoring','id'=>$model->id],
+                            $model->allDocumentOk()?
+                                [
+                                    'class' => 'btn btn-primary',
+                                    'data-toggle'=>"modal",
+                                    'data-target'=>"#transport-form",
+                                    'onclick'=> "transportForm({$model->id})",
+
+                                ]
+                                :['class' => 'btn btn-primary disabled']);
+                    }
+                ?>
+
+                <?=$model->buy_request_status_id!=\app\models\BuyRequestStatus::$CERRADA? Html::a('Subir otro documento', '#',
                     [
                             'class' => 'btn btn-primary',
                             'onclick'=> "subirArchivo(false,".$model->id.")",
 
                             'title'=>'Puedes subir un documento que no esté referido en la lista.'
-                    ]) ?>
+                    ]):null ?>
             </p>
             <?php
         }
@@ -63,7 +79,7 @@ Modal::end();
                 <th>Estado</th>
                 <th>Subido por</th>
                 <th>Fecha</th>
-                <th></th>
+                <th class="<?=$model->buy_request_status_id!=\app\models\BuyRequestStatus::$CERRADA?'':'hidden'?>"></th>
             </tr>
             </thead>
             <tbody>
@@ -84,7 +100,7 @@ Modal::end();
                     <th><b class="<?=$buyRequestDocument->documentStatus->classByStatus()?>"><?=$buyRequestDocument->documentStatus->label?></b></th>
                     <th><?= $buyRequestDocument->url_to_file ? $buyRequestDocument->lastUpdatedBy->full_name : '-' ?></th>
                     <th><?= $buyRequestDocument->url_to_file ? Yii::$app->formatter->asDate($buyRequestDocument->last_update) : '-' ?></th>
-                    <th>
+                    <th class="<?=$model->buy_request_status_id!=\app\models\BuyRequestStatus::$CERRADA?'':'hidden'?>">
                         <?= $buyRequestDocument->url_to_file ? Html::a("<span class='fa fa-download'></span>", $buyRequestDocument->url_to_file, ['target' => '_blank', 'title' => 'Descargar']) : '' ?>
                         <?=$buyRequestDocument->documentType&&$buyRequestDocument->documentType->userLoggedCanUpdate()||!$buyRequestDocument->documentType?
 

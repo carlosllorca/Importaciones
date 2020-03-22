@@ -219,9 +219,13 @@ class BuyRequestController extends MainController
     private function updateNacional($model)
     {
         $active = 'products';
+        if(Yii::$app->request->get('provider')){
+            $active= 'propuestas';
+        }
         if(Yii::$app->request->get('section')){
             $active = Yii::$app->request->get('section');
         }
+
         return $this->render('update_nacional', [
             'model' => $model,
             'active'=>$active
@@ -645,7 +649,7 @@ class BuyRequestController extends MainController
 
             $model->generateFiledTree($url);
             Yii::$app->session->setFlash('success','Hemos presentado el expediente correctamente. Se ha generado el árbol de documentos necesarios para la aprobación.');
-            return $this->redirect(['/buy-request/update', 'id' => $model->buyRequest()->id]);
+            return $this->redirect(['/buy-request/update', 'id' => $model->buyRequest()->id,'section'=>'documentos']);
 
         }
 
