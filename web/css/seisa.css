@@ -70,3 +70,6 @@ ul.breadcrumb>li>a{
 a{
     color: #f66b0d!important;
 }
+.has-error > .help-block {
+    color: #dc3545!important;
+}

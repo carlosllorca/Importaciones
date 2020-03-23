@@ -136,14 +136,13 @@ class BuyRequestController extends MainController
 
        }
    }
+
+    /**
+     * @param BuyRequest $model
+     * @return string|Response
+     */
     private function updateInternacional($model)
     {
-
-        if((Rbac::getRole()==Rbac::$ESP_TECNICO||Rbac::getRole()==Rbac::$COMPRADOR_INTERNACIONAL)&&(!$model->buyRequestInternational->buy_approved_by||!$model->buyRequestInternational->dt_approved_by)){
-            Yii::$app->session->setFlash('warning','Esta orden aún no ha sido aprobada para su edición.');
-            return $this->redirect(['view','id'=>$model->id]);
-        }
-
         $active = 'demands_associated';
         if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
             if($model->buyRequestInternational){
@@ -151,7 +150,6 @@ class BuyRequestController extends MainController
                 $form->setScenario(BuyRequestInternational::SCENARIO_GENERATE_LICITACION);
                 if ($form->load(Yii::$app->request->post()) && $form->save()) {
                     $model->buy_request_status_id=BuyRequestStatus::$LICITANDO;
-
                     foreach (Provider::related($model->arrayValidatedList(),$model->buy_request_type_id) as $provider){
                         if(BuyRequestProvider::find()->where(['buy_request_id'=>$model->id])
                             ->andWhere(['provider_id'=>$provider->id])->one()){
@@ -163,30 +161,28 @@ class BuyRequestController extends MainController
                             $m->save();
                         }
                     };
-                    $form->notifyProviders();
-
-
-                    $model->save(false);
-                    $active= 'propuestas';
-                    return $this->render('update', [
-                        'form'=>$form,
-                        'model' => $model,
-                        'active'=>$active
-                    ]);
-
-
+                    if($form->notifyProviders($this)){
+                        $model->save(false);
+                        $active= 'propuestas';
+                        return $this->render('update', [
+                            'form'=>$form,
+                            'model' => $model,
+                            'active'=>$active
+                        ]);
+                    }else{
+                        Yii::$app->session->setFlash('danger','Tuvimos un problema para notificar a los proveedores. Inténtelo de nuevo más tardre');
+                        return $this->render('update', [
+                            'form'=>$form,
+                            'model' => $model,
+                            'active'=>$active
+                        ]);
+                    }
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
 
             }else{
                 $form=new BuyRequestInternational();
             }
-
-
-
-            // $model->setScenario(BuyRequest::SCENARIO_GENERATE_LICITACION);
-//            $model->destiny_id=Destiny::$HABANA_ID;
-//            $model->payment_instrument_id=PaymentInstrument::$CC_A__LA_VISTA;
         }
 
 
@@ -436,7 +432,8 @@ class BuyRequestController extends MainController
             $zip->addFile($file);
         }
         $zip->close();
-        $this->downloadFile('tmp/'.$model->code.'.zip');
+        $this->downloadFile($model->code.'.zip');
+        //$this->downloadFile('tmp/'.$model->code.'.zip');
 
 
 
@@ -620,7 +617,7 @@ class BuyRequestController extends MainController
                 $model->save(false);
                 $model->generateFiledTree($url);
                 Yii::$app->session->setFlash('success','Hemos presentado el expediente correctamente. Se ha generado el árbol de documentos necesarios para la aprobación.');
-                return $this->redirect(['/buy-request/update', 'id' => $model->buyRequest->id]);
+                return $this->redirect(['/buy-request/update', 'id' => $model->buyRequest->id,'section'=>'documentos']);
 
         }
         return $this->renderAjax('_select_winners',['model'=>$model]);

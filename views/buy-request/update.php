@@ -2,14 +2,17 @@
 
 use yii\helpers\Html;
 use app\components\TabPanel;
+use yii\bootstrap4\Modal;
 /* @var $this yii\web\View */
 /* @var $model app\models\BuyRequest */
 /* @var $active string */
+
 
 $this->title = 'Actualizar solicitud de compra ';
 $this->params['breadcrumbs'][] = ['label' => 'Solicitudes de compra', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->code, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
+
 ?>
 <div class="card">
     <div class="card-header card-header-primary">
@@ -21,7 +24,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
         <div class="row" style="padding-left: 3rem; padding-right: 3rem;">
             <div class="col-sm-12" style="text-align: right">
                 <?=Yii::$app->user->can('buyrequest/approve')&$model->buy_request_status_id==\app\models\BuyRequestStatus::$BORRADOR_ID||$model->buy_request_status_id==\app\models\BuyRequestStatus::$CANCELADA_ID?
-                    Html::a("<span class='glyphicon glyphicon-ok'></span>",['approve','id'=>$model->id],
+                    Html::a("<span class='fa fa-check'></span>",['approve','id'=>$model->id],
                         [
                             'title'=>'Aprobar solicitud',
                             'data'=>[
@@ -42,7 +45,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                 ?>
 
                 <?=Yii::$app->user->can('buyrequest/delete')&$model->buy_request_status_id==\app\models\BuyRequestStatus::$BORRADOR_ID?
-                    Html::a("<span class='glyphicon glyphicon-trash'></span>",['delete','id'=>$model->id],
+                    Html::a("<span class='fa fa-trash'></span>",['delete','id'=>$model->id],
                         [
                             'title'=>'Eliminar solicitud',
                             'data'=>[
@@ -53,7 +56,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                         ])
                     :null?>
                 <?=Yii::$app->user->can('buyrequest/reject')&($model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$CANCELADA_ID&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$CERRADA)?
-                    Html::a("<span class='glyphicon glyphicon-remove'></span>",'#',
+                    Html::a("<span class='fa fa-remove'></span>",'#',
                         [
                             'title'=>'Cancelar solicitud',
                             'onClick'=>"reject({$model->id})",
@@ -141,5 +144,5 @@ $this->params['breadcrumbs'][] = 'Actualizar';
 
 
 <?php
-//$this->registerJsFile('js/buy-request/update.js',['depends'=>\yii\web\JqueryAsset::className()])
+$this->registerJsFile('js/buy-request/update.js',['depends'=>\yii\web\JqueryAsset::className()])
 ?>

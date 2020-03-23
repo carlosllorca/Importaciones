@@ -3,8 +3,13 @@
 namespace app\models;
 
 use kartik\file\FileInput;
+use Mpdf\Config\ConfigVariables;
+use Mpdf\Config\FontVariables;
+use Mpdf\Mpdf;
 use Yii;
+use yii\web\Controller;
 use yii\web\UploadedFile;
+use ZipArchive;
 
 /**
  * This is the model class for table "buy_request_international".
@@ -71,9 +76,9 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
     {
         return [
             [['buy_request_id'], 'required'],
-            [['buy_request_id', 'buyer_assigned', 'buy_approved_by', 'dt_specialist_assigned', 'dt_approved_by', 'destiny_id', 'payment_instrument_id', 'buy_condition_id'], 'default', 'value' => null],
-            [['buy_request_id', 'buyer_assigned', 'buy_approved_by', 'dt_specialist_assigned', 'dt_approved_by', 'destiny_id', 'payment_instrument_id', 'buy_condition_id'], 'integer'],
-            [['bidding_start', 'bidding_end', 'buy_approved_date', 'dt_approved_date','ganadores'], 'safe'],
+            [['buy_request_id',  'destiny_id', 'payment_instrument_id', 'buy_condition_id'], 'default', 'value' => null],
+            [['buy_request_id', 'destiny_id', 'payment_instrument_id', 'buy_condition_id'], 'integer'],
+            [['bidding_start', 'bidding_end','ganadores'], 'safe'],
             [['message','bidding_start','bidding_end','buy_condition_id'],'required','on'=>self::SCENARIO_GENERATE_LICITACION],
             [['transport_days','build_days'],'required','on'=>self::SCENARIO_START_TRANSPORTATION],
             [['transport_days','build_days'],'integer','min'=>0,'max'=>999],
@@ -86,8 +91,7 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
             [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
             [['destiny_id'], 'exist', 'skipOnError' => true, 'targetClass' => Destiny::className(), 'targetAttribute' => ['destiny_id' => 'id']],
             [['payment_instrument_id'], 'exist', 'skipOnError' => true, 'targetClass' => PaymentInstrument::className(), 'targetAttribute' => ['payment_instrument_id' => 'id']],
-            [['buy_approved_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['buy_approved_by' => 'id']],
-            [['dt_approved_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['dt_approved_by' => 'id']],
+
         ];
     }
     function invalidRangeDate($attribute)
@@ -159,34 +163,7 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
     {
         return $this->hasOne(BuyRequest::className(), ['id' => 'buy_request_id']);
     }
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getBuyerAssigned()
-    {
-        return $this->hasOne(User::className(), ['id' => 'buyer_assigned']);
-    }
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getBuyApprovedBy()
-    {
-        return $this->hasOne(User::className(), ['id' => 'buy_approved_by']);
-    }
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDtSpecialistAssigned()
-    {
-        return $this->hasOne(User::className(), ['id' => 'dt_specialist_assigned']);
-    }
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDtApprovedBy()
-    {
-        return $this->hasOne(User::className(), ['id' => 'dt_approved_by']);
-    }
+
 
     /**
      * @return \yii\db\ActiveQuery
@@ -267,21 +244,87 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
         return $url;
 
     }
-    public function notifyProviders(){
+
+    /**
+     * Genera la portada del PDf Solicitud de oferta internacional.
+     * @param Controller $controller
+     * @return string
+     * @throws \Mpdf\MpdfException
+     */
+    private function pdfRequestOfert($controller){
+      //  Yii::$app->response->headers->add('Content-Type', 'application/pdf');
+        $defaultConfig = (new ConfigVariables())->getDefaults();
+        $fontDirs = $defaultConfig['fontDir'];
+        $defaultFontConfig = (new FontVariables())->getDefaults();
+        $fontData = $defaultFontConfig['fontdata'];
+
+        $mpdf = new Mpdf([
+           // 'orientation'=>'L',
+            'format'=>'letter',
+            'fontDir' => array_merge($fontDirs, [
+                '../web/Roboto',
+            ]),
+            'fontdata' => $fontData + [
+                    'roboto' => [
+                        'R' => 'Roboto-Regular.ttf',
+                        'B' => 'Roboto-Bold.ttf',
+                        'I'=>'Roboto-LightItalic.ttf'
+                    ],
+                    'robotoitalic' => [
+                        'R' => 'Roboto-Regular.ttf',
+
+                        'I'=>'Roboto-LightItalic.ttf'
+                    ],
+                    'robotobold' => [
+                        'R' => 'Roboto-Black.ttf',
+                        'B' => 'Roboto-Black.ttf',
+
+                    ]
+                ],
+            'default_font' => 'Roboto'
+        ]);
+
+        $mpdf->SetDisplayMode('fullwidth');
+        $stylesheet = file_get_contents('../web/css/pdf.css'); // external css
+        $mpdf->WriteHTML($stylesheet, 1);
+        $mpdf->WriteHTML($controller->renderPartial('/buy-request/_pdf_solicitud_ofertas',['model'=>$this->buyRequest]),2);
+        $mpdf->Output($this->buyRequest->code.'.pdf');
+        return $this->buyRequest->code.'.pdf';
+    }
+
+    /**
+     * @param Controller $controller
+     * @return bool
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function notifyProviders($controller){
         $providerEmails= [];
         foreach ($this->buyRequest->buyRequestProviders as $buyRequestProvider){
             array_push($providerEmails,$buyRequestProvider->provider->contact_email);
         }
-        $urlFile = Yii::$app->xlsModels->xlsSolicitudOfertas($this->buyRequest);
+        $urlXls = Yii::$app->xlsModels->xlsSolicitudOfertas($this->buyRequest);
+        $urlPdf = $this->pdfRequestOfert($controller);
 
+        $files = [$urlPdf,$urlXls];
+
+        $zipname = $this->buyRequest->code.'.zip';
+        if (file_exists($zipname)) {
+            $deleted = unlink($zipname);
+        }
+        $zip = new ZipArchive();
+        $zip->open($zipname,ZipArchive::CREATE);
+        foreach ($files as $file) {
+            $zip->addFile($file);
+        }
+        $zip->close();
         try {
             Yii::$app->mailer->compose()
                 ->setFrom([ Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
                 ->setBcc($providerEmails)
                 ->setHtmlBody($this->message)
-                ->setTo([$this->buyApprovedBy->email, $this->buyerAssigned->email])
-                ->setReplyTo([$this->buyApprovedBy->email, $this->buyerAssigned->email])
-                ->attach($urlFile)
+                ->setTo([$this->buyRequest->buyApprovedBy->email, $this->buyRequest->buyerAssigned->email])
+                ->setReplyTo([$this->buyRequest->buyApprovedBy->email, $this->buyRequest->buyerAssigned->email])
+                ->attach($zipname)
                 ->setSubject('Solicitud de ofertas No. ' . $this->buyRequest->code)
                 ->send();
             $model = new EmailNotify();
@@ -290,12 +333,13 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
             $model->bidding_end=$this->bidding_end;
             $model->sended_date=date('Y-m-d');
             $model->body=$this->message;
-            $model->attachment=$urlFile;
+            $model->attachment=$zipname;
             if($model->validate()){
                 $model->save();
             }else{
                 Yii::$app->session->setFlash('danger','Ocurrió un problema al guardar la información de la licitación.');
             }
+            return true;
 
 
         }catch (\Exception $e){

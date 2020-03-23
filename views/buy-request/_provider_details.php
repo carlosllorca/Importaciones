@@ -72,32 +72,6 @@ use yii\widgets\ActiveForm;
             <?php ActiveForm::end(); ?>
         </div>
     </div>
-
-
-
-
-    <!-- Modal -->
-    <div class="modal fade" style="margin-top: 20%" id="evaluate-offert" tabindex="-1" role="dialog" aria-labelledby="Evaular oferta" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" >Evaluar oferta</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" id="bodyEvaluarOferta">
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-
-
-
     <p style="text-align: center; background-color: white" class="title">DETALLES DEL PROVEEDOR</p>
     <div style="width: 100%; border: 1px solid #fefefe">
         <div class="row">

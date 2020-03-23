@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Autenticar';
+$this->title = 'Sistema para la gestión del ciclo logístico';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
@@ -22,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="p-3">
                         <?php $form = ActiveForm::begin([
                             'id' => 'login-form',
+                           'options' => ['autocomplete'=>'off']
 
                            // 'layout' => 'horizontal',
 //                            'fieldConfig' => [
@@ -30,9 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
 //                            ],
                         ]); ?>
 
-                        <?= $form->field($model, 'username')->textInput(['autofocus' => true,['maxlength' => true]])->label('Nombre de Usuario') ?>
+                        <?= $form->field($model, 'username')->
+                        textInput([
+                            'autofocus' => true,
+                            'autocomplete'=>"disabled",
+                            'readonly'=>true,
+                            'onfocus'=>"this.removeAttribute('readonly');",
 
-                        <?= $form->field($model, 'password')->passwordInput([['maxlength' => true]])->label('Contraseña') ?>
+                            ['maxlength' => true]])->label('Nombre de Usuario') ?>
+
+                        <?= $form->field($model, 'password')->passwordInput([['maxlength' => true,'autocomplete'=>"off"]])->label('Contraseña') ?>
 
                         <?= $form->field($model, 'rememberMe')->checkbox()->label('Recuérdame!') ?>
 

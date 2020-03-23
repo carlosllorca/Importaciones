@@ -11,16 +11,7 @@ $this->title = 'Actualizar solicitud de compra ';
 $this->params['breadcrumbs'][] = ['label' => 'Solicitudes de compra', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->code, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
-Modal::begin([
-    // 'header' => '<h2>Hello world</h2>',
-    'title' =>'Subir documento',
-    'id' => 'modal-documentos',
-    'toggleButton' => ['label' => 'click me','id'=>'ajax-modal-nacional','class'=>'hidden'],
-]);
 
-echo '<div id="modal-content-nacional"></div>';
-
-Modal::end();
 ?>
     <div class="card">
         <div class="card-header card-header-primary">

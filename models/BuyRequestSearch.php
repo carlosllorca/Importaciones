@@ -60,7 +60,8 @@ class BuyRequestSearch extends BuyRequest
                 break;
             case Rbac::$COMPRADOR_INTERNACIONAL:
                 $query->innerJoinWith('buyRequestInternational');
-                $query->andWhere(['buy_request_international.buyer_assigned'=>User::userLogged()->id]);
+                $query->andWhere(['buyer_assigned'=>User::userLogged()->id]);
+                break;
 
             case Rbac::$COMPRADOR_NACIONAL:
 

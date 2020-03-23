@@ -26,23 +26,16 @@ function showProvider(id){
     $('#view-content').load(`/buy-request/provider-details?id=${id}`)
 }
 function evaluateOffert(id){
-    $('#modal-content').load(`/buy-request/evaluate-offert?id=${id}`);
-    $('#ajax-modal').click();
-
+    renderAjaxForm('Evaluar oferta',`/buy-request/evaluate-offert?id=${id}`)
 
 }
 function generateOffert(id){
+    renderAjaxForm('Genear oferta',`/buy-request/save-ofert?id=${id}`)
 
-    $('#modal-content').load(`/buy-request/save-ofert?id=${id}`);
-    $('#ajax-modal').click();
+
 }
 function ganadores(id){
-
-    $('#modal-content').load(`/buy-request/select-winners?id=${id}`,()=>{
-       selectWinners()
-    });
-    $('#ajax-modal').click();
-
+    renderAjaxForm('Seleccionar ganador',`/buy-request/select-winners?id=${id}`)
 
 }
 function selectWinners() {

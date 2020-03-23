@@ -63,3 +63,10 @@ function closeModal() {
     }
 
 }
+function renderAjaxForm(title,ajaxRequest){
+    $('.modal-title').text(title);
+    $('#modal-content-nacional').load(ajaxRequest,()=>{
+        selectWinners();
+    })
+    $('#ajax-modal-nacional').click();
+}

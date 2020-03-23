@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use rce\material\widgets\Noti;
 use rce\material\Assets;
 use yii\bootstrap4\Breadcrumbs;
+use yii\bootstrap4\Modal;
 
 if (Yii::$app->controller->action->id === 'login') {
     echo $this->render(
@@ -48,6 +49,19 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/ricar2ce/yii
                             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                         ]) ?>
                   <?= Noti::widget() ?>
+                        <?php
+                        Modal::begin([
+                            // 'header' => '<h2>Hello world</h2>',
+                            'title' =>'Subir documento',
+                            'id' => 'modal-documentos',
+                            'toggleButton' => ['label' => 'click me','id'=>'ajax-modal-nacional','class'=>'hidden'],
+                        ]);
+
+                        echo '<div id="modal-content-nacional"></div>';
+
+                        Modal::end();
+                        ?>
+
             			<?= $content ?>
 			    	</div>
 			    </div>

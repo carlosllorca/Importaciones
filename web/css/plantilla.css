@@ -172,6 +172,13 @@ select.form-control{
 .btn{
     font-size: 12px!important;
 }
-.has-error > .help-block {
-    color: #dc3545!important;
+
+form{
+    margin-bottom: 0px;
+}
+.modal-footer{
+    padding: 0px!important;
+}
+.form-group{
+    text-align: right;
 }

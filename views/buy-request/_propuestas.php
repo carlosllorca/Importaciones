@@ -8,16 +8,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\bootstrap4\Modal;
 
-Modal::begin([
-   // 'header' => '<h2>Hello world</h2>',
-    'toggleButton' => ['label' => 'click me','id'=>'ajax-modal','class'=>'hidden'],
-]);
-
-echo '<div id="modal-content"></div>';
-
-Modal::end();
 ?>
 
 
@@ -49,8 +40,8 @@ Modal::end();
         } else {
             if (!$model->buyRequestProviders) {
                 ?>
-                <div class="col-xs-12 <?=$model->buyRequestInternational->bidding_start?'hidden':''?>" id="no-data">
-                    <p class="" style="text-align: center;margin-top: 10%; font-size: 20px;color: #cecece">
+                <div class="col-xs-12 <?=$model->buyRequestInternational->bidding_start?'hidden':''?>" style="width: 100%" id="no-data">
+                    <p class="" style="text-align: center;margin-top: 10%; font-size: 20px;color: #cecece;padding:25px">
                         El proceso de licitación para esta orden de compra aún no se ha iniciado.
                         <?php
                             if(Yii::$app->user->can('buyrequest/changebidding')){

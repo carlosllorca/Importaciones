@@ -14,7 +14,8 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/ricar2ce/yii
       <!--     Fonts and icons     -->
       <!-- <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"> -->
-      <?= Html::csrfMetaTags() ?>
+       <link rel="stylesheet" href="/css/seisa.css">
+       <?= Html::csrfMetaTags() ?>
       <title><?= Html::encode($this->title) ?></title>
       <?php $this->head() ?>
    </head>
@@ -30,7 +31,9 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/ricar2ce/yii
             </div>
          </div>
       </div>
-      <?php $this->endBody() ?>
+      <?php $this->endBody();
+
+      ?>
    </body>
 </html>
 <?php $this->endPage() ?>

@@ -27,7 +27,7 @@ $form = ActiveForm::begin([
                 <div class="col-sm-6">
                     <?= $form->field($newOffert, 'expiration_date')->textInput(['type' => 'date']) ?>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-sm-12">
                     <?= $form->field($newOffert, 'oferta')->widget(FileInput::className(),[
                         'options' => ['required'=>true],
 
