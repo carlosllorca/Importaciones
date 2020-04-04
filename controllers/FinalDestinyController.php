@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\DocumentType;
-use app\models\DocumentTypeSearch;
+use app\models\FinalDestiny;
+use app\models\FinalDestinySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DocumentTypeController implements the CRUD actions for DocumentType model.
+ * FinalDestinyController implements the CRUD actions for FinalDestiny model.
  */
-class DocumentTypeController extends MainController
+class FinalDestinyController extends MainController
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class DocumentTypeController extends MainController
     }
 
     /**
-     * Lists all DocumentType models.
+     * Lists all FinalDestiny models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new DocumentTypeSearch();
+        $searchModel = new FinalDestinySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class DocumentTypeController extends MainController
     }
 
     /**
-     * Displays a single DocumentType model.
+     * Displays a single FinalDestiny model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class DocumentTypeController extends MainController
     }
 
     /**
-     * Creates a new DocumentType model.
+     * Creates a new FinalDestiny model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new DocumentType();
+        $model = new FinalDestiny();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success','Registro creado correctamente.');
@@ -77,7 +77,7 @@ class DocumentTypeController extends MainController
     }
 
     /**
-     * Updates an existing DocumentType model.
+     * Updates an existing FinalDestiny model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -88,6 +88,7 @@ class DocumentTypeController extends MainController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success','Registro actualizado correctamente.');
             return $this->redirect(['index']);
         }
 
@@ -97,7 +98,7 @@ class DocumentTypeController extends MainController
     }
 
     /**
-     * Deletes an existing DocumentType model.
+     * Deletes an existing FinalDestiny model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,21 +111,18 @@ class DocumentTypeController extends MainController
         }catch (\Exception $exception){
             Yii::$app->session->setFlash('danger',"Este elemento no puede se eliminado.");
         }
-
-
-        return $this->redirect(['index']);
     }
 
     /**
-     * Finds the DocumentType model based on its primary key value.
+     * Finds the FinalDestiny model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return DocumentType the loaded model
+     * @return FinalDestiny the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = DocumentType::findOne($id)) !== null) {
+        if (($model = FinalDestiny::findOne($id)) !== null) {
             return $model;
         }
 

@@ -65,7 +65,7 @@ $this->title='Añadir productos';
                                     <th><?=$item->quantity?></th>
                                     <th><?=$item->price?></th>
                                     <th><?=$item->price*$item->quantity?></th>
-                                    <th><?=\yii\helpers\Html::a("<span class='glyphicon glyphicon-trash'></span>",['delete-item','id'=>$item->id],['data-confirm'=>'¿Confirma que desea eliminar este producto de la demanda?'])?></th>
+                                    <th><?=\yii\helpers\Html::a("<span class='fa fa-trash'></span>",['delete-item','id'=>$item->id],['data-confirm'=>'¿Confirma que desea eliminar este producto de la demanda?'])?></th>
                                 </tr>
 
                                 <?php
@@ -80,6 +80,7 @@ $this->title='Añadir productos';
                 }else{
                     ?>
                     <div class="row">
+                        <div class="col-md-12" style="height: 500px">
                         <div class="col-md-12" style="height: 500px">
                             <p style="margin-top:250px ;font-size: 20px; text-align: center; color: #cecece; font-weight: bold">
                                 Aún no has añadido productos. <a class="link" href="/demand-item/create?vl=<?=$model->id?>" >Añade el primero</a>

@@ -7,7 +7,7 @@ use yii\bootstrap4\Modal;
 /* @var $model app\models\BuyRequest */
 /* @var $active string */
 
-$this->title = 'Actualizar solicitud de compra ';
+$this->title = 'Actualizar solicitud de compra nacional';
 $this->params['breadcrumbs'][] = ['label' => 'Solicitudes de compra', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->code, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
@@ -65,7 +65,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
 
 
                 </div>
-                <div class="col-sm-4 col-md-3">
+                <div class="col-sm-3 col-md-3">
                     <label>Código</label>
                     <h5><?=$model->code?></h5>
                 </div>
@@ -81,7 +81,18 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                     <label>Estado</label>
                     <h5 class="<?=$model->classByStatus()?>"><b><?=$model->buyRequestStatus->label?></b></h5>
                 </div>
+
+
             </div>
+            <?php
+            if($model->buy_request_status_id==\app\models\BuyRequestStatus::$BORRADOR_ID&&$model->buy_request_type_id==\app\models\BuyRequestType::$NACIONAL_ID){
+                    ?>
+                <div class="button-container" style="text-align: right">
+                    <?=Html::button('Convertir a 711',['class'=>'btn btn-primary'])?>
+                </div>
+                <?php
+            }
+            ?>
             <div class="row">
                 <div class="col-sm-12" style="padding-left: 3rem;">
                     <?php

@@ -140,6 +140,7 @@ class BuyRequestController extends MainController
     /**
      * @param BuyRequest $model
      * @return string|Response
+     * @throws \yii\base\InvalidConfigException
      */
     private function updateInternacional($model)
     {
@@ -164,6 +165,7 @@ class BuyRequestController extends MainController
                     if($form->notifyProviders($this)){
                         $model->save(false);
                         $active= 'propuestas';
+                        Yii::$app->session->setFlash('success','El proceso de licitación ha sido iniciado/modificado. Fueron notificados los proveedores listados.');
                         return $this->render('update', [
                             'form'=>$form,
                             'model' => $model,

@@ -152,6 +152,7 @@ if (class_exists('common\models\Menu')) {
                         <?=$this->render('menu-item',['permission'=>'buyrequesttype','section'=>'buy-request-type','title'=>'Tipos de Solicitud de compra'])?>
                         <?=$this->render('menu-item',['permission'=>'certification','section'=>'certification','title'=>'Certificados'])?>
                         <?=$this->render('menu-item',['permission'=>'certificationtype','section'=>'certification-type','title'=>'Categorías de Certificados'])?>
+                        <?=$this->render('menu-item',['permission'=>'finaldestiny','section'=>'final-destiny','title'=>'Destinos finales de los 711'])?>
                         <?=$this->render('menu-item',['permission'=>'country','section'=>'country','title'=>'Paises'])?>
                         <?=$this->render('menu-item',['permission'=>'demandstatus','section'=>'demand-status','title'=>'Estado demanda'])?>
                         <?=$this->render('menu-item',['permission'=>'deploymentpart','section'=>'deployment-part','title'=>'Partes de entrega'])?>

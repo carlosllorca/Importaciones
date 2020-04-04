@@ -89,7 +89,7 @@ class RequestStage extends \yii\db\ActiveRecord
     public function nextHito(){
         $model = self::find()->where(['buy_request_id'=>$this->buy_request_id])
             ->innerJoinWith('stage')
-            ->where(['stage.order'=>($this->stage->order+1)])
+            ->andWhere(['stage.order'=>($this->stage->order+1)])
             ->one();
         if($model)
             return $model;

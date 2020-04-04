@@ -430,7 +430,7 @@ class BuyRequest extends \yii\db\ActiveRecord
     }
     public function allDocumentOk(){
         foreach ($this->buyRequestDocuments as $buyRequestDocument){
-            if($buyRequestDocument->document_status_id!=DocumentStatus::$APROBADO_ID)
+            if($buyRequestDocument->document_status_id!=DocumentStatus::$APROBADO_ID&&$buyRequestDocument->documentType->required)
                 return false;
         }
         return true;

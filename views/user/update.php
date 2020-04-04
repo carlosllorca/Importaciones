@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                 if(Yii::$app->user->can('user/logs')){
 
                     echo Html::a(
-                        "<i class=\"material-icons\">transfer_within_a_station</i>",['user/logs','id'=>$model->id],
+                        "<i class='material-icons'>visibility</i>",['user/logs','id'=>$model->id],
                         [
                             'class'=>'btn btn-primary',
                             'title'=>'Trazas del usuario'
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                     if($model->active){
                         $msg = "¿Confirma que desea desactivar este usuario?";
                         echo Html::a(
-                            "<span class='glyphicon glyphicon-remove'/>",['user/disable','id'=>$model->id],
+                            "<span class='fa fa-remove'/>",['user/disable','id'=>$model->id],
                             [
                                 'data-confirm'=>$msg,
                                 'class'=>'btn btn-danger',
@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                     }else{
                         $msg = "¿Confirma que desea activar este usuario?";
                         echo Html::a(
-                            "<span class='glyphicon glyphicon-ok'/>",['user/disable','id'=>$model->id],
+                            "<span class='fa fa-check'/>",['user/disable','id'=>$model->id],
                             [
                                 'data-confirm'=>$msg,
                                 'class'=>'btn btn-success',
