@@ -42,13 +42,26 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                         <?php
                     }
                     ?>
+                    <?php
+                    if($model->buy_request_status_id==\app\models\BuyRequestStatus::$BORRADOR_ID&&$model->buy_request_type_id==\app\models\BuyRequestType::$NACIONAL_ID){
+                        ?>
 
-                    <?=Yii::$app->user->can('buyrequest/delete')&$model->buy_request_status_id==\app\models\BuyRequestStatus::$BORRADOR_ID?
+                            <?=Html::button('Convertir a 711',
+                            [
+                                'class'=>'btn btn-primary',
+                                'onClick'=>"convert711({$model->id})"
+                            ])?>
+
+                        <?php
+                    }
+                    ?>
+
+                    <?=Yii::$app->user->can('buyrequest/delete')&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID?
                         Html::a("<span class='fa fa-trash'></span>",['delete','id'=>$model->id],
                             [
                                 'title'=>'Eliminar solicitud',
                                 'data'=>[
-                                    'confirm'=>'¿Está seguro que desea eliminar?',
+                                    'confirm'=>'¿Está seguro que desea eliminar esta orden de compra?',
                                     'method'=>'POST'
                                 ],
                                 'class'=>'btn btn-danger'
@@ -84,15 +97,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
 
 
             </div>
-            <?php
-            if($model->buy_request_status_id==\app\models\BuyRequestStatus::$BORRADOR_ID&&$model->buy_request_type_id==\app\models\BuyRequestType::$NACIONAL_ID){
-                    ?>
-                <div class="button-container" style="text-align: right">
-                    <?=Html::button('Convertir a 711',['class'=>'btn btn-primary'])?>
-                </div>
-                <?php
-            }
-            ?>
+
             <div class="row">
                 <div class="col-sm-12" style="padding-left: 3rem;">
                     <?php
@@ -123,6 +128,12 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                                     'active' =>   $active == 'products'
                                 ],
                                 [
+                                    'label' => '711',
+                                    'content' =>Yii::$app->user->can('buyrequest711/view')&&$model->buyRequest711?$this->render('/buy-request-711/view', ['model' => $model->buyRequest711]):'',
+                                    'visible'=>Yii::$app->user->can('buyrequest711/view')&&$model->buyRequest711,
+                                    'active'=>$active == '711'
+                                ],
+                                [
                                     'label' => 'Propuestas',
                                     'content' =>Yii::$app->user->can('buyrequest/viewpropuestas')&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID?
                                         $this->render('_propuestas_nacional', ['model' => $model]):'',
@@ -140,7 +151,8 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                                     'content' =>Yii::$app->user->can('buyrequest/viewtransportation')&&$model->requestStages?$this->render('_hitos', ['model' => $model]):'',
                                     'visible'=>Yii::$app->user->can('buyrequest/viewtransportation')&&$model->requestStages,
                                     'active'=>$active == 'transportation'
-                                ]
+                                ],
+
 
                             ]
                     ])

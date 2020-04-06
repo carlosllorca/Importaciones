@@ -24,6 +24,7 @@ class BuyRequestType extends \yii\db\ActiveRecord
     }
     static  $INTERNACIIONAL_ID= 1;
     static  $NACIONAL_ID= 2;
+    static  $TYPE_711= 3;
 
     /**
      * {@inheritdoc}

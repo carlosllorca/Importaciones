@@ -35,10 +35,10 @@ class BuyRequest711 extends \yii\db\ActiveRecord
     {
         return [
             [['buy_request_id', 'final_destiny_id', 'plan'], 'default', 'value' => null],
-            [['buy_request_id', 'final_destiny_id', 'plan'], 'integer'],
+            [['plan'], 'integer','min'=>2018,'max'=>2050],
             [['final_destiny_id', 'plan', 'general_description'], 'required'],
             [['general_description', 'deployment_place'], 'string'],
-            [['other_operation'], 'number'],
+            [['other_operation'], 'number','min'=>0],
             [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
             [['final_destiny_id'], 'exist', 'skipOnError' => true, 'targetClass' => FinalDestiny::className(), 'targetAttribute' => ['final_destiny_id' => 'id']],
         ];
@@ -51,12 +51,12 @@ class BuyRequest711 extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'buy_request_id' => 'Buy Request ID',
-            'final_destiny_id' => 'Final Destiny ID',
+            'buy_request_id' => 'Solicitud asociada',
+            'final_destiny_id' => 'Destino final',
             'plan' => 'Plan',
-            'general_description' => 'General Description',
-            'other_operation' => 'Other Operation',
-            'deployment_place' => 'Deployment Place',
+            'general_description' => 'Descripción general',
+            'other_operation' => 'Gastos por otras operaciones y margen comercial',
+            'deployment_place' => 'Lugar de entrega',
         ];
     }
 
@@ -78,5 +78,22 @@ class BuyRequest711 extends \yii\db\ActiveRecord
     public function getFinalDestiny()
     {
         return $this->hasOne(FinalDestiny::className(), ['id' => 'final_destiny_id']);
+    }
+    public function newCode(){
+        $currentCode = $this->buyRequest->code;
+        $real = substr($currentCode,0,11);
+        $i=1;
+        $flag=true;
+        do{
+            $str = str_pad($i, 2, '0', STR_PAD_LEFT);
+            $code = $real.'-'.$this->finalDestiny->code.'-'.$str;
+            if(BuyRequest::findOne(['code'=>$code])){
+                $i++;
+            }else{
+                $flag=false;
+
+            }
+        }while($flag);
+        return $code;
     }
 }

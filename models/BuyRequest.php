@@ -41,6 +41,7 @@ use yii\web\UploadedFile;
  * @property User $approvedBy
  * @property BuyRequestDocument[] $buyRequestDocuments
  * @property BuyRequestInternational $buyRequestInternational
+ * @property BuyRequest711 $buyRequest711
  * @property BuyRequestProvider[] $buyRequestProviders
  * @property DemandItem[] $demandItems
  * @property EmailNotify[] $emailNotifies
@@ -156,6 +157,13 @@ class BuyRequest extends \yii\db\ActiveRecord
     public function getBuyRequestInternational()
     {
         return $this->hasOne(BuyRequestInternational::className(), ['buy_request_id' => 'id']);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBuyRequest711()
+    {
+        return $this->hasOne(BuyRequest711::className(), ['buy_request_id' => 'id']);
     }
 
     /**
@@ -278,7 +286,7 @@ class BuyRequest extends \yii\db\ActiveRecord
      */
     public function getProducts(){
         return ValidatedListItem::find()
-            ->addSelect(["SUM(demand_item.quantity) as quantity",'product_name','demand_item.price as price'])
+            ->addSelect(["SUM(demand_item.quantity) as quantity",'validated_list_item.id as id','product_name','demand_item.price as price'])
             ->innerJoinWith('demandItems')
             ->where(['demand_item.buy_request_id'=>$this->id])
             ->groupBy(['validated_list_item.id','demand_item.price'])->all();

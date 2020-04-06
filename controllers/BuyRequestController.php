@@ -128,6 +128,7 @@ class BuyRequestController extends MainController
                return $this->updateInternacional($model);
                break;
            case BuyRequestType::$NACIONAL_ID:
+           case BuyRequestType::$TYPE_711:
                return $this->updateNacional($model);
                break;
            default:
@@ -302,6 +303,8 @@ class BuyRequestController extends MainController
                 $demandItem->demand->save(false);
 
             }
+            if($model->buyRequest711)
+                $model->buyRequest711->delete();
             Yii::$app->traza->saveLog("Solicitud {$model->code} eliminada.","La solicitud de compra {$model->code} ha sido eliminada.");
             $model->delete();
             Yii::$app->session->setFlash('success','Solicitud de compra eliminada.');

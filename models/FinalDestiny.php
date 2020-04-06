@@ -10,6 +10,7 @@ use yii\helpers\ArrayHelper;
  *
  * @property int $id
  * @property string $label
+ * @property string $code
  *
  * @property BuyRequest711[] $buyRequest711s
  */
@@ -29,8 +30,9 @@ class FinalDestiny extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['label'], 'required'],
+            [['label','code'], 'required'],
             [['label'], 'string', 'max' => 150],
+            [['code'], 'string', 'max' => 3],
         ];
     }
 
@@ -41,7 +43,8 @@ class FinalDestiny extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'label' => 'Label',
+            'label' => 'Nombre',
+            'code'=> 'Código',
         ];
     }
 
