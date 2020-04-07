@@ -65,7 +65,11 @@ class BuyRequestSearch extends BuyRequest
 
             case Rbac::$COMPRADOR_NACIONAL:
 
-                $query->andWhere(['buyer_assigned'=>User::userLogged()->id])->andWhere(['buy_request_type_id'=>BuyRequestType::$NACIONAL_ID]);
+                $query->andWhere(['buyer_assigned'=>User::userLogged()->id])
+                    ->orWhere(['and',
+                        ['buy_request_type_id'=>BuyRequestType::$NACIONAL_ID],
+                        ['buy_request_type_id'=>BuyRequestType::$TYPE_711],
+                    ]);
                 break;
             case Rbac::$ESP_TECNICO:
                 $query->andWhere(['dt_specialist_assigned'=>User::userLogged()->id]);

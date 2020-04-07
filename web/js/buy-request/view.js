@@ -1,6 +1,6 @@
 var assignUser=(buyRequest,role)=>{
 
-    var compradores = JSON.parse($('#data_comprador').val())
+
     var tecnicos = JSON.parse($('#data_tecnico').val())
     let title ='';
     let data =[];
@@ -11,6 +11,7 @@ var assignUser=(buyRequest,role)=>{
             break;
         case 'comprador':
             title =  "Asignar comprador a la solicitud"
+            var compradores = JSON.parse($('#data_comprador').val())
             data=compradores
             break;
         default:

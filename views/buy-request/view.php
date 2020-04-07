@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </p>
         <div class="row">
             <div class="col-md-12">
-                <?=$model->buy_request_type_id==\app\models\BuyRequestType::$NACIONAL_ID?
+                <?=$model->buy_request_type_id==\app\models\BuyRequestType::$NACIONAL_ID||$model->buy_request_type_id==\app\models\BuyRequestType::$TYPE_711?
                     Html::input('hidden',null,json_encode(User::combo(\app\models\Rbac::$COMPRADOR_NACIONAL)),['id'=>'data_comprador']):null?>
                 <?=$model->buy_request_type_id==\app\models\BuyRequestType::$INTERNACIIONAL_ID?
                     Html::input('hidden',null,json_encode(User::combo(\app\models\Rbac::$COMPRADOR_INTERNACIONAL)),['id'=>'data_comprador']):null?>

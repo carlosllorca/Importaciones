@@ -137,7 +137,8 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                                     'label' => 'Propuestas',
                                     'content' =>Yii::$app->user->can('buyrequest/viewpropuestas')&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID?
                                         $this->render('_propuestas_nacional', ['model' => $model]):'',
-                                    'visible'=>Yii::$app->user->can('buyrequest/viewpropuestas')&&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID,
+                                    'visible'=>Yii::$app->user->can('buyrequest/viewpropuestas')&&$model->buy_request_type_id==\app\models\BuyRequestType::$NACIONAL_ID
+                                        &&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID,
                                     'active'=>$active == 'propuestas'
                                 ],
                                 [
