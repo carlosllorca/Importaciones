@@ -103,12 +103,25 @@ class DemandController extends MainController
         $model->approved_date=date('Y-m-d');
         $model->save(false);
         Yii::$app->traza->saveLog('Demanda aceptada','La Demanda '.$model->demand_code. ' ha sido aceptada');
-        Yii::$app->session->setFlash('success','Demanda aceptada');
+        Yii::$app->session->setFlash('success',"Se ha aprobado la demanda ".$model->demand_code.".");
+        try{
+
+
+            Yii::$app->mailer->compose('demandApproved', ['demand'=>$model])
+                ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                ->setTo([$model->createdBy->email=>$model->createdBy->full_name])
+                // ->setBcc('inmaj@codeberrysolutions.com')
+                ->setSubject("Se ha aprobado la demanda ".$model->demand_code.".")
+                ->send();
+        }catch (\Exception $e){
+            Yii::$app->session->setFlash('warning','Ocurrió un problema en el envio de correo.');
+        }
         if($return){
             return $this->redirect($return);
         }
+
         return $this->redirect('index');
-        //todo: Enviar email a la UEB para notificar.
+
 
     }
     public function actionReject(){
@@ -125,6 +138,18 @@ class DemandController extends MainController
         $model->rejected_reason=$reason;
         $model->save(false);
         Yii::$app->traza->saveLog('Demanda rechazada','La Demanda '.$model->id. ' ha sido rechazada');
+        try{
+
+
+            Yii::$app->mailer->compose('demandRejected', ['demand'=>$model])
+                ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                ->setTo([$model->createdBy->email=>$model->createdBy->full_name])
+                // ->setBcc('inmaj@codeberrysolutions.com')
+                ->setSubject("Se ha rechazado la demanda ".$model->demand_code.".")
+                ->send();
+        }catch (\Exception $e){
+            Yii::$app->session->setFlash('warning','Ocurrió un problema en el envio de correo.');
+        }
         Yii::$app->session->setFlash('success','Demanda rechazada');
         return ['success'=>true];
         //todo: Enviar email a la UEB para notificar.
