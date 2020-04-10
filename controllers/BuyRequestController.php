@@ -107,7 +107,6 @@ class BuyRequestController extends MainController
     public function actionCreate()
     {
         $model = new BuyRequest();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

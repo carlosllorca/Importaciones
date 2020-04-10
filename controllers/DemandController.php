@@ -219,6 +219,18 @@ class DemandController extends MainController
         $model->cancelled_msg=$msg;
         if($model->validate()){
             $model->save();
+            Yii::$app->traza->saveLog('Item cancelado',"El item ".$model->validatedListItem->product_name .
+                ' ('.$model->quantity.') fue rechazado.');
+            try{
+                Yii::$app->mailer->compose('demandItemRejected', ['item'=>$model])
+                    ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                    ->setTo([$model->demand->createdBy->email=>$model->demand->createdBy->full_name])
+                    // ->setBcc('inmaj@codeberrysolutions.com')
+                    ->setSubject("Se ha cancelado un producto de la demanda ".$model->demand->demand_code.".")
+                    ->send();
+            }catch (\Exception $e){
+                Yii::$app->session->setFlash('warning','Ocurrió un problema en el envio de correo.');
+            }
             return ['success'=>true];
         }else{
             return ['success'=>false,'msg'=>json_encode($model->getErrors())];
@@ -368,13 +380,31 @@ class DemandController extends MainController
                 } catch (ForbiddenHttpException $e) {
                     throw new Exception($e->getMessage());
                 }
+
                 $buyRequest->save();
                 DemandItem::updateAll([
                     'buy_request_id'=>$buyRequest->id,
                 ],[
                     'id'=>$items
                 ]);
+
                 $request_number=$buyRequest->code;
+                try{
+                    $users = User::getActiveUsersByRol(Rbac::$JEFE_LOGÍSTICA);
+                    $to =[];
+                    foreach ($users as $user){
+                        $to[$user->email]=$user->full_name;
+                    }
+                    Yii::$app->traza->saveLog('solicitud de compra creada','Se ha creado la solicitud de compra '.$buyRequest->code);
+                    Yii::$app->mailer->compose('buyRequestCreated', ['buyRequest'=>$buyRequest])
+                        ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                        ->setTo($to)
+                        // ->setBcc('inmaj@codeberrysolutions.com')
+                        ->setSubject("Se ha generado una nueva solicitud de compra con código ".$buyRequest->code.".")
+                        ->send();
+                }catch (\Exception $e){
+                    Yii::$app->session->setFlash('warning','Ocurrió un problema en el envio de correo.');
+                }
                 break;
             case 'internacional_exist':
             case 'nacional_exist':
@@ -403,6 +433,22 @@ class DemandController extends MainController
                 ],[
                     'id'=>$items
                 ]);
+                try{
+                    $users = User::getActiveUsersByRol(Rbac::$JEFE_LOGÍSTICA);
+                    $to =[];
+                    foreach ($users as $user){
+                        $to[$user->email]=$user->full_name;
+                    }
+                    Yii::$app->traza->saveLog('solicitud de compra creada','Se ha creado la solicitud de compra '.$buyRequest->code);
+                    Yii::$app->mailer->compose('buyRequestCreated', ['buyRequest'=>$buyRequest])
+                        ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                        ->setTo($to)
+                        // ->setBcc('inmaj@codeberrysolutions.com')
+                        ->setSubject("Se ha generado una nueva solicitud de compra con código ".$buyRequest->code.".")
+                        ->send();
+                }catch (\Exception $e){
+                    Yii::$app->session->setFlash('warning','Ocurrió un problema en el envio de correo.');
+                }
                 $request_number=$buyRequest->code;
                 break;
             default:
