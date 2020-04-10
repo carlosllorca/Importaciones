@@ -712,6 +712,7 @@ class BuyRequestController extends MainController
                 }
                 break;
             case BuyRequestType::$NACIONAL_ID:
+            case BuyRequestType::$TYPE_711:
                 if($model->allDocumentOk()){
                         $model->buy_request_status_id=BuyRequestStatus::$EN_PROCESO;
                         $model->save(false);

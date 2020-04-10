@@ -54,7 +54,7 @@ class BuyRequestDocument extends \yii\db\ActiveRecord
             [['documento'], 'required','on'=>self::SCENARIO_UPLOAD_DOCUMENT],
             [['custom_file'], 'string','max'=>50],
 
-            [['documento'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf,doc,docx','maxSize' => 2048*1024 ],
+            [['documento'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf,doc,docx, xl, xlsx','maxSize' => 2048*1024 ],
             [['created_date', 'last_update'], 'safe'],
             [['url_to_file'], 'string'],
 

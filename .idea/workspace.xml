@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/views/buy-request-711/presentar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestSearch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/update_nacional.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/update_nacional.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/buy-request/view.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/buy-request/view.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/BuyRequest711Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BuyRequest711Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/BuyRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BuyRequestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequest711.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest711.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestDocument.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestDocument.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/buy-request-711/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request-711/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/buyrequest711/view.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/buyrequest711/view.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +81,7 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="demand_item: table" type="69fad909:PgImplModel$LocalTable" />
+        <item name="buy_request_711: table" type="69fad909:PgImplModel$LocalTable" />
       </path>
     </expand>
     <select />
@@ -115,7 +118,6 @@
     <setting file="file://$PROJECT_DIR$/web/js/buy-request/update.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/web/js/buy-request/updateNacional.js" root0="SKIP_INSPECTION" />
   </component>
-  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
     <servers>
       <server host="seisa.llorca.cu" id="17445150-5343-4251-8a4b-56a6b7c6862c" name="seisa" use_path_mappings="true">
@@ -411,13 +413,9 @@
       <workItem from="1586225221079" duration="2426000" />
       <workItem from="1586287326704" duration="21000" />
       <workItem from="1586287382415" duration="832000" />
-    </task>
-    <task id="LOCAL-00013" summary="Demanda tramitada. &#10;Creación de demanda nacional y movimiento interno">
-      <created>1580874969386</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1580874969386</updated>
+      <workItem from="1586291884820" duration="5369000" />
+      <workItem from="1586382804177" duration="2747000" />
+      <workItem from="1586532397384" duration="1811000" />
     </task>
     <task id="LOCAL-00014" summary="dividir productos">
       <created>1580882957186</created>
@@ -755,7 +753,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586178078980</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Clasificar la orden. Lita para empezar a trabajarla">
+      <created>1586291974152</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1586291974152</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -775,7 +780,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="antes de importacion de datos" />
     <MESSAGE value="Modificaciones luego de la reunion del lunes" />
     <MESSAGE value="Antes de generar el xls de la sol compra" />
     <MESSAGE value="Listo el modelo de solicitud de compra internacional en formatos pdf y xls." />
@@ -800,9 +804,14 @@
     <MESSAGE value="Ciclo internacional revisado" />
     <MESSAGE value="Creadas los modelos necesarios para los 711" />
     <MESSAGE value="transformar a 711 y separar productos a una nueva 711" />
-    <option name="LAST_COMMIT_MESSAGE" value="transformar a 711 y separar productos a una nueva 711" />
+    <MESSAGE value="Clasificar la orden. Lita para empezar a trabajarla" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clasificar la orden. Lita para empezar a trabajarla" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="2494" y="201" width="800" height="677" key="#Updates" timestamp="1586532446893">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2494" y="201" width="800" height="677" key="#Updates/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586532446893" />
     <state x="2560" y="357" width="630" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584234195337">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -844,10 +853,10 @@
     <state x="2992" y="323" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882354679" />
     <state x="945" y="486" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146177441" />
     <state x="945" y="486" width="474" height="594" key="#xdebugger.evaluate/49.27.1871.1053@49.27.1871.1053" timestamp="1585614304404" />
-    <state x="2314" y="135" width="865" height="912" key="CommitChangelistDialog2" timestamp="1586178078735">
+    <state x="2314" y="135" width="865" height="912" key="CommitChangelistDialog2" timestamp="1586291973658">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586178078735" />
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586291973658" />
     <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1582487604398" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582788400503" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584851547580" />
@@ -1031,19 +1040,19 @@
     </state>
     <state x="2660" y="264" width="479" height="550" key="RollbackChangesDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1579745017628" />
     <state x="1969" y="284" key="RollbackChangesDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1582359767068" />
-    <state x="2475" y="275" width="800" height="551" key="Vcs.Push.Dialog.v2" timestamp="1586178083434">
+    <state x="2475" y="275" width="800" height="551" key="Vcs.Push.Dialog.v2" timestamp="1586291980429">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2475" y="275" width="800" height="551" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586178083434" />
+    <state x="2475" y="275" width="800" height="551" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586291980429" />
     <state x="2475" y="275" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581399626539" />
     <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584337075234" />
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583171256309" />
     <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882959131" />
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/49.27.1871.1053@49.27.1871.1053" timestamp="1583770086860" />
-    <state x="2256" y="169" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1586053949300">
+    <state x="2256" y="169" width="566" height="677" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1586305861230">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2256" y="169" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586053949300" />
+    <state x="2256" y="169" width="566" height="677" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586305861230" />
     <state x="2256" y="169" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582771900318" />
     <state x="2256" y="169" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583817869376" />
     <state x="376" y="192" width="321" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583299941970" />

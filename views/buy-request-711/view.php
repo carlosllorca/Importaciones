@@ -19,6 +19,13 @@ use yii\widgets\DetailView;
                 'title'=>'Modificar datos del 711',
                 'onclick'=>'update711('.$model->id.')'
             ]):null ?>
+        <?=Yii::$app->user->can('buyrequest711/presentar')? Html::a('<span class="fa fa-check"></span> Presentar',
+        ['/buy-request-711/presentar','id'=>$model->id],
+            [
+                'class' => 'btn btn-primary',
+                'title'=>'Presentar el 711 y llevarlo a seguimiento',
+                'data-confirm'=>'¿Está seguro que desea presentar este 711?'
+            ]):null ?>
 
     </p>
     <div class="row" style="border:1px solid #cecece;margin:0px 20px" >
