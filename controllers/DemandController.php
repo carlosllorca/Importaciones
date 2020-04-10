@@ -78,6 +78,7 @@ class DemandController extends MainController
     private function _uebIndex(){
         $searchModel = new DemandSearch();
 
+
         $dataProvider = $searchModel->searchUeb(Yii::$app->request->queryParams);
 
         return $this->render('_ueb_index', [
@@ -210,6 +211,22 @@ class DemandController extends MainController
         if($model->validate()){
             $model->save();
             Yii::$app->traza->saveLog('Demanda enviada','Se ha enviado la demanda '.$model->demand_code);
+            try{
+                $to=[];
+                $users = User::getActiveUsersByRol(Rbac::$LOGISTICA_ID);
+                foreach ($users as $user){
+                    $to[$user->email]=$user->full_name;
+                }
+                Yii::$app->mailer->compose('demandArrived', ['demand'=>$model])
+                    ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                    ->setTo($to)
+                    // ->setBcc('inmaj@codeberrysolutions.com')
+                    ->setSubject("Se ha registrado una nueva demanda.")
+                    ->send();
+            }catch (\Exception $e){
+                Yii::$app->session->setFlash('warning','Ocurrió un problema en el envio de correo.');
+            }
+
             Yii::$app->session->setFlash('success',"La demanda {$model->demand_code} ha sido enviada.");
         }else{
             Yii::$app->session->setFlash('danger','Error al procesar su solicitud. Inténtelo de nuevo más tarde.');

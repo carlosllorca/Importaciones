@@ -94,6 +94,14 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionMail(){
+        Yii::$app->mailer->compose('demandArrived', [])
+            ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+            ->setTo('carlosllorca89@gmail.com')
+            // ->setBcc('inmaj@codeberrysolutions.com')
+            ->setSubject("Se ha registrado una nueva demanda.")
+            ->send();
+    }
 
     /**
      * Logout action.

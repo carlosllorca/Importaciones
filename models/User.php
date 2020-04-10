@@ -317,5 +317,20 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return ArrayHelper::map(self::find()->innerJoinWith('buyRequests')->all(),'id','full_name');
     }
 
+    /**
+     * @param $rolename
+     * @return User[]
+     */
+    static function getActiveUsersByRol($rolename){
+        $users = User::findAll(['active'=>true]);
+        $active  =[];
+        foreach ($users as $user){
+            if($user->getRole()->name==$rolename){
+                array_push($active,$user);
+            }
+        }
+        return $active;
+    }
+
 
 }
