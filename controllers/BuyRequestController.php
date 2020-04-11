@@ -367,7 +367,7 @@ class BuyRequestController extends MainController
 
         $model->save(false);
         try{
-            $users = User::getActiveUsersByRol(Rbac::$JEFE_COMPRAS);
+            $users = User::getActiveUsersByRol(Rbac::$JEFE_TECNCIO);
             $to =[];
             foreach ($users as $user){
                 $to[$user->email]=$user->full_name;
@@ -505,14 +505,32 @@ class BuyRequestController extends MainController
             $model->buyer_assigned=(int)($user);
             $model->save(false);
             Yii::$app->session->setFlash('success','Orden asignada al comprador '.$model->buyerAssigned->full_name.'.');
+            try{
+                Yii::$app->traza->saveLog('Solicitud asignada','Se ha asignado la solicitud '.$model->code.' a '.$model->buyerAssigned->full_name);
+                Yii::$app->mailer->compose('buyRequestAssigned', ['buyRequest'=>$model])
+                    ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                    ->setTo([$model->buyerAssigned->email=>$model->buyerAssigned->full_name])
+                    ->setSubject("La solicitud de compra ".$model->code." se le ha sido asignada.")
+                    ->send();
+            }catch (\Exception $e){
+                Yii::$app->session->setFlash('warning','Ocurrió un problema en el envio de correo.');
+            }
         }
         elseif ($rol=='et'){
-
             $model->dt_specialist_assigned=(int)($user);
             $model->save(false);
+            try{
+                Yii::$app->traza->saveLog('Solicitud asignada','Se ha asignado la solicitud '.$model->code.' a '.$model->dtSpecialistAssigned->full_name);
+                Yii::$app->mailer->compose('buyRequestAssigned', ['buyRequest'=>$model])
+                    ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                    ->setTo([$model->dtSpecialistAssigned->email=>$model->dtSpecialistAssigned->full_name])
+                    ->setSubject("La solicitud de compra ".$model->code." se le ha sido asignada.")
+                    ->send();
+            }catch (\Exception $e){
+                Yii::$app->session->setFlash('warning','Ocurrió un problema en el envio de correo.');
+            }
             Yii::$app->session->setFlash('success','Orden asignada al especialista técnico '.$model->dtSpecialistAssigned->full_name.'.');
         }
-
         return ['success'=>true];
     }
     public function actionAssignbuyer(){
