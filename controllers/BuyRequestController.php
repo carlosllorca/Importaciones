@@ -11,12 +11,10 @@ use app\models\BuyRequestStatus;
 use app\models\BuyRequestType;
 use app\models\DemandItem;
 use app\models\DemandStatus;
-use app\models\Destiny;
 use app\models\DocumentStatus;
 use app\models\FormCloseNationalBidding;
 use app\models\FormPropuesta;
 use app\models\Offert;
-use app\models\PaymentInstrument;
 use app\models\Provider;
 use app\models\ProviderStatus;
 use app\models\Rbac;
@@ -26,12 +24,7 @@ use app\models\User;
 use Mpdf\Config\ConfigVariables;
 use Mpdf\Config\FontVariables;
 use Mpdf\Mpdf;
-use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use Yii;
-use PhpOffice\PhpSpreadsheet\Reader\Html;
-use yii\db\Exception;
 use yii\filters\VerbFilter;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -373,6 +366,22 @@ class BuyRequestController extends MainController
         }
 
         $model->save(false);
+        try{
+            $users = User::getActiveUsersByRol(Rbac::$JEFE_COMPRAS);
+            $to =[];
+            foreach ($users as $user){
+                $to[$user->email]=$user->full_name;
+            }
+            Yii::$app->traza->saveLog('solicitud de compra aprobada','Se ha aprobado la solicitud de compra '.$model->code);
+            Yii::$app->mailer->compose('buyRequestCreated', ['buyRequest'=>$model])
+                ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                ->setTo($to)
+                // ->setBcc('inmaj@codeberrysolutions.com')
+                ->setSubject("Se ha generado una nueva solicitud de compra con código ".$model->code.".")
+                ->send();
+        }catch (\Exception $e){
+            Yii::$app->session->setFlash('warning','Ocurrió un problema en el envio de correo.');
+        }
         Yii::$app->session->setFlash('success','Solicitud aprobada.');
         return $this->redirect(['update','id'=>$model->id]);
     }

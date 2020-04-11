@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mail/buyRequestCreated.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mail/demandItemRejected.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mail/buyRequestApproved.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/BuyRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BuyRequestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/DemandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/DemandController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -422,14 +420,8 @@
       <workItem from="1586287382415" duration="832000" />
       <workItem from="1586291884820" duration="5369000" />
       <workItem from="1586382804177" duration="2747000" />
-      <workItem from="1586532397384" duration="17403000" />
-    </task>
-    <task id="LOCAL-00017" summary="Refinamientos al controlador.">
-      <created>1581215250342</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1581215250342</updated>
+      <workItem from="1586532397384" duration="18007000" />
+      <workItem from="1586635974833" duration="66000" />
     </task>
     <task id="LOCAL-00018" summary="Aprobar demanda.&#10;rechazar demanda.&#10;Actualizar demanda">
       <created>1581289582514</created>
@@ -767,7 +759,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586549405261</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Correo de generar solicitud de compra nacional e internacional.">
+      <created>1586554492948</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1586554492949</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -787,7 +786,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Solicitud de ofertas listo" />
     <MESSAGE value="Funcionalidad para modificar el tiempo de la licitación" />
     <MESSAGE value="Antes de empezar con los hitos" />
     <MESSAGE value="Definidos los hitos de las solicitudes internacionales" />
@@ -812,7 +810,8 @@
     <MESSAGE value="Creando 711. Ciclo completado." />
     <MESSAGE value="Plantilla de correos.&#10;Email nueva demanda." />
     <MESSAGE value="Correo para aprobar y rechazar demandas." />
-    <option name="LAST_COMMIT_MESSAGE" value="Correo para aprobar y rechazar demandas." />
+    <MESSAGE value="Correo de generar solicitud de compra nacional e internacional." />
+    <option name="LAST_COMMIT_MESSAGE" value="Correo de generar solicitud de compra nacional e internacional." />
   </component>
   <component name="WindowStateProjectService">
     <state x="2494" y="201" width="800" height="677" key="#Updates" timestamp="1586532446893">
@@ -860,10 +859,10 @@
     <state x="2992" y="323" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882354679" />
     <state x="945" y="486" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146177441" />
     <state x="945" y="486" width="474" height="594" key="#xdebugger.evaluate/49.27.1871.1053@49.27.1871.1053" timestamp="1585614304404" />
-    <state x="2314" y="135" width="865" height="912" key="CommitChangelistDialog2" timestamp="1586549405118">
+    <state x="2314" y="135" width="865" height="912" key="CommitChangelistDialog2" timestamp="1586554492751">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586549405118" />
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586554492751" />
     <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1582487604398" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582788400503" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584851547580" />
@@ -1049,10 +1048,10 @@
     </state>
     <state x="2660" y="264" width="479" height="550" key="RollbackChangesDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1579745017628" />
     <state x="1969" y="284" key="RollbackChangesDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1582359767068" />
-    <state x="2475" y="275" width="800" height="551" key="Vcs.Push.Dialog.v2" timestamp="1586545101684">
+    <state x="2475" y="275" width="800" height="551" key="Vcs.Push.Dialog.v2" timestamp="1586554504537">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2475" y="275" width="800" height="551" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586545101684" />
+    <state x="2475" y="275" width="800" height="551" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586554504537" />
     <state x="2475" y="275" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581399626539" />
     <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584337075234" />
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583171256309" />
@@ -1118,7 +1117,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/controllers/BuyRequestController.php</url>
-          <line>310</line>
+          <line>303</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
