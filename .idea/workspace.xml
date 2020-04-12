@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mail/offertEvaluated.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mail/offertUploaded.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mail/documentUploaded.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/BuyRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BuyRequestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail/notifyProviders.php" beforeDir="false" afterPath="$PROJECT_DIR$/mail/notifyProviders.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestInternational.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestInternational.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestDocument.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestDocument.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DocumentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DocumentTypeSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentTypeSearch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/document-type/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/document-type/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +81,7 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="buy_request_711: table" type="69fad909:PgImplModel$LocalTable" />
+        <item name="document_type: table" type="69fad909:PgImplModel$LocalTable" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -89,7 +91,7 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="demand_item: table" type="69fad909:PgImplModel$LocalTable" />
+        <item name="document_type_permission: table" type="69fad909:PgImplModel$LocalTable" />
       </path>
     </expand>
     <select />
@@ -425,14 +427,7 @@
       <workItem from="1586382804177" duration="2747000" />
       <workItem from="1586532397384" duration="18007000" />
       <workItem from="1586635974833" duration="2555000" />
-      <workItem from="1586705247604" duration="4891000" />
-    </task>
-    <task id="LOCAL-00020" summary="Asignar especialista técnico y comprador">
-      <created>1581398517950</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1581398517950</updated>
+      <workItem from="1586705247604" duration="12095000" />
     </task>
     <task id="LOCAL-00021" summary="Antes de iniciar el proceso de licitación">
       <created>1581399617422</created>
@@ -770,7 +765,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586639971109</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Correo de generar una oferta y evaluar esta.">
+      <created>1586710417921</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1586710417922</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -790,7 +792,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Definidos los hitos de las solicitudes internacionales" />
     <MESSAGE value="Fin del ciclo, pendiente la opción modificar hito" />
     <MESSAGE value="estilo naranja en los textbox" />
     <MESSAGE value="Lista la descripcion para el campo método de pago" />
@@ -815,7 +816,8 @@
     <MESSAGE value="Correo de generar solicitud de compra nacional e internacional." />
     <MESSAGE value="Correo solicitud nacional aprobada" />
     <MESSAGE value="Correo solicitud asignada a un usuario (Especialista técnico o comprador.)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correo solicitud asignada a un usuario (Especialista técnico o comprador.)" />
+    <MESSAGE value="Correo de generar una oferta y evaluar esta." />
+    <option name="LAST_COMMIT_MESSAGE" value="Correo de generar una oferta y evaluar esta." />
   </component>
   <component name="WindowStateProjectService">
     <state x="2494" y="201" width="800" height="677" key="#Updates" timestamp="1586532446893">
@@ -863,10 +865,10 @@
     <state x="2992" y="323" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882354679" />
     <state x="945" y="486" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146177441" />
     <state x="945" y="486" width="474" height="594" key="#xdebugger.evaluate/49.27.1871.1053@49.27.1871.1053" timestamp="1585614304404" />
-    <state x="2314" y="135" width="865" height="912" key="CommitChangelistDialog2" timestamp="1586639970843">
+    <state x="2314" y="135" width="865" height="912" key="CommitChangelistDialog2" timestamp="1586710417606">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586639970843" />
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586710417606" />
     <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1582487604398" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582788400503" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584851547580" />
@@ -1036,10 +1038,10 @@
     </state>
     <state x="2582" y="366" width="585" height="373" key="NewPhpClassDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584248511457" />
     <state x="1920" y="384" width="1156" height="373" key="NewPhpClassDialog/49.27.3791.1053@49.27.3791.1053" timestamp="1584673346319" />
-    <state x="2298" y="463" width="249" height="153" key="NewPhpFileDialog" timestamp="1586535413903">
+    <state x="2298" y="463" width="249" height="153" key="NewPhpFileDialog" timestamp="1586720099056">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2298" y="463" width="249" height="153" key="NewPhpFileDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586535413903" />
+    <state x="2298" y="463" width="249" height="153" key="NewPhpFileDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586720099056" />
     <state x="755" y="478" width="399" height="149" key="NewPhpFileDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1582503051484" />
     <state x="2298" y="463" key="NewPhpFileDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581264160635" />
     <state x="2298" y="463" width="249" height="153" key="NewPhpFileDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584299248937" />
@@ -1061,10 +1063,10 @@
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583171256309" />
     <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882959131" />
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/49.27.1871.1053@49.27.1871.1053" timestamp="1583770086860" />
-    <state x="2256" y="169" width="566" height="677" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1586305861230">
+    <state x="2256" y="169" width="566" height="677" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1586713887660">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2256" y="169" width="566" height="677" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586305861230" />
+    <state x="2256" y="169" width="566" height="677" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586713887660" />
     <state x="2256" y="169" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582771900318" />
     <state x="2256" y="169" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583817869376" />
     <state x="376" y="192" width="321" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583299941970" />

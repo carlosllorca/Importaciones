@@ -639,7 +639,6 @@ class BuyRequestController extends MainController
                 Yii::$app->mailer->compose('offertEvaluated', ['offert'=>$model])
                     ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
                     ->setTo([$model->buyRequestProvider->buyRequest->buyerAssigned->email=>$model->buyRequestProvider->buyRequest->buyerAssigned->full_name])
-                    // ->setBcc('inmaj@codeberrysolutions.com')
                     ->setSubject("Se ha evaluado una oferta de la solicitud de compra".$model->buyRequestProvider->buyRequest->code.".")
                     ->send();
             }catch (\Exception $e){
@@ -661,7 +660,6 @@ class BuyRequestController extends MainController
             $url = $model->loadInitialExpedientFilesUrl();
             $model->setScenario(BuyRequestInternational::SCENARIO_DEFAULT);
         }
-
         if ($model->load(Yii::$app->request->post()) ) {
                 foreach ($model->ganadores as $ganadore){
                     $winner = BuyRequestProvider::findOne($ganadore);
@@ -908,6 +906,26 @@ class BuyRequestController extends MainController
             $model->last_updated_by=User::userLogged()->id;
             $model->created_date=date('Y-m-d');
             $model->save();
+            Yii::$app->traza->saveLog('Documento subido/actulizado','Se ha generado docuemnto con id '.$model->id);
+            if($model->document_type_id){
+                $next = $model->nextDocument();
+                if($next){
+                    $users = $next->arrayUsersCabBeUploadThis();
+                    $to = [];
+                    foreach ($users as $user){
+                        $to[$user->email]=$user->username;
+                    }
+                    try{
+                        Yii::$app->mailer->compose('documentUploaded', ['document'=>$model])
+                            ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                            ->setTo($to)
+                            ->setSubject("EL listado de documentos de la solicitud ".$model->buyRequest->code." se ha actualizado.")
+                            ->send();
+                    }catch (\Exception $e){
+                        Yii::$app->session->setFlash('warning','Ocurrió un problema en el envio de correo.');
+                    }
+                }
+            }
             Yii::$app->session->setFlash('success','Fichero subido correctamente');
 
             return $this->redirect(['/buy-request/update','id'=>$model->buy_request_id,

@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'value' => 'buyRequestType.label'
                         ],
                         'responsable',
-                        'required:boolean',
+                        'order_doc',
                         'active:boolean',
 
                         [

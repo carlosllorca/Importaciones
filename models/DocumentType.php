@@ -13,6 +13,7 @@ use Yii;
  * @property bool $required
  * @property bool $active
  * @property int $buy_request_type_id
+ * @property int $order_doc
  *
  * @property BuyRequestDocument[] $buyRequestDocuments
  * @property DocumentTypePermission[] $documentTypePermissions
@@ -38,11 +39,11 @@ class DocumentType extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['label','responsable','buy_request_type_id'], 'required'],
+            [['label','responsable','buy_request_type_id','order_doc'], 'required'],
             [['required','active'], 'boolean'],
             [['label'], 'string', 'max' => 150],
             [['responsable'], 'string', 'max' => 100],
-            [['buy_request_type_id'], 'integer'],
+            [['buy_request_type_id','order_doc'], 'integer'],
             [['buy_request_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestType::className(), 'targetAttribute' => ['buy_request_type_id' => 'id']],
         ];
     }
@@ -57,6 +58,7 @@ class DocumentType extends \yii\db\ActiveRecord
             'label' => 'Nombre',
             'required' => 'Requerido',
             'active' => 'Activo',
+            'order_doc' => 'Orden',
             'buy_request_type_id' => 'Tipo de solicitud asociada',
         ];
     }

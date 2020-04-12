@@ -17,7 +17,7 @@ class DocumentTypeSearch extends DocumentType
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id','order_doc'], 'integer'],
             [['label','responsable','buy_request_type_id'], 'safe'],
             [['required','active'], 'boolean'],
         ];
@@ -50,6 +50,9 @@ class DocumentTypeSearch extends DocumentType
         ]);
 
         $this->load($params);
+        if(!isset($params['sort'])){
+            $query->orderBy('buy_request_type_id, order_doc');
+        }
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -61,6 +64,7 @@ class DocumentTypeSearch extends DocumentType
         $query->andFilterWhere([
             'id' => $this->id,
             'required' => $this->required,
+            'order_doc' => $this->order_doc,
             'active' => $this->active,
             'buy_request_type_id'=>$this->buy_request_type_id
         ]);

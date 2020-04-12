@@ -216,7 +216,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $this->hasMany(Demand::className(), ['approved_by' => 'id']);
     }
     /**
-     * @return ActiveQuery
+     * @return AuthItem
      */
     public function getRole()
     {
