@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mail/buyRequestAssigned.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mail/offertEvaluated.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mail/offertUploaded.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/BuyRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BuyRequestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail/notifyProviders.php" beforeDir="false" afterPath="$PROJECT_DIR$/mail/notifyProviders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestInternational.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestInternational.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,17 +280,17 @@
     <property name="yiicFile" value="" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tabpanel" />
-      <recent name="$PROJECT_DIR$/web/css" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/mail" />
       <recent name="$PROJECT_DIR$/views/final-destiny" />
       <recent name="$PROJECT_DIR$/models" />
       <recent name="$PROJECT_DIR$/views/layouts" />
       <recent name="$PROJECT_DIR$/config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tabpanel" />
+      <recent name="$PROJECT_DIR$/web/css" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
@@ -421,14 +424,8 @@
       <workItem from="1586291884820" duration="5369000" />
       <workItem from="1586382804177" duration="2747000" />
       <workItem from="1586532397384" duration="18007000" />
-      <workItem from="1586635974833" duration="1917000" />
-    </task>
-    <task id="LOCAL-00019" summary="exportar">
-      <created>1581390147496</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1581390147496</updated>
+      <workItem from="1586635974833" duration="2555000" />
+      <workItem from="1586705247604" duration="4891000" />
     </task>
     <task id="LOCAL-00020" summary="Asignar especialista técnico y comprador">
       <created>1581398517950</created>
@@ -766,7 +763,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586636073224</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Correo solicitud asignada a un usuario (Especialista técnico o comprador.)">
+      <created>1586639971109</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1586639971109</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -786,7 +790,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Antes de empezar con los hitos" />
     <MESSAGE value="Definidos los hitos de las solicitudes internacionales" />
     <MESSAGE value="Fin del ciclo, pendiente la opción modificar hito" />
     <MESSAGE value="estilo naranja en los textbox" />
@@ -811,7 +814,8 @@
     <MESSAGE value="Correo para aprobar y rechazar demandas." />
     <MESSAGE value="Correo de generar solicitud de compra nacional e internacional." />
     <MESSAGE value="Correo solicitud nacional aprobada" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correo solicitud nacional aprobada" />
+    <MESSAGE value="Correo solicitud asignada a un usuario (Especialista técnico o comprador.)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correo solicitud asignada a un usuario (Especialista técnico o comprador.)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2494" y="201" width="800" height="677" key="#Updates" timestamp="1586532446893">
@@ -859,10 +863,10 @@
     <state x="2992" y="323" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882354679" />
     <state x="945" y="486" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146177441" />
     <state x="945" y="486" width="474" height="594" key="#xdebugger.evaluate/49.27.1871.1053@49.27.1871.1053" timestamp="1585614304404" />
-    <state x="2314" y="135" width="865" height="912" key="CommitChangelistDialog2" timestamp="1586636072690">
+    <state x="2314" y="135" width="865" height="912" key="CommitChangelistDialog2" timestamp="1586639970843">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586636072690" />
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586639970843" />
     <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1582487604398" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582788400503" />
     <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584851547580" />
@@ -1076,10 +1080,10 @@
     </state>
     <state x="2516" y="132" width="728" height="813" key="find.popup/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586116501337" />
     <state x="2516" y="132" width="868" height="813" key="find.popup/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584250401102" />
-    <state x="2544" y="253" width="690" height="695" key="run.anything.popup" timestamp="1586543197887">
+    <state x="2544" y="253" width="690" height="695" key="run.anything.popup" timestamp="1586709215275">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2544" y="253" width="690" height="695" key="run.anything.popup/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586543197887" />
+    <state x="2544" y="253" width="690" height="695" key="run.anything.popup/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586709215275" />
     <state x="1248" y="274" key="run.anything.popup/0.27.3840.1053@0.27.3840.1053" timestamp="1582505223795" />
     <state x="2544" y="253" width="690" height="695" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581286544022" />
     <state x="657" y="274" width="672" height="677" key="run.anything.popup/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584916551359" />
@@ -1109,11 +1113,6 @@
           <url>file://$PROJECT_DIR$/controllers/ValidatedListItemController.php</url>
           <line>103</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/models/BuyRequestInternational.php</url>
-          <line>339</line>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/controllers/BuyRequestController.php</url>

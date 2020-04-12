@@ -318,10 +318,9 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
         }
         $zip->close();
         try {
-            Yii::$app->mailer->compose()
+            Yii::$app->mailer->compose('notifyProviders',['buyRequest'=>$this->buyRequest,'message'=>$this->message])
                 ->setFrom([ Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
                 ->setBcc($providerEmails)
-                ->setHtmlBody($this->message)
                 ->setTo([$this->buyRequest->buyApprovedBy->email, $this->buyRequest->buyerAssigned->email])
                 ->setReplyTo([$this->buyRequest->buyApprovedBy->email, $this->buyRequest->buyerAssigned->email])
                 ->attach($zipname)
@@ -340,8 +339,6 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
                 Yii::$app->session->setFlash('danger','Ocurrió un problema al guardar la información de la licitación.');
             }
             return true;
-
-
         }catch (\Exception $e){
             Yii::$app->session->setFlash('danger','Error notificando a proveedores. Inténtelo de nuevo más tarde.');
             return false;

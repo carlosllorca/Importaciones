@@ -542,6 +542,12 @@ class BuyRequestController extends MainController
     public function actionUploadOffert(){
 
     }
+
+    /**
+     * Guardar la oferta de un proveedor.
+     * @param $id
+     * @return string|Response
+     */
     public function actionSaveOfert($id){
         $model = new Offert();
         $model->setScenario(Offert::$SCENARIO_UPLOAD_OFFERT);
@@ -568,6 +574,16 @@ class BuyRequestController extends MainController
             $model->save();
             $model->buyRequestProvider->provider_status_id=ProviderStatus::$OFERTA_RECIBIDA_ID;
             $model->buyRequestProvider->save(false);
+            try{
+                Yii::$app->mailer->compose('offertUploaded', ['offert'=>$model])
+                    ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                    ->setTo([$model->buyRequestProvider->buyRequest->dtSpecialistAssigned->email=>$model->buyRequestProvider->buyRequest->dtSpecialistAssigned->full_name])
+                    // ->setBcc('inmaj@codeberrysolutions.com')
+                    ->setSubject("Se ha generado una nueva oferta para la solicitud ".$model->buyRequestProvider->buyRequest->code.".")
+                    ->send();
+            }catch (\Exception $e){
+                Yii::$app->session->setFlash('warning','Ocurrió un problema en el envio de correo.');
+            }
             return $this->redirect(['/buy-request/update','id'=>$model->buyRequestProvider->buy_request_id,
                 'provider'=>$model->buy_request_provider_id]);
 
@@ -619,6 +635,16 @@ class BuyRequestController extends MainController
                 $model->buyRequestProvider->provider_status_id=ProviderStatus::$OFERTA_RECHAZADA_ID;
             }
             $model->buyRequestProvider->save(false);
+            try{
+                Yii::$app->mailer->compose('offertEvaluated', ['offert'=>$model])
+                    ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                    ->setTo([$model->buyRequestProvider->buyRequest->buyerAssigned->email=>$model->buyRequestProvider->buyRequest->buyerAssigned->full_name])
+                    // ->setBcc('inmaj@codeberrysolutions.com')
+                    ->setSubject("Se ha evaluado una oferta de la solicitud de compra".$model->buyRequestProvider->buyRequest->code.".")
+                    ->send();
+            }catch (\Exception $e){
+                Yii::$app->session->setFlash('warning','Ocurrió un problema en el envio de correo.');
+            }
             return $this->redirect(['/buy-request/update','id'=>$model->buyRequestProvider->buy_request_id,
                 'provider'=>$model->buy_request_provider_id]);
 
