@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use yii\db\ActiveRecord;
 /**
  * This is the model class for table "request_stage".
  *
@@ -20,7 +20,8 @@ use Yii;
  * @property BuyRequest $buyRequest
  * @property Stage $stage
  */
-class RequestStage extends \yii\db\ActiveRecord
+
+class RequestStage extends ActiveRecord
 {
     /**
      * {@inheritdoc}

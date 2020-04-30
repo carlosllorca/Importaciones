@@ -262,7 +262,10 @@ class BuyRequest extends \yii\db\ActiveRecord
     public function documentsUser()
     {
         $items =[];
-        foreach ($this->buyRequestDocuments as $buyRequestDocument){
+        $buyRequestDocuments = BuyRequestDocument::find()->where(['buy_request_id'=>$this->id])
+            ->innerJoinWith('documentType')
+            ->orderBy('document_type.order_doc')->all();
+        foreach ($buyRequestDocuments as $buyRequestDocument){
             if(!$buyRequestDocument->document_type_id&&Yii::$app->user->can('buyrequest/uploadotherdocs')){
                 array_push($items,$buyRequestDocument);
             }

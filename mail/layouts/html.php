@@ -83,5 +83,25 @@ $this->registerCss("
         color:#f1691c;
         margin:0px
     }
+    table {
+  border-collapse: collapse;
+  width:95%;
+  border-spacing: 0;
+}
+thead{
+background-color:#f66b0d;
+color:#fff
+}
+th{
+padding:10px;
+text-align:left;
+font-size:18px
+}
+td{
+padding:10px;
+font-size:15px
+}
+
+
 ");
 $this->endPage() ?>
