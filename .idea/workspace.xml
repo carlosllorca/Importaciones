@@ -2,48 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e63d413b-ff99-4662-869e-bc8fe281eab0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/CountryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/MainController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/BuyRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/BuyRequestDocument.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/BuyRequestStatus.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Certification.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/CertificationType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/CertificationValidatedListItem.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Client.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Country.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/CountrySearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Demand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/DemandStatus.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/DeploymentPart.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/DocumentType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/DocumentTypePermission.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Log.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Offert.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/OffertStatus.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Organism.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/PaymentMethod.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/ProviderValidatedList.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/ProvinceUeb.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/PurchaseReason.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/RequestStage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Stage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/ValidatedList.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/WarrantyTime.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/country/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/country/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/country/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/country/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/country/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/country/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/layouts/primary.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commands/SeisaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/console/img/SEISA.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/console/img/SEISA2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/SEISA.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/SEISA2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mail/stageStartToday.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mail/stagesExpired.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SiteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/LoginForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/LoginForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/console.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/email.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/email.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail/layouts/html.php" beforeDir="false" afterPath="$PROJECT_DIR$/mail/layouts/html.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/RequestStage.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/RequestStage.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,108 +24,157 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="Jquery" />
+      </list>
     </option>
-    <expand />
-    <select />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/web/js/openModal.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/yii_overrides.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/user/_form.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/demand/_form.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/demand/index.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/buy-request/_propuestas.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/buy-request/_hitos.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/buy-request/update.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/buy-request/updateNacional.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/buy-request/view.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/buyrequest711/view.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/demand/items.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/buy-request/_documentos.js" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="seisa.llorca.cu" id="17445150-5343-4251-8a4b-56a6b7c6862c" name="seisa" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$" remote-root="/var/www/html/Importaciones" />
+        </path_mappings>
+      </server>
+      <server host="mikrotik.llorca.cu" id="780c9c87-73cf-46f3-b694-6b3e2717df6e" name="mikrotik.llorca.cu" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$/vendor/yiisoft/yii2/requirements/views/web" remote-root="/var/www/html/mikrotik/web" />
+        </path_mappings>
+      </server>
+    </servers>
+  </component>
+  <component name="PhpWebServerValidation" deployment_server_id="3cf5b849-b098-4dd0-ba55-4dc3a6ea6136" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="REMOTE" web_path_to_validation_script="http://127.0.0.1/" />
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
-      <path value="$PROJECT_DIR$/vendor/codeception/stub" />
-      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
-      <path value="$PROJECT_DIR$/vendor/codeception/base" />
-      <path value="$PROJECT_DIR$/vendor/codeception/verify" />
-      <path value="$PROJECT_DIR$/vendor/codeception/specify" />
-      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
-      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
-      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
-      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/miloschuman/yii2-highcharts-widget" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
-      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
-      <path value="$PROJECT_DIR$/vendor/opis/closure" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
-      <path value="$PROJECT_DIR$/vendor/behat/gherkin" />
-      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-faker" />
-      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap" />
-      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-swiftmailer" />
-      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2" />
-      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-composer" />
-      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-gii" />
-      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-debug" />
-      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
-      <path value="$PROJECT_DIR$/vendor/composer" />
-      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
-      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
-      <path value="$PROJECT_DIR$/vendor/psr/container" />
-      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
-      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
-      <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
-      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
-      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
-      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
-      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
-      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
-      <path value="$PROJECT_DIR$/vendor/symfony/console" />
-      <path value="$PROJECT_DIR$/vendor/bower-asset/yii2-pjax" />
-      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
-      <path value="$PROJECT_DIR$/vendor/bower-asset/punycode" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
-      <path value="$PROJECT_DIR$/vendor/bower-asset/jquery" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
-      <path value="$PROJECT_DIR$/vendor/bower-asset/bootstrap" />
-      <path value="$PROJECT_DIR$/vendor/phpspec/php-diff" />
-      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
-      <path value="$PROJECT_DIR$/vendor/bower-asset/inputmask" />
-      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
       <path value="$PROJECT_DIR$/vendor/cebe/markdown" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
-      <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit-mock-objects" />
+      <path value="$PROJECT_DIR$/vendor/select2/select2" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-debug" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-composer" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-faker" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-gii" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/bootstrap" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/punycode" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/yii2-pjax" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/inputmask" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/jquery" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/highcharts" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/vendor/mpdf/mpdf" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
-      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
-      <path value="$PROJECT_DIR$/vendor/mervick/yii2-material-design-icons" />
-      <path value="$PROJECT_DIR$/vendor/mervick/material-design-icons" />
-      <path value="$PROJECT_DIR$/vendor/yidas/yii2-fontawesome" />
-      <path value="$PROJECT_DIR$/vendor/ricar2ce/yii2-material-theme" />
+      <path value="$PROJECT_DIR$/vendor/setasign/fpdi" />
+      <path value="$PROJECT_DIR$/vendor/codeception/base" />
+      <path value="$PROJECT_DIR$/vendor/codeception/stub" />
+      <path value="$PROJECT_DIR$/vendor/codeception/specify" />
+      <path value="$PROJECT_DIR$/vendor/codeception/verify" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-datepicker" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-select2" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-depdrop" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/dependent-dropdown" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-fileinput" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-fileinput" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/php-diff" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/behat/gherkin" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit-mock-objects" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/vendor/fortawesome/font-awesome" />
-      <path value="$PROJECT_DIR$/vendor/ramosisw/yii2-material-dashboard" />
+      <path value="$PROJECT_DIR$/vendor/ricar2ce/yii2-material-theme" />
+      <path value="$PROJECT_DIR$/vendor/yidas/yii2-fontawesome" />
+      <path value="$PROJECT_DIR$/vendor/mervick/material-design-icons" />
+      <path value="$PROJECT_DIR$/vendor/mervick/yii2-material-design-icons" />
+      <path value="$PROJECT_DIR$/vendor/npm-asset/bootstrap" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap4" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-tabs-x" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-tabs-x" />
     </include_path>
   </component>
   <component name="ProjectId" id="1V3DOVIWRAPFX6MU97NARgmeyIB" />
@@ -162,12 +183,12 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
@@ -175,32 +196,42 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/controllers" />
+    <property name="enableYiiStorm" value="true" />
+    <property name="langName" value="en" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mail" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.remoteExternalTools" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="themeName" value="" />
+    <property name="useYiiMigrations" value="true" />
+    <property name="yiicFile" value="" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/controllers" />
-      <recent name="$PROJECT_DIR$/views/layouts" />
+      <recent name="$PROJECT_DIR$/mail" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/console" />
+      <recent name="$PROJECT_DIR$/commands" />
+      <recent name="$PROJECT_DIR$/views/final-destiny" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tabpanel" />
+      <recent name="$PROJECT_DIR$/web/css" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
+  <component name="RunManager">
+    <configuration name="SEISA" type="PhpRemoteDebugRunConfigurationType" factoryName="PHP Remote Debug" filter_connections="FILTER" server_name="seisa" session_id="19823">
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -215,84 +246,798 @@
       <workItem from="1576472854600" duration="870000" />
       <workItem from="1576507214514" duration="7455000" />
       <workItem from="1576544383824" duration="666000" />
-      <workItem from="1576545090630" duration="5311000" />
+      <workItem from="1576545090630" duration="18181000" />
+      <workItem from="1576617694320" duration="913000" />
+      <workItem from="1576632382314" duration="15661000" />
+      <workItem from="1576681294385" duration="322000" />
+      <workItem from="1576770401950" duration="847000" />
+      <workItem from="1576771277077" duration="53388000" />
+      <workItem from="1576866813835" duration="24000" />
+      <workItem from="1576866861723" duration="6901000" />
+      <workItem from="1576880694160" duration="1016000" />
+      <workItem from="1576977250638" duration="19000" />
+      <workItem from="1578802938640" duration="1427000" />
+      <workItem from="1578925262255" duration="189000" />
+      <workItem from="1578971764071" duration="7865000" />
+      <workItem from="1579012271979" duration="607000" />
+      <workItem from="1579744123233" duration="1640000" />
+      <workItem from="1579747107180" duration="2479000" />
+      <workItem from="1579874130157" duration="15000" />
+      <workItem from="1580262319032" duration="7608000" />
+      <workItem from="1580768997213" duration="24251000" />
+      <workItem from="1580839894458" duration="6000" />
+      <workItem from="1580865016140" duration="126000" />
+      <workItem from="1580865598471" duration="16460000" />
+      <workItem from="1580957951492" duration="5688000" />
+      <workItem from="1580965691476" duration="5184000" />
+      <workItem from="1581140156197" duration="9000" />
+      <workItem from="1581214774385" duration="3216000" />
+      <workItem from="1581262808590" duration="516000" />
+      <workItem from="1581263913419" duration="24186000" />
+      <workItem from="1581374451390" duration="606000" />
+      <workItem from="1581383693848" duration="11575000" />
+      <workItem from="1581452168886" duration="722000" />
+      <workItem from="1581548287315" duration="51000" />
+      <workItem from="1582355903535" duration="26480000" />
+      <workItem from="1582509042248" duration="3556000" />
+      <workItem from="1582514611928" duration="3768000" />
+      <workItem from="1582553214595" duration="71000" />
+      <workItem from="1582570550953" duration="5644000" />
+      <workItem from="1582770035422" duration="11088000" />
+      <workItem from="1582781611190" duration="6792000" />
+      <workItem from="1582820001897" duration="31000" />
+      <workItem from="1582820066368" duration="10000" />
+      <workItem from="1582820123640" duration="17000" />
+      <workItem from="1582994914459" duration="7196000" />
+      <workItem from="1583034967828" duration="56562000" />
+      <workItem from="1583166024575" duration="1591000" />
+      <workItem from="1583167806265" duration="5593000" />
+      <workItem from="1583173460835" duration="1086000" />
+      <workItem from="1583185256638" duration="662000" />
+      <workItem from="1583249322545" duration="610000" />
+      <workItem from="1583278471867" duration="5287000" />
+      <workItem from="1583333702778" duration="2793000" />
+      <workItem from="1583420386054" duration="604000" />
+      <workItem from="1583544598298" duration="36955000" />
+      <workItem from="1583690024312" duration="3088000" />
+      <workItem from="1583707598551" duration="19259000" />
+      <workItem from="1583766147149" duration="3557000" />
+      <workItem from="1583793874854" duration="18431000" />
+      <workItem from="1583849785281" duration="135000" />
+      <workItem from="1583887983400" duration="16898000" />
+      <workItem from="1583934000519" duration="3462000" />
+      <workItem from="1583943943146" duration="603000" />
+      <workItem from="1583983320715" duration="490000" />
+      <workItem from="1583983840965" duration="6289000" />
+      <workItem from="1584019527678" duration="29000" />
+      <workItem from="1584193702529" duration="1975000" />
+      <workItem from="1584218605509" duration="1494000" />
+      <workItem from="1584220620222" duration="23193000" />
+      <workItem from="1584248118454" duration="20000" />
+      <workItem from="1584248484722" duration="42606000" />
+      <workItem from="1584495238072" duration="4933000" />
+      <workItem from="1584546656020" duration="11000" />
+      <workItem from="1584568518490" duration="3857000" />
+      <workItem from="1584583909162" duration="11308000" />
+      <workItem from="1584653647020" duration="16197000" />
+      <workItem from="1584718273749" duration="15389000" />
+      <workItem from="1584850857347" duration="36798000" />
+      <workItem from="1584971520648" duration="1943000" />
+      <workItem from="1584995007286" duration="1403000" />
+      <workItem from="1585003449248" duration="7000" />
+      <workItem from="1585611334259" duration="5840000" />
+      <workItem from="1585793410622" duration="51000" />
+      <workItem from="1586016135311" duration="23497000" />
+      <workItem from="1586225221079" duration="2426000" />
+      <workItem from="1586287326704" duration="21000" />
+      <workItem from="1586287382415" duration="832000" />
+      <workItem from="1586291884820" duration="5369000" />
+      <workItem from="1586382804177" duration="2747000" />
+      <workItem from="1586532397384" duration="18007000" />
+      <workItem from="1586635974833" duration="2555000" />
+      <workItem from="1586705247604" duration="12144000" />
+      <workItem from="1586871002838" duration="610000" />
+      <workItem from="1587044140234" duration="607000" />
+      <workItem from="1588121642126" duration="3804000" />
+      <workItem from="1588207186680" duration="1381000" />
+      <workItem from="1588214984202" duration="9049000" />
     </task>
-    <task id="LOCAL-00001" summary="Preparando el proyecto">
-      <created>1576473614599</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
+    <task id="LOCAL-00022" summary="Antes de iniciar el proceso de licitación">
+      <created>1582445255574</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
-      <updated>1576473614599</updated>
+      <updated>1582445255574</updated>
     </task>
-    <task id="LOCAL-00002" summary="ya con bootstrap 4">
-      <created>1576545969263</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
+    <task id="LOCAL-00023" summary="Cancelar un elemento.">
+      <created>1582481610570</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
-      <updated>1576545969263</updated>
+      <updated>1582481610570</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00024" summary="Solucionados todos los puntos detectados en la última reunión con el cliente.">
+      <created>1582487604541</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1582487604541</updated>
+    </task>
+    <task id="LOCAL-00025" summary="antes de corregir los errores de la ultima reunion">
+      <created>1582770518253</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1582770518253</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Listo lo referente a la demanda">
+      <created>1582771125718</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1582771125718</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Modelo solicitud de compra. Exportado a PDF">
+      <created>1582788400769</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1582788400769</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Añadiendo algunas entindades solicitadas por el cliente.">
+      <created>1583031668882</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1583031668882</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Cambiando estructura de la base de datos.&#10;Adicionando entidad proveedor entre oferta y sol. compra">
+      <created>1583041832540</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1583041832540</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Licitar listo">
+      <created>1583117497742</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1583117497742</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Gestion de archivos lista.">
+      <created>1583132403681</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1583132403681</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Gestion de documentos">
+      <created>1583141207832</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1583141207832</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Subir ficheros">
+      <created>1583171252458</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1583171252458</updated>
+    </task>
+    <task id="LOCAL-00034" summary="antes de importacion de datos">
+      <created>1583278695828</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1583278695828</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Modificaciones luego de la reunion del lunes">
+      <created>1583595452808</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1583595452808</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Modificaciones luego de la reunion del lunes">
+      <created>1583597796852</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1583597796852</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Antes de generar el xls de la sol compra">
+      <created>1583633841024</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1583633841024</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Listo el modelo de solicitud de compra internacional en formatos pdf y xls.">
+      <created>1583715736458</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1583715736458</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Solicitud de ofertas listo">
+      <created>1583727686334</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1583727686334</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Funcionalidad para modificar el tiempo de la licitación">
+      <created>1583770077438</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1583770077438</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Antes de empezar con los hitos">
+      <created>1583816030409</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1583816030409</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Definidos los hitos de las solicitudes internacionales">
+      <created>1583818675578</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1583818675578</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Fin del ciclo, pendiente la opción modificar hito">
+      <created>1583907906429</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1583907906429</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Fin del ciclo, pendiente la opción modificar hito">
+      <created>1583990306248</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1583990306248</updated>
+    </task>
+    <task id="LOCAL-00045" summary="estilo naranja en los textbox">
+      <created>1584219207614</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1584219207614</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Lista la descripcion para el campo método de pago">
+      <created>1584227576819</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1584227576819</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Aprobando/Rechazando demanda desde el view">
+      <created>1584232779803</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1584232779803</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Exportar solicitud de compra desde la vista update y la vista view">
+      <created>1584235783397</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1584235783397</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Exportar solicitud de compra desde la vista update y la vista view">
+      <created>1584243596879</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1584243596879</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Grid de solicitud de compras listo">
+      <created>1584288813414</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1584288813415</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Solucionado flujo en plantillas">
+      <created>1584316697742</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1584316697742</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Flujo de subida de documentos listo">
+      <created>1584322397443</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1584322397443</updated>
+    </task>
+    <task id="LOCAL-00053" summary="concluido el paso de los documentos">
+      <created>1584328027747</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1584328027747</updated>
+    </task>
+    <task id="LOCAL-00054" summary="modificaciones en los modelos y la BD para asimliar compras nacionales y 711">
+      <created>1584500346637</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1584500346638</updated>
+    </task>
+    <task id="LOCAL-00055" summary="agregada descripción al método de pago.">
+      <created>1584588806540</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1584588806541</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Flujo compras nacionales 50%">
+      <created>1584684487175</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1584684487176</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Ciclo nacional completo. Pendiente revisión final">
+      <created>1584915395198</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1584915395199</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Ciclo nacional completo.Revizado">
+      <created>1584916998084</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1584916998084</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Ciclo internacional revisado">
+      <created>1584934362824</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1584934362824</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Creadas los modelos necesarios para los 711">
+      <created>1586019501206</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1586019501207</updated>
+    </task>
+    <task id="LOCAL-00061" summary="transformar a 711 y separar productos a una nueva 711">
+      <created>1586178078980</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1586178078980</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Clasificar la orden. Lita para empezar a trabajarla">
+      <created>1586291974152</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1586291974152</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Creando 711. Ciclo completado.">
+      <created>1586534335876</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1586534335877</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Plantilla de correos.&#10;Email nueva demanda.">
+      <created>1586545099905</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1586545099905</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Correo para aprobar y rechazar demandas.">
+      <created>1586549405261</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1586549405261</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Correo de generar solicitud de compra nacional e internacional.">
+      <created>1586554492948</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1586554492949</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Correo solicitud nacional aprobada">
+      <created>1586636073223</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1586636073224</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Correo solicitud asignada a un usuario (Especialista técnico o comprador.)">
+      <created>1586639971109</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1586639971109</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Correo de generar una oferta y evaluar esta.">
+      <created>1586710417921</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1586710417922</updated>
+    </task>
+    <task id="LOCAL-00070" summary="email cuando se sube un documento.">
+      <created>1586723360639</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1586723360639</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Preparando el proyecto" />
-    <MESSAGE value="ya con bootstrap 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="ya con bootstrap 4" />
+    <MESSAGE value="estilo naranja en los textbox" />
+    <MESSAGE value="Lista la descripcion para el campo método de pago" />
+    <MESSAGE value="Aprobando/Rechazando demanda desde el view" />
+    <MESSAGE value="Exportar solicitud de compra desde la vista update y la vista view" />
+    <MESSAGE value="Grid de solicitud de compras listo" />
+    <MESSAGE value="Solucionado flujo en plantillas" />
+    <MESSAGE value="Flujo de subida de documentos listo" />
+    <MESSAGE value="concluido el paso de los documentos" />
+    <MESSAGE value="modificaciones en los modelos y la BD para asimliar compras nacionales y 711" />
+    <MESSAGE value="agregada descripción al método de pago." />
+    <MESSAGE value="Flujo compras nacionales 50%" />
+    <MESSAGE value="Ciclo nacional completo. Pendiente revisión final" />
+    <MESSAGE value="Ciclo nacional completo.Revizado" />
+    <MESSAGE value="Ciclo internacional revisado" />
+    <MESSAGE value="Creadas los modelos necesarios para los 711" />
+    <MESSAGE value="transformar a 711 y separar productos a una nueva 711" />
+    <MESSAGE value="Clasificar la orden. Lita para empezar a trabajarla" />
+    <MESSAGE value="Creando 711. Ciclo completado." />
+    <MESSAGE value="Plantilla de correos.&#10;Email nueva demanda." />
+    <MESSAGE value="Correo para aprobar y rechazar demandas." />
+    <MESSAGE value="Correo de generar solicitud de compra nacional e internacional." />
+    <MESSAGE value="Correo solicitud nacional aprobada" />
+    <MESSAGE value="Correo solicitud asignada a un usuario (Especialista técnico o comprador.)" />
+    <MESSAGE value="Correo de generar una oferta y evaluar esta." />
+    <MESSAGE value="email cuando se sube un documento." />
+    <option name="LAST_COMMIT_MESSAGE" value="email cuando se sube un documento." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2475" y="200" width="800" height="677" key="#Deployment" timestamp="1576472912804">
+    <state x="2494" y="201" width="800" height="677" key="#Updates" timestamp="1586532446893">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2475" y="200" width="800" height="677" key="#Deployment/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576472912804" />
-    <state x="579" y="214" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576552905291">
-      <screen x="49" y="27" width="1871" height="1053" />
-    </state>
-    <state x="579" y="214" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1576552905291" />
-    <state x="2546" y="325" width="827" height="602" key="#com.intellij.tools.ToolEditorDialog" timestamp="1576507363873">
+    <state x="2494" y="201" width="800" height="677" key="#Updates/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586532446893" />
+    <state x="2560" y="357" width="630" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584234195337">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2546" y="325" width="827" height="602" key="#com.intellij.tools.ToolEditorDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576507363873" />
-    <state x="433" y="159" width="1122" height="807" key="CommitChangelistDialog2" timestamp="1576545966049">
-      <screen x="49" y="27" width="1871" height="1053" />
-    <state x="2548" y="378" width="654" height="348" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1576618367261">
+    <state x="2560" y="357" width="630" height="390" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584234195337" />
+    <state x="2491" y="321" width="768" height="462" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog" timestamp="1583033237261">
+      <screen x="49" y="27" width="3791" height="1053" />
+    </state>
+    <state x="2491" y="321" width="768" height="462" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/49.27.3791.1053@49.27.3791.1053" timestamp="1583033237261" />
+    <state x="2563" y="280" width="624" height="544" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586287341734">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2548" y="378" width="654" height="348" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618367261" />
-    <state x="1997" y="135" width="1077" height="807" key="CommitChangelistDialog2" timestamp="1576618618319">
+    <state x="2563" y="280" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586287341734" />
+    <state x="676" y="300" width="624" height="544" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1582820014471" />
+    <state x="3062" y="27" width="748" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1583040726381">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1576565775973" />
-    <state x="1997" y="135" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618618319" />
-    <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576473606983" />
-    <state x="433" y="159" key="CommitChangelistDialog2/49.27.1871.1053@49.27.1871.1053" timestamp="1576545966049" />
-    <state x="2369" y="187" key="SettingsEditor" timestamp="1576507366775">
+    <state x="3062" y="27" width="748" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583040726381" />
+    <state x="2605" y="290" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586124024550">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2369" y="187" key="SettingsEditor/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576507366775" />
-    <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576473625775">
+    <state x="2605" y="290" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586124024550" />
+    <state x="2605" y="290" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581397661606" />
+    <state x="2605" y="290" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584894538057" />
+    <state x="717" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584925492606" />
+    <state x="2605" y="290" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580781177268" />
+    <state x="885" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/49.27.3791.1053@49.27.3791.1053" timestamp="1583030137059" />
+    <state x="2663" y="480" width="424" height="144" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1583638504791">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576473625775" />
-    <state x="649" y="398" key="com.intellij.ide.util.TipDialog" timestamp="1576545130231">
-      <screen x="49" y="27" width="1871" height="1053" />
-    </state>
-    <state x="2536" y="380" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576507215067" />
-    <state x="649" y="398" key="com.intellij.ide.util.TipDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1576545130231" />
-    <state x="2544" y="253" key="run.anything.popup" timestamp="1576507429956">
-      <screen x="1920" y="0" width="1920" height="1080" />
-    <state x="2606" y="266" width="537" height="572" key="git4idea.branch.GitSmartOperationDialog" timestamp="1576618628688">
+    <state x="2663" y="480" width="424" height="144" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583638504791" />
+    <state x="2707" y="471" width="474" height="593" key="#xdebugger.evaluate" timestamp="1588216776096">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2606" y="266" width="537" height="572" key="git4idea.branch.GitSmartOperationDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576618628688" />
-    <state x="1248" y="274" key="run.anything.popup" timestamp="1576564049924">
+    <state x="2707" y="471" width="474" height="609" key="#xdebugger.evaluate/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588216776096" />
+    <state x="2992" y="323" key="#xdebugger.evaluate/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581393087857" />
+    <state x="3014" y="385" key="#xdebugger.evaluate/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584336147699" />
+    <state x="1271" y="434" width="474" height="593" key="#xdebugger.evaluate/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584931078381" />
+    <state x="2992" y="323" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882354679" />
+    <state x="945" y="486" key="#xdebugger.evaluate/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146177441" />
+    <state x="945" y="486" width="474" height="594" key="#xdebugger.evaluate/49.27.1871.1053@49.27.1871.1053" timestamp="1585614304404" />
+    <state x="2314" y="135" width="865" height="912" key="CommitChangelistDialog2" timestamp="1586723360445">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586723360445" />
+    <state x="154" y="159" width="1077" height="807" key="CommitChangelistDialog2/0.27.3840.1053@0.27.3840.1053" timestamp="1582487604398" />
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582788400503" />
+    <state x="2314" y="135" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584851547580" />
+    <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584934855685" />
+    <state x="2314" y="135" width="1122" height="807" key="CommitChangelistDialog2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580970277888" />
+    <state x="433" y="159" width="860" height="807" key="CommitChangelistDialog2/49.27.1871.1053@49.27.1871.1053" timestamp="1584761389196" />
+    <state x="2221" y="77" width="865" height="912" key="CommitChangelistDialog2/49.27.3791.1053@49.27.3791.1053" timestamp="1584684486868" />
+    <state width="562" height="568" key="DebuggerActiveHint" timestamp="1586544690388">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="562" height="568" key="DebuggerActiveHint/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586544690388" />
+    <state width="562" height="568" key="DebuggerActiveHint/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583907273064" />
+    <state x="2069" y="98" width="1671" height="882" key="DiffContextDialog" timestamp="1586116535515">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2069" y="98" width="1671" height="882" key="DiffContextDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586116535515" />
+    <state x="2663" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1584220342809">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2663" y="310" width="424" height="484" key="FileChooserDialogImpl/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584220342809" />
+    <state width="1825" height="353" key="GridCell.Tab.0.bottom" timestamp="1588216889571">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1825" height="353" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588216889571" />
+    <state width="1825" height="343" key="GridCell.Tab.0.bottom/0.27.3840.1053@0.27.3840.1053" timestamp="1585623308307" />
+    <state width="1825" height="343" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582517749971" />
+    <state width="1874" height="343" key="GridCell.Tab.0.bottom/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584336949059" />
+    <state width="1825" height="343" key="GridCell.Tab.0.bottom/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584934861371" />
+    <state width="1874" height="354" key="GridCell.Tab.0.bottom/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882988418" />
+    <state width="1825" height="353" key="GridCell.Tab.0.bottom/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198831" />
+    <state width="1825" height="343" key="GridCell.Tab.0.bottom/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935578" />
+    <state width="1874" height="343" key="GridCell.Tab.0.bottom/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297207" />
+    <state width="1825" height="353" key="GridCell.Tab.0.center" timestamp="1588216889570">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1825" height="353" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588216889570" />
+    <state width="1825" height="343" key="GridCell.Tab.0.center/0.27.3840.1053@0.27.3840.1053" timestamp="1585623308306" />
+    <state width="1825" height="343" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582517749971" />
+    <state width="1874" height="343" key="GridCell.Tab.0.center/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584336949058" />
+    <state width="1825" height="343" key="GridCell.Tab.0.center/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584934861371" />
+    <state width="1874" height="354" key="GridCell.Tab.0.center/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882988418" />
+    <state width="1825" height="353" key="GridCell.Tab.0.center/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198831" />
+    <state width="1825" height="343" key="GridCell.Tab.0.center/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935577" />
+    <state width="1874" height="343" key="GridCell.Tab.0.center/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297206" />
+    <state width="1825" height="353" key="GridCell.Tab.0.left" timestamp="1588216889570">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1825" height="353" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588216889570" />
+    <state width="1825" height="343" key="GridCell.Tab.0.left/0.27.3840.1053@0.27.3840.1053" timestamp="1585623308305" />
+    <state width="1825" height="343" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582517749970" />
+    <state width="1874" height="343" key="GridCell.Tab.0.left/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584336949058" />
+    <state width="1825" height="343" key="GridCell.Tab.0.left/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584934861370" />
+    <state width="1874" height="354" key="GridCell.Tab.0.left/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882988418" />
+    <state width="1825" height="353" key="GridCell.Tab.0.left/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198830" />
+    <state width="1825" height="343" key="GridCell.Tab.0.left/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935575" />
+    <state width="1874" height="343" key="GridCell.Tab.0.left/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297206" />
+    <state width="1825" height="353" key="GridCell.Tab.0.right" timestamp="1588216889570">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1825" height="353" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588216889570" />
+    <state width="1825" height="343" key="GridCell.Tab.0.right/0.27.3840.1053@0.27.3840.1053" timestamp="1585623308306" />
+    <state width="1825" height="343" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582517749971" />
+    <state width="1874" height="343" key="GridCell.Tab.0.right/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584336949059" />
+    <state width="1825" height="343" key="GridCell.Tab.0.right/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584934861371" />
+    <state width="1874" height="354" key="GridCell.Tab.0.right/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882988418" />
+    <state width="1825" height="353" key="GridCell.Tab.0.right/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198831" />
+    <state width="1825" height="343" key="GridCell.Tab.0.right/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935577" />
+    <state width="1874" height="343" key="GridCell.Tab.0.right/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297206" />
+    <state width="1825" height="353" key="GridCell.Tab.1.bottom" timestamp="1588216889571">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1825" height="353" key="GridCell.Tab.1.bottom/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588216889571" />
+    <state width="1825" height="343" key="GridCell.Tab.1.bottom/0.27.3840.1053@0.27.3840.1053" timestamp="1585623308308" />
+    <state width="1825" height="343" key="GridCell.Tab.1.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582517749971" />
+    <state width="1874" height="343" key="GridCell.Tab.1.bottom/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584336949059" />
+    <state width="1825" height="343" key="GridCell.Tab.1.bottom/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584934861372" />
+    <state width="1874" height="354" key="GridCell.Tab.1.bottom/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882988418" />
+    <state width="1825" height="353" key="GridCell.Tab.1.bottom/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198831" />
+    <state width="1825" height="343" key="GridCell.Tab.1.bottom/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935584" />
+    <state width="1874" height="343" key="GridCell.Tab.1.bottom/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297207" />
+    <state width="1825" height="353" key="GridCell.Tab.1.center" timestamp="1588216889571">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1825" height="353" key="GridCell.Tab.1.center/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588216889571" />
+    <state width="1825" height="343" key="GridCell.Tab.1.center/0.27.3840.1053@0.27.3840.1053" timestamp="1585623308307" />
+    <state width="1825" height="343" key="GridCell.Tab.1.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582517749971" />
+    <state width="1874" height="343" key="GridCell.Tab.1.center/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584336949059" />
+    <state width="1825" height="343" key="GridCell.Tab.1.center/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584934861371" />
+    <state width="1874" height="354" key="GridCell.Tab.1.center/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882988418" />
+    <state width="1825" height="353" key="GridCell.Tab.1.center/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198831" />
+    <state width="1825" height="343" key="GridCell.Tab.1.center/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935579" />
+    <state width="1874" height="343" key="GridCell.Tab.1.center/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297207" />
+    <state width="1825" height="353" key="GridCell.Tab.1.left" timestamp="1588216889571">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1825" height="353" key="GridCell.Tab.1.left/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588216889571" />
+    <state width="1825" height="343" key="GridCell.Tab.1.left/0.27.3840.1053@0.27.3840.1053" timestamp="1585623308307" />
+    <state width="1825" height="343" key="GridCell.Tab.1.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582517749971" />
+    <state width="1874" height="343" key="GridCell.Tab.1.left/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584336949059" />
+    <state width="1825" height="343" key="GridCell.Tab.1.left/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584934861371" />
+    <state width="1874" height="354" key="GridCell.Tab.1.left/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882988418" />
+    <state width="1825" height="353" key="GridCell.Tab.1.left/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198831" />
+    <state width="1825" height="343" key="GridCell.Tab.1.left/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935579" />
+    <state width="1874" height="343" key="GridCell.Tab.1.left/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297207" />
+    <state width="1825" height="353" key="GridCell.Tab.1.right" timestamp="1588216889571">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1825" height="353" key="GridCell.Tab.1.right/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588216889571" />
+    <state width="1825" height="343" key="GridCell.Tab.1.right/0.27.3840.1053@0.27.3840.1053" timestamp="1585623308308" />
+    <state width="1825" height="343" key="GridCell.Tab.1.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582517749971" />
+    <state width="1874" height="343" key="GridCell.Tab.1.right/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584336949059" />
+    <state width="1825" height="343" key="GridCell.Tab.1.right/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584934861371" />
+    <state width="1874" height="354" key="GridCell.Tab.1.right/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882988418" />
+    <state width="1825" height="353" key="GridCell.Tab.1.right/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198831" />
+    <state width="1825" height="343" key="GridCell.Tab.1.right/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935580" />
+    <state width="1874" height="343" key="GridCell.Tab.1.right/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297207" />
+    <state width="1825" height="353" key="GridCell.Tab.2.bottom" timestamp="1588216889572">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1825" height="353" key="GridCell.Tab.2.bottom/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588216889572" />
+    <state width="1825" height="343" key="GridCell.Tab.2.bottom/0.27.3840.1053@0.27.3840.1053" timestamp="1585623308311" />
+    <state width="1825" height="343" key="GridCell.Tab.2.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582517749971" />
+    <state width="1874" height="343" key="GridCell.Tab.2.bottom/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584336949059" />
+    <state width="1825" height="343" key="GridCell.Tab.2.bottom/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584934861373" />
+    <state width="1874" height="354" key="GridCell.Tab.2.bottom/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882988418" />
+    <state width="1825" height="353" key="GridCell.Tab.2.bottom/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198831" />
+    <state width="1825" height="343" key="GridCell.Tab.2.bottom/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935586" />
+    <state width="1874" height="343" key="GridCell.Tab.2.bottom/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297208" />
+    <state width="1825" height="353" key="GridCell.Tab.2.center" timestamp="1588216889572">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1825" height="353" key="GridCell.Tab.2.center/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588216889572" />
+    <state width="1825" height="343" key="GridCell.Tab.2.center/0.27.3840.1053@0.27.3840.1053" timestamp="1585623308309" />
+    <state width="1825" height="343" key="GridCell.Tab.2.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582517749971" />
+    <state width="1874" height="343" key="GridCell.Tab.2.center/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584336949059" />
+    <state width="1825" height="343" key="GridCell.Tab.2.center/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584934861372" />
+    <state width="1874" height="354" key="GridCell.Tab.2.center/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882988418" />
+    <state width="1825" height="353" key="GridCell.Tab.2.center/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198831" />
+    <state width="1825" height="343" key="GridCell.Tab.2.center/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935585" />
+    <state width="1874" height="343" key="GridCell.Tab.2.center/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297208" />
+    <state width="1825" height="353" key="GridCell.Tab.2.left" timestamp="1588216889571">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1825" height="353" key="GridCell.Tab.2.left/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588216889571" />
+    <state width="1825" height="343" key="GridCell.Tab.2.left/0.27.3840.1053@0.27.3840.1053" timestamp="1585623308308" />
+    <state width="1825" height="343" key="GridCell.Tab.2.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582517749971" />
+    <state width="1874" height="343" key="GridCell.Tab.2.left/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584336949059" />
+    <state width="1825" height="343" key="GridCell.Tab.2.left/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584934861372" />
+    <state width="1874" height="354" key="GridCell.Tab.2.left/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882988418" />
+    <state width="1825" height="353" key="GridCell.Tab.2.left/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198831" />
+    <state width="1825" height="343" key="GridCell.Tab.2.left/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935585" />
+    <state width="1874" height="343" key="GridCell.Tab.2.left/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297208" />
+    <state width="1825" height="353" key="GridCell.Tab.2.right" timestamp="1588216889572">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1825" height="353" key="GridCell.Tab.2.right/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588216889572" />
+    <state width="1825" height="343" key="GridCell.Tab.2.right/0.27.3840.1053@0.27.3840.1053" timestamp="1585623308310" />
+    <state width="1825" height="343" key="GridCell.Tab.2.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582517749971" />
+    <state width="1874" height="343" key="GridCell.Tab.2.right/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584336949059" />
+    <state width="1825" height="343" key="GridCell.Tab.2.right/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584934861372" />
+    <state width="1874" height="354" key="GridCell.Tab.2.right/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882988418" />
+    <state width="1825" height="353" key="GridCell.Tab.2.right/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198831" />
+    <state width="1825" height="343" key="GridCell.Tab.2.right/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935586" />
+    <state width="1874" height="343" key="GridCell.Tab.2.right/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297208" />
+    <state x="1920" y="384" width="1156" height="373" key="NewPhpClassDialog" timestamp="1584673346319">
+      <screen x="49" y="27" width="3791" height="1053" />
+    </state>
+    <state x="2582" y="366" width="585" height="373" key="NewPhpClassDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584248511457" />
+    <state x="1920" y="384" width="1156" height="373" key="NewPhpClassDialog/49.27.3791.1053@49.27.3791.1053" timestamp="1584673346319" />
+    <state x="2298" y="463" width="249" height="153" key="NewPhpFileDialog" timestamp="1586720099056">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2298" y="463" width="249" height="153" key="NewPhpFileDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586720099056" />
+    <state x="755" y="478" width="399" height="149" key="NewPhpFileDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1582503051484" />
+    <state x="2298" y="463" key="NewPhpFileDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581264160635" />
+    <state x="2298" y="463" width="249" height="153" key="NewPhpFileDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584299248937" />
+    <state x="417" y="478" width="249" height="149" key="NewPhpFileDialog/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584925944225" />
+    <state x="2298" y="463" key="NewPhpFileDialog/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580967352771" />
+    <state x="795" y="478" width="482" height="149" key="NewPhpFileDialog/49.27.3791.1053@49.27.3791.1053" timestamp="1584673494244" />
+    <state x="1969" y="284" width="479" height="550" key="RollbackChangesDialog" timestamp="1582359767068">
       <screen x="0" y="27" width="3840" height="1053" />
     </state>
-    <state x="2544" y="253" key="run.anything.popup/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1576507429956" />
+    <state x="2660" y="264" width="479" height="550" key="RollbackChangesDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1579745017628" />
+    <state x="1969" y="284" key="RollbackChangesDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1582359767068" />
+    <state x="2475" y="275" width="800" height="551" key="Vcs.Push.Dialog.v2" timestamp="1586554504537">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2475" y="275" width="800" height="551" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586554504537" />
+    <state x="2475" y="275" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581399626539" />
+    <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584337075234" />
+    <state x="590" y="295" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583171256309" />
+    <state x="2475" y="275" width="800" height="528" key="Vcs.Push.Dialog.v2/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580882959131" />
+    <state x="590" y="295" key="Vcs.Push.Dialog.v2/49.27.1871.1053@49.27.1871.1053" timestamp="1583770086860" />
+    <state x="2256" y="169" width="566" height="677" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1586713887660">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2256" y="169" width="566" height="677" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586713887660" />
+    <state x="2256" y="169" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1582771900318" />
+    <state x="2256" y="169" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583817869376" />
+    <state x="376" y="192" width="321" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583299941970" />
+    <state x="2256" y="169" width="840" height="739" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580795589233" />
+    <state x="376" y="192" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1584760314008" />
+    <state x="1920" y="246" width="1920" height="834" key="dock-window-1" timestamp="1584676068987">
+      <screen x="49" y="27" width="3791" height="1053" />
+    </state>
+    <state x="2069" y="266" width="1720" height="855" key="dock-window-1/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583713744432" />
+    <state x="1920" y="246" width="1920" height="834" key="dock-window-1/49.27.3791.1053@49.27.3791.1053" timestamp="1584676068987" />
+    <state x="2516" y="132" width="728" height="813" key="find.popup" timestamp="1586116501337">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2516" y="132" width="728" height="813" key="find.popup/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586116501337" />
+    <state x="2516" y="132" width="868" height="813" key="find.popup/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584250401102" />
+    <state x="2544" y="253" width="690" height="695" key="run.anything.popup" timestamp="1586709215275">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2544" y="253" width="690" height="695" key="run.anything.popup/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586709215275" />
+    <state x="1248" y="274" key="run.anything.popup/0.27.3840.1053@0.27.3840.1053" timestamp="1582505223795" />
+    <state x="2544" y="253" width="690" height="695" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581286544022" />
+    <state x="657" y="274" width="672" height="677" key="run.anything.popup/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584916551359" />
+    <state x="2544" y="253" width="690" height="695" key="run.anything.popup/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580772797166" />
+    <state x="2543" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1586097689342">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2543" y="257" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586097689342" />
+    <state x="2543" y="257" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581283549697" />
+    <state x="2543" y="257" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584586072156" />
+    <state x="2543" y="257" width="672" height="678" key="search.everywhere.popup/49.27.1871.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580793537744" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/controllers/MainController.php</url>
+          <line>50</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/views/subfamily/index.php</url>
+          <line>15</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/controllers/ValidatedListItemController.php</url>
+          <line>103</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/controllers/BuyRequestController.php</url>
+          <line>303</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/controllers/DemandController.php</url>
+          <line>249</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

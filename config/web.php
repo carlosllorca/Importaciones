@@ -2,39 +2,76 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
-
+$mail =  require __DIR__ . '/email.php';
 $config = [
     'id' => 'basic',
     'language'=>'es',
+    'sourceLanguage' => 'es-ES',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'timezone'=>'America/New_York',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '123',
+        ],
+        'assetManager' => [
+            'bundles' => [
+                'rce\material\Assets' => [
+                    'siteTitle' => 'SEISA',
+                    'sidebarColor' => 'azure',
+                    'sidebarBackgroundColor' => 'white',
+                    'sidebarBackgroundImage' => 'img url'
+                ],
+                'yii\bootstrap\BootstrapAsset' => [
+                    'css' => [],
+                    'js'=>[]
+                ],
+                'yii\bootstrap\Bootstrap4Asset' => [
+                    'css' => [],
+                    'js'=>[]
+                ],
+            ],
+        ],
+
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'locale' => 'es-ES', //ej. 'es-ES'
+            'language'=>'es-ES',
+            'thousandSeparator' => '.',
+            'decimalSeparator' => ',',
+            'dateFormat' => 'dd/MM/Y',
+            'datetimeFormat' => 'd/M/Y hh:i:ss a',
+            'currencyCode' => '$',
+
+        ],
+        'traza'=>[
+            'class' => 'app\components\TrazaComponent',
+        ],
+        'xlsModels'=>[
+            'class' => 'app\components\XlsModelsComponent',
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
             'identityClass' => 'app\models\User',
+
+            'authTimeout' => 86400,
             'enableAutoLogin' => true,
         ],
 
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
-        ],
+        'mailer' =>$mail,
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

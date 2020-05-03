@@ -13,6 +13,9 @@ use Yii;
  * @property float $price
  * @property int $quantity
  * @property int|null $buy_request_id
+ * @property boolean $internal_distribution
+ * @property boolean $cancelled
+ * @property string $cancelled_msg
  *
  * @property BuyRequest $buyRequest
  * @property Demand $demand
@@ -38,6 +41,9 @@ class DemandItem extends \yii\db\ActiveRecord
             [['demand_id', 'validated_list_item_id', 'quantity', 'buy_request_id'], 'default', 'value' => null],
             [['demand_id', 'validated_list_item_id', 'quantity', 'buy_request_id'], 'integer'],
             [['price'], 'number'],
+            [['internal_distribution','cancelled'], 'boolean'],
+            [['quantity'], 'integer','min'=>0],
+            ['cancelled_msg','string', 'max'=>150],
             [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
             [['demand_id'], 'exist', 'skipOnError' => true, 'targetClass' => Demand::className(), 'targetAttribute' => ['demand_id' => 'id']],
             [['validated_list_item_id'], 'exist', 'skipOnError' => true, 'targetClass' => ValidatedListItem::className(), 'targetAttribute' => ['validated_list_item_id' => 'id']],
@@ -52,9 +58,9 @@ class DemandItem extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'demand_id' => 'Demand ID',
-            'validated_list_item_id' => 'Validated List Item ID',
-            'price' => 'Price',
-            'quantity' => 'Quantity',
+            'validated_list_item_id' => 'Producto',
+            'price' => 'Precio',
+            'quantity' => 'Cantidad',
             'buy_request_id' => 'Buy Request ID',
         ];
     }
@@ -81,5 +87,20 @@ class DemandItem extends \yii\db\ActiveRecord
     public function getValidatedListItem()
     {
         return $this->hasOne(ValidatedListItem::className(), ['id' => 'validated_list_item_id']);
+    }
+    public function status($withHtml=false){
+        if($this->internal_distribution){
+            return $withHtml?"<b class='text-success' >Distribución interna</b>":"Distribución interna";
+        }elseif ($this->cancelled){
+            return $withHtml?"<b class='text-gray'>Cancelado. {$this->cancelled_msg}</b>":$this->cancelled_msg;
+
+        }
+        elseif ($this->buy_request_id){
+            return $withHtml?"<b class='text-success'>{$this->buyRequest->code}</b>":$this->buyRequest->code;
+
+        }else{
+            return $withHtml?"<b class='text-danger'>Sin clasificar</b>":"Sin clasificar";
+        }
+
     }
 }

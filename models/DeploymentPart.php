@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "deployment_part".
  *
@@ -17,6 +17,8 @@ class DeploymentPart extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    const UN_PLAZO=1;
+    const OTRO_ID=5;
     public static function tableName()
     {
         return 'deployment_part';
@@ -40,7 +42,7 @@ class DeploymentPart extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'label' => 'Label',
+            'label' => 'Nombre',
         ];
     }
 
@@ -50,5 +52,8 @@ class DeploymentPart extends \yii\db\ActiveRecord
     public function getDemands()
     {
         return $this->hasMany(Demand::className(), ['deployment_part_id' => 'id']);
+    }
+    public static function combo(){
+        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
     }
 }

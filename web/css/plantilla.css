@@ -1,0 +1,181 @@
+
+
+h4{
+    font-size: 2.3em!important;
+}
+h5,.h5{
+    font-size: 18px !important;
+}
+
+.navbar .navbar-nav .nav-item .nav-link .fa, .navbar .navbar-nav .nav-item .nav-link .material-icons {
+    font-size: 1.25rem;
+    max-width: 24px;
+    margin-top: -1.1em;
+}
+body{
+    font-size: 14px!important;
+}
+.navbar-brand{
+    font-size: 18px!important;
+}
+b{
+    font-weight: bold;
+}
+.navbar .navbar-nav > li > a .material-icons, .navbar .navbar-nav > li > a .fa {
+    font-size: 20px!important;
+}
+
+.dropdown-menu .dropdown-item, .dropdown-menu li>a {
+    font-size: 14px!important;
+}
+.sidebar .nav li .dropdown-menu a, .sidebar .nav li a {
+text-transform: unset;
+}
+.card {
+     font-size: unset;
+}
+[hidden]{
+    display: none!important;
+}
+.show{
+    display: block!important;
+}
+.dropdown-importaciones {
+    padding: 12px 15px!important;
+}
+.moveToLeft{
+    margin-left: -150px!important;
+}
+.text-success, .text-danger {
+    font-weight: bold;
+}
+.badge-inma-tab{
+    top:2px;
+    right: -2px;
+    position: absolute;
+    background:#a94442!important;
+    color: #fff !important;
+    font-weight: bold !important;
+    padding: 4px 7px !important;
+}
+
+@font-face {
+    font-family:Roboto-bold;
+    src: url('/Roboto/Roboto-Bold.ttf');
+}
+@font-face {
+    font-family:Roboto;
+    src: url('/Roboto/Roboto-Regular.ttf');
+}
+.modal-backdrop{
+    opacity: .26;
+    z-index: 1;
+}
+select{
+    -webkit-appearance: menulist!important;
+    -moz-appearance: menulist!important;
+}
+.kv-fileinput-caption{
+    width: 40%!important;
+}
+.input-group-append{
+    width: 60%;
+}
+.fileinput-remove-button{
+    max-width: 45%;
+    margin-right: 2%!important;
+}
+.has-error > .help-block {
+    display: table!important;
+}
+
+
+    .sidebar-mini .sidebar {
+        width: 260px;
+    }
+.sidebar-mini .sidebar:not(:hover)>div>ul>li>ul.show {
+    display: none!important;
+}
+.container{
+    max-width: 100%!important;
+}
+.card .card-header .nav-tabs {
+    padding: 0;
+    font-size: 14px!important;
+}
+.tab-content{
+    border: 1px solid #ddd!important;
+}
+.card{
+    font-size: 14px!important;
+}
+.form-group .bmd-label-static {
+    top:0px!important;
+    font-size: 14px!important;
+}
+.form-control{
+    padding-top: 50px!important;
+    padding-bottom: 20px!important;
+}
+.content{
+    background-color: #eee!important;
+}
+.navbar{
+    background-color: #eee!important;
+}
+
+.form-control{
+    border:0px!important;
+}
+.form-control:focus{
+
+    box-shadow: none!important;
+
+}
+select.form-control{
+    padding-top: 0px!important;
+    padding-bottom: 0px!important;
+    margin-top: 27px!important;
+}
+.nav-tabs{
+    border-bottom: 0px!important;
+}
+.tab-content {
+    min-height: 400px;
+}
+.table thead tr th {
+    font-size: 14px!important;
+}
+.form-control{
+    font-size: 14px!important;
+}
+.kv-fileinput-caption{
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+}
+.popover-header { display: none!important; }
+.hidden{
+    display: none!important;
+}
+.btn.btn-danger {
+    color: #fff!important;
+}
+.btn.btn-success {
+    color: #fff!important;
+}
+.dropdown-importaciones {
+
+    margin: 5px 0px;
+    font-size: 14px!important;
+    padding: 7px 5px !important;
+}
+.btn{
+    font-size: 12px!important;
+}
+
+form{
+    margin-bottom: 0px;
+}
+.modal-footer{
+    padding: 0px!important;
+}

@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "purchase_reason".
  *
@@ -14,6 +14,7 @@ use Yii;
  */
 class PurchaseReason extends \yii\db\ActiveRecord
 {
+    static $COMPRAR_ID=1;
     /**
      * {@inheritdoc}
      */
@@ -40,7 +41,7 @@ class PurchaseReason extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'label' => 'Label',
+            'label' => 'Nombre',
         ];
     }
 
@@ -50,5 +51,8 @@ class PurchaseReason extends \yii\db\ActiveRecord
     public function getDemands()
     {
         return $this->hasMany(Demand::className(), ['purchase_reason_id' => 'id']);
+    }
+    public static function combo(){
+        return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
     }
 }

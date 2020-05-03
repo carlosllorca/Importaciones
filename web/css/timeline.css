@@ -1,0 +1,205 @@
+/* -------------------------------------
+ * For horizontal version, set the
+ * $vertical variable to false
+ * ------------------------------------- */
+/* -------------------------------------
+ * General Style
+ * ------------------------------------- */
+
+.contenedor_hitos {
+
+    margin: 0 20px;
+    padding: 0 3%;
+    width: 100%;
+
+
+    color: #f66b0d;
+
+}
+
+h2 {
+    margin: 3em 0 0 0;
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.label_1{
+    padding-right: 43px;
+    padding-bottom: 10px;
+}
+
+/* -------------------------------------
+ * timeline
+ * ------------------------------------- */
+#timeline {
+    list-style: none;
+    margin: 50px 0 30px 120px;
+    padding-left: 30px;
+    border-left: 8px solid #999999;
+}
+#timeline li {
+    margin: 40px 0;
+    position: relative;
+}
+
+.date {
+    margin-top: -10px;
+    top: 38%;
+    left: -158px;
+    font-size: 0.95em;
+    text-align: center;
+    line-height: 20px;
+    position: absolute;
+}
+
+.circle {
+    margin-top: -10px;
+    top: 50%;
+    left: -44px;
+    width: 20px;
+    height: 20px;
+    background: #F2F2F2;
+    border: 5px solid #999999;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+}
+
+.content {
+
+    padding: 50px 20px 0;
+    border-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 0.5em;
+    position: relative;
+}
+.contentData{
+    margin-top: 15px;
+}
+.content:before, .content:after {
+    content: "";
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border: solid transparent;
+    position: absolute;
+    pointer-events: none;
+    right: 100%;
+}
+.content:before {
+    border-right-color: inherit;
+    border-width: 20px;
+    top: 50%;
+    margin-top: -20px;
+}
+.content:after {
+    border-right-color: #F2F2F2;
+    border-width: 17px;
+    top: 50%;
+    margin-top: -17px;
+}
+
+.contentData {
+    max-height: 0;
+    color: #333333;
+    text-align: justify;
+    word-break: break-word;
+    hyphens: auto;
+    overflow: hidden;
+}
+
+.label_1 {
+    font-size: 16px;
+    position: absolute;
+    z-index: 100;
+    cursor: pointer;
+    margin-left: 10px;
+    top: 20px;
+    transition: transform 0.2s linear;
+}
+
+.radio {
+    display: none!important;
+}
+
+.radio:checked + .relative label {
+    cursor: auto;
+    transform: translateX(42px);
+}
+.radio:checked + .relative .circle {
+    background: #f66b0d;
+}
+.radio:checked ~ .content {
+    max-height: fit-content;
+    border-color: #f66b0d;
+    margin-right: 20px;
+    transform: translateX(20px);
+    transition: max-height 0.4s linear, border-color 0.5s linear, transform 0.2s linear;
+}
+/*.radio:checked ~ .content p {*/
+/*    max-height: max-content;*/
+/*    color: #f66b0d;*/
+/*    transition: color 0.3s linear 0.3s;*/
+/*}*/
+.radio:checked ~ .content .contentData {
+    max-height: max-content;
+    color: #333;
+    transition: color 0.3s linear 0.3s;
+    margin-top: 25px;
+}
+
+/* -------------------------------------
+ * mobile phones (vertical version only)
+ * ------------------------------------- */
+@media screen and (max-width: 767px) {
+    #timeline {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: none;
+    }
+    #timeline li {
+        margin: 50px 0;
+    }
+
+    .label_1 {
+        width: 85%;
+        font-size: 1.1em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: block;
+        transform: translateX(18px);
+    }
+
+    .content {
+        padding-top: 45px;
+        border-color: #eee9dc;
+    }
+    .content:before, .content:after {
+        border: solid transparent;
+        bottom: 100%;
+    }
+    .content:before {
+        border-bottom-color: inherit;
+        border-width: 17px;
+        top: -16px;
+        left: 50px;
+        margin-left: -17px;
+    }
+    .content:after {
+        border-bottom-color: #F2F2F2;
+        border-width: 20px;
+        top: -20px;
+        left: 50px;
+        margin-left: -20px;
+    }
+    /*.content p {*/
+    /*    font-size: 0.9em;*/
+    /*    line-height: 1.4;*/
+    /*}*/
+
+    .circle, .date {
+        display: none;
+    }
+}

@@ -2,7 +2,9 @@
 
 namespace app\models;
 
+use Codeception\Module\Cli;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "client".
@@ -52,10 +54,10 @@ class Client extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'client_code' => 'Client Code',
-            'name' => 'Name',
-            'address' => 'Address',
-            'organism_id' => 'Organism ID',
+            'client_code' => 'Código de cliente',
+            'name' => 'Nombre',
+            'address' => 'Dirección',
+            'organism_id' => 'Organismo',
             'province_ueb' => 'Province Ueb',
         ];
     }
@@ -82,5 +84,13 @@ class Client extends \yii\db\ActiveRecord
     public function getDemands()
     {
         return $this->hasMany(Demand::className(), ['client_id' => 'id']);
+    }
+    public static  function comboUeb(){
+        $models = Client::find()->where(['province_ueb'=>Yii::$app->user->identity->province_ueb])->all();
+        return ArrayHelper::map($models,'id','name');
+    }
+    public static function combo(){
+        $models = Client::find()->all();
+        return ArrayHelper::map($models,'id','name');
     }
 }

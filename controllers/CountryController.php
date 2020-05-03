@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * CountryController implements the CRUD actions for Country model.
  */
-class CountryController extends Controller
+class CountryController extends MainController
 {
     /**
      * {@inheritdoc}
@@ -67,7 +67,8 @@ class CountryController extends Controller
         $model = new Country();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success','País agregado');
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -87,7 +88,8 @@ class CountryController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success','País modificado.');
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
@@ -104,7 +106,12 @@ class CountryController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        try{
+            $this->findModel($id)->delete();
+        }catch (\Exception $exception){
+            Yii::$app->session->setFlash('danger',"No podemos eliminar este elemento. Está siendo utilizado.");
+        }
+
 
         return $this->redirect(['index']);
     }

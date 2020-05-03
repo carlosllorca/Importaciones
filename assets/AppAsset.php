@@ -21,11 +21,21 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        //'css/fontawesome.min.css',
+        'sA/sweetalert.css',
+       // 'css/material-dashboard.min.css',
+        'css/plantilla.css',
+        'css/seisa.css',
+        'css/MaterialIcons.css',
     ];
     public $js = [
+        'sA/sweetalert.min.js',
+
+        'js/axios.min.js',
+        'js/yii_overrides.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        //'yii\bootstrap\BootstrapAsset',
     ];
 }

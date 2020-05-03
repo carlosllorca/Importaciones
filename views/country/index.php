@@ -7,33 +7,43 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\CountrySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Countries';
+$this->title = 'Paises';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="country-index">
+<div class="buy-request-status-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title"><?=$this->title?></h4>
+            <p class="card-category">Listado de paises asociados a los proveedores</p>
+        </div>
+        <div class="card-body" style="padding: 15px">
+            <div class="p-3">
+                <p>
+                    <?= Html::a('Nuevo', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
 
-    <p>
-        <?= Html::a('Create Country', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+                <?php Pjax::begin(); ?>
+                <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'label',
+                        'label',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                        ['class' => 'rce\material\grid\ActionColumn'],
+                    ],
+                ]); ?>
 
-    <?php Pjax::end(); ?>
+                <?php Pjax::end(); ?>
+            </div>
+        </div>
+    </div>
+
+
 
 </div>

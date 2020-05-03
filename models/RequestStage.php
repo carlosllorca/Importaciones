@@ -3,22 +3,25 @@
 namespace app\models;
 
 use Yii;
-
+use yii\db\ActiveRecord;
 /**
  * This is the model class for table "request_stage".
  *
  * @property int $id
- * @property int $offert_id
  * @property string $date_created
  * @property string $date_start
  * @property string $date_end
+ * @property string $nextHitoDate;
  * @property string|null $real_end
  * @property int $stage_id
+ * @property int $buy_request_id
+ * @property string $details
  *
- * @property Offert $offert
+ * @property BuyRequest $buyRequest
  * @property Stage $stage
  */
-class RequestStage extends \yii\db\ActiveRecord
+
+class RequestStage extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -27,6 +30,7 @@ class RequestStage extends \yii\db\ActiveRecord
     {
         return 'request_stage';
     }
+    public $nextHitoDate;
 
     /**
      * {@inheritdoc}
@@ -34,11 +38,12 @@ class RequestStage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['offert_id', 'date_created', 'date_start', 'date_end', 'stage_id'], 'required'],
-            [['offert_id', 'stage_id'], 'default', 'value' => null],
-            [['offert_id', 'stage_id'], 'integer'],
+            [['date_created', 'date_start', 'date_end', 'stage_id', 'buy_request_id'], 'required'],
             [['date_created', 'date_start', 'date_end', 'real_end'], 'safe'],
-            [['offert_id'], 'exist', 'skipOnError' => true, 'targetClass' => Offert::className(), 'targetAttribute' => ['offert_id' => 'id']],
+            [['stage_id', 'buy_request_id'], 'default', 'value' => null],
+            [['stage_id', 'buy_request_id'], 'integer'],
+            [['details','nextHitoDate'], 'string'],
+            [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
             [['stage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Stage::className(), 'targetAttribute' => ['stage_id' => 'id']],
         ];
     }
@@ -50,22 +55,25 @@ class RequestStage extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'offert_id' => 'Offert ID',
-            'date_created' => 'Date Created',
-            'date_start' => 'Date Start',
-            'date_end' => 'Date End',
-            'real_end' => 'Real End',
+            'date_created' => 'Fecha creado',
+            'date_start' => 'Fecha inicio',
+            'date_end' => 'Fecha Fin',
+            'real_end' => 'Cumplido',
+            'details' => 'Observaciones',
+            'nextHitoDate' => 'Fecha de inicio del próximo hito',
             'stage_id' => 'Stage ID',
+            'buy_request_id' => 'Buy Request ID',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getOffert()
+    public function getBuyRequest()
     {
-        return $this->hasOne(Offert::className(), ['id' => 'offert_id']);
+        return $this->hasOne(BuyRequest::className(), ['id' => 'buy_request_id']);
     }
+
 
     /**
      * @return \yii\db\ActiveQuery
@@ -74,4 +82,20 @@ class RequestStage extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Stage::className(), ['id' => 'stage_id']);
     }
+
+    /**
+     * Devuelve el siguiente hito
+     * @return RequestStage|bool
+     */
+    public function nextHito(){
+        $model = self::find()->where(['buy_request_id'=>$this->buy_request_id])
+            ->innerJoinWith('stage')
+            ->andWhere(['stage.order'=>($this->stage->order+1)])
+            ->one();
+        if($model)
+            return $model;
+        else
+            return false;
+    }
+
 }

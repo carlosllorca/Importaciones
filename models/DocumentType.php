@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models;
-
+use yii\helpers\ArrayHelper;
 use Yii;
 
 /**
@@ -9,16 +9,25 @@ use Yii;
  *
  * @property int $id
  * @property string $label
+ * @property string $responsable
  * @property bool $required
+ * @property bool $active
+ * @property int $buy_request_type_id
+ * @property int $order_doc
  *
  * @property BuyRequestDocument[] $buyRequestDocuments
  * @property DocumentTypePermission[] $documentTypePermissions
+ * @property BuyRequestType $buyRequestType
  */
 class DocumentType extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
+    const PLIEGO_ID=1;
+    const PREFORMA_ID=2;
+    const PREFORMA_NACIONAL_ID=15;
+    const FUNDAMENTACION_COMPRA_ID=3;
     public static function tableName()
     {
         return 'document_type';
@@ -30,9 +39,12 @@ class DocumentType extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['label'], 'required'],
-            [['required'], 'boolean'],
+            [['label','responsable','buy_request_type_id','order_doc'], 'required'],
+            [['required','active'], 'boolean'],
             [['label'], 'string', 'max' => 150],
+            [['responsable'], 'string', 'max' => 100],
+            [['buy_request_type_id','order_doc'], 'integer'],
+            [['buy_request_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestType::className(), 'targetAttribute' => ['buy_request_type_id' => 'id']],
         ];
     }
 
@@ -43,8 +55,11 @@ class DocumentType extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'label' => 'Label',
-            'required' => 'Required',
+            'label' => 'Nombre',
+            'required' => 'Requerido',
+            'active' => 'Activo',
+            'order_doc' => 'Orden',
+            'buy_request_type_id' => 'Tipo de solicitud asociada',
         ];
     }
 
@@ -63,4 +78,34 @@ class DocumentType extends \yii\db\ActiveRecord
     {
         return $this->hasMany(DocumentTypePermission::className(), ['document_type_id' => 'id']);
     }
+    /**
+     * Gets query for [[BuyRequestType]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBuyRequestType()
+    {
+        return $this->hasOne(BuyRequestType::className(), ['id' => 'buy_request_type_id']);
+    }
+    public static function combo($differentTo=[]){
+        return ArrayHelper::map(self::find()->where(['active'=>true])
+            ->innerJoinWith('buyRequestType')
+            ->andWhere(['not',['document_type.id'=>$differentTo]])
+            ->orderBy('label')->all(),'id','label',function($model){return $model->buyRequestType->label; });
+    }
+    public function userLoggedCanView(){
+        $model = DocumentTypePermission::findOne(['document_type_id'=>$this->id,'user_id'=>User::userLogged()->id]);
+        if($model&&$model->allow_view){
+            return true;
+        }
+        return false;
+    }
+    public function userLoggedCanUpdate(){
+        $model = DocumentTypePermission::findOne(['document_type_id'=>$this->id,'user_id'=>User::userLogged()->id]);
+        if($model&&$model->allow_update){
+            return true;
+        }
+        return false;
+    }
+
 }

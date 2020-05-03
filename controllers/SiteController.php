@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -61,6 +62,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if(Yii::$app->user->isGuest)
+            return $this->redirect('/site/login');
+
         return $this->render('index');
     }
 
@@ -78,6 +82,10 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            $user=Yii::$app->user->identity;
+            $user->last_login=date('Y-m-d H:i:s');
+            $user->save(false);
+            Yii::$app->traza->saveLog('Usuario autenticado','Se ha autenticado el usuario '.$user->username);
             return $this->goBack();
         }
 
@@ -85,6 +93,14 @@ class SiteController extends Controller
         return $this->render('login', [
             'model' => $model,
         ]);
+    }
+    public function actionMail(){
+        Yii::$app->mailer->compose('demandArrived', [])
+            ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+            ->setTo('carlosllorca89@gmail.com')
+            // ->setBcc('inmaj@codeberrysolutions.com')
+            ->setSubject("Se ha registrado una nueva demanda.")
+            ->send();
     }
 
     /**
@@ -94,7 +110,10 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
+        Yii::$app->traza->saveLog('Usuario sale del sistema','El usuario  '.Yii::$app->user->id.' ha salido del sistema');
         Yii::$app->user->logout();
+        Yii::$app->session->setFlash('success','Su usuario ha sido desconectado satisfactoriamente.');
+
 
         return $this->goHome();
     }
