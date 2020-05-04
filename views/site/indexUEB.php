@@ -2,55 +2,117 @@
 
 
 use miloschuman\highcharts\Highcharts;
-use yii\web\JsExpression;
+
 /* @var $this \yii\web\View */
 $data = [];
-foreach ($query1 as $result){
-    array_push($data,[
-        'name'=>$result['label'],
-        'y'=>$result['count'],
+$data2 = [];
+foreach ($query1 as $result) {
+    array_push($data, [
+        'name' => $result['label'],
+        'y' => $result['count'],
         'color' => $result['color'], // Jane's color
 
     ]);
 }
-echo Highcharts::widget([
-    'scripts' => [
-        'modules/exporting',
-        'themes/grid-light',
-    ],
-    'options' => [
-        'title' => [
-            'text' => 'Estado de sus demandas.',
-        ],
-         'tooltip'=> [
-        'pointFormat'=> '{series.name}: <b>{point.percentage:.1f}%</b>'
-        ],
-        'plotOptions'=>[
-            'pie'=>[
-                 'allowPointSelect'=> true,
-                 'cursor'=> 'pointer',
-                'dataLabels'=> [
-                    'enabled'=> true,
-                    'format'=> '<b>{point.name}</b>: {point.percentage:.1f} %'
-                ]
-            ]
-        ],
-        'series'=>
-        [
-            [
-                'type' => 'pie',
-                'name' => 'Cantidad de demandas',
-                'data' => $data,
-               // 'center' => [100, 80],
-                'size' => 200,
-                'showInLegend' => true,
-                'dataLabels' => [
-                    'enabled' => false,
-                ],
-            ],
-        ]
-    ]
-]);
+$q2x = [];
+$q2y = [];
+foreach ($query2 as $result) {
+    array_push($q2x, $result['fecha']);
+    array_push($q2y, $result['total']);
+
+}
+
 ?>
+<div class="site-index">
+    <h4 class="title">
+        Bienvenido, <?= Yii::$app->user->identity->full_name ?>
+    </h4>
+    <div class="row">
+        <div class="col-sm-10" style="margin: auto">
+            <div class="card">
+                <div class="card-header card-header-primary">
+
+                </div>
+                <div class="card-body" style="padding: 15px">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <?php
+                            echo Highcharts::widget([
+
+                                'options' => [
+                                    'title' => [
+                                        'text' => 'Estado de sus demandas.',
+                                    ],
+                                    'credits' => 'false',
+                                    'tooltip' => [
+                                        'pointFormat' => '<b>Total: {point.y} ({point.percentage:.1f}%)</b>'
+                                    ],
+                                    'plotOptions' => [
+                                        'pie' => [
+                                            'allowPointSelect' => true,
+                                            'cursor' => 'pointer',
+                                            'dataLabels' => [
+                                                'enabled' => true,
+                                                'format' => '<b>{point.name}</b>: {point.percentage:.1f} %'
+                                            ]
+                                        ]
+                                    ],
+                                    'series' =>
+                                        [
+                                            [
+                                                'type' => 'pie',
+                                                'name' => 'Cantidad de demandas',
+                                                'data' => $data,
+                                                // 'center' => [100, 80],
+                                                //  'size' => 250,
+                                                'showInLegend' => true,
+                                                'dataLabels' => [
+                                                    'enabled' => false,
+                                                ],
+                                            ],
+                                        ]
+                                ]
+                            ]);
+                            ?>
+
+                        </div>
+                        <div class="col-md-7">
+                            <?php
+                            echo Highcharts::widget([
+
+                                'options' => [
+                                    'title' => [
+                                        'text' => 'Comportamiento de las demandas en el año.',
+                                    ],
+                                    'credits' => 'false',
+                                    'xAxis' => [
+                                        'categories' => $q2x,
+                                    ],
+                                    'yAxis' => [
+                                        'min' => 0,
+                                        'title' => [
+                                            'text' => 'Demandas enviadas'
+                                        ]
+                                    ],
+
+                                    'series' =>
+                                        [
+                                            [
+                                                'name' => 'Demandas realizadas',
+
+                                                'data' => $q2y,
+                                            ],
+                                        ]
+                                ]
+                            ]);
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 

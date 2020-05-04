@@ -77,6 +77,8 @@ class SiteController extends Controller
 
     public function indexUEB()
     {
+        $max = date('Y-m-d');
+        $min = date('Y-m-d',strtotime ( '-1 year' , strtotime ( $max ) ));
         $connection = Yii::$app->getDb();
         //Demandas por estados;
         $query1 = $connection->createCommand("SELECT
@@ -88,10 +90,20 @@ FROM
 INNER JOIN \"public\".demand_status ON \"public\".demand.demand_status_id = \"public\".demand_status.\"id\"
 INNER JOIN \"public\".client ON \"public\".demand.client_id = \"public\".client.\"id\"
 INNER JOIN \"public\".province_ueb ON \"public\".client.province_ueb = \"public\".province_ueb.\"id\"
-WHERE client.province_ueb= ".User::userLogged()->province_ueb."
+WHERE client.province_ueb= " . User::userLogged()->province_ueb . "
 GROUP BY \"public\".demand_status.label, color")->queryAll();
+        $query2 = $connection->createCommand("SELECT
+ to_char(date(sending_date), 'MM-YY') as fecha, count( to_char(date(sending_date), 'Mon-YY')) as total
+FROM
+	\"public\".demand
+	INNER JOIN \"public\".client ON \"public\".demand.client_id = \"public\".client.\"id\"
+	INNER JOIN \"public\".province_ueb ON \"public\".client.province_ueb = \"public\".province_ueb.\"id\"
+	where sending_date BETWEEN   '".$min."' and '".$max."'
+	and province_ueb.id=".User::userLogged()->province_ueb."
+	GROUP BY fecha
+	ORDER BY fecha ASC")->queryAll();
 
-        return $this->render('indexUEB',['query1'=>$query1]);
+        return $this->render('indexUEB', ['query1' => $query1,'query2'=>$query2]);
     }
 
     /**
