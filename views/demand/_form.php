@@ -15,7 +15,7 @@ use yii\helpers\Url;
     <div class="row">
         <div class="col-md-4">
             <?= $form->field($model, 'organism')->widget(Select2::classname(), [
-                'data' => \app\models\Organism::combo(),
+                'data' => \app\models\Organism::combo(true),
                 'id'=>'cat-id',
                 'options' => ['placeholder' => 'Seleccione ...','id'=>'cat-id',],
 

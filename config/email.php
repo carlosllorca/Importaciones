@@ -1,7 +1,7 @@
 <?php
 return [
     'class' => 'yii\swiftmailer\Mailer',
-    //'useFileTransport' => true, //todo: OJO: Poner en false para que se envien los correos!!!
+    'useFileTransport' => true, //todo: OJO: Poner en false para que se envien los correos!!!
     'htmlLayout' => 'layouts/html',
     'transport' => [
         'class' => 'Swift_SmtpTransport',

@@ -68,13 +68,22 @@ class SiteController extends Controller
         switch (Rbac::getRole()) {
             case Rbac::$UEB:
                 return $this->indexUEB();
+                break;
+            case Rbac::$JEFE_LOGÍSTICA:
+            case Rbac::$LOGISTICA_ID:
+                return $this->actionIndexLogistica();
+                break;
 
         }
 
         return $this->render('index');
     }
 
-
+    /**
+     * Gráficas aplicables a las UEB
+     * @return string
+     * @throws \yii\db\Exception
+     */
     public function indexUEB()
     {
         $max = date('Y-m-d');
@@ -106,6 +115,24 @@ FROM
         return $this->render('indexUEB', ['query1' => $query1,'query2'=>$query2]);
     }
 
+    /**
+     * Gráficas aplicables al Rol Logística
+     */
+    public function actionIndexLogistica(){
+        $connection = Yii::$app->getDb();
+
+
+        //Degloce de demandas activas por UEB y por estado
+        $query3 = $connection->createCommand("select * from view_demandas_activas_x_ueb_x_estado")->queryAll();
+        //Solicitudes de compra activas por estado
+
+        //Solicitudes de compra activas por UEB
+
+        //Solicitudes de compra activas  por tipo
+
+        return $this->render('indexLogistica');
+
+    }
     /**
      * Login action.
      *
