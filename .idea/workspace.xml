@@ -19,14 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="graficos">
-      <change afterPath="$PROJECT_DIR$/models/DataGraphics.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/site/indexLogistica.php" afterDir="false" />
+    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Gráfica demandas por UEB y por estado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/email.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/email.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SiteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Organism.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Organism.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/demand/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DataGraphics.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DataGraphics.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/indexLogistica.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/indexLogistica.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -359,14 +355,7 @@
       <workItem from="1588944816524" duration="87000" />
       <workItem from="1589069526072" duration="2061000" />
       <workItem from="1589122650176" duration="1297000" />
-      <workItem from="1589123967423" duration="14739000" />
-    </task>
-    <task id="LOCAL-00026" summary="Listo lo referente a la demanda">
-      <created>1582771125718</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1582771125718</updated>
+      <workItem from="1589123967423" duration="29516000" />
     </task>
     <task id="LOCAL-00027" summary="Modelo solicitud de compra. Exportado a PDF">
       <created>1582788400769</created>
@@ -704,7 +693,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589072929973</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Gráfica demandas por UEB y por estado">
+      <created>1589143523886</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1589143523887</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -736,7 +732,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Exportar solicitud de compra desde la vista update y la vista view" />
     <MESSAGE value="Grid de solicitud de compras listo" />
     <MESSAGE value="Solucionado flujo en plantillas" />
     <MESSAGE value="Flujo de subida de documentos listo" />
@@ -761,7 +756,8 @@
     <MESSAGE value="Merge branch 'dev'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;web/css/bootstrap.css&#10;#&#9;web/font-awesome/src/assets/less/bootstrap-3.3.5/mixins.less&#10;#&#9;web/font-awesome/src/assets/less/bootstrap-3.3.5/mixins/background-variant.less&#10;#&#9;web/font-awesome/src/assets/less/bootstrap-3.3.5/mixins/labels.less&#10;#&#9;web/font-awesome/src/assets/less/bootstrap-3.3.5/mixins/list-group.less&#10;#&#9;web/font-awesome/src/assets/less/bootstrap-3.3.5/mixins/nav-divider.less&#10;#&#9;web/font-awesome/src/assets/less/bootstrap-3.3.5/mixins/nav-vertical-align.less&#10;#&#9;web/font-awesome/src/assets/less/bootstrap-3.3.5/mixins/pagination.less&#10;#&#9;web/font-awesome/src/assets/less/bootstrap-3.3.5/mixins/panels.less&#10;#&#9;web/font-awesome/src/assets/less/bootstrap-3.3.5/mixins/progress-bar.less&#10;#&#9;web/font-awesome/src/assets/less/bootstrap-3.3.5/mixins/reset-filter.less&#10;#&#9;web/font-awesome/src/assets/less/bootstrap-3.3.5/mixins/size.less&#10;#&#9;web/font-awesome/src/assets/less/bootstrap-3.3.5/mixins/table-row.less&#10;#&#9;web/font-awesome/src/assets/less/bootstrap-3.3.5/mixins/text-emphasis.less&#10;#&#9;web/font-awesome/src/assets/less/bootstrap-3.3.5/mixins/text-overflow.less&#10;#&#9;web/js/bootstrap.js" />
     <MESSAGE value="Primer gráfico listo" />
     <MESSAGE value="graficos" />
-    <option name="LAST_COMMIT_MESSAGE" value="graficos" />
+    <MESSAGE value="Gráfica demandas por UEB y por estado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gráfica demandas por UEB y por estado" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2494" y="201" width="800" height="677" key="#Updates" timestamp="1586532446893">

@@ -60,5 +60,44 @@ class DataGraphics extends Model
         }
         return $finalFormed;
     }
+    public static function solicitudesActivasxTipoYEstado(){
+        $brt = BuyRequestType::find()->all();
+        $estados = BuyRequestStatus::find()->all();
+        $connection = Yii::$app->getDb();
+        $query = $connection->createCommand("select * from view_buy_request_active_all")->queryAll();
 
+        $tipos = [];
+        foreach ($brt as $models){
+            array_push($tipos,$models->label);
+        }
+        $series = [];
+        foreach ($estados as $estado){
+            $data = [];
+
+            foreach ($tipos as $tipo){
+                $val=0;
+                foreach ($query as $q){
+                    if($q['tipo']==$tipo&&$q['estado']==$estado->label){
+                        $val=$q['cantidad'];
+                    }
+                }
+                array_push($data,$val);
+            }
+            array_push($series,[
+               'name'=>$estado->label,
+               'data'=>$data
+            ]);
+        }
+
+        return [$tipos,$series];
+    }
+    public static function edadMaximaDemandaPendiente(){
+        $connection = Yii::$app->getDb();
+        $query = $connection->createCommand("select * from view_edad_maxima_demanda_pendiente")->queryOne();
+        $edad =[0];
+        if($query){
+            $edad = [(int)$query['dias']];
+        }
+        return [$edad];
+    }
 }
