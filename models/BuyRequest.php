@@ -25,6 +25,7 @@ use yii\web\UploadedFile;
  * @property int|null $approved_by
  * @property string|null $cancel_reason
  *  @property int|null $buyer_assigned
+ *  @property string|null $buyer_approved_date
  * @property int|null $buy_approved_by
  * @property string|null $buy_approved_date
  * @property int|null $dt_specialist_assigned
@@ -71,7 +72,7 @@ class BuyRequest extends \yii\db\ActiveRecord
     {
         return [
             [['code', 'created', 'created_by', 'buy_request_status_id', 'buy_request_type_id'], 'required'],
-            [['created', 'last_update', 'approved_date','ganadores'], 'safe'],
+            [['created', 'last_update', 'approved_date','ganadores','buyer_approved_date'], 'safe'],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id', 'approved_by', 'buyer_assigned', 'buy_approved_by', 'dt_specialist_assigned', 'dt_approved_by'], 'default', 'value' => null],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id', 'approved_by','buyer_assigned', 'buy_approved_by', 'dt_specialist_assigned', 'dt_approved_by'], 'integer'],
             [['cancel_reason'], 'string'],

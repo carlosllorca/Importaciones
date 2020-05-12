@@ -79,6 +79,8 @@ class SiteController extends Controller
             case Rbac::$ESP_TECNICO:
                 return $this->render('indexDOPBS');
                 break;
+            case Rbac::$JEFE_COMPRAS:
+                return $this->render('indexJCompras');
 
         }
 

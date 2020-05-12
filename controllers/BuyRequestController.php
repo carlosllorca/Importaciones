@@ -388,6 +388,7 @@ class BuyRequestController extends MainController
     public function actionGolApproved($id){
         $model =$this->findModel($id);
         $model->gol_approved=true;
+        $model->buyer_approved_date=date('Y-m-d');
         $model->save(false);
         Yii::$app->session->setFlash('success','Solicitud aprobada.');
         return $this->redirect(['view','id'=>$model->id]);
@@ -396,6 +397,7 @@ class BuyRequestController extends MainController
         $model =$this->findModel($id);
 
             $model->dt_approved_by=User::userLogged()->id;
+
             $model->dt_approved_date=date('Y-m-d');
             $model->save(false);
 
