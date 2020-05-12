@@ -100,4 +100,50 @@ class DataGraphics extends Model
         }
         return [$edad];
     }
+    public static function gaugeJDOPBS(){
+        $connection = Yii::$app->getDb();
+        $query = $connection->createCommand("select * from view_old_jdopbs")->queryOne();
+        $edad =[0];
+        if($query){
+            $edad = [(int)$query['dias']];
+        }
+        return [$edad];
+
+    }
+    public static function barBuyRequestByDOPBSSpecialistAndType(){
+        $connection = Yii::$app->getDb();
+        $query = $connection->createCommand("select * from view_buy_request_active_x_tipe_x_esp_dopbs")->queryAll();
+        $especialistasActivos =[];
+        $tiposOrdenesActivas = [];
+        $series = [];
+        foreach ($query as $q){
+            if(!in_array($q['esp_dopbs'],$especialistasActivos)){
+                array_push($especialistasActivos,$q['esp_dopbs']);
+            }
+            if(!in_array($q['tipo'],$tiposOrdenesActivas)){
+                array_push($tiposOrdenesActivas,$q['tipo']);
+            }
+        }
+
+        foreach ($tiposOrdenesActivas as $to){
+            $serie = [
+                'name'=>$to,
+                'data'=>[]
+            ];
+            foreach ($especialistasActivos as $ea){
+                $val = 0;
+                foreach ($query as $q){
+                    if($q['esp_dopbs']==$ea&&$q['tipo']==$to){
+                        $val = $q['cantidad'];
+                    }
+                }
+                array_push($serie['data'],$val);
+            }
+            array_push($series,$serie);
+        }
+
+
+        return [$especialistasActivos,$series];
+    }
+
 }

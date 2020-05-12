@@ -73,6 +73,12 @@ class SiteController extends Controller
             case Rbac::$LOGISTICA_ID:
                 return $this->actionIndexLogistica();
                 break;
+            case Rbac::$JEFE_TECNCIO:
+                return $this->render('indexJDOPBS');
+                break;
+            case Rbac::$ESP_TECNICO:
+                return $this->render('indexDOPBS');
+                break;
 
         }
 
@@ -119,16 +125,6 @@ FROM
      * Gráficas aplicables al Rol Logística
      */
     public function actionIndexLogistica(){
-        $connection = Yii::$app->getDb();
-
-
-        //Degloce de demandas activas por UEB y por estado
-        $query3 = $connection->createCommand("select * from view_demandas_activas_x_ueb_x_estado")->queryAll();
-        //Solicitudes de compra activas por estado
-
-        //Solicitudes de compra activas por UEB
-
-        //Solicitudes de compra activas  por tipo
 
         return $this->render('indexLogistica');
 
@@ -150,7 +146,9 @@ FROM
             $user = Yii::$app->user->identity;
             $user->last_login = date('Y-m-d H:i:s');
             $user->save(false);
+
             Yii::$app->traza->saveLog('Usuario autenticado', 'Se ha autenticado el usuario ' . $user->username);
+            Yii::$app->session->setFlash('success','Bienvenido '.$user->full_name);
             return $this->goBack();
         }
 
