@@ -129,6 +129,41 @@ class DataGraphics extends Model
 
         return [$especialistasActivos,$series];
     }
+    public static function barBuyRequestByBuyerAndStatus(){
+        $connection = Yii::$app->getDb();
+        $query = $connection->createCommand("select * from view_buy_request_active_x_status_x_esp_compras")->queryAll();
+        $especialistasActivos =[];
+        $estadosActivos = [];
+        $series = [];
+        foreach ($query as $q){
+            if(!in_array($q['especialista'],$especialistasActivos)){
+                array_push($especialistasActivos,$q['especialista']);
+            }
+            if(!in_array($q['estado'],$estadosActivos)){
+                array_push($estadosActivos,$q['estado']);
+            }
+        }
+
+        foreach ($estadosActivos as $to){
+            $serie = [
+                'name'=>$to,
+                'data'=>[]
+            ];
+            foreach ($especialistasActivos as $ea){
+                $val = 0;
+                foreach ($query as $q){
+                    if($q['especialista']==$ea&&$q['estado']==$to){
+                        $val = $q['cantidad'];
+                    }
+                }
+                array_push($serie['data'],$val);
+            }
+            array_push($series,$serie);
+        }
+
+
+        return [$especialistasActivos,$series];
+    }
     public static function edadMaximaDemandaPendiente(){
         $connection = Yii::$app->getDb();
         $query = $connection->createCommand("select * from view_edad_maxima_demanda_pendiente")->queryOne();

@@ -6,6 +6,7 @@
 use miloschuman\highcharts\Highcharts;
 
 $solicitudesXTipoYEstado = \app\models\DataGraphics::solicitudesActivasxTipoYEstado();
+$solicitudesXEspecialstas = \app\models\DataGraphics::barBuyRequestByBuyerAndStatus();
 ?>
 
 
@@ -134,6 +135,49 @@ $solicitudesXTipoYEstado = \app\models\DataGraphics::solicitudesActivasxTipoYEst
                                             'valueSuffix' => 'Días'
                                         ]
                                     ]]
+                                ]
+                            ]); ?>
+                        </div>
+                        <div class="col-sm-12">
+                            <?= Highcharts::widget([
+                                'scripts' => [
+
+                                    'themes/grid-light',
+                                ],
+                                'options' => [
+
+                                    'credits' => 'false',
+                                    'title' => [
+                                        'text' => 'Carga de trabajo por especialista.'
+                                    ],
+                                    'chart' => [
+                                        'type' => 'column'
+                                    ],
+                                    'yAxis' => [
+                                        'title' => [
+                                            "text" => 'Solicitudes activas'
+                                        ],
+                                        'min' => 0
+
+                                    ],
+                                    'xAxis' => [
+                                        'title' => [
+                                            "text" => 'Especialistas'
+                                        ],
+                                        'crosshair' => true,
+                                        'categories' => $solicitudesXEspecialstas[0],
+
+                                    ],
+                                    'legend' => [
+                                        'enabled' => true
+                                    ],
+                                    'plotOptions' => [
+                                        'column' => [
+                                            'pointPadding' => 0.2,
+                                            'borderWidth' => 0
+                                        ]
+                                    ],
+                                    'series' => $solicitudesXEspecialstas[1]
                                 ]
                             ]); ?>
                         </div>
