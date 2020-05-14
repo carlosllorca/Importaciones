@@ -81,6 +81,9 @@ class SiteController extends Controller
                 break;
             case Rbac::$JEFE_COMPRAS:
                 return $this->render('indexJCompras');
+            case Rbac::$COMPRADOR_INTERNACIONAL:
+                return $this->render('indexCInternacional');
+                break;
 
         }
 
