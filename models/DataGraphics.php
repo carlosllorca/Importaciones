@@ -277,7 +277,7 @@ class DataGraphics extends Model
 
         if ($query) {
             foreach ($query as $q) {
-                array_push($categories, $q['code']);
+                array_push($categories, [$q['code']."<br>".$q['label'].""]);
                 array_push($series[0]['data'],(int) $q['schedule_days']);
                 array_push($series[1]['data'],(int) $q['real_days']);
             }

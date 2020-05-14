@@ -152,6 +152,7 @@ $solicitudesHitosActivos = \app\models\DataGraphics::solicitudesConHitosActivosX
                                     'tooltip'=>[
                                             'shared'=>true
                                     ],
+
                                     'plotOptions' => [
                                         'column' => [
                                             'grouping' => false,

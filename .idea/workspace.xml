@@ -19,11 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Dashboard del Jefe Compras">
-      <change afterPath="$PROJECT_DIR$/views/site/indexCInternacional.php" afterDir="false" />
+    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="dashboard del comprador internacional">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SiteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/DataGraphics.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DataGraphics.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/indexCInternacional.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/indexCInternacional.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -364,14 +363,7 @@
       <workItem from="1589285680072" duration="3269000" />
       <workItem from="1589303807662" duration="604000" />
       <workItem from="1589373789541" duration="2201000" />
-      <workItem from="1589393221463" duration="10805000" />
-    </task>
-    <task id="LOCAL-00031" summary="Gestion de archivos lista.">
-      <created>1583132403681</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1583132403681</updated>
+      <workItem from="1589393221463" duration="12032000" />
     </task>
     <task id="LOCAL-00032" summary="Gestion de documentos">
       <created>1583141207832</created>
@@ -709,7 +701,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589393888257</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="dashboard del comprador internacional">
+      <created>1589433423038</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1589433423038</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -741,7 +740,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="modificaciones en los modelos y la BD para asimliar compras nacionales y 711" />
     <MESSAGE value="agregada descripción al método de pago." />
     <MESSAGE value="Flujo compras nacionales 50%" />
     <MESSAGE value="Ciclo nacional completo. Pendiente revisión final" />
@@ -766,7 +764,8 @@
     <MESSAGE value="Cuadro de mando para el JDOPBS" />
     <MESSAGE value="Parte del Dashboard del jcompras y mejorado gráfico de solicitudes por tipo y estado" />
     <MESSAGE value="Dashboard del Jefe Compras" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dashboard del Jefe Compras" />
+    <MESSAGE value="dashboard del comprador internacional" />
+    <option name="LAST_COMMIT_MESSAGE" value="dashboard del comprador internacional" />
   </component>
   <component name="WindowStateProjectService">
     <state x="625" y="235" width="732" height="644" key="#Inspections" timestamp="1589240512123">
