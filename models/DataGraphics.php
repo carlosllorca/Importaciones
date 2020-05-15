@@ -182,6 +182,48 @@ class DataGraphics extends Model
 
         return [$especialistasActivos, $series];
     }
+    public static function barBuyRequestByDTSpecialistAndStatus($specialist = false)
+    {
+        $connection = Yii::$app->getDb();
+
+        if ($specialist) {
+            $query = $connection->createCommand("select * from view_buy_request_active_x_status_x_esp_dopbs where id_user=" . $specialist . ";")->queryAll();
+        } else {
+            $query = $connection->createCommand("select * from view_buy_request_active_x_status_x_esp_dopbs")->queryAll();
+        }
+
+        $especialistasActivos = [];
+        $estadosActivos = [];
+        $series = [];
+        foreach ($query as $q) {
+            if (!in_array($q['esp_dopbs'], $especialistasActivos)) {
+                array_push($especialistasActivos, $q['esp_dopbs']);
+            }
+            if (!in_array($q['estado'], $estadosActivos)) {
+                array_push($estadosActivos, $q['estado']);
+            }
+        }
+
+        foreach ($estadosActivos as $to) {
+            $serie = [
+                'name' => $to,
+                'data' => []
+            ];
+            foreach ($especialistasActivos as $ea) {
+                $val = 0;
+                foreach ($query as $q) {
+                    if ($q['esp_dopbs'] == $ea && $q['estado'] == $to) {
+                        $val = $q['cantidad'];
+                    }
+                }
+                array_push($serie['data'], $val);
+            }
+            array_push($series, $serie);
+        }
+
+
+        return [$especialistasActivos, $series];
+    }
 
     public static function edadMaximaDemandaPendiente()
     {
@@ -234,6 +276,7 @@ class DataGraphics extends Model
         }
 
         $series = [];
+
         if ($query) {
             foreach ($query as $q) {
                 array_push($series, [
@@ -247,6 +290,28 @@ class DataGraphics extends Model
         }
         return $series;
 
+    }
+    public static function gaugeEspTecnico($especialista = false)
+    {
+        $connection = Yii::$app->getDb();
+        if ($especialista) {
+            $query = $connection->createCommand("select * from view_offert_pending_evaluations where especialista=" . $especialista)->queryAll();
+        } else {
+            $query = $connection->createCommand("select * from view_offert_pending_evaluations")->queryAll();
+        }
+        $series = [];
+        if ($query) {
+            foreach ($query as $q) {
+                array_push($series, [
+                    'name' => $q['buy_request'],
+                    'data' => [(int)$q['dias']],
+                    'tooltip' => [
+                        'valueSuffix' => ' días pendiente de evaluación'
+                    ]
+                ]);
+            }
+        }
+        return $series;
     }
 
     public static function solicitudesConHitosActivosXTiempo($comprador = false)

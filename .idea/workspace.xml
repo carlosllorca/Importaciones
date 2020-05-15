@@ -22,7 +22,7 @@
     <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="dashboard del comprador internacional">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/DataGraphics.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DataGraphics.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/indexCInternacional.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/indexCInternacional.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/indexDOPBS.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/indexDOPBS.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -363,14 +363,7 @@
       <workItem from="1589285680072" duration="3269000" />
       <workItem from="1589303807662" duration="604000" />
       <workItem from="1589373789541" duration="2201000" />
-      <workItem from="1589393221463" duration="12032000" />
-    </task>
-    <task id="LOCAL-00032" summary="Gestion de documentos">
-      <created>1583141207832</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1583141207832</updated>
+      <workItem from="1589393221463" duration="18368000" />
     </task>
     <task id="LOCAL-00033" summary="Subir ficheros">
       <created>1583171252458</created>
@@ -708,7 +701,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589433423038</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="dashboard del comprador internacional">
+      <created>1589434501241</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1589434501241</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
