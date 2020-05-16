@@ -182,6 +182,7 @@ class DataGraphics extends Model
 
         return [$especialistasActivos, $series];
     }
+
     public static function barBuyRequestByDTSpecialistAndStatus($specialist = false)
     {
         $connection = Yii::$app->getDb();
@@ -279,9 +280,13 @@ class DataGraphics extends Model
 
         if ($query) {
             foreach ($query as $q) {
+                $porciento = (int)$q['porciento'];
+                if ($porciento > 110) {
+                    $porciento = 110;
+                }
                 array_push($series, [
                     'name' => $q['code'],
-                    'data' => [(int)$q['porciento']],
+                    'data' => [$porciento],
                     'tooltip' => [
                         'valueSuffix' => '% cumplido'
                     ]
@@ -291,6 +296,7 @@ class DataGraphics extends Model
         return $series;
 
     }
+
     public static function gaugeEspTecnico($especialista = false)
     {
         $connection = Yii::$app->getDb();
@@ -342,13 +348,77 @@ class DataGraphics extends Model
 
         if ($query) {
             foreach ($query as $q) {
-                array_push($categories, [$q['code']."<br>".$q['label'].""]);
-                array_push($series[0]['data'],(int) $q['schedule_days']);
-                array_push($series[1]['data'],(int) $q['real_days']);
+                array_push($categories, [$q['code'] . "<br>" . $q['label'] . ""]);
+                array_push($series[0]['data'], (int)$q['schedule_days']);
+                array_push($series[1]['data'], (int)$q['real_days']);
             }
-
         }
         return [$categories, $series];
+    }
+
+    public static function documentsPendingByUser($user)
+    {
+        $connection = Yii::$app->getDb();
+        $query = $connection->createCommand("select * from view_documents_pending_by_user where view_documents_pending_by_user.id_user=" . $user)->queryAll();
+        $documentType = [];
+        $code = [];
+        $series = [];
+        foreach ($query as $q) {
+            if (!in_array($q['documento'], $documentType)) {
+                array_push($documentType, $q['documento']);
+            }
+            if (!in_array($q['code'], $code)) {
+                array_push($code, $q['code']);
+            }
+        }
+
+        foreach ($documentType as $to) {
+            $serie = [
+                'name' => $to,
+                'data' => []
+            ];
+            foreach ($code as $ea) {
+                $val = 0;
+                foreach ($query as $q) {
+                    if ($q['documento'] == $to && $q['code'] == $ea) {
+                        $val = $q['cantidad'];
+                    }
+                }
+                array_push($serie['data'], $val);
+            }
+            array_push($series, $serie);
+        }
+
+
+        return [$code, $series];
+    }
+
+    public static function pieDocumentsPendingOrderType($user)
+    {
+        $connection = Yii::$app->getDb();
+        $query = $connection->createCommand("select code, tipo_solicitud from view_documents_pending_by_user 
+            where view_documents_pending_by_user.id_user=".$user." group by code, tipo_solicitud"
+        )->queryAll();
+        $serie = [
+            'name' => 'Cantidad',
+            'colorByPoint' => true,
+            'data' => []
+        ];
+        $temp = [];
+        foreach ($query as $q){
+            if(isset($temp[$q['tipo_solicitud']])){
+                $temp[$q['tipo_solicitud']]['y']=$temp[$q['tipo_solicitud']]['y']++;
+            }else{
+                $temp[$q['tipo_solicitud']]=
+                    [   'name'=>$q['tipo_solicitud'],
+                        'y'=>1
+                    ];
+            }
+        }
+        foreach ($temp as $q) {
+            array_push($serie['data'], $q);
+        };
+        return [$serie];
     }
 
 

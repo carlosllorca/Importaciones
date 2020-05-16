@@ -84,6 +84,9 @@ class SiteController extends Controller
             case Rbac::$COMPRADOR_INTERNACIONAL:
                 return $this->render('indexCInternacional');
                 break;
+            case Rbac::$COMITE:
+                return $this->render('indexComite');
+                break;
 
         }
 
