@@ -11,7 +11,7 @@ class DataGraphics extends Model
 {
     public static function demandasActivasXUEB()
     {
-        $connection = Yii::$app->getDb();
+        $connection= self::getConnector();
         $query1 = $connection->createCommand("select * from view_demandas_activas_x_ueb")->queryAll();
         $uebList = [];
         $demandas = [];
@@ -24,7 +24,7 @@ class DataGraphics extends Model
 
     public static function demandasActivasXEstado()
     {
-        $connection = Yii::$app->getDb();
+        $connection= self::getConnector();
         $query = $connection->createCommand("select * from view_demandas_activas_x_estado")->queryAll();
         $estados = [];
         foreach ($query as $q) {
@@ -39,7 +39,7 @@ class DataGraphics extends Model
 
     public static function demandasActivasXUEBXESTADO()
     {
-        $connection = Yii::$app->getDb();
+        $connection= self::getConnector();
         $query = $connection->createCommand("select * from view_demandas_activas_x_ueb_x_estado")->queryAll();
         $current = '';
         $finalFormed = [];
@@ -70,7 +70,7 @@ class DataGraphics extends Model
     public static function solicitudesActivasxTipoYEstado()
     {
 
-        $connection = Yii::$app->getDb();
+        $connection= self::getConnector();
         $query = $connection->createCommand("select * from view_buy_request_by_type_and_status")->queryAll();
         $tiposOrdenesActivas = [];
         $estadosActivos = [];
@@ -105,7 +105,7 @@ class DataGraphics extends Model
 
     public static function barBuyRequestByDOPBSSpecialistAndType()
     {
-        $connection = Yii::$app->getDb();
+        $connection= self::getConnector();
         $query = $connection->createCommand("select * from view_buy_request_active_x_tipe_x_esp_dopbs")->queryAll();
         $especialistasActivos = [];
         $tiposOrdenesActivas = [];
@@ -142,8 +142,7 @@ class DataGraphics extends Model
 
     public static function barBuyRequestByBuyerAndStatus($buyer = false)
     {
-        $connection = Yii::$app->getDb();
-
+        $connection= self::getConnector();
         if ($buyer) {
             $query = $connection->createCommand("select * from view_buy_request_active_x_status_x_esp_compras where id_user=" . $buyer . ";")->queryAll();
         } else {
@@ -185,8 +184,7 @@ class DataGraphics extends Model
 
     public static function barBuyRequestByDTSpecialistAndStatus($specialist = false)
     {
-        $connection = Yii::$app->getDb();
-
+        $connection= self::getConnector();
         if ($specialist) {
             $query = $connection->createCommand("select * from view_buy_request_active_x_status_x_esp_dopbs where id_user=" . $specialist . ";")->queryAll();
         } else {
@@ -228,7 +226,7 @@ class DataGraphics extends Model
 
     public static function edadMaximaDemandaPendiente()
     {
-        $connection = Yii::$app->getDb();
+        $connection= self::getConnector();
         $query = $connection->createCommand("select * from view_edad_maxima_demanda_pendiente")->queryOne();
         $edad = [0];
         if ($query) {
@@ -241,7 +239,7 @@ class DataGraphics extends Model
 
     public static function gaugeJDOPBS()
     {
-        $connection = Yii::$app->getDb();
+        $connection= self::getConnector();
         $query = $connection->createCommand("select * from view_old_jdopbs")->queryOne();
         $edad = [0];
         if ($query) {
@@ -255,7 +253,7 @@ class DataGraphics extends Model
 
     public static function gaugeJCompras()
     {
-        $connection = Yii::$app->getDb();
+        $connection= self::getConnector();
         $query = $connection->createCommand("select * from view_old_jcompras")->queryOne();
         $edad = [0];
         if ($query) {
@@ -269,7 +267,7 @@ class DataGraphics extends Model
 
     public static function gaugeCInternacional($comprador = false)
     {
-        $connection = Yii::$app->getDb();
+        $connection= self::getConnector();
         if ($comprador) {
             $query = $connection->createCommand("select * from view_buy_request_bidding_time where buyer_assigned=" . $comprador)->queryAll();
         } else {
@@ -299,7 +297,7 @@ class DataGraphics extends Model
 
     public static function gaugeEspTecnico($especialista = false)
     {
-        $connection = Yii::$app->getDb();
+        $connection= self::getConnector();
         if ($especialista) {
             $query = $connection->createCommand("select * from view_offert_pending_evaluations where especialista=" . $especialista)->queryAll();
         } else {
@@ -322,7 +320,7 @@ class DataGraphics extends Model
 
     public static function solicitudesConHitosActivosXTiempo($comprador = false)
     {
-        $connection = Yii::$app->getDb();
+        $connection= self::getConnector();
         if ($comprador) {
             $query = $connection->createCommand("select * from view_stages_actives_and_expired where buyer_assigned=" . $comprador)->queryAll();
         } else {
@@ -358,7 +356,7 @@ class DataGraphics extends Model
 
     public static function documentsPendingByUser($user)
     {
-        $connection = Yii::$app->getDb();
+        $connection= self::getConnector();
         $query = $connection->createCommand("select * from view_documents_pending_by_user where view_documents_pending_by_user.id_user=" . $user)->queryAll();
         $documentType = [];
         $code = [];
@@ -395,7 +393,7 @@ class DataGraphics extends Model
 
     public static function pieDocumentsPendingOrderType($user)
     {
-        $connection = Yii::$app->getDb();
+        $connection= self::getConnector();
         $query = $connection->createCommand("select code, tipo_solicitud from view_documents_pending_by_user 
             where view_documents_pending_by_user.id_user=".$user." group by code, tipo_solicitud"
         )->queryAll();
@@ -419,6 +417,11 @@ class DataGraphics extends Model
             array_push($serie['data'], $q);
         };
         return [$serie];
+    }
+    private function getConnector(){
+        $connection = Yii::$app->getDb();
+        $query = $connection->createCommand(" SET TIMEZONE='America/Havana';")->execute();
+        return $connection;
     }
 
 

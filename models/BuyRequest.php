@@ -30,6 +30,9 @@ use yii\web\UploadedFile;
  * @property string|null $buy_approved_date
  * @property int|null $dt_specialist_assigned
  * @property string|null $dt_approved_date
+ * @property string|null $approve_start
+ * @property string|null $closed_date
+ * @property string|null $execution_start
  * @property int|null $dt_approved_by
 
  * @property FileInput $blank_contract
@@ -75,7 +78,7 @@ class BuyRequest extends \yii\db\ActiveRecord
             [['created', 'last_update', 'approved_date','ganadores','buyer_approved_date'], 'safe'],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id', 'approved_by', 'buyer_assigned', 'buy_approved_by', 'dt_specialist_assigned', 'dt_approved_by'], 'default', 'value' => null],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id', 'approved_by','buyer_assigned', 'buy_approved_by', 'dt_specialist_assigned', 'dt_approved_by'], 'integer'],
-            [['cancel_reason'], 'string'],
+            [['cancel_reason','approve_start','execution_start'], 'string'],
             [['code'], 'string', 'max' => 50],
 
             [['buy_request_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestStatus::className(), 'targetAttribute' => ['buy_request_status_id' => 'id']],

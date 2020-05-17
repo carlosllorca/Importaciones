@@ -30,6 +30,7 @@ use ZipArchive;
  * @property int|null $transport_days
  * @property int|null $build_days
  * @property string|null $message
+ * @property string|null $bidding_ready_date
  *
  * @property FileInput $blank_contract
  * @property FileInput $pliego
@@ -78,7 +79,7 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
             [['buy_request_id'], 'required'],
             [['buy_request_id',  'destiny_id', 'payment_instrument_id', 'buy_condition_id'], 'default', 'value' => null],
             [['buy_request_id', 'destiny_id', 'payment_instrument_id', 'buy_condition_id'], 'integer'],
-            [['bidding_start', 'bidding_end','ganadores'], 'safe'],
+            [['bidding_start', 'bidding_end','ganadores','bidding_ready_date'], 'safe'],
             [['message','bidding_start','bidding_end','buy_condition_id'],'required','on'=>self::SCENARIO_GENERATE_LICITACION],
             [['transport_days','build_days'],'required','on'=>self::SCENARIO_START_TRANSPORTATION],
             [['transport_days','build_days'],'integer','min'=>0,'max'=>999],

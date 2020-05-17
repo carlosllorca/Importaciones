@@ -409,6 +409,10 @@ class BuyRequestController extends MainController
 
             $model->buy_request_status_id=BuyRequestStatus::$LICITANDO;
             $model->save(false);
+            if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
+                $model->buyRequestInternational->bidding_ready_date=date('Y-m-d');
+                $model->buyRequestInternational->save(false);
+            }
             $model->buy_approved_by=User::userLogged()->id;
             $model->buy_approved_date=date('Y-m-d');
             $model->save(false);
@@ -670,7 +674,9 @@ class BuyRequestController extends MainController
 
                 }
                 $model->buyRequest->buy_request_status_id=BuyRequestStatus::$EVALUANDO_OFERTAS;
+                $model->buyRequest->approve_start=date('Y-m-d');//Fecha en que se escogió el ganador
                 $model->buyRequest->save(false);
+
                 $model->save(false);
                 $model->generateFiledTree($url);
                 Yii::$app->session->setFlash('success','Hemos presentado el expediente correctamente. Se ha generado el árbol de documentos necesarios para la aprobación.');
@@ -731,6 +737,7 @@ class BuyRequestController extends MainController
 
                     if ($form->load(Yii::$app->request->post()) && $form->save()) {
                         $model->buy_request_status_id=BuyRequestStatus::$EN_PROCESO;
+                        $model->execution_start=date('Y-m-d');
                         $model->save(false);
                         $current = $model->lastUploadDocumentDate();
 
@@ -801,10 +808,7 @@ class BuyRequestController extends MainController
         $dias = abs($dias); $dias = floor($dias);
         return $dias;
     }
-    public function updateStage($id){
 
-
-    }
     public function actionStageSuccess($id,$setSuccess=true){
         $model= RequestStage::findOne($id);
         $nextHito = $model->nextHito();
@@ -845,6 +849,7 @@ class BuyRequestController extends MainController
 
             if($model->buyRequest->cicloCompletado()){
                 $model->buyRequest->buy_request_status_id=BuyRequestStatus::$CERRADA;
+                $model->buyRequest->closed_date=date('Y-m-d');
                 $model->buyRequest->save(false);
                 Yii::$app->session->setFlash('success','Has concluido el último hito. La orden ha sido cerrada.');
             }
