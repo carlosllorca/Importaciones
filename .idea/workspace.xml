@@ -19,13 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Dashboard de Comité">
-      <change afterPath="$PROJECT_DIR$/controllers/BuyRequestInternationalController.php" afterDir="false" />
+    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Agregando algunas fechas a la licitación">
+      <change afterPath="$PROJECT_DIR$/views/site/indexCNacional.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/BuyRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BuyRequestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestInternational.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestInternational.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DataGraphics.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DataGraphics.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SiteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/document-type/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/document-type/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/document-type/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/document-type/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +210,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="enableYiiStorm" value="true" />
     <property name="langName" value="en" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/site" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -224,17 +224,17 @@
     <property name="yiicFile" value="" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/mail" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/console" />
-      <recent name="$PROJECT_DIR$/commands" />
-      <recent name="$PROJECT_DIR$/views/final-destiny" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tabpanel" />
       <recent name="$PROJECT_DIR$/web/css" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views/site" />
+      <recent name="$PROJECT_DIR$/mail" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/console" />
+      <recent name="$PROJECT_DIR$/commands" />
     </key>
   </component>
   <component name="RunManager">
@@ -367,14 +367,7 @@
       <workItem from="1589303807662" duration="604000" />
       <workItem from="1589373789541" duration="2201000" />
       <workItem from="1589393221463" duration="19238000" />
-      <workItem from="1589633623637" duration="14531000" />
-    </task>
-    <task id="LOCAL-00035" summary="Modificaciones luego de la reunion del lunes">
-      <created>1583595452808</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1583595452808</updated>
+      <workItem from="1589633623637" duration="21417000" />
     </task>
     <task id="LOCAL-00036" summary="Modificaciones luego de la reunion del lunes">
       <created>1583597796852</created>
@@ -712,7 +705,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589649446069</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Agregando algunas fechas a la licitación">
+      <created>1589677165632</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1589677165632</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -744,7 +744,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Ciclo nacional completo. Pendiente revisión final" />
     <MESSAGE value="Ciclo nacional completo.Revizado" />
     <MESSAGE value="Ciclo internacional revisado" />
     <MESSAGE value="Creadas los modelos necesarios para los 711" />
@@ -769,7 +768,8 @@
     <MESSAGE value="dashboard del comprador internacional" />
     <MESSAGE value="dashboard del especialista tecnico" />
     <MESSAGE value="Dashboard de Comité" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dashboard de Comité" />
+    <MESSAGE value="Agregando algunas fechas a la licitación" />
+    <option name="LAST_COMMIT_MESSAGE" value="Agregando algunas fechas a la licitación" />
   </component>
   <component name="WindowStateProjectService">
     <state x="625" y="235" width="732" height="644" key="#Inspections" timestamp="1589240512123">
@@ -1025,7 +1025,7 @@
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583171256309" />
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/49.27.1871.1053@49.27.1871.1053" timestamp="1583770086860" />
     <state x="606" y="295" key="Vcs.Push.Dialog.v2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1589288344587" />
-    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1589677078784">
+    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1589686066075">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="2256" y="169" width="566" height="677" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588481783603" />
@@ -1033,7 +1033,7 @@
     <state x="2256" y="169" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583817869376" />
     <state x="376" y="192" width="321" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583299941970" />
     <state x="376" y="192" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1584760314008" />
-    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1589677078784" />
+    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1589686066075" />
     <state x="1920" y="246" width="1920" height="834" key="dock-window-1" timestamp="1584676068987">
       <screen x="49" y="27" width="3791" height="1053" />
     </state>

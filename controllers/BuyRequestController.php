@@ -705,6 +705,7 @@ class BuyRequestController extends MainController
             }
             $br = $model->buyRequest();
             $br->buy_request_status_id=BuyRequestStatus::$EVALUANDO_OFERTAS;
+            $br->approve_start=date('Y-m-d');
             $br->save(false);
 
             $model->generateFiledTree($url);
@@ -728,6 +729,8 @@ class BuyRequestController extends MainController
     }
     public function actionSendToMonitoring($id){
         $model = $this->findModel($id);
+        $model->execution_start=date('Y-m-d');
+        $model->save(false);
         switch ($model->buy_request_type_id){
             case BuyRequestType::$INTERNACIIONAL_ID:
                 if($model->allDocumentOk()){
@@ -737,7 +740,7 @@ class BuyRequestController extends MainController
 
                     if ($form->load(Yii::$app->request->post()) && $form->save()) {
                         $model->buy_request_status_id=BuyRequestStatus::$EN_PROCESO;
-                        $model->execution_start=date('Y-m-d');
+
                         $model->save(false);
                         $current = $model->lastUploadDocumentDate();
 
