@@ -21,8 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="listo el view de la orden de compra internacional.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DataGraphics.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DataGraphics.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/left.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/left.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +44,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="informes" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
