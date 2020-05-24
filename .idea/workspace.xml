@@ -19,8 +19,50 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Organizacion alfabetica de nomencladores.">
+    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Adicionando propiedades para registrar la fecha/hpra de la creació y ultimo registro de las entidades.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyCondition.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyCondition.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequest711.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest711.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestDocument.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestDocument.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestInternational.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestInternational.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestStatus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Certification.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Certification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/CertificationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/CertificationType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/CertificationValidatedListItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/CertificationValidatedListItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Country.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Country.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Demand.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Demand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DemandItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DemandItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DemandStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DemandStatus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DeploymentPart.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DeploymentPart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Destiny.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Destiny.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DocumentStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentStatus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DocumentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DocumentTypePermission.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentTypePermission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/EmailNotify.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/EmailNotify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/FinalDestiny.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/FinalDestiny.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/FormCloseNationalBidding.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/FormCloseNationalBidding.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Log.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Log.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Offert.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Offert.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Organism.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Organism.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/PaymentInstrument.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/PaymentInstrument.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/PaymentMethod.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/PaymentMethod.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Provider.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Provider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ProviderValidatedList.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ProviderValidatedList.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ProvinceUeb.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ProvinceUeb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/PurchaseReason.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/PurchaseReason.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/RequestStage.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/RequestStage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/SellerRequirement.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/SellerRequirement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Stage.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Stage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Subfamily.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Subfamily.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Um.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Um.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ValidatedList.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ValidatedList.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ValidatedListItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ValidatedListItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/WarrantyTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/WarrantyTime.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -366,13 +408,6 @@
       <workItem from="1590079476610" duration="7000" />
       <workItem from="1590190413999" duration="24621000" />
     </task>
-    <task id="LOCAL-00039" summary="Solicitud de ofertas listo">
-      <created>1583727686334</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1583727686334</updated>
-    </task>
     <task id="LOCAL-00040" summary="Funcionalidad para modificar el tiempo de la licitación">
       <created>1583770077438</created>
       <option name="number" value="00040" />
@@ -709,7 +744,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590288790975</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Adicionando propiedades para registrar la fecha/hpra de la creació y ultimo registro de las entidades.">
+      <created>1590294863399</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1590294863399</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -741,7 +783,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="transformar a 711 y separar productos a una nueva 711" />
     <MESSAGE value="Clasificar la orden. Lita para empezar a trabajarla" />
     <MESSAGE value="Creando 711. Ciclo completado." />
     <MESSAGE value="Plantilla de correos.&#10;Email nueva demanda." />
@@ -766,7 +807,8 @@
     <MESSAGE value="Revision completa de órdenes nacionales y ordenes internacionales" />
     <MESSAGE value="listo el view de la orden de compra internacional." />
     <MESSAGE value="Organizacion alfabetica de nomencladores." />
-    <option name="LAST_COMMIT_MESSAGE" value="Organizacion alfabetica de nomencladores." />
+    <MESSAGE value="Adicionando propiedades para registrar la fecha/hpra de la creació y ultimo registro de las entidades." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adicionando propiedades para registrar la fecha/hpra de la creació y ultimo registro de las entidades." />
   </component>
   <component name="WindowStateProjectService">
     <state x="625" y="235" width="732" height="644" key="#Inspections" timestamp="1589240512123">

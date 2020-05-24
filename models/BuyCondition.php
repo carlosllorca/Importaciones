@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\db\ActiveRecord;
+use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "buy_condition".
  *

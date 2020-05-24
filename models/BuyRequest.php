@@ -11,7 +11,7 @@ use yii\db\Exception;
 use yii\helpers\ArrayHelper;
 use yii\web\ForbiddenHttpException;
 use yii\web\UploadedFile;
-
+use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "buy_request".
  *

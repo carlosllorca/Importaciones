@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
-
+use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "subfamily".
  *

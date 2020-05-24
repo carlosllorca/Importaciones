@@ -7,7 +7,7 @@ use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
-
+use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "user".
  *

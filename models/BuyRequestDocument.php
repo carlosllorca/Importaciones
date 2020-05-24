@@ -5,7 +5,7 @@ namespace app\models;
 use kartik\file\FileInput;
 use Yii;
 use yii\db\ActiveRecord;
-
+use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "buy_request_document".
  *

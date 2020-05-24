@@ -11,7 +11,7 @@ use yii\db\ActiveRecord;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 use ZipArchive;
-
+use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "buy_request_international".
  *

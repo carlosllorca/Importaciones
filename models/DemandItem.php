@@ -4,7 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
-
+use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "demand_item".
  *
