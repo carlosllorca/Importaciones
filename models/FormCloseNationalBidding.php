@@ -6,7 +6,7 @@ use kartik\file\FileInput;
 use Yii;
 use yii\base\Model;
 use yii\web\UploadedFile;
-
+use yii\behaviors\TimestampBehavior;
 /**
  * LoginForm is the model behind the login form.
  *

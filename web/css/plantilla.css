@@ -179,3 +179,10 @@ form{
 .modal-footer{
     padding: 0px!important;
 }
+#user_form select{
+    margin-top: 0px !important;
+    border-bottom: 1px solid #cecece!important;
+}
+.main-panel>.navbar{
+    background-color: #fff !important;
+}

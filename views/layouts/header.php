@@ -6,10 +6,10 @@ use yii\helpers\Html;
 ?>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " style="background-color: #fff!important;">
     <div class="container-fluid">
         <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#">Dashboard</a>
+            <a class="navbar-brand" href="/">SIGCL-SEISA</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -20,14 +20,7 @@ use yii\helpers\Html;
         <div class="collapse navbar-collapse justify-content-end">
 
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons">dashboard</i>
-                        <p class="d-lg-none d-md-block">
-                            Stats
-                        </p>
-                    </a>
-                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="material-icons">notifications</i>
@@ -52,14 +45,14 @@ use yii\helpers\Html;
                         </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="/user/my-account">Mi cuenta</a>
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" style="padding: 0;">
                             <?php
                             echo Html::beginForm(['/site/logout'], 'post');
                             echo Html::submitButton(
-                                'Logout (' . Yii::$app->user->identity->username . ')',
+                                'Salir (' . Yii::$app->user->identity->username . ')',
                                 ['class' => 'btn btn-link logout']
                             );
                             echo Html::endForm();

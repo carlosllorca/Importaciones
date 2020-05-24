@@ -3,7 +3,8 @@
 namespace app\models;
 
 use Yii;
-
+use yii\db\ActiveRecord;
+use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "log".
  *
@@ -42,7 +43,24 @@ class Log extends \yii\db\ActiveRecord
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
+    /**
+     * Setea la información de la última modificación de la tupla.
+     * @return array|array[]
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at','updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
 
+                ],
+                'value' => date('Y-m-d H:i:s'),
+            ],
+        ];
+    }
     /**
      * {@inheritdoc}
      */

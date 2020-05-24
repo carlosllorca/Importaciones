@@ -179,3 +179,7 @@ select.form-control{
     color: #0e0e0e;
     padding: 3px;
 }
+.selectedColor{
+    background-color: rgba(11, 170, 0, 0.82) !important;
+    font-weight: bold;
+}

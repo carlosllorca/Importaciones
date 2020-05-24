@@ -1,8 +1,9 @@
-
 <?php
-    use app\models\Rbac;
-    $menu = $img = "";
-    $config = new rce\material\Config();
+
+use app\models\Rbac;
+
+$menu = $img = "";
+$config = new rce\material\Config();
 if (class_exists('common\models\Menu')) {
     // advence template
     $menu = common\models\Menu::getMenu();
@@ -10,19 +11,12 @@ if (class_exists('common\models\Menu')) {
 }
 
 ?>
-<div class="sidebar" data-color="<?= $config::sidebarColor()  ?>" data-background-color="<?= $config::sidebarBackgroundColor()  ?>">
+<div class="sidebar" data-color="<?= $config::sidebarColor() ?>"
+     data-background-color="<?= $config::sidebarBackgroundColor() ?>">
     <div class="logo">
-        <a href="#" class="simple-text logo-mini">
-            <?php
-            if(empty($config::logoMini())) { ?>
-                <img src="<?=$directoryAsset;?>/img/favicon.png" style="max-width: 30px;">
-            <?php } else {
-                echo $config::logoMini();
-            }
-            ?>
-        </a>
-        <a href="#" class="simple-text logo-normal">
-            <?= $config::siteTitle()  ?>
+
+        <a href="/" class="simple-text logo-normal">
+            <?= $config::siteTitle() ?>
         </a>
     </div>
     <div class="sidebar-wrapper">
@@ -34,18 +28,18 @@ if (class_exists('common\models\Menu')) {
                 </a>
             </li>
             <?php
-            if(Yii::$app->user->can('demand/index')){
-            ?>
-            <li class="<?= \app\controllers\MainController::determineActive('demand') ?>">
-                <a class="nav-link" href="/demand/index">
-                    <i class="material-icons">content_paste</i>
-                    <p>Demandas</p>
-                </a>
-            </li>
-            <?php
+            if (Yii::$app->user->can('demand/index')) {
+                ?>
+                <li class="<?= \app\controllers\MainController::determineActive('demand') ?>">
+                    <a class="nav-link" href="/demand/index">
+                        <i class="material-icons">content_paste</i>
+                        <p>Demandas</p>
+                    </a>
+                </li>
+                <?php
 
             }
-            if(Yii::$app->user->can('buyrequest/index')){
+            if (Yii::$app->user->can('buyrequest/index')) {
                 ?>
                 <li class="<?= \app\controllers\MainController::determineActive('buy-request') ?>">
                     <a class="nav-link" href="/buy-request/index">
@@ -56,7 +50,7 @@ if (class_exists('common\models\Menu')) {
                 <?php
 
             }
-            if(Yii::$app->user->can('client/index')){
+            if (Yii::$app->user->can('client/index')) {
                 ?>
                 <li class="<?= \app\controllers\MainController::determineActive('client') ?>">
                     <a class="nav-link" href="/client/index">
@@ -84,7 +78,7 @@ if (class_exists('common\models\Menu')) {
 
 
             <?php
-            if(Yii::$app->user->can('provinceueb/index')){
+            if (Yii::$app->user->can('provinceueb/index')) {
                 ?>
                 <li class="<?= \app\controllers\MainController::determineActive('province-ueb') ?>">
                     <a class="nav-link" href="/province-ueb/index">
@@ -111,7 +105,7 @@ if (class_exists('common\models\Menu')) {
             }
             ?>
             <?php
-            if(Yii::$app->user->can('validatedlist/index')){
+            if (Yii::$app->user->can('validatedlist/index')) {
                 ?>
                 <li class="<?= \app\controllers\MainController::determineActive('validated-list') ?><?= \app\controllers\MainController::determineActive('validated-list-item') ?>">
                     <a class="nav-link" href="/validated-list/index">
@@ -141,34 +135,35 @@ if (class_exists('common\models\Menu')) {
             if (Yii::$app->user->can('user/index')) {
                 ?>
                 <li>
-                    <a class=" nav-link pointer <?= Rbac::getRole() != Rbac::$ROOT ? 'hidden' : '' ?>" data-toggle="collapse"
+                    <a class=" nav-link pointer <?= Rbac::getRole() != Rbac::$ROOT ? 'hidden' : '' ?>"
+                       data-toggle="collapse"
                        data-target="#submenu1">
                         <i class="material-icons">dashboard</i>
                         <p>Nomencladores</p>
                     </a>
                     <ul class="nav nav-list  mt-0 submenus  <?= \app\controllers\MainController::determineExpand('nomencaladores') ?>"
                         id="submenu1">
-                        <?=$this->render('menu-item',['permission'=>'buyrequeststatus','section'=>'buy-request-status','title'=>'Estado solicitud de compra'])?>
-                        <?=$this->render('menu-item',['permission'=>'buyrequesttype','section'=>'buy-request-type','title'=>'Tipos de Solicitud de compra'])?>
-                        <?=$this->render('menu-item',['permission'=>'certification','section'=>'certification','title'=>'Certificados'])?>
-                        <?=$this->render('menu-item',['permission'=>'certificationtype','section'=>'certification-type','title'=>'Categorías de Certificados'])?>
-                        <?=$this->render('menu-item',['permission'=>'finaldestiny','section'=>'final-destiny','title'=>'Destinos finales de los 711'])?>
-                        <?=$this->render('menu-item',['permission'=>'country','section'=>'country','title'=>'Paises'])?>
-                        <?=$this->render('menu-item',['permission'=>'demandstatus','section'=>'demand-status','title'=>'Estado demanda'])?>
-                        <?=$this->render('menu-item',['permission'=>'deploymentpart','section'=>'deployment-part','title'=>'Partes de entrega'])?>
-                        <?=$this->render('menu-item',['permission'=>'documenttype','section'=>'document-type','title'=>'Tipo de documento'])?>
-                        <?=$this->render('menu-item',['permission'=>'providerstatus','section'=>'provider-status','title'=>'Estado del proveedor'])?>
-                        <?=$this->render('menu-item',['permission'=>'organism','section'=>'organism','title'=>'Organismo'])?>
-                        <?=$this->render('menu-item',['permission'=>'paymentmethod','section'=>'payment-method','title'=>'Método de pago'])?>
-                        <?=$this->render('menu-item',['permission'=>'purchasereason','section'=>'purchase-reason','title'=>'Motivo de la compra'])?>
-                        <?=$this->render('menu-item',['permission'=>'stage','section'=>'stage','title'=>'Hito'])?>
-                        <?=$this->render('menu-item',['permission'=>'sellerrequirement','section'=>'seller-requirement','title'=>'Rquerimiento del vendedor'])?>
-                        <?=$this->render('menu-item',['permission'=>'um','section'=>'um','title'=>'Unidad de medida'])?>
-                        <?=$this->render('menu-item',['permission'=>'warrantytime','section'=>'warranty-time','title'=>'Tiempo de garantía'])?>
-                        <?=$this->render('menu-item',['permission'=>'buycondition','section'=>'buy-condition','title'=>'Condición de compra'])?>
-                        <?=$this->render('menu-item',['permission'=>'destiny','section'=>'destiny','title'=>'Destino'])?>
-                        <?=$this->render('menu-item',['permission'=>'paymentinstrument','section'=>'payment-instrument','title'=>'Instrumento de pago'])?>
-                        <?=$this->render('menu-item',['permission'=>'documentstatus','section'=>'document-status','title'=>'Estados de los documentos'])?>
+                        <?= $this->render('menu-item', ['permission' => 'certificationtype', 'section' => 'certification-type', 'title' => 'Categorías de Certificados']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'certification', 'section' => 'certification', 'title' => 'Certificados']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'buycondition', 'section' => 'buy-condition', 'title' => 'Condiciónes de compra']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'destiny', 'section' => 'destiny', 'title' => 'Destinos']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'finaldestiny', 'section' => 'final-destiny', 'title' => 'Destinos finales 711']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'providerstatus', 'section' => 'provider-status', 'title' => 'Estado proveedores']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'demandstatus', 'section' => 'demand-status', 'title' => 'Estados demandas']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'buyrequeststatus', 'section' => 'buy-request-status', 'title' => 'Estados solicitudes de compra']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'documentstatus', 'section' => 'document-status', 'title' => 'Estados de documentos']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'stage', 'section' => 'stage', 'title' => 'Hitos']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'paymentinstrument', 'section' => 'payment-instrument', 'title' => 'Instrumentos de pago']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'paymentmethod', 'section' => 'payment-method', 'title' => 'Métodos de pago']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'purchasereason', 'section' => 'purchase-reason', 'title' => 'Motivos de la compra']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'organism', 'section' => 'organism', 'title' => 'Organismo']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'country', 'section' => 'country', 'title' => 'Paises']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'deploymentpart', 'section' => 'deployment-part', 'title' => 'Partes de entrega']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'sellerrequirement', 'section' => 'seller-requirement', 'title' => 'Requerimientos de vendedor']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'warrantytime', 'section' => 'warranty-time', 'title' => 'Tiempos de garantía']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'documenttype', 'section' => 'document-type', 'title' => 'Tipos de documentos']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'buyrequesttype', 'section' => 'buy-request-type', 'title' => 'Tipos de Solicitudes de compra']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'um', 'section' => 'um', 'title' => 'Unidades de medida']) ?>
                     </ul>
                 </li>
                 <?php

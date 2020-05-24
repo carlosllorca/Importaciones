@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use yii\db\ActiveRecord;
+use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "demand".
  *
@@ -108,6 +110,24 @@ class Demand extends \yii\db\ActiveRecord
             [['seller_requirement_id'], 'exist', 'skipOnError' => true, 'targetClass' => SellerRequirement::className(), 'targetAttribute' => ['seller_requirement_id' => 'id']],
             [['validated_list_id'], 'exist', 'skipOnError' => true, 'targetClass' => ValidatedList::className(), 'targetAttribute' => ['validated_list_id' => 'id']],
             [['waranty_time_id'], 'exist', 'skipOnError' => true, 'targetClass' => WarrantyTime::className(), 'targetAttribute' => ['waranty_time_id' => 'id']],
+        ];
+    }
+    /**
+     * Setea la información de la última modificación de la tupla.
+     * @return array|array[]
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at','updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+
+                ],
+                'value' => date('Y-m-d H:i:s'),
+            ],
         ];
     }
 
@@ -455,6 +475,27 @@ class Demand extends \yii\db\ActiveRecord
         }
         return implode(' ',$array);
     }
+    public function addOrUpdateDemandItem($itemId,$quantity){
+        $model = DemandItem::findOne([
+            'validated_list_item_id'=>$itemId,
+            'demand_id'=>$this->id
+        ]);
+        if($model&&$quantity==0){
+            $model->delete();
+            return false;
+        }
+        if(!$model){
+            $model =new DemandItem([
+                'validated_list_item_id'=>$itemId,
+                'demand_id'=>$this->id
+            ]);
+        }
+        $model->price = $model->validatedListItem->price;
+        $model->quantity= $quantity;
+        $model->save(false);
+        return $model;
+    }
+
 
 
 
