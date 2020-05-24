@@ -271,7 +271,7 @@ $seriesData = \app\models\DataGraphics::linearComparativeBuyRequest($model->id);
                 </div>
             </div>
             <?php
-            if (Yii::$app->user->can('buyrequest/viewpropuestas') && $model->buy_request_status_id != \app\models\BuyRequestStatus::$BORRADOR_ID) {
+            if (Yii::$app->user->can('buyrequest/viewpropuestas') &&$model->buy_request_type_id==\app\models\BuyRequestType::$INTERNACIIONAL_ID&& $model->buy_request_status_id != \app\models\BuyRequestStatus::$BORRADOR_ID) {
                 ?>
                 <div class="col-sm-6 card">
 
@@ -357,7 +357,7 @@ $seriesData = \app\models\DataGraphics::linearComparativeBuyRequest($model->id);
             }
             ?>
             <?php
-            if (Yii::$app->user->can('buyrequest/viewpropuestas') && $model->buy_request_status_id != \app\models\BuyRequestStatus::$BORRADOR_ID) {
+            if (Yii::$app->user->can('buyrequest/viewpropuestas') &&$model->buy_request_type_id==\app\models\BuyRequestType::$INTERNACIIONAL_ID && $model->buy_request_status_id != \app\models\BuyRequestStatus::$BORRADOR_ID) {
                 ?>
                 <div class="col-sm-6 card">
 

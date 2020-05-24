@@ -425,24 +425,48 @@ class DataGraphics extends Model
         return [$serie];
     }
     public  static function linearComparativeBuyRequest($buyReuestId){
-        $series =[
-            [
-                'name'=>'Tiempo aprobado',
-                'data'=> [3,3,3,14,7,50]
-            ]
-        ];
         $model = BuyRequest::findOne($buyReuestId);
-        $steepsName =
-            [
-                'Aprobación de la dirección logística',
-                'Aprobación de la dirección técnica',
-                'Aprobación de la dirección  de compras',
-                'Licitación',
-                'Seleccion de ganadores y creación del expediente y envío a direcciones funcionales',
-                'Aprobación de la compra'
+        if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
+            $series =[
+                [
+                    'name'=>'Tiempo aprobado',
+                    'data'=> [3,3,3,14,7,50]
+                ]
             ];
 
-        $ave = self::getAverageBuyRequestTypeInternacional();
+            $steepsName =
+                [
+                    'Aprobación de la dirección logística',
+                    'Aprobación de la dirección técnica',
+                    'Aprobación de la dirección  de compras',
+                    'Licitación',
+                    'Seleccion de ganadores y creación del expediente y envío a direcciones funcionales',
+                    'Aprobación de la compra'
+                ];
+
+            $ave = self::getAverageBuyRequestTypeInternacional();
+
+        }else{
+            $series =[
+                [
+                    'name'=>'Tiempo aprobado',
+                    'data'=> [3,3,3,7,50]
+                ]
+            ];
+
+            $steepsName =
+                [
+                    'Aprobación de la dirección logística',
+                    'Aprobación de la dirección técnica',
+                    'Aprobación de la dirección  de compras',
+                    'Seleccion de ganadores y creación del expediente y envío a direcciones funcionales',
+                    'Aprobación de la compra'
+                ];
+
+            $ave = self::getAverageBuyRequestTypeNacional($model->buy_request_type_id);
+        }
+
+
         if($ave){
             array_push($series,
                 [
@@ -452,7 +476,12 @@ class DataGraphics extends Model
             );
         }
         $connection= self::getConnector();
-        $query = $connection->createCommand("select * from view_internacional_buy_steep where code='".$model->code."'")->queryOne();
+        if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
+            $query = $connection->createCommand("select * from view_internacional_buy_steep where code='".$model->code."'")->queryOne();
+        }else{
+            $query = $connection->createCommand("select * from view_nacional_buy_steep where code='".$model->code."'")->queryOne();
+        }
+
         if($query){
             $values = [];
             foreach ($query as $item) {
@@ -474,6 +503,23 @@ class DataGraphics extends Model
     private function getAverageBuyRequestTypeInternacional(){
         $connection= self::getConnector();
         $query = $connection->createCommand("select * from view_avg_internacional")->queryOne();
+
+        if($query){
+            $response = [];
+            foreach ($query as $value){
+
+                array_push($response,(int)$value);
+            }
+            return $response;
+        }else{
+            return false;
+        }
+
+
+    }
+    private function getAverageBuyRequestTypeNacional($typ){
+        $connection= self::getConnector();
+        $query = $connection->createCommand("select * from view_avg_nacional where buy_request_type_id=".$typ)->queryOne();
 
         if($query){
             $response = [];

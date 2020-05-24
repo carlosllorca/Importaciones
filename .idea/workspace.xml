@@ -19,12 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Revision completa de órdenes nacionales y ordenes internacionales">
+    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="listo el view de la orden de compra internacional.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/DataGraphics.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DataGraphics.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/buy-request/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/site.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -368,14 +366,7 @@
       <workItem from="1589633623637" duration="22035000" />
       <workItem from="1589863058715" duration="7000" />
       <workItem from="1590079476610" duration="7000" />
-      <workItem from="1590190413999" duration="23287000" />
-    </task>
-    <task id="LOCAL-00037" summary="Antes de generar el xls de la sol compra">
-      <created>1583633841024</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1583633841024</updated>
+      <workItem from="1590190413999" duration="24621000" />
     </task>
     <task id="LOCAL-00038" summary="Listo el modelo de solicitud de compra internacional en formatos pdf y xls.">
       <created>1583715736458</created>
@@ -713,7 +704,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589725765484</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="listo el view de la orden de compra internacional.">
+      <created>1590283968765</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1590283968766</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -745,7 +743,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Ciclo internacional revisado" />
     <MESSAGE value="Creadas los modelos necesarios para los 711" />
     <MESSAGE value="transformar a 711 y separar productos a una nueva 711" />
     <MESSAGE value="Clasificar la orden. Lita para empezar a trabajarla" />
@@ -770,7 +767,8 @@
     <MESSAGE value="Dashboard de Comité" />
     <MESSAGE value="Agregando algunas fechas a la licitación" />
     <MESSAGE value="Revision completa de órdenes nacionales y ordenes internacionales" />
-    <option name="LAST_COMMIT_MESSAGE" value="Revision completa de órdenes nacionales y ordenes internacionales" />
+    <MESSAGE value="listo el view de la orden de compra internacional." />
+    <option name="LAST_COMMIT_MESSAGE" value="listo el view de la orden de compra internacional." />
   </component>
   <component name="WindowStateProjectService">
     <state x="625" y="235" width="732" height="644" key="#Inspections" timestamp="1589240512123">
