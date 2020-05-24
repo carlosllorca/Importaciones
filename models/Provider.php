@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "provider".
@@ -55,7 +56,24 @@ class Provider extends \yii\db\ActiveRecord
             $this->addError($attribute,'Seleccione al menos un elemento.');
         }
     }
+    /**
+     * Setea la información de la última modificación de la tupla.
+     * @return array|array[]
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at','updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
 
+                ],
+                'value' => date('Y-m-d H:i:s'),
+            ],
+        ];
+    }
     /**
      * {@inheritdoc}
      */

@@ -19,9 +19,29 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="listo el view de la orden de compra internacional.">
+    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Organizacion alfabetica de nomencladores.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/left.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/left.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyCondition.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyCondition.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequest711.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest711.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestDocument.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestDocument.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestInternational.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestInternational.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestStatus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/BuyRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Certification.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Certification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/CertificationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/CertificationType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/CertificationValidatedListItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/CertificationValidatedListItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Country.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Country.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Demand.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Demand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DemandItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DemandItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DemandStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DemandStatus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DeploymentPart.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DeploymentPart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Destiny.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Destiny.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DocumentStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentStatus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DocumentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DocumentTypePermission.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentTypePermission.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +64,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="informes" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -213,7 +233,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+    <property name="settings.editor.selected.configurable" value="database.main" />
     <property name="themeName" value="" />
     <property name="useYiiMigrations" value="true" />
     <property name="yiicFile" value="" />
@@ -366,13 +386,6 @@
       <workItem from="1589863058715" duration="7000" />
       <workItem from="1590079476610" duration="7000" />
       <workItem from="1590190413999" duration="24621000" />
-    </task>
-    <task id="LOCAL-00038" summary="Listo el modelo de solicitud de compra internacional en formatos pdf y xls.">
-      <created>1583715736458</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1583715736458</updated>
     </task>
     <task id="LOCAL-00039" summary="Solicitud de ofertas listo">
       <created>1583727686334</created>
@@ -710,7 +723,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590283968766</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Organizacion alfabetica de nomencladores.">
+      <created>1590288790975</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1590288790975</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -742,7 +762,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Creadas los modelos necesarios para los 711" />
     <MESSAGE value="transformar a 711 y separar productos a una nueva 711" />
     <MESSAGE value="Clasificar la orden. Lita para empezar a trabajarla" />
     <MESSAGE value="Creando 711. Ciclo completado." />
@@ -767,7 +786,8 @@
     <MESSAGE value="Agregando algunas fechas a la licitación" />
     <MESSAGE value="Revision completa de órdenes nacionales y ordenes internacionales" />
     <MESSAGE value="listo el view de la orden de compra internacional." />
-    <option name="LAST_COMMIT_MESSAGE" value="listo el view de la orden de compra internacional." />
+    <MESSAGE value="Organizacion alfabetica de nomencladores." />
+    <option name="LAST_COMMIT_MESSAGE" value="Organizacion alfabetica de nomencladores." />
   </component>
   <component name="WindowStateProjectService">
     <state x="625" y="235" width="732" height="644" key="#Inspections" timestamp="1589240512123">
@@ -778,11 +798,11 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2494" y="201" width="800" height="677" key="#Updates/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586532446893" />
-    <state x="629" y="222" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588878552836">
+    <state x="629" y="222" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590289143969">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="2499" y="200" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588481748982" />
-    <state x="629" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1588878552836" />
+    <state x="629" y="222" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590289143969" />
     <state x="2560" y="357" width="630" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584234195337">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -800,13 +820,14 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="3062" y="27" width="748" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583040726381" />
-    <state x="2605" y="290" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586124024550">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="731" y="310" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590293558489">
+      <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="2605" y="290" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586124024550" />
     <state x="2605" y="290" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584894538057" />
     <state x="717" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1584925492606" />
     <state x="885" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/49.27.3791.1053@49.27.3791.1053" timestamp="1583030137059" />
+    <state x="731" y="310" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590293558489" />
     <state x="2663" y="480" width="424" height="144" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1583638504791">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -844,7 +865,7 @@
     </state>
     <state x="2663" y="310" width="424" height="484" key="FileChooserDialogImpl/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584220342809" />
     <state x="787" y="329" width="424" height="491" key="FileChooserDialogImpl/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1589373833661" />
-    <state width="1802" height="340" key="GridCell.Tab.0.bottom" timestamp="1590259904044">
+    <state width="1240" height="275" key="GridCell.Tab.0.bottom" timestamp="1590291359973">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state width="1825" height="353" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588600591845" />
@@ -855,8 +876,8 @@
     <state width="1825" height="353" key="GridCell.Tab.0.bottom/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198831" />
     <state width="1825" height="343" key="GridCell.Tab.0.bottom/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935578" />
     <state width="1874" height="343" key="GridCell.Tab.0.bottom/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297207" />
-    <state width="1802" height="340" key="GridCell.Tab.0.bottom/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590259904044" />
-    <state width="1802" height="340" key="GridCell.Tab.0.center" timestamp="1590259904044">
+    <state width="1240" height="275" key="GridCell.Tab.0.bottom/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590291359973" />
+    <state width="1240" height="275" key="GridCell.Tab.0.center" timestamp="1590291359973">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state width="1825" height="353" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588600591845" />
@@ -867,8 +888,8 @@
     <state width="1825" height="353" key="GridCell.Tab.0.center/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198831" />
     <state width="1825" height="343" key="GridCell.Tab.0.center/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935577" />
     <state width="1874" height="343" key="GridCell.Tab.0.center/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297206" />
-    <state width="1802" height="340" key="GridCell.Tab.0.center/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590259904044" />
-    <state width="1802" height="340" key="GridCell.Tab.0.left" timestamp="1590259904044">
+    <state width="1240" height="275" key="GridCell.Tab.0.center/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590291359973" />
+    <state width="1240" height="275" key="GridCell.Tab.0.left" timestamp="1590291359973">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state width="1825" height="353" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588600591844" />
@@ -879,8 +900,8 @@
     <state width="1825" height="353" key="GridCell.Tab.0.left/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198830" />
     <state width="1825" height="343" key="GridCell.Tab.0.left/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935575" />
     <state width="1874" height="343" key="GridCell.Tab.0.left/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297206" />
-    <state width="1802" height="340" key="GridCell.Tab.0.left/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590259904044" />
-    <state width="1802" height="340" key="GridCell.Tab.0.right" timestamp="1590259904044">
+    <state width="1240" height="275" key="GridCell.Tab.0.left/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590291359973" />
+    <state width="1240" height="275" key="GridCell.Tab.0.right" timestamp="1590291359973">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state width="1825" height="353" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588600591845" />
@@ -891,7 +912,7 @@
     <state width="1825" height="353" key="GridCell.Tab.0.right/49.27.1871.1053/1920.0.1920.1080@49.27.1871.1053" timestamp="1586146198831" />
     <state width="1825" height="343" key="GridCell.Tab.0.right/49.27.1871.1053@49.27.1871.1053" timestamp="1585615935577" />
     <state width="1874" height="343" key="GridCell.Tab.0.right/49.27.3791.1053@49.27.3791.1053" timestamp="1584676297206" />
-    <state width="1802" height="340" key="GridCell.Tab.0.right/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590259904044" />
+    <state width="1240" height="275" key="GridCell.Tab.0.right/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590291359973" />
     <state width="1802" height="340" key="GridCell.Tab.1.bottom" timestamp="1590259904045">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -1007,10 +1028,10 @@
       <screen x="0" y="27" width="3840" height="1053" />
     </state>
     <state x="1969" y="284" key="RollbackChangesDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1582359767068" />
-    <state x="485" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1589286672919">
+    <state x="485" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1590290183272">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="485" y="188" width="1022" height="737" key="SettingsEditor/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1589286672919" />
+    <state x="485" y="188" width="1022" height="737" key="SettingsEditor/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590290183272" />
     <state x="606" y="295" width="800" height="551" key="Vcs.Push.Dialog.v2" timestamp="1589288344587">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -1019,7 +1040,7 @@
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583171256309" />
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/49.27.1871.1053@49.27.1871.1053" timestamp="1583770086860" />
     <state x="606" y="295" key="Vcs.Push.Dialog.v2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1589288344587" />
-    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1589686066075">
+    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1590290394328">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="2256" y="169" width="566" height="677" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588481783603" />
@@ -1027,7 +1048,7 @@
     <state x="2256" y="169" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583817869376" />
     <state x="376" y="192" width="321" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583299941970" />
     <state x="376" y="192" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1584760314008" />
-    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1589686066075" />
+    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590290394328" />
     <state x="1920" y="246" width="1920" height="834" key="dock-window-1" timestamp="1584676068987">
       <screen x="49" y="27" width="3791" height="1053" />
     </state>
