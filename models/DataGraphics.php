@@ -9,6 +9,11 @@ use Yii;
 
 class DataGraphics extends Model
 {
+    private function getConnector(){
+        $connection = Yii::$app->getDb();
+        $query = $connection->createCommand(" SET TIMEZONE='America/Havana';")->execute();
+        return $connection;
+    }
     public static function demandasActivasXUEB()
     {
         $connection= self::getConnector();
@@ -394,6 +399,7 @@ class DataGraphics extends Model
     public static function pieDocumentsPendingOrderType($user)
     {
         $connection= self::getConnector();
+
         $query = $connection->createCommand("select code, tipo_solicitud from view_documents_pending_by_user 
             where view_documents_pending_by_user.id_user=".$user." group by code, tipo_solicitud"
         )->queryAll();
@@ -418,11 +424,72 @@ class DataGraphics extends Model
         };
         return [$serie];
     }
-    private function getConnector(){
-        $connection = Yii::$app->getDb();
-        $query = $connection->createCommand(" SET TIMEZONE='America/Havana';")->execute();
-        return $connection;
+    public  static function linearComparativeBuyRequest($buyReuestId){
+        $series =[
+            [
+                'name'=>'Tiempo aprobado',
+                'data'=> [3,3,3,14,7,50]
+            ]
+        ];
+        $model = BuyRequest::findOne($buyReuestId);
+        $steepsName =
+            [
+                'Aprobación de la dirección logística',
+                'Aprobación de la dirección técnica',
+                'Aprobación de la dirección  de compras',
+                'Licitación',
+                'Seleccion de ganadores y creación del expediente y envío a direcciones funcionales',
+                'Aprobación de la compra'
+            ];
+
+        $ave = self::getAverageBuyRequestTypeInternacional();
+        if($ave){
+            array_push($series,
+                [
+                    'name'=>'Promedio histórico',
+                    'data'=>$ave
+                ]
+            );
+        }
+        $connection= self::getConnector();
+        $query = $connection->createCommand("select * from view_internacional_buy_steep where code='".$model->code."'")->queryOne();
+        if($query){
+            $values = [];
+            foreach ($query as $item) {
+                if($item!=$model->code)
+                    if($item===null)
+                        array_push($values,$item);
+                    else{
+                        array_push($values,(int)$item);
+                    }
+            }
+            array_push($series,
+                [
+                    'name'=>$model->code,
+                    'data'=>$values
+                ]);
+        }
+        return [$steepsName,$series];
     }
+    private function getAverageBuyRequestTypeInternacional(){
+        $connection= self::getConnector();
+        $query = $connection->createCommand("select * from view_avg_internacional")->queryOne();
+
+        if($query){
+            $response = [];
+            foreach ($query as $value){
+
+                array_push($response,(int)$value);
+            }
+            return $response;
+        }else{
+            return false;
+        }
+
+
+    }
+
+
 
 
 }

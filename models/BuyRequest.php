@@ -240,6 +240,10 @@ class BuyRequest extends \yii\db\ActiveRecord
     {
         return $this->hasMany(RequestStage::className(), ['buy_request_id' => 'id']);
     }
+
+    /**
+     * @return RequestStage[]
+     */
     public function requestStageOrdenados()
     {
         return RequestStage::find()->innerJoinWith('stage')->where(['stage.active'=>true])->andWhere(['buy_request_id'=>$this->id])->orderBy('stage.order')->all();
@@ -283,9 +287,30 @@ class BuyRequest extends \yii\db\ActiveRecord
 
     /**
      * Demandas asociadas a las solicitudes de compra
+     * @return Demand[]
      */
     public function getDemands(){
         return Demand::find()->innerJoinWith('demandItems')->where(['demand_item.buy_request_id'=>$this->id])->groupBy('demand.id')->all();
+    }
+    /**
+     * Tipos de demanda asociadas a la solicitud de compra
+     * @return ValidatedList[]
+     */
+    public function getDemandsType(){
+        $demandsType =[];
+        $dId = [];
+        $data =  Demand::find()->innerJoinWith('demandItems')->where(['demand_item.buy_request_id'=>$this->id])->groupBy('demand.id')->all();
+        foreach ($data as $d){
+            /**
+             * @var $d Demand
+             */
+            if(!in_array($d->validated_list_id,$dId)){
+                array_push($dId,$d->validated_list_id);
+                array_push($demandsType,$d->validatedList);
+
+            }
+        }
+        return $demandsType;
     }
     /**
      * Relación de productos agrupados por tipo categoría
@@ -450,6 +475,24 @@ class BuyRequest extends \yii\db\ActiveRecord
         }
         return true;
     }
+    public function documentUploadStatus(){
+        $total= 0;
+        $approved = 0;
+        foreach ($this->buyRequestDocuments as $buyRequestDocument){
+
+            if($buyRequestDocument->documentType->required){
+                $total++;
+                if($buyRequestDocument->document_status_id===DocumentStatus::$APROBADO_ID){
+                    $approved++;
+                }
+            }
+
+        }
+        if($total)
+            return round($approved*100/$total,2);
+        else return $total;
+
+    }
     public function lastUploadDocumentDate(){
         $lastDate=0;
         foreach ($this->buyRequestDocuments as $buyRequestDocument){
@@ -457,6 +500,19 @@ class BuyRequest extends \yii\db\ActiveRecord
                 $lastDate=strtotime($buyRequestDocument->last_update);
         }
         return date('Y-m-d',$lastDate);
+
+    }
+    public function percentCompletedStages(){
+        $available = 0;
+        $completed = 0;
+        foreach ($this->requestStages as $requestStage){
+            $available ++;
+            if($requestStage->real_end)
+                $completed++;
+        }
+        if($available)
+            return $completed*100/$available;
+        return 0;
 
     }
 
