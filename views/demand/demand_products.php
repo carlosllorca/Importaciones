@@ -36,6 +36,13 @@ $this->title = 'Añadir productos';
 
                                     'data-confirm' => '¿Confirma que desea enviar la demanda?'
                                 ]) ?>
+                            <?= \yii\helpers\Html::button('<i class="fa fa-sticky-note"></i> ¿Producto no encontrado?',
+                                [
+                                    'class' => 'btn btn-primary',
+                                    'title' => 'Solicitar agregar producto a listado validado.',
+                                    'onClick'=>'requestAddItem('.$model->validated_list_id.','.$model->id.')'
+
+                                ]) ?>
 
 
                         </p>

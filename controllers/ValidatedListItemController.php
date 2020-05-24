@@ -3,6 +3,9 @@
 namespace app\controllers;
 
 use app\models\CertificationValidatedListItem;
+use app\models\Rbac;
+use app\models\RequestAddItemForm;
+use app\models\User;
 use app\models\ValidatedList;
 use Yii;
 use app\models\ValidatedListItem;
@@ -33,8 +36,36 @@ class ValidatedListItemController extends MainController
     public function actionModalDetail($item){
         $model = $this->findModel($item);
 
+
         return $this->renderAjax('modal-detail',['model'=>$model]);
 
+    }
+    public function actionRequestAdd($vl,$demand){
+        $model = new RequestAddItemForm();
+        $mVl = ValidatedList::findOne($vl);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            try{
+                $users = User::getActiveUsersByRol(Rbac::$LOGISTICA_ID);
+                $to =[];
+                foreach ($users as $user){
+                    $to[$user->email]=$user->full_name;
+                }
+
+                Yii::$app->mailer->compose('requestAddProduct', ['product'=>$model,'user'=>User::userLogged(),'mVl'=>$mVl])
+                    ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                    ->setTo($to)
+                    ->setSubject("Nueva propuesta de producto a añadir al listado validado ".$mVl->label.".")
+                    ->send();
+                Yii::$app->session->setFlash('success',"Hemos recibido su notificación le responderemos lo antes posible.");
+                return $this->redirect(['demand/demand-products','id'=>$demand]);
+            }catch (\Exception $e){
+                Yii::$app->session->setFlash('warning','Ocurrió un problema en el envio de correo.');
+                return $this->redirect(['demand/demand-products','id'=>$demand]);
+            }
+
+
+        }
+        return $this->renderAjax('requestAddItem',['model'=>$model]);
     }
 
 

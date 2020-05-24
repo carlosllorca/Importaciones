@@ -51,3 +51,7 @@ let showItemDetails = function(item){
     renderAjaxForm('Detalles del producto',
         `/validated-list-item/modal-detail?item=${item}`,true)
 }
+let requestAddItem = function(validatedList,demand){
+    renderAjaxForm('Solicitar adición de producto al listado validado',
+        `/validated-list-item/request-add?vl=${validatedList}&demand=${demand}`,true)
+}
