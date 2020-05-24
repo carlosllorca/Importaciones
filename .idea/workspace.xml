@@ -19,14 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="optimizando la creación de la demanda con la sugerencia de Matota.">
-      <change afterPath="$PROJECT_DIR$/mail/requestAddProduct.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/RequestAddItemForm.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/validated-list-item/requestAddItem.php" afterDir="false" />
+    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="caso de uso solicitar adición de producto a listado validado.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/ValidatedListItemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/ValidatedListItemController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/demand/demand_products.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand/demand_products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/demand/createDemand.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/demand/createDemand.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -373,14 +367,7 @@
       <workItem from="1589863058715" duration="7000" />
       <workItem from="1590079476610" duration="7000" />
       <workItem from="1590190413999" duration="24621000" />
-      <workItem from="1590332923321" duration="18410000" />
-    </task>
-    <task id="LOCAL-00043" summary="Fin del ciclo, pendiente la opción modificar hito">
-      <created>1583907906429</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1583907906429</updated>
+      <workItem from="1590332923321" duration="19547000" />
     </task>
     <task id="LOCAL-00044" summary="Fin del ciclo, pendiente la opción modificar hito">
       <created>1583990306248</created>
@@ -718,7 +705,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590349953401</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="caso de uso solicitar adición de producto a listado validado.">
+      <created>1590362253625</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1590362253625</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -750,7 +744,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Plantilla de correos.&#10;Email nueva demanda." />
     <MESSAGE value="Correo para aprobar y rechazar demandas." />
     <MESSAGE value="Correo de generar solicitud de compra nacional e internacional." />
     <MESSAGE value="Correo solicitud nacional aprobada" />
@@ -775,7 +768,8 @@
     <MESSAGE value="Adicionando propiedades para registrar la fecha/hpra de la creació y ultimo registro de las entidades." />
     <MESSAGE value="Perfil de usuario y cambiar contraseña." />
     <MESSAGE value="optimizando la creación de la demanda con la sugerencia de Matota." />
-    <option name="LAST_COMMIT_MESSAGE" value="optimizando la creación de la demanda con la sugerencia de Matota." />
+    <MESSAGE value="caso de uso solicitar adición de producto a listado validado." />
+    <option name="LAST_COMMIT_MESSAGE" value="caso de uso solicitar adición de producto a listado validado." />
   </component>
   <component name="WindowStateProjectService">
     <state x="625" y="235" width="732" height="644" key="#Inspections" timestamp="1589240512123">
@@ -1048,6 +1042,10 @@
     <state x="2516" y="132" width="728" height="813" key="find.popup/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586116501337" />
     <state x="2516" y="132" width="868" height="813" key="find.popup/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584250401102" />
     <state x="646" y="156" width="701" height="793" key="find.popup/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590334358409" />
+    <state x="721" y="247" width="539" height="619" key="git4idea.branch.GitSmartOperationDialog" timestamp="1590363345489">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="721" y="247" width="539" height="619" key="git4idea.branch.GitSmartOperationDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590363345489" />
     <state x="861" y="447" width="260" height="219" key="publish.login" timestamp="1590333268787">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -1087,11 +1085,6 @@
           <url>file://$PROJECT_DIR$/controllers/BuyRequestController.php</url>
           <line>303</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/controllers/ValidatedListItemController.php</url>
-          <line>61</line>
-          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
