@@ -20,49 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Adicionando propiedades para registrar la fecha/hpra de la creació y ultimo registro de las entidades.">
+      <change afterPath="$PROJECT_DIR$/models/ChangePasswordForm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/user/changePassword.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/user/updateMyProfile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/user/changePassword.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyCondition.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyCondition.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequest711.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest711.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestDocument.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestDocument.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestInternational.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestInternational.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Certification.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Certification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/CertificationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/CertificationType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/CertificationValidatedListItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/CertificationValidatedListItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Country.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Country.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Demand.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Demand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DemandItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DemandItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DemandStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DemandStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DeploymentPart.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DeploymentPart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Destiny.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Destiny.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DocumentStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DocumentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DocumentTypePermission.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentTypePermission.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/EmailNotify.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/EmailNotify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/FinalDestiny.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/FinalDestiny.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/FormCloseNationalBidding.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/FormCloseNationalBidding.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Log.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Log.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Offert.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Offert.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Organism.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Organism.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/PaymentInstrument.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/PaymentInstrument.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/PaymentMethod.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/PaymentMethod.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Provider.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Provider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ProviderValidatedList.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ProviderValidatedList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ProvinceUeb.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ProvinceUeb.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/PurchaseReason.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/PurchaseReason.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/RequestStage.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/RequestStage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/SellerRequirement.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/SellerRequirement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Stage.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Stage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Subfamily.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Subfamily.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Um.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Um.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ValidatedList.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ValidatedList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ValidatedListItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ValidatedListItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/WarrantyTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/WarrantyTime.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/left.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/left.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/indexUEB.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/indexUEB.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/plantilla.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/plantilla.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,9 +45,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="Jquery" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -104,6 +73,7 @@
     <setting file="file://$PROJECT_DIR$/web/js/buy-request/view.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/web/js/buy-request/update.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/web/js/buyrequest711/view.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/user/changePassword.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="PhpServers">
     <servers>
@@ -246,7 +216,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="enableYiiStorm" value="true" />
     <property name="langName" value="en" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/site" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/models" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -260,17 +230,17 @@
     <property name="yiicFile" value="" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tabpanel" />
-      <recent name="$PROJECT_DIR$/web/css" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/models" />
       <recent name="$PROJECT_DIR$/views/site" />
       <recent name="$PROJECT_DIR$/mail" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/console" />
-      <recent name="$PROJECT_DIR$/commands" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tabpanel" />
+      <recent name="$PROJECT_DIR$/web/css" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
@@ -407,13 +377,6 @@
       <workItem from="1589863058715" duration="7000" />
       <workItem from="1590079476610" duration="7000" />
       <workItem from="1590190413999" duration="24621000" />
-    </task>
-    <task id="LOCAL-00040" summary="Funcionalidad para modificar el tiempo de la licitación">
-      <created>1583770077438</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1583770077438</updated>
     </task>
     <task id="LOCAL-00041" summary="Antes de empezar con los hitos">
       <created>1583816030409</created>
@@ -751,7 +714,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590294863399</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="Adicionando propiedades para registrar la fecha/hpra de la creació y ultimo registro de las entidades.">
+      <created>1590296525854</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1590296525854</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1080,10 +1050,10 @@
     </state>
     <state x="2516" y="132" width="728" height="813" key="find.popup/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586116501337" />
     <state x="2516" y="132" width="868" height="813" key="find.popup/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584250401102" />
-    <state x="861" y="447" width="260" height="219" key="publish.login" timestamp="1590205177015">
+    <state x="861" y="447" width="260" height="219" key="publish.login" timestamp="1590301668184">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="861" y="447" width="260" height="219" key="publish.login/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590205177015" />
+    <state x="861" y="447" width="260" height="219" key="publish.login/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590301668184" />
     <state x="673" y="274" width="665" height="678" key="run.anything.popup" timestamp="1590213021574">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>

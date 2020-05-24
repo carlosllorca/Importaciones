@@ -128,6 +128,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'last_login' => 'Último acceso',
             'digital_signature' => 'Firma digital',
             'province_ueb' => 'UEB',
+            'phone_number' => 'Teléfono',
             'active' => 'Activo',
         ];
     }

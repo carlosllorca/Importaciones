@@ -14,16 +14,8 @@ if (class_exists('common\models\Menu')) {
 <div class="sidebar" data-color="<?= $config::sidebarColor() ?>"
      data-background-color="<?= $config::sidebarBackgroundColor() ?>">
     <div class="logo">
-        <a href="#" class="simple-text logo-mini">
-            <?php
-            if (empty($config::logoMini())) { ?>
-                <img src="<?= $directoryAsset; ?>/img/favicon.png" style="max-width: 30px;">
-            <?php } else {
-                echo $config::logoMini();
-            }
-            ?>
-        </a>
-        <a href="#" class="simple-text logo-normal">
+
+        <a href="/" class="simple-text logo-normal">
             <?= $config::siteTitle() ?>
         </a>
     </div>

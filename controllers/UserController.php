@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\ChangePasswordForm;
 use app\models\DocumentTypePermission;
 use app\models\Rbac;
 use Yii;
@@ -10,6 +11,8 @@ use app\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -81,6 +84,42 @@ class UserController extends MainController
         return $this->render('create', [
             'model' => $model,
         ]);
+    }
+    public function actionMyAccount(){
+        $model = User::userLogged();
+        $model->rol= Rbac::getRole($model->username);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success','Datos modificados correctamente.');
+            Yii::$app->traza->saveLog('Actualizar Usuario', "Actualizados los datos de {$model->username}.");
+            return $this->redirect('/site/index');
+        }
+        return $this->render('updateMyProfile',['model'=>$model]);
+    }
+    public function actionChangePassword(){
+        $model = new ChangePasswordForm([
+            'idUser' => Yii::$app->user->id
+        ]);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+               $user = User::userLogged();
+               $user->password = Yii::$app->security->generatePasswordHash($model->password);
+               $user->save(false);
+            Yii::$app->session->setFlash('success','Contraseña cambiada exitosamente.');
+            Yii::$app->traza->saveLog('Contraseña cambiada', "Cambiada la contraseña de {$user->username}.");
+            return $this->redirect('/user/my-account');
+
+        }
+        return $this->renderAjax('changePassword',['model'=>$model]);
+    }
+    public function actionValidatePassword(){
+        $model = new ChangePasswordForm([
+            'idUser' => Yii::$app->user->id
+        ]);
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+            Yii::$app->end();
+        }
     }
     public function actionLogs($id){
         $user = $this->findModel($id);
