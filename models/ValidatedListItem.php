@@ -13,10 +13,12 @@ use yii\behaviors\TimestampBehavior;
  * @property string $seisa_code
  * @property string $product_name
  * @property string $tecnic_description
+ * @property string $picture
  * @property float $price
 
  * @property int $um_id
  * @property int|null $validated_list_id
+ * @property boolean $active
  *
  * @property CertificationValidatedListItem[] $certificationValidatedListItems
  * @property DemandItem[] $demandItems
@@ -29,6 +31,7 @@ class ValidatedListItem extends \yii\db\ActiveRecord
      * {@inheritdoc}
      */
     public $quantity;
+    static $DEFAULT_PICTURE = '/img/SEISA.png';
     public static function tableName()
     {
         return 'validated_list_item';
@@ -86,6 +89,8 @@ class ValidatedListItem extends \yii\db\ActiveRecord
             'um_id' => 'UM',
             'subfamily_id' => 'Subfamilia',
             'certificados' => 'Certificación a exigir',
+            'picture' => 'Foto',
+            'active' => 'Activo',
         ];
     }
 
@@ -108,7 +113,12 @@ class ValidatedListItem extends \yii\db\ActiveRecord
         foreach ($this->certificationValidatedListItems as $certificationValidatedListItem){
             array_push($certificados,$certificationValidatedListItem->certification->label);
         }
-        return implode(', ',$certificados);
+        if(count($certificados)){
+            return implode(', ',$certificados);
+        }else{
+            return " - ";
+        }
+
     }
 
     /**
@@ -147,5 +157,22 @@ class ValidatedListItem extends \yii\db\ActiveRecord
 
         return ArrayHelper::map(ValidatedListItem::find()->innerJoinWith('demandItems')
             ->where(['demand_item.demand_id'=>$demand_id])->all(),'id','product_name');
+    }
+
+    /**
+     * Productos activos de un listado validado específico ordenados alfabeticamente
+     *  * @param integer $validated_list_id
+     * @return array|ValidatedListItem[]
+     */
+    public  static  function validatedListItems($validated_list_id){
+        return self::find()->where(['validated_list_id'=>$validated_list_id])
+            ->andWhere(['active'=>true])
+            ->orderBy('product_name')->all();
+
+    }
+    public function picture(){
+        if($this->picture)
+            return $this->picture;
+        return self::$DEFAULT_PICTURE;
     }
 }

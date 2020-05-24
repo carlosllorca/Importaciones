@@ -517,6 +517,11 @@ class DataGraphics extends Model
 
 
     }
+    public static function masDemandados($validatedListId){
+        $connection = self::getConnector();
+        $query = $connection->createCommand("select * from view_productos_mas_demandados where validated_list_id=".$validatedListId)->queryAll();
+        return $query;
+    }
     private function getAverageBuyRequestTypeNacional($typ){
         $connection= self::getConnector();
         $query = $connection->createCommand("select * from view_avg_nacional where buy_request_type_id=".$typ)->queryOne();

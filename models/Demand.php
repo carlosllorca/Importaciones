@@ -475,6 +475,27 @@ class Demand extends \yii\db\ActiveRecord
         }
         return implode(' ',$array);
     }
+    public function addOrUpdateDemandItem($itemId,$quantity){
+        $model = DemandItem::findOne([
+            'validated_list_item_id'=>$itemId,
+            'demand_id'=>$this->id
+        ]);
+        if($model&&$quantity==0){
+            $model->delete();
+            return false;
+        }
+        if(!$model){
+            $model =new DemandItem([
+                'validated_list_item_id'=>$itemId,
+                'demand_id'=>$this->id
+            ]);
+        }
+        $model->price = $model->validatedListItem->price;
+        $model->quantity= $quantity;
+        $model->save(false);
+        return $model;
+    }
+
 
 
 

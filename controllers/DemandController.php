@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\BuyRequest;
 use app\models\BuyRequestStatus;
 use app\models\BuyRequestType;
+use app\models\DataGraphics;
 use app\models\DemandItem;
 use app\models\DemandItemSearch;
 use app\models\DemandStatus;
@@ -295,11 +296,17 @@ class DemandController extends MainController
     }
     public function actionDemandProducts($id){
         $model = $this->findModel($id);
+        $demandItems=[];
+        $masDemandados = DataGraphics::masDemandados($model->validated_list_id);
 
-        $demandItem= new DemandItem();
-        $demandItem->demand_id=$model->id;
-
-        return $this->render('demand_products',['model'=>$model]);
+        foreach ($model->demandItems as $demandItem){
+           $demandItems[$demandItem->validated_list_item_id]=[
+               'cantidad'=>$demandItem->quantity,
+               'precio'=>$demandItem->price,
+               'importe'=>Yii::$app->formatter->asCurrency($demandItem->quantity*$demandItem->price)
+           ];
+        }
+        return $this->render('demand_products',['model'=>$model,'arrayItems'=>$demandItems,'masDemandados'=>$masDemandados]);
 
     }
 

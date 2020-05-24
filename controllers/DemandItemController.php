@@ -10,11 +10,12 @@ use app\models\DemandItemSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * DemandItemController implements the CRUD actions for DemandItem model.
  */
-class DemandItemController extends Controller
+class DemandItemController extends MainController
 {
     /**
      * {@inheritdoc}
@@ -30,101 +31,38 @@ class DemandItemController extends Controller
             ],
         ];
     }
-
     /**
-     * Lists all DemandItem models.
-     * @return mixed
+     * @inheritdoc
      */
-    public function actionIndex()
+    public function beforeAction($action)
     {
-        $searchModel = new DemandItemSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
-     * Displays a single DemandItem model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
-     * Creates a new DemandItem model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate($vl)
-    {
-        $demand= Demand::findOne($vl);
-        $model = new DemandItem();
-        $model->demand_id=$demand->id;
-        $model->price=0;
-        if ($model->load(Yii::$app->request->post()) ) {
-            $model->price = $model->validatedListItem->price;
-            if($model->validate()&&$model->save()){
-                return $this->redirect(['demand/demand-products', 'id' => $model->demand_id]);
-            }
+        if (in_array($action->id ,[ 'add-item'])) {
+            $this->enableCsrfValidation = false;
         }
 
-        return $this->render('create', [
-            'model' => $model,
-            'vl'=>$demand->validated_list_id
-        ]);
+        return parent::beforeAction($action);
     }
-    public function actionProductDetails($product){
-        $model = ValidatedListItem::findOne($product);
-        return $this->renderPartial('productDetails',['mdodel'=>$model]);
-    }
+    public function actionAddItem(){
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $raw_data = json_decode(Yii::$app->request->getRawBody());
+        $cantidad =(int) $raw_data->quantity;
+        $producto =(int) $raw_data->item;
 
-    /**
-     * Updates an existing DemandItem model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-
-        if ($model->load(Yii::$app->request->post())) {
-            $model->price = $model->validatedListItem->price;
-            if($model->validate()&&$model->save()){
-                return $this->redirect(['demand/demand-products', 'id' => $model->demand_id]);
-            }
-
+        $demand = Demand::findOne($raw_data->demand);
+        $modelDemndItem = $demand->addOrUpdateDemandItem($producto,$cantidad);
+        if($modelDemndItem){
+            return ['success'=>true,
+                'import'=>Yii::$app->formatter->asCurrency($modelDemndItem->quantity*$modelDemndItem->price),
+                'totalProducts'=>count($demand->demandItems),
+                'totalAmount'=>Yii::$app->formatter->asCurrency($demand->totalAmount())
+            ];
         }
+        return ['success'=>true,'import'=>Yii::$app->formatter->asCurrency(0),
+            'totalProducts'=>count($demand->demandItems),
+            'totalAmount'=>Yii::$app->formatter->asCurrency($demand->totalAmount())];
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
     }
 
-    /**
-     * Deletes an existing DemandItem model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
 
     /**
      * Finds the DemandItem model based on its primary key value.

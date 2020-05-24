@@ -4,95 +4,125 @@ use yii\bootstrap4\Modal;
 
 /* @var $this \yii\web\View */
 /* @var $model \app\models\Demand */
+/* @var $masDemandados Array */
 
-$this->title='Añadir productos';
+$this->title = 'Añadir productos';
 
 ?>
-<div class="card">
-    <div class="card-header card-header-primary">
-        <h4 class="card-title"><?=$this->title?></h4>
+    <div class="card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title"><?= $this->title ?></h4>
 
-    </div>
-    <div class="card-body" style="padding: 15px">
-        <div class="p-3">
-           <p style="text-align: right">
-               <?=\yii\helpers\Html::a('<span class="fa fa-plus"></span> Agregar producto',['/demand-item/create','vl'=>$model->id],
-                   [
-                       'class'=>'btn btn-success',
-                       'title'=>'Agregar producto',
+        </div>
+        <div class="card-body" style="padding: 15px">
+            <div class="p-3">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p style="margin: 0px">
+                            <span class="text-uppercase">Productos:<b id="totalProducts"
+                                                                      style="margin-left: 5px; margin-right: 10px"><?= count($model->demandItems) ?></b></span>
+                            <span class="text-uppercase">Importe total:<b id="totalImport"
+                                                                          style="margin-left: 5px"><?= Yii::$app->formatter->asCurrency($model->totalAmount()) ?></b></span>
 
-                   ])?>
-               <?=\yii\helpers\Html::a('<i class="fa fa-send"></i> Enviar demanda',['send','id'=>$model->id],
-                   [
-                       'class'=>'btn btn-primary',
-                       'title'=>'Enviar demanda',
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p style="text-align: right;margin: 0px">
 
-                       'data-confirm'=>'¿Confirma que desea enviar la demanda?'
-                   ])?>
+                            <?= \yii\helpers\Html::a('<i class="fa fa-send"></i> Enviar demanda', ['send', 'id' => $model->id],
+                                [
+                                    'class' => 'btn btn-primary',
+                                    'title' => 'Enviar demanda',
 
-           </p>
+                                    'data-confirm' => '¿Confirma que desea enviar la demanda?'
+                                ]) ?>
 
-            <?php
-                if($model->demandItems){
-                    ?>
-                    <div class="table-responsive">
-                        <table class="table">
+
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <table class="table table-sm">
                             <thead class=" text-primary">
                             <tr>
-                                <th> Item.</th>
-                                <th>Producto </th>
-                                <th> Descripción técnica</th>
-                                <th>Homologación</th>
+                                <th> No.</th>
+                                <th>Producto</th>
+
                                 <th>UM</th>
-                                <th>Cantidad</th>
+
                                 <th>Precio</th>
+                                <th>Cantidad</th>
                                 <th>Importe</th>
-                                <th></th>
+
                             </tr>
                             </thead>
                             <tbody>
                             <?php
                             $pos = 0;
-                            foreach ($model->demandItems as $item){
-
+                            foreach (\app\models\ValidatedListItem::validatedListItems($model->validated_list_id) as $validatedListItem) {
+                                $pos++;
+                                if (isset($arrayItems[$validatedListItem->id])) {
+                                    $quantity = $arrayItems[$validatedListItem->id]['cantidad'];
+                                    $import = $arrayItems[$validatedListItem->id]['importe'];
+                                } else {
+                                    $quantity = 0;
+                                    $import = Yii::$app->formatter->asCurrency(0);
+                                }
                                 ?>
-                                <tr>
-                                    <th><?=++$pos?>.</th>
-                                    <th><?=$item->validatedListItem->product_name?> </th>
-                                    <th><p><?=$item->validatedListItem->tecnic_description?></p></th>
-                                    <th><?=$item->validatedListItem->certificadosStr()?></th>
-                                    <th><?=$item->validatedListItem->um->label?></th>
-                                    <th><?=$item->quantity?></th>
-                                    <th><?=$item->price?></th>
-                                    <th><?=$item->price*$item->quantity?></th>
-                                    <th><?=\yii\helpers\Html::a("<span class='fa fa-trash'></span>",['delete-item','id'=>$item->id],['data-confirm'=>'¿Confirma que desea eliminar este producto de la demanda?'])?></th>
-                                </tr>
+                                <tr class="<?= $quantity ? 'alert-success' : '' ?>">
+                                    <th> <?= $pos++ ?></th>
+                                    <td onclick="showItemDetails(<?= $validatedListItem->id ?>)"
+                                        title="<?= $validatedListItem->tecnic_description ?>" style="cursor: pointer">
+                                        <?= $validatedListItem->product_name ?>
+                                    </td>
 
+                                    <td><?= $validatedListItem->um->label ?></td>
+
+                                    <td><?= Yii::$app->formatter->asCurrency($validatedListItem->price) ?></td>
+                                    <td>
+                                        <input value="<?= $quantity ?>" demand="<?= $model->id ?>"
+                                               product="<?= $validatedListItem->id ?>" type="number"
+                                               style="max-width: 70px" class="quantity"></td>
+                                    <td class="import"><?= $import ?></td>
+
+                                </tr>
                                 <?php
-                            }
-                            ?>
+
+                            } ?>
 
 
                             </tbody>
                         </table>
                     </div>
-            <?php
-                }else{
-                    ?>
-                    <div class="row">
-                        <div class="col-md-12" style="height: 500px">
-                        <div class="col-md-12" style="height: 500px">
-                            <p style="margin-top:250px ;font-size: 20px; text-align: center; color: #cecece; font-weight: bold">
-                                Aún no has añadido productos. <a class="link" href="/demand-item/create?vl=<?=$model->id?>" >Añade el primero</a>
-                            </p>
+                    <div class="col-sm-3">
+                        <div style="background-color: #fefefe;min-height: 300px;
+                        border-radius: 5px;
+                            border:1px solid #cecece;
+                            width: 100%;
+                         margin-top: 50px">
+                            <p style="text-align: center; font-style: italic; margin-top: 10px;">PRODUCTOS MÁS DEMANDADOS</p>
+                            <ul>
+                                <?php
+                                foreach ($masDemandados as $masDemandado){
+                                    ?>
+                                    <li onclick="showItemDetails(<?= $masDemandado['id'] ?>)"style="font-size: 18px; cursor: pointer"><?=$masDemandado['product_name']?></li>
+                                    <?php
+                                }
+                                ?>
+                            </ul>
+
                         </div>
-                    </div>
-                    <div >
 
                     </div>
-                    <?php
-                }
-            ?>
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
+<?php
+$this->registerJsFile('@web/js/demand/createDemand.js', ['depends' => \yii\web\JqueryAsset::className()])
+?>

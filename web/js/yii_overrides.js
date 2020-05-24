@@ -63,8 +63,13 @@ function closeModal() {
     }
 
 }
-function renderAjaxForm(title,ajaxRequest){
+function renderAjaxForm(title,ajaxRequest,largeModal=false){
     $('.modal-title').text(title);
+    if(largeModal){
+        $($('#modal-documentos').find('.modal-dialog')).addClass('modal-lg')
+    }else{
+        $($('#modal-documentos').find('.modal-dialog')).removeClass('modal-lg')
+    }
     $('#modal-content-nacional').load(ajaxRequest,()=>{
         selectWinners();
     })

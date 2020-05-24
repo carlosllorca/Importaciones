@@ -14,7 +14,7 @@ use yii\filters\VerbFilter;
 /**
  * ValidatedListItemController implements the CRUD actions for ValidatedListItem model.
  */
-class ValidatedListItemController extends Controller
+class ValidatedListItemController extends MainController
 {
     /**
      * {@inheritdoc}
@@ -30,40 +30,14 @@ class ValidatedListItemController extends Controller
             ],
         ];
     }
+    public function actionModalDetail($item){
+        $model = $this->findModel($item);
 
-    /**
-     * Lists all ValidatedListItem models.
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $searchModel = new ValidatedListItemSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->renderAjax('modal-detail',['model'=>$model]);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
     }
 
-    /**
-     * Displays a single ValidatedListItem model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
 
-    /**
-     * Creates a new ValidatedListItem model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate($vl)
     {
         $model = new ValidatedListItem();

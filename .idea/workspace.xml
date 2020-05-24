@@ -19,19 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Adicionando propiedades para registrar la fecha/hpra de la creació y ultimo registro de las entidades.">
-      <change afterPath="$PROJECT_DIR$/models/ChangePasswordForm.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/user/changePassword.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/user/updateMyProfile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/js/user/changePassword.js" afterDir="false" />
+    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Perfil de usuario y cambiar contraseña.">
+      <change afterPath="$PROJECT_DIR$/views/validated-list-item/modal-detail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/demand/createDemand.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/left.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/left.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/indexUEB.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/indexUEB.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/plantilla.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/plantilla.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/DemandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/DemandController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/DemandItemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/DemandItemController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/ValidatedListItemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/ValidatedListItemController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DataGraphics.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DataGraphics.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Demand.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Demand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ValidatedListItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ValidatedListItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/demand/demand_products.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand/demand_products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/yii_overrides.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/yii_overrides.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +73,7 @@
     <setting file="file://$PROJECT_DIR$/web/js/buy-request/view.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/web/js/buy-request/update.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/web/js/buyrequest711/view.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/web/js/demand/createDemand.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/web/js/user/changePassword.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="PhpServers">
@@ -377,13 +378,7 @@
       <workItem from="1589863058715" duration="7000" />
       <workItem from="1590079476610" duration="7000" />
       <workItem from="1590190413999" duration="24621000" />
-    </task>
-    <task id="LOCAL-00041" summary="Antes de empezar con los hitos">
-      <created>1583816030409</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1583816030409</updated>
+      <workItem from="1590332923321" duration="13503000" />
     </task>
     <task id="LOCAL-00042" summary="Definidos los hitos de las solicitudes internacionales">
       <created>1583818675578</created>
@@ -721,7 +716,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590296525854</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="Perfil de usuario y cambiar contraseña.">
+      <created>1590303492721</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1590303492721</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -753,7 +755,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Clasificar la orden. Lita para empezar a trabajarla" />
     <MESSAGE value="Creando 711. Ciclo completado." />
     <MESSAGE value="Plantilla de correos.&#10;Email nueva demanda." />
     <MESSAGE value="Correo para aprobar y rechazar demandas." />
@@ -778,7 +779,8 @@
     <MESSAGE value="listo el view de la orden de compra internacional." />
     <MESSAGE value="Organizacion alfabetica de nomencladores." />
     <MESSAGE value="Adicionando propiedades para registrar la fecha/hpra de la creació y ultimo registro de las entidades." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adicionando propiedades para registrar la fecha/hpra de la creació y ultimo registro de las entidades." />
+    <MESSAGE value="Perfil de usuario y cambiar contraseña." />
+    <option name="LAST_COMMIT_MESSAGE" value="Perfil de usuario y cambiar contraseña." />
   </component>
   <component name="WindowStateProjectService">
     <state x="625" y="235" width="732" height="644" key="#Inspections" timestamp="1589240512123">
@@ -1031,7 +1033,7 @@
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583171256309" />
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/49.27.1871.1053@49.27.1871.1053" timestamp="1583770086860" />
     <state x="606" y="295" key="Vcs.Push.Dialog.v2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1589288344587" />
-    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1590290394328">
+    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1590344802985">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="2256" y="169" width="566" height="677" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588481783603" />
@@ -1039,21 +1041,22 @@
     <state x="2256" y="169" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583817869376" />
     <state x="376" y="192" width="321" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583299941970" />
     <state x="376" y="192" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1584760314008" />
-    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590290394328" />
+    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590344802985" />
     <state x="1920" y="246" width="1920" height="834" key="dock-window-1" timestamp="1584676068987">
       <screen x="49" y="27" width="3791" height="1053" />
     </state>
     <state x="2069" y="266" width="1720" height="855" key="dock-window-1/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583713744432" />
     <state x="1920" y="246" width="1920" height="834" key="dock-window-1/49.27.3791.1053@49.27.3791.1053" timestamp="1584676068987" />
-    <state x="2516" y="132" width="728" height="813" key="find.popup" timestamp="1586116501337">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="646" y="156" width="701" height="793" key="find.popup" timestamp="1590334358409">
+      <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="2516" y="132" width="728" height="813" key="find.popup/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586116501337" />
     <state x="2516" y="132" width="868" height="813" key="find.popup/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1584250401102" />
-    <state x="861" y="447" width="260" height="219" key="publish.login" timestamp="1590301668184">
+    <state x="646" y="156" width="701" height="793" key="find.popup/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590334358409" />
+    <state x="861" y="447" width="260" height="219" key="publish.login" timestamp="1590333268787">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="861" y="447" width="260" height="219" key="publish.login/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590301668184" />
+    <state x="861" y="447" width="260" height="219" key="publish.login/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590333268787" />
     <state x="673" y="274" width="665" height="678" key="run.anything.popup" timestamp="1590213021574">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -1082,7 +1085,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/controllers/ValidatedListItemController.php</url>
-          <line>103</line>
+          <line>77</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
