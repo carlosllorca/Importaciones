@@ -21,27 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Organizacion alfabetica de nomencladores.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyCondition.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyCondition.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequest711.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest711.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestDocument.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestDocument.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestInternational.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestInternational.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Certification.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Certification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/CertificationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/CertificationType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/CertificationValidatedListItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/CertificationValidatedListItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Country.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Country.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Demand.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Demand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DemandItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DemandItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DemandStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DemandStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DeploymentPart.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DeploymentPart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Destiny.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Destiny.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DocumentStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DocumentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DocumentTypePermission.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DocumentTypePermission.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
