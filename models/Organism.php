@@ -55,8 +55,8 @@ class Organism extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Client::className(), ['organism_id' => 'id']);
     }
-    public static function combo(){
-        if(Rbac::getRole()==Rbac::$UEB){
+    public static function combo($scopeLocal=false){
+        if($scopeLocal&&Rbac::getRole()==Rbac::$UEB){
             return self::comboUEB();
         }
         return ArrayHelper::map(self::find()->orderBy('short_name')->all(),'id','short_name');

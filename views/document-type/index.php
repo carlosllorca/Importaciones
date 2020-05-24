@@ -48,6 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'responsable',
                         'order_doc',
                         'active:boolean',
+                        'required:boolean',
 
                         [
                                 'class' => 'rce\material\grid\ActionColumn',

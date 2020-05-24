@@ -25,10 +25,14 @@ use yii\web\UploadedFile;
  * @property int|null $approved_by
  * @property string|null $cancel_reason
  *  @property int|null $buyer_assigned
+ *  @property string|null $buyer_approved_date
  * @property int|null $buy_approved_by
  * @property string|null $buy_approved_date
  * @property int|null $dt_specialist_assigned
  * @property string|null $dt_approved_date
+ * @property string|null $approve_start
+ * @property string|null $closed_date
+ * @property string|null $execution_start
  * @property int|null $dt_approved_by
 
  * @property FileInput $blank_contract
@@ -71,10 +75,10 @@ class BuyRequest extends \yii\db\ActiveRecord
     {
         return [
             [['code', 'created', 'created_by', 'buy_request_status_id', 'buy_request_type_id'], 'required'],
-            [['created', 'last_update', 'approved_date','ganadores'], 'safe'],
+            [['created', 'last_update', 'approved_date','ganadores','buyer_approved_date'], 'safe'],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id', 'approved_by', 'buyer_assigned', 'buy_approved_by', 'dt_specialist_assigned', 'dt_approved_by'], 'default', 'value' => null],
             [['created_by', 'buy_request_status_id', 'buy_request_type_id', 'approved_by','buyer_assigned', 'buy_approved_by', 'dt_specialist_assigned', 'dt_approved_by'], 'integer'],
-            [['cancel_reason'], 'string'],
+            [['cancel_reason','approve_start','execution_start'], 'string'],
             [['code'], 'string', 'max' => 50],
 
             [['buy_request_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequestStatus::className(), 'targetAttribute' => ['buy_request_status_id' => 'id']],
@@ -236,6 +240,10 @@ class BuyRequest extends \yii\db\ActiveRecord
     {
         return $this->hasMany(RequestStage::className(), ['buy_request_id' => 'id']);
     }
+
+    /**
+     * @return RequestStage[]
+     */
     public function requestStageOrdenados()
     {
         return RequestStage::find()->innerJoinWith('stage')->where(['stage.active'=>true])->andWhere(['buy_request_id'=>$this->id])->orderBy('stage.order')->all();
@@ -279,9 +287,30 @@ class BuyRequest extends \yii\db\ActiveRecord
 
     /**
      * Demandas asociadas a las solicitudes de compra
+     * @return Demand[]
      */
     public function getDemands(){
         return Demand::find()->innerJoinWith('demandItems')->where(['demand_item.buy_request_id'=>$this->id])->groupBy('demand.id')->all();
+    }
+    /**
+     * Tipos de demanda asociadas a la solicitud de compra
+     * @return ValidatedList[]
+     */
+    public function getDemandsType(){
+        $demandsType =[];
+        $dId = [];
+        $data =  Demand::find()->innerJoinWith('demandItems')->where(['demand_item.buy_request_id'=>$this->id])->groupBy('demand.id')->all();
+        foreach ($data as $d){
+            /**
+             * @var $d Demand
+             */
+            if(!in_array($d->validated_list_id,$dId)){
+                array_push($dId,$d->validated_list_id);
+                array_push($demandsType,$d->validatedList);
+
+            }
+        }
+        return $demandsType;
     }
     /**
      * Relación de productos agrupados por tipo categoría
@@ -446,6 +475,24 @@ class BuyRequest extends \yii\db\ActiveRecord
         }
         return true;
     }
+    public function documentUploadStatus(){
+        $total= 0;
+        $approved = 0;
+        foreach ($this->buyRequestDocuments as $buyRequestDocument){
+
+            if($buyRequestDocument->documentType->required){
+                $total++;
+                if($buyRequestDocument->document_status_id===DocumentStatus::$APROBADO_ID){
+                    $approved++;
+                }
+            }
+
+        }
+        if($total)
+            return round($approved*100/$total,2);
+        else return $total;
+
+    }
     public function lastUploadDocumentDate(){
         $lastDate=0;
         foreach ($this->buyRequestDocuments as $buyRequestDocument){
@@ -453,6 +500,19 @@ class BuyRequest extends \yii\db\ActiveRecord
                 $lastDate=strtotime($buyRequestDocument->last_update);
         }
         return date('Y-m-d',$lastDate);
+
+    }
+    public function percentCompletedStages(){
+        $available = 0;
+        $completed = 0;
+        foreach ($this->requestStages as $requestStage){
+            $available ++;
+            if($requestStage->real_end)
+                $completed++;
+        }
+        if($available)
+            return $completed*100/$available;
+        return 0;
 
     }
 

@@ -164,3 +164,18 @@ select.form-control{
 .popover-content {
     font-size: 15px;
 }
+.noData{
+    color: #cecece;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+}
+.text-title{
+    font-size: 20px;
+    padding: 3px;
+}
+.text-subtitle{
+    font-size: 20px!important;
+    color: #0e0e0e;
+    padding: 3px;
+}

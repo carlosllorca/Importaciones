@@ -1,7 +1,7 @@
 <?php
    use yii\helpers\Html;
    use yii\bootstrap\ActiveForm;
-
+    use rce\material\widgets\Noti;
    rce\material\Assets::register($this);
 $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/ricar2ce/yii2-material-theme/assets');
    ?>
@@ -25,7 +25,7 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/ricar2ce/yii
          <!-- <div class="login"> -->
          <div class="page-header login-page header-filter" filter-color="black" style=" background-size: cover; background-position: top center;background-color: #eee">
         <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
-
+             <?= Noti::widget() ?>
             <div class="container">
                <?= $content ?>
             </div>

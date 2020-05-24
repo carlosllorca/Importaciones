@@ -2,14 +2,15 @@
 
 namespace app\controllers;
 
+use app\models\ContactForm;
+use app\models\LoginForm;
+use app\models\Rbac;
 use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 
 class SiteController extends Controller
 {
@@ -62,12 +63,84 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        if(Yii::$app->user->isGuest)
+        if (Yii::$app->user->isGuest)
             return $this->redirect('/site/login');
+        switch (Rbac::getRole()) {
+            case Rbac::$UEB:
+                return $this->indexUEB();
+                break;
+            case Rbac::$JEFE_LOGÍSTICA:
+            case Rbac::$LOGISTICA_ID:
+                return $this->actionIndexLogistica();
+                break;
+            case Rbac::$JEFE_TECNCIO:
+                return $this->render('indexJDOPBS');
+                break;
+            case Rbac::$ESP_TECNICO:
+                return $this->render('indexDOPBS');
+                break;
+            case Rbac::$JEFE_COMPRAS:
+                return $this->render('indexJCompras');
+            case Rbac::$COMPRADOR_INTERNACIONAL:
+
+                return $this->render('indexCInternacional');
+                break;
+            case Rbac::$COMPRADOR_NACIONAL:
+                return $this->render('indexCNacional');
+                break;
+            case Rbac::$COMITE:
+                return $this->render('indexComite');
+                break;
+
+        }
 
         return $this->render('index');
     }
 
+    /**
+     * Gráficas aplicables a las UEB
+     * @return string
+     * @throws \yii\db\Exception
+     */
+    public function indexUEB()
+    {
+        $max = date('Y-m-d');
+        $min = date('Y-m-d',strtotime ( '-1 year' , strtotime ( $max ) ));
+        $connection = Yii::$app->getDb();
+        //Demandas por estados;
+        $query1 = $connection->createCommand("SELECT
+\"public\".demand_status.label,
+\"public\".demand_status.color,
+count(\"public\".demand_status.label)
+FROM
+\"public\".demand
+INNER JOIN \"public\".demand_status ON \"public\".demand.demand_status_id = \"public\".demand_status.\"id\"
+INNER JOIN \"public\".client ON \"public\".demand.client_id = \"public\".client.\"id\"
+INNER JOIN \"public\".province_ueb ON \"public\".client.province_ueb = \"public\".province_ueb.\"id\"
+WHERE client.province_ueb= " . User::userLogged()->province_ueb . "
+GROUP BY \"public\".demand_status.label, color")->queryAll();
+        $query2 = $connection->createCommand("SELECT
+ to_char(date(sending_date), 'MM-YY') as fecha, count( to_char(date(sending_date), 'Mon-YY')) as total
+FROM
+	\"public\".demand
+	INNER JOIN \"public\".client ON \"public\".demand.client_id = \"public\".client.\"id\"
+	INNER JOIN \"public\".province_ueb ON \"public\".client.province_ueb = \"public\".province_ueb.\"id\"
+	where sending_date BETWEEN   '".$min."' and '".$max."'
+	and province_ueb.id=".User::userLogged()->province_ueb."
+	GROUP BY fecha
+	ORDER BY fecha ASC")->queryAll();
+
+        return $this->render('indexUEB', ['query1' => $query1,'query2'=>$query2]);
+    }
+
+    /**
+     * Gráficas aplicables al Rol Logística
+     */
+    public function actionIndexLogistica(){
+
+        return $this->render('indexLogistica');
+
+    }
     /**
      * Login action.
      *
@@ -75,17 +148,19 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        $this->layout='primary';
+        $this->layout = 'primary';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            $user=Yii::$app->user->identity;
-            $user->last_login=date('Y-m-d H:i:s');
+            $user = Yii::$app->user->identity;
+            $user->last_login = date('Y-m-d H:i:s');
             $user->save(false);
-            Yii::$app->traza->saveLog('Usuario autenticado','Se ha autenticado el usuario '.$user->username);
+
+            Yii::$app->traza->saveLog('Usuario autenticado', 'Se ha autenticado el usuario ' . $user->username);
+            Yii::$app->session->setFlash('success','Bienvenido '.$user->full_name);
             return $this->goBack();
         }
 
@@ -94,9 +169,11 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-    public function actionMail(){
+
+    public function actionMail()
+    {
         Yii::$app->mailer->compose('demandArrived', [])
-            ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+            ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
             ->setTo('carlosllorca89@gmail.com')
             // ->setBcc('inmaj@codeberrysolutions.com')
             ->setSubject("Se ha registrado una nueva demanda.")
@@ -110,9 +187,9 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-        Yii::$app->traza->saveLog('Usuario sale del sistema','El usuario  '.Yii::$app->user->id.' ha salido del sistema');
+        Yii::$app->traza->saveLog('Usuario sale del sistema', 'El usuario  ' . Yii::$app->user->id . ' ha salido del sistema');
         Yii::$app->user->logout();
-        Yii::$app->session->setFlash('success','Su usuario ha sido desconectado satisfactoriamente.');
+        Yii::$app->session->setFlash('success', 'Su usuario ha sido desconectado satisfactoriamente.');
 
 
         return $this->goHome();
