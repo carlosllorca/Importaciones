@@ -168,6 +168,17 @@ if (class_exists('common\models\Menu')) {
                 </li>
                 <?php
             }
+            if (Yii::$app->user->can('inform/index')) {
+                ?>
+                <li class="<?= \app\controllers\MainController::determineActive('inform') ?>">
+                    <a class="nav-link" href="/inform/index">
+                        <i class="material-icons">dvr</i>
+                        <p>Informes</p>
+                    </a>
+                </li>
+                <?php
+
+            }
             ?>
 
 
