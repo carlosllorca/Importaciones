@@ -27,10 +27,8 @@ $this->title='Módulo de informes'
                                         <tbody>
                                         <tr><th> Productos más demandados en el último año.</th><th><a TARGET="_blank" href="/inform/demandas-productos-mas-solicitados"><i class="fa fa-download"></i></a> </th></tr>
                                         <tr><th> Productos más demandados en el último trimestre.</th><th><a target="_blank" href="/inform/demandas-productos-mas-solicitados-trimestre"><i class="fa fa-download"></i></a> </th></tr>
-                                        <tr><th> Demandas pendientes con más de 6 meses.</th></tr>
-                                        <tr><th> Relación de demandas canceladas.</th></tr>
-                                        <tr><th> Demandas pendientes.</th></tr>
-
+                                        <tr><th> Demandas pendientes con más de 1 mes.</th><th><a target="_blank" href="/inform/demandas-pendientes"><i class="fa fa-download"></i></a> </th></tr>
+                                        <tr><th> Relación de demandas rechazadas.</th><th><a target="_blank" href="/inform/demandas-rechazadas"><i class="fa fa-download"></i></a> </th></tr>
                                         </tbody>
                                     </table>
                                 </div>

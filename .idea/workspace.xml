@@ -19,17 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="caso de uso solicitar adición de producto a listado validado.">
-      <change afterPath="$PROJECT_DIR$/controllers/InformController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/DataInforms.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/inform/demandas_productos_mas_solicitados.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/inform/demandas_productos_mas_solicitados_trimestre.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/inform/header.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/inform/inform.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/css/certificados.css" afterDir="false" />
+    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="informes 1 y 2">
+      <change afterPath="$PROJECT_DIR$/views/inform/demandas_pendientes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/inform/demandas_rechazadas.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/params.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/params.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/left.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/left.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/InformController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/InformController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/DataInforms.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DataInforms.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/inform/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/inform/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/inform/inform.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/inform/inform.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -379,14 +376,7 @@
       <workItem from="1590332923321" duration="19547000" />
       <workItem from="1590413334085" duration="5000" />
       <workItem from="1590500619177" duration="28000" />
-      <workItem from="1590544247686" duration="3100000" />
-    </task>
-    <task id="LOCAL-00044" summary="Fin del ciclo, pendiente la opción modificar hito">
-      <created>1583990306248</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1583990306248</updated>
+      <workItem from="1590544247686" duration="7057000" />
     </task>
     <task id="LOCAL-00045" summary="estilo naranja en los textbox">
       <created>1584219207614</created>
@@ -724,7 +714,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590362253625</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="informes 1 y 2">
+      <created>1590547422202</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1590547422203</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -756,7 +753,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Correo para aprobar y rechazar demandas." />
     <MESSAGE value="Correo de generar solicitud de compra nacional e internacional." />
     <MESSAGE value="Correo solicitud nacional aprobada" />
     <MESSAGE value="Correo solicitud asignada a un usuario (Especialista técnico o comprador.)" />
@@ -781,7 +777,8 @@
     <MESSAGE value="Perfil de usuario y cambiar contraseña." />
     <MESSAGE value="optimizando la creación de la demanda con la sugerencia de Matota." />
     <MESSAGE value="caso de uso solicitar adición de producto a listado validado." />
-    <option name="LAST_COMMIT_MESSAGE" value="caso de uso solicitar adición de producto a listado validado." />
+    <MESSAGE value="informes 1 y 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="informes 1 y 2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="625" y="235" width="732" height="644" key="#Inspections" timestamp="1589240512123">

@@ -34,6 +34,26 @@ class InformController extends MainController
         Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
         Yii::$app->response->headers->add('Content-Type', 'application/pdf');
     }
+    public function actionDemandasPendientes(){
+        $data = DataInforms::demandsPending();
+        $mpdf = $this->generateBasicInform();
+        $mpdf->WriteHTML($this->renderPartial('demandas_pendientes', ['data' => $data]), 2);
+        $username = User::userLogged()->full_name;
+        $mpdf->SetHTMLFooter("<p style='padding: 10px;text-align: center;font-size: 12px'><b>Generado por: </b>".$username."  <b>Fecha: </b>".date('d-m-Y H:i:s')."</p>");
+        $mpdf->Output();
+        Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+        Yii::$app->response->headers->add('Content-Type', 'application/pdf');
+    }
+    public function actionDemandasRechazadas(){
+        $data = DataInforms::demandsRejected();
+        $mpdf = $this->generateBasicInform();
+        $mpdf->WriteHTML($this->renderPartial('demandas_rechazadas', ['data' => $data]), 2);
+        $username = User::userLogged()->full_name;
+        $mpdf->SetHTMLFooter("<p style='padding: 10px;text-align: center;font-size: 12px'><b>Generado por: </b>".$username."  <b>Fecha: </b>".date('d-m-Y H:i:s')."</p>");
+        $mpdf->Output();
+        Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+        Yii::$app->response->headers->add('Content-Type', 'application/pdf');
+    }
 
     /**
      * @param $name

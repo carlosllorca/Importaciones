@@ -24,6 +24,16 @@ class DataInforms extends Model
         $query = $connector->createCommand("select * from inform_productos_mas_solicitado_trimestre limit 50")->queryAll();
         return $query;
     }
+    public static function demandsPending(){
+        $connector = self::getConnector();
+        $query = $connector->createCommand("select * from inform_pending_demand")->queryAll();
+        return $query;
+    }
+    public static function demandsRejected(){
+        $connector = self::getConnector();
+        $query = $connector->createCommand("select * from inform_demandas_rechazadas")->queryAll();
+        return $query;
+    }
 
 
 

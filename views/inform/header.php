@@ -10,7 +10,7 @@ use yii\helpers\Url;
     </div>
     <div class="col-9" style="">
 
-        <h3 style=" margin: 0px;padding-left: 10px"><?=$title?></h3>
+        <h3 style=" margin: 0px;padding-left: 10px; text-transform: uppercase"><?=$title?></h3>
         <h5 style="margin: 0px;padding-left: 10px;font-style: italic ;color:#f66b0d; "><?= Yii::$app->params['siteName'] ?></h5>
         <h5 style="margin: 0px;padding-left: 10px;font-style: italic ;color:#f66b0d; ">
             <a style="color: #f66b0d;" href="<?= Url::home('http') ?>"><?= Url::home('http') ?></a>
