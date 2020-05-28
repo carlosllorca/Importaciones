@@ -34,6 +34,11 @@ class DataInforms extends Model
         $query = $connector->createCommand("select * from inform_demandas_rechazadas")->queryAll();
         return $query;
     }
+    public static function solicitudesActivas(){
+        $connector = self::getConnector();
+        $query = $connector->createCommand("select * from inform_solicitudes_activas")->queryAll();
+        return $query;
+    }
 
 
 
