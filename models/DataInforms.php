@@ -39,6 +39,16 @@ class DataInforms extends Model
         $query = $connector->createCommand("select * from inform_solicitudes_activas")->queryAll();
         return $query;
     }
+    public static function solicitudesInternacionalesFueraFecha(){
+        $connector = self::getConnector();
+        $query = $connector->createCommand("select * from inform_contratacion_internacional_fuera_fecha")->queryAll();
+        return $query;
+    }
+    public static function solicitudesNacionalesesFueraFecha(){
+        $connector = self::getConnector();
+        $query = $connector->createCommand("select * from inform_contratacion_nacional_fuera_fecha")->queryAll();
+        return $query;
+    }
 
 
 

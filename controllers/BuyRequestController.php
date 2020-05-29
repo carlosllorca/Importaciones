@@ -822,6 +822,12 @@ class BuyRequestController extends MainController
         if ($model->load(Yii::$app->request->post()) ) {
             if($setSuccess===true){
                 $model->real_end=date('Y-m-d');
+                $model->active=false;
+                $nh = $model->nextHito();
+                if($nh){
+                    $nh->active=true;
+                    $nh->save(false);
+                }
             }
 
             $dateStart= date('Y-m-d',strtotime($model->nextHitoDate));

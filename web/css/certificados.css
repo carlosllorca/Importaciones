@@ -161,3 +161,7 @@ th{
     padding: 5px 5px;
     text-transform: uppercase;
 }
+.danger{
+    font-weight: bold;
+    color: darkred;
+}

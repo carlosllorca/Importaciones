@@ -17,6 +17,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int $stage_id
  * @property int $buy_request_id
  * @property string $details
+ * @property boolean $active
  *
  * @property BuyRequest $buyRequest
  * @property Stage $stage
@@ -43,6 +44,7 @@ class RequestStage extends ActiveRecord
             [['date_created', 'date_start', 'date_end', 'real_end'], 'safe'],
             [['stage_id', 'buy_request_id'], 'default', 'value' => null],
             [['stage_id', 'buy_request_id'], 'integer'],
+            ['active','boolean'],
             [['details','nextHitoDate'], 'string'],
             [['buy_request_id'], 'exist', 'skipOnError' => true, 'targetClass' => BuyRequest::className(), 'targetAttribute' => ['buy_request_id' => 'id']],
             [['stage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Stage::className(), 'targetAttribute' => ['stage_id' => 'id']],
@@ -64,6 +66,7 @@ class RequestStage extends ActiveRecord
             'nextHitoDate' => 'Fecha de inicio del próximo hito',
             'stage_id' => 'Stage ID',
             'buy_request_id' => 'Buy Request ID',
+            'active' => 'Activo',
         ];
     }
     /**

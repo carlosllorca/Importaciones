@@ -42,7 +42,7 @@ $this->title='Módulo de informes'
                                     <table class="table">
                                         <tbody>
                                         <tr><th> Solicitudes activas.</th><th><a target="_blank" href="/inform/solicitudes-activas"><i class="fa fa-download"></i></a> </th></tr>
-                                        <tr><th> Solicitudes en fase de contratación con tiempo superior al establecido para cada etapa.</th></tr>
+                                        <tr><th> Solicitudes en fase de contratación con tiempo superior al establecido para cada etapa.</th><th><a target="_blank" href="/inform/solicitudes-fuera-fecha"><i class="fa fa-download"></i></a></th> </tr>
                                         <tr><th> Solicitudes en fase de transportación con el hito en que se encuentran.</th></tr>
                                         <tr><th> Valor de las órdenes de compra completadas en el último año distribuidas por meses.</th></tr>
                                         </tbody>
