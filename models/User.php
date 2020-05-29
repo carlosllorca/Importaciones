@@ -34,6 +34,7 @@ use yii\behaviors\TimestampBehavior;
  * @property Log[] $logs
  * @property Offert[] $offerts
  * @property Offert[] $offerts0
+ * @property UserCanView[] $userCanViews
  * @property ProvinceUeb $provinceUeb
  * @property AuthItem $role
  * @property AuthAssignment $authAssignament
@@ -49,12 +50,14 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     }
     public $confirm_password;
     public $rol;
+    public $user_can_view;
     const SCENARIO_CREATE_USER = 'createUser';
 
 
     /**
      * {@inheritdoc}
      */
+
     public function rules()
     {
         return [
@@ -65,6 +68,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['email'], 'email'],
             [['password','confirm_password'], 'passwordsMatch','on'=>self::SCENARIO_CREATE_USER],
             [['rol'], 'required'],
+            ['user_can_view','safe'],
             [['active'], 'boolean'],
             [['username'], 'string', 'max' => 25],
             [['phone_number'], 'string', 'max' => 20],
@@ -124,6 +128,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'email' => 'Correo electrónico',
             'password' => 'Contraseña',
             'confirm_password' => 'Confirmar Contraseña',
+            'user_can_view'=>'Tipos de ordenes que gestiona',
             'created_at' => 'Creado',
             'last_login' => 'Último acceso',
             'digital_signature' => 'Firma digital',
@@ -184,6 +189,14 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         $array = [];
         foreach ($this->documentTypePermissions as $documentTypePermission){
             array_push($array,$documentTypePermission->document_type_id);
+        }
+        return $array;
+    }
+    public function arrayCanView()
+    {
+        $array = [];
+        foreach ($this->userCanViews as $userCanView){
+            array_push($array,$userCanView->buy_request_type_id);
         }
         return $array;
     }
@@ -349,6 +362,15 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             }
         }
         return $active;
+    }
+    /**
+     * Gets query for [[UserCanViews]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserCanViews()
+    {
+        return $this->hasMany(UserCanView::className(), ['user_id' => 'id']);
     }
 
 

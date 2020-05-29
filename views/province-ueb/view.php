@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ProvinceUeb */
+/* @var $model app\models\OffertStatus */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Province Uebs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Offert Statuses', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="province-ueb-view">
+<div class="offert-status-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

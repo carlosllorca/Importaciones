@@ -202,7 +202,13 @@ FROM
      */
     public function actionContact()
     {
-        $model = new ContactForm();
+        $model = new ContactForm(
+            [
+                'name' => User::userLogged()->full_name,
+                'email' => User::userLogged()->email
+            ]
+        );
+
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
 
