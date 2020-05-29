@@ -43,8 +43,7 @@ $this->title='Módulo de informes'
                                         <tbody>
                                         <tr><th> Solicitudes activas.</th><th><a target="_blank" href="/inform/solicitudes-activas"><i class="fa fa-download"></i></a> </th></tr>
                                         <tr><th> Solicitudes en fase de contratación con tiempo superior al establecido para cada etapa.</th><th><a target="_blank" href="/inform/solicitudes-fuera-fecha"><i class="fa fa-download"></i></a></th> </tr>
-                                        <tr><th> Solicitudes en fase de transportación con el hito en que se encuentran.</th></tr>
-                                        <tr><th> Valor de las órdenes de compra completadas en el último año distribuidas por meses.</th></tr>
+                                        <tr><th> Valor de las órdenes de compra completadas en el último año distribuidas por meses.</th><th><a target="_blank" href="/inform/ventas"><i class="fa fa-download"></i></a> </th></tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -58,8 +57,8 @@ $this->title='Módulo de informes'
                                 <div class="card-body" style="padding: 15px">
                                     <table class="table">
                                         <tbody>
-                                        <tr><th> Ordenes activas por hito en que se encuentran.</th></tr>
-                                        <tr><th> Ordenes de compra con hitos vencidos.</th></tr>
+                                        <tr><th> Ordenes activas por hito en que se encuentran.</th><th><a target="_blank" href="/inform/solicitudes-en-transportacion"><i class="fa fa-download"></i></a> </th></tr>
+                                        <tr><th> Ordenes de compra con hitos vencidos.</th><th><a target="_blank" href="/inform/solicitudes-en-transportacion-vencidas"><i class="fa fa-download"></i></a> </th></tr>
                                         <tr><th> Tiempo medio de respuesta de proveedores a solicitudes de oferta.</th></tr>
                                         </tbody>
                                     </table>

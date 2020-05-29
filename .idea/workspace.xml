@@ -19,16 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="solcitudes activas">
-      <change afterPath="$PROJECT_DIR$/views/inform/solicitudes_internacionales_fuera_fecha.php" afterDir="false" />
+    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="solicitudes fuera de fecha de contratacion">
+      <change afterPath="$PROJECT_DIR$/views/inform/solicitudes_en_transportacion.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/inform/solicitudes_en_transportacion_vencidas.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/inform/ventas_ultimo_anno.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/BuyRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BuyRequestController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/InformController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/InformController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/DataInforms.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DataInforms.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ProviderStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ProviderStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/RequestStage.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/RequestStage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/inform/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/inform/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/inform/inform.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/inform/inform.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/certificados.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/certificados.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,17 +227,17 @@
     <property name="yiicFile" value="" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tabpanel" />
-      <recent name="$PROJECT_DIR$/web/css" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/views/inform" />
       <recent name="$PROJECT_DIR$/web/css" />
       <recent name="$PROJECT_DIR$/models" />
       <recent name="$PROJECT_DIR$/controllers" />
       <recent name="$PROJECT_DIR$/mail" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tabpanel" />
+      <recent name="$PROJECT_DIR$/web/css" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
@@ -380,14 +379,7 @@
       <workItem from="1590500619177" duration="28000" />
       <workItem from="1590544247686" duration="7057000" />
       <workItem from="1590583481919" duration="891000" />
-      <workItem from="1590698121221" duration="9540000" />
-    </task>
-    <task id="LOCAL-00046" summary="Lista la descripcion para el campo método de pago">
-      <created>1584227576819</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1584227576819</updated>
+      <workItem from="1590698121221" duration="15680000" />
     </task>
     <task id="LOCAL-00047" summary="Aprobando/Rechazando demanda desde el view">
       <created>1584232779803</created>
@@ -725,7 +717,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590701161101</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="solicitudes fuera de fecha de contratacion">
+      <created>1590711026720</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1590711026720</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -757,7 +756,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Correo solicitud nacional aprobada" />
     <MESSAGE value="Correo solicitud asignada a un usuario (Especialista técnico o comprador.)" />
     <MESSAGE value="Correo de generar una oferta y evaluar esta." />
     <MESSAGE value="email cuando se sube un documento." />
@@ -782,7 +780,8 @@
     <MESSAGE value="caso de uso solicitar adición de producto a listado validado." />
     <MESSAGE value="informes 1 y 2" />
     <MESSAGE value="solcitudes activas" />
-    <option name="LAST_COMMIT_MESSAGE" value="solcitudes activas" />
+    <MESSAGE value="solicitudes fuera de fecha de contratacion" />
+    <option name="LAST_COMMIT_MESSAGE" value="solicitudes fuera de fecha de contratacion" />
   </component>
   <component name="WindowStateProjectService">
     <state x="625" y="235" width="732" height="644" key="#Inspections" timestamp="1589240512123">
@@ -1024,10 +1023,10 @@
       <screen x="0" y="27" width="3840" height="1053" />
     </state>
     <state x="1969" y="284" key="RollbackChangesDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1582359767068" />
-    <state x="485" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1590701886895">
+    <state x="485" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1590716805510">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="485" y="188" width="1022" height="737" key="SettingsEditor/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590701886895" />
+    <state x="485" y="188" width="1022" height="737" key="SettingsEditor/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590716805510" />
     <state x="606" y="295" width="800" height="551" key="Vcs.Push.Dialog.v2" timestamp="1589288344587">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -1036,7 +1035,7 @@
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583171256309" />
     <state x="590" y="295" key="Vcs.Push.Dialog.v2/49.27.1871.1053@49.27.1871.1053" timestamp="1583770086860" />
     <state x="606" y="295" key="Vcs.Push.Dialog.v2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1589288344587" />
-    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1590344802985">
+    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1590713653291">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="2256" y="169" width="566" height="677" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588481783603" />
@@ -1044,7 +1043,7 @@
     <state x="2256" y="169" width="566" height="830" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@1920.0.1920.1080" timestamp="1583817869376" />
     <state x="376" y="192" width="321" height="720" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/1920.0.1920.1080/49.27.1871.1053@49.27.1871.1053" timestamp="1583299941970" />
     <state x="376" y="192" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/49.27.1871.1053@49.27.1871.1053" timestamp="1584760314008" />
-    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590344802985" />
+    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590713653291" />
     <state x="1920" y="246" width="1920" height="834" key="dock-window-1" timestamp="1584676068987">
       <screen x="49" y="27" width="3791" height="1053" />
     </state>

@@ -75,6 +75,36 @@ class InformController extends MainController
         Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
         Yii::$app->response->headers->add('Content-Type', 'application/pdf');
     }
+    public function actionVentas(){
+        $data = DataInforms::ventasUltimoAnno();
+        $mpdf = $this->generateBasicInform();
+        $mpdf->WriteHTML($this->renderPartial('ventas_ultimo_anno', ['data' => $data]), 2);
+        $username = User::userLogged()->full_name;
+        $mpdf->SetHTMLFooter("<p style='padding: 10px;text-align: center;font-size: 12px'><b>Generado por: </b>".$username."  <b>Fecha: </b>".date('d-m-Y H:i:s')."</p>");
+        $mpdf->Output();
+        Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+        Yii::$app->response->headers->add('Content-Type', 'application/pdf');
+    }
+    public function actionSolicitudesEnTransportacion(){
+        $data = DataInforms::solicitudesEnTransportacion();
+        $mpdf = $this->generateBasicInform(true);
+        $mpdf->WriteHTML($this->renderPartial('solicitudes_en_transportacion', ['data' => $data]), 2);
+        $username = User::userLogged()->full_name;
+        $mpdf->SetHTMLFooter("<p style='padding: 10px;text-align: center;font-size: 12px'><b>Generado por: </b>".$username."  <b>Fecha: </b>".date('d-m-Y H:i:s')."</p>");
+        $mpdf->Output();
+        Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+        Yii::$app->response->headers->add('Content-Type', 'application/pdf');
+    }
+    public function actionSolicitudesEnTransportacionVencidas(){
+        $data = DataInforms::solicitudesEnTransportacionVencidas();
+        $mpdf = $this->generateBasicInform(true);
+        $mpdf->WriteHTML($this->renderPartial('solicitudes_en_transportacion_vencidas', ['data' => $data]), 2);
+        $username = User::userLogged()->full_name;
+        $mpdf->SetHTMLFooter("<p style='padding: 10px;text-align: center;font-size: 12px'><b>Generado por: </b>".$username."  <b>Fecha: </b>".date('d-m-Y H:i:s')."</p>");
+        $mpdf->Output();
+        Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+        Yii::$app->response->headers->add('Content-Type', 'application/pdf');
+    }
 
     /**
      * @param $name

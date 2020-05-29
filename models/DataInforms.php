@@ -49,6 +49,22 @@ class DataInforms extends Model
         $query = $connector->createCommand("select * from inform_contratacion_nacional_fuera_fecha")->queryAll();
         return $query;
     }
+    public static function ventasUltimoAnno(){
+        $connector = self::getConnector();
+        $query = $connector->createCommand("select * from inform_ventas_ultimo_anno")->queryAll();
+        return $query;
+    }
+    public static function solicitudesEnTransportacion(){
+        $connector = self::getConnector();
+        $query = $connector->createCommand("select * from inform_ordenes_en_transportacion")->queryAll();
+        return $query;
+    }
+    public static function solicitudesEnTransportacionVencidas(){
+        $connector = self::getConnector();
+        $query = $connector->createCommand("select * from inform_ordenes_en_transportacion_vencidas")->queryAll();
+        return $query;
+    }
+
 
 
 
