@@ -860,6 +860,8 @@ class BuyRequestController extends MainController
                 $model->buyRequest->buy_request_status_id=BuyRequestStatus::$CERRADA;
                 $model->buyRequest->closed_date=date('Y-m-d');
                 $model->buyRequest->save(false);
+                $model->buyRequest->closeDemandsRelated();
+                Yii::$app->traza->saveLog("Orden cerrada","La orden ".$model->buyRequest->code." ha sido cerrada");
                 Yii::$app->session->setFlash('success','Has concluido el último hito. La orden ha sido cerrada.');
             }
             else{

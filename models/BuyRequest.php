@@ -533,6 +533,27 @@ class BuyRequest extends \yii\db\ActiveRecord
         return 0;
 
     }
+    public function closeDemandsRelated(){
+        foreach ($this->getDemands() as $demand){
+            if($demand->demand_status_id==DemandStatus::TRAMITADA_ID){
+                $query = Demand::find()->innerJoinWith('demandItem.buyRequest')
+                    ->where(['not','buy_request.buy_request_status_id'=>[BuyRequestStatus::$CERRADA,BuyRequestStatus::$CANCELADA_ID]])->one();
+                if(!$query){
+                    $demand->demand_status_id=DemandStatus::CERRADA_ID;
+                    $demand->save(false);
+                    try{
+                        Yii::$app->mailer->compose('demandClosed', ['demand'=>$demand])
+                            ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                            ->setTo($demand->createdBy->email)
+                            ->setSubject("La demanda".$demand->demand_code." ha sido cerrada.")
+                            ->send();
+                    }catch (\Exception $e){
+
+                    }
+                }
+            }
+        }
+    }
 
 
 
