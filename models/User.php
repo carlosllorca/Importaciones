@@ -61,7 +61,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'full_name', 'email', 'password', 'created_at'], 'required'],
+            [['username', 'full_name', 'email', 'password', 'created_at','province_ueb'], 'required'],
             [['created_at', 'last_login'], 'safe'],
             [['province_ueb'], 'default', 'value' => null],
             [['province_ueb'], 'integer'],
@@ -77,19 +77,20 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['full_name','cargo','digital_signature_url'], 'string', 'max' => 150],
 
             [['email'], 'string', 'max' => 50],
-            [['province_ueb'], 'required',
-                'when'=>function($model){
-                    return $model->rol==Rbac::$UEB;
-                },
-                'whenClient' =>
-                    "function (attribute, value) {
-                     
-                    return $('#user-rol').val() === 'ueb';
-                }"],
+            [['province_ueb'], 'ralationUEBWithTypeUser'],
             [['password'], 'string', 'max' => 100,'min'=>8,'tooShort'=>'La contraseña debe tener como mínimo 8 caracteres'],
             [['confirm_password'], 'string', 'max' => 100,'min'=>8,'tooShort'=>'La contraseña debe tener como mínimo 8 caracteres','on'=>self::SCENARIO_CREATE_USER],
             [['province_ueb'], 'exist', 'skipOnError' => true, 'targetClass' => ProvinceUeb::className(), 'targetAttribute' => ['province_ueb' => 'id']],
         ];
+    }
+    public function ralationUEBWithTypeUser($attribute){
+        if($this->rol==Rbac::$UEB&&$this->province_ueb==ProvinceUeb::$SEDE_CENTRAL_id){
+            $this->addError($attribute, 'Los Especialistas de UEB no pueden pertenecer a la Sede central.');
+        }
+        if($this->rol!=Rbac::$UEB&&$this->province_ueb!=ProvinceUeb::$SEDE_CENTRAL_id){
+            $this->addError($attribute, 'Solo los usuario con rol de Especialista UEB pueden pertenecer a UEB diferentes de Sede central.');
+        }
+
     }
     public function passwordsMatch($attribute, $params)
     {
@@ -322,11 +323,17 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return null;
     }
-    public static function combo($rol){
-        return ArrayHelper::map(self::find()->innerJoinWith('authAssignament')
+    public static function combo($rol,$orderType=false){
+        $query= self::find()->innerJoinWith('authAssignament')
             ->where(['auth_assignment.item_name'=>$rol])
-            ->andWhere(['user.active'=>true])
-            ->all(),'id','full_name');
+
+            ->andWhere(['user.active'=>true]);
+        if($orderType){
+            $query= $query->innerJoinWith('userCanViews')->andWhere(['user_can_view.buy_request_type_id'=>$orderType]);
+        }
+
+        return ArrayHelper::map($query->all(),'id','full_name');
+
     }
 
     /**

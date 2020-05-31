@@ -83,6 +83,7 @@ class BuyRequestSearch extends BuyRequest
                 throw  new ForbiddenHttpException("Esta vista no está preparada para usuario scon su rol.");
                 break;
         }
+        $query->andWhere(['buy_request_type_id'=>User::userLogged()->arrayCanView()]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);

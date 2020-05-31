@@ -4,22 +4,25 @@
 
 /* @var $this \yii\web\View */
 use miloschuman\highcharts\Highcharts;
+$gaugeInternacional = \app\models\DataGraphics::gaugeCInternacional(\app\models\User::userLogged()->id);
+
+$solicitudesHitosActivos = \app\models\DataGraphics::solicitudesConHitosActivosXTiempo(\app\models\User::userLogged()->id);
 $solicitudesXTipoYEstado = \app\models\DataGraphics::barBuyRequestByBuyerAndStatus(\app\models\User::userLogged()->id);
-$solicitudesHitosActivos = \app\models\DataGraphics::solicitudesConHitosActivosXTiempo(\app\models\User::userLogged()->id)
+
 ?>
 
 <div class="site-index">
 
     <div class="row">
         <div class="col-sm-12" style="margin: auto">
-            <div class="card">
+            <div class="card" style="min-height: 80vh">
                 <div class="card-header card-header-primary">
                     <b> Estado de la actividad</b>
                 </div>
                 <div class="card-body" style="padding: 15px">
                     <div class="row">
                         <div class="col-sm-9">
-                            <?= Highcharts::widget([
+                            <?=count($solicitudesXTipoYEstado[0])? Highcharts::widget([
                                 'scripts' => [
                                     'themes/grid-light',
                                 ],
@@ -53,11 +56,13 @@ $solicitudesHitosActivos = \app\models\DataGraphics::solicitudesConHitosActivosX
                                     'series' => $solicitudesXTipoYEstado[1],
 
                                 ]
-                            ]); ?>
+                            ]):$this->render('noData',['name'=>'Solicitudes activas por tipo y estado.'])
+
+                            ; ?>
                         </div>
                         <div class="col-sm-3">
 
-                            <?= Highcharts::widget([
+                            <?=count($gaugeInternacional)? Highcharts::widget([
                                 'scripts' => [
                                     'themes/grid-light',
                                     'highcharts-more',
@@ -119,12 +124,12 @@ $solicitudesHitosActivos = \app\models\DataGraphics::solicitudesConHitosActivosX
                                     'legend' => [
                                         'enabled' => true
                                     ],
-                                    'series' => \app\models\DataGraphics::gaugeCInternacional(\app\models\User::userLogged()->id)
+                                    'series' => $gaugeInternacional
                                 ]
-                            ]); ?>
+                            ]):$this->render('noData',['name'=>'Licitaciones activas.']); ?>
                         </div>
                         <div class="col-sm-12">
-                            <?= Highcharts::widget([
+                            <?= count($solicitudesHitosActivos[0])?Highcharts::widget([
                                 'scripts' => [
                                     'themes/grid-light',
                                 ],
@@ -163,7 +168,7 @@ $solicitudesHitosActivos = \app\models\DataGraphics::solicitudesConHitosActivosX
                                     'series' => $solicitudesHitosActivos[1],
 
                                 ]
-                            ]); ?>
+                            ]):$this->render('noData',['name'=>'Solicitudes de compra con hitos activos.']); ?>
                         </div>
                     </div>
                 </div>
