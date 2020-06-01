@@ -201,6 +201,12 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         }
         return $array;
     }
+    public static function userCanViewOrder($buyRequestType,$user=false){
+        if($user==false){
+            $user=self::userLogged();
+        }
+        return in_array($buyRequestType,$user->arrayCanView());
+    }
 
     /**
      * @return ActiveQuery

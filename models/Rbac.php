@@ -22,8 +22,8 @@ class Rbac extends Model
     public static $ROOT='root';
     public static $UEB='ueb';
     public static $ESP_TECNICO='especialista_tecnico';
-    public static $COMPRADOR_NACIONAL='comprador_nacional';
-    public static $COMPRADOR_INTERNACIONAL='comprador_internacional';
+    public static $COMPRADOR='buyer';
+
     public static $JEFE_LOGÍSTICA='Jefe_logistica';
     public static $LOGISTICA_ID='especialista_logistica';
     public static $JEFE_COMPRAS='jefe_compras';
