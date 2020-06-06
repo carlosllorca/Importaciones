@@ -15,7 +15,6 @@ use yii\behaviors\TimestampBehavior;
  * @property string $username
  * @property string $full_name
  * @property string $email
-
  * @property string $password
  * @property string $confirm_password
  * @property string $cargo
@@ -38,6 +37,7 @@ use yii\behaviors\TimestampBehavior;
  * @property ProvinceUeb $provinceUeb
  * @property AuthItem $role
  * @property AuthAssignment $authAssignament
+ * @property int $updated_at [timestamp]
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
