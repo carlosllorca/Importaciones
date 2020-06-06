@@ -536,8 +536,8 @@ class BuyRequest extends \yii\db\ActiveRecord
     public function closeDemandsRelated(){
         foreach ($this->getDemands() as $demand){
             if($demand->demand_status_id==DemandStatus::TRAMITADA_ID){
-                $query = Demand::find()->innerJoinWith('demandItem.buyRequest')
-                    ->where(['not','buy_request.buy_request_status_id'=>[BuyRequestStatus::$CERRADA,BuyRequestStatus::$CANCELADA_ID]])->one();
+                $query = Demand::find()->innerJoinWith('demandItems.buyRequest')
+                    ->where(['not',['buy_request.buy_request_status_id'=>[BuyRequestStatus::$CERRADA,BuyRequestStatus::$CANCELADA_ID]]])->one();
                 if(!$query){
                     $demand->demand_status_id=DemandStatus::CERRADA_ID;
                     $demand->save(false);

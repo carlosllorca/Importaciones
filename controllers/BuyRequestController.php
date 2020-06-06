@@ -111,7 +111,7 @@ class BuyRequestController extends MainController
 
    public function actionUpdate($id){
        $model = $this->findModel($id);
-       if((Rbac::getRole()==Rbac::$ESP_TECNICO||Rbac::getRole()==Rbac::$COMPRADOR_INTERNACIONAL)&&(!$model->buy_approved_by||!$model->dt_approved_by)){
+       if((Rbac::getRole()==Rbac::$ESP_TECNICO||Rbac::getRole()==Rbac::$COMPRADOR)&&(!$model->buy_approved_by||!$model->dt_approved_by)){
            Yii::$app->session->setFlash('warning','Esta orden aún no ha sido aprobada para su edición.');
            return $this->redirect(['view','id'=>$model->id]);
        }

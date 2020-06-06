@@ -14,9 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 $seriesData = \app\models\DataGraphics::linearComparativeBuyRequest($model->id);
 ?>
 <?= $model->buy_request_type_id == \app\models\BuyRequestType::$NACIONAL_ID || $model->buy_request_type_id == \app\models\BuyRequestType::$TYPE_711 ?
-    Html::input('hidden', null, json_encode(User::combo(\app\models\Rbac::$COMPRADOR_NACIONAL,$model->buy_request_type_id)), ['id' => 'data_comprador']) : null ?>
+    Html::input('hidden', null, json_encode(User::combo(\app\models\Rbac::$COMPRADOR,$model->buy_request_type_id)), ['id' => 'data_comprador']) : null ?>
 <?= $model->buy_request_type_id == \app\models\BuyRequestType::$INTERNACIIONAL_ID ?
-    Html::input('hidden', null, json_encode(User::combo(\app\models\Rbac::$COMPRADOR_INTERNACIONAL,$model->buy_request_type_id)), ['id' => 'data_comprador']) : null ?>
+    Html::input('hidden', null, json_encode(User::combo(\app\models\Rbac::$COMPRADOR,$model->buy_request_type_id)), ['id' => 'data_comprador']) : null ?>
 <?= Html::input('hidden', null, json_encode(User::combo(\app\models\Rbac::$ESP_TECNICO,$model->buy_request_type_id)), ['id' => 'data_tecnico']) ?>
 
     <div class="card">

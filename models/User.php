@@ -259,7 +259,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getRole()
     {
-        return $this->authAssignament->itemName;
+
+        return $this->authAssignament?$this->authAssignament->itemName:false;
 
     }
 

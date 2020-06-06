@@ -18,7 +18,7 @@ use miloschuman\highcharts\Highcharts;
                 </div>
                 <div class="card-body" style="padding: 15px">
                     <div class="row">
-                        <div class="<?=User::userCanViewOrder(\app\models\BuyRequestType::$INTERNACIIONAL_ID)?'col-sm-9':'col-sm-3'?>">
+                        <div class="<?=User::userCanViewOrder(\app\models\BuyRequestType::$INTERNACIIONAL_ID)?'col-sm-9':'col-sm-12'?>">
                             <?= $this->render('graficas/buyer_solicitudes_x_tipo_x_estado');?>
                         </div>
                         <?php

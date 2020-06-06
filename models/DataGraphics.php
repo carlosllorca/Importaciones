@@ -540,9 +540,14 @@ class DataGraphics extends Model
 
         if($query){
             $response = [];
+            $p=0;
             foreach ($query as $value){
+                if($p!=0){
+                    array_push($response,(int)$value);
+                }
+                $p++;
 
-                array_push($response,(int)$value);
+
             }
             return $response;
         }else{
