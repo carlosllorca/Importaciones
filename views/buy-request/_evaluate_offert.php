@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
                     'options' => ['placeholder' => 'Seleccione..']
                 ]) ?>
             </div>
-            <?= $form->field($model, 'ganadores')->dropDownList($model->buyRequest->comboFinalistas(),['multiple'=>true,'id'=>'select-ganadores','class'=>'hidden'])->label(false)?>
+
 
             <div class="col-sm-12" style="padding-left: 10px">
                 <?= $form->field($model, 'evaluacion')->widget(\kartik\file\FileInput::className(), [

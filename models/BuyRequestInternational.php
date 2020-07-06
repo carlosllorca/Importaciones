@@ -19,6 +19,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int $buy_request_id
  * @property string|null $bidding_start
  * @property string|null $bidding_end
+ * @property string|null $credit_card_open
  * @property int|null $buyer_assigned
  * @property int|null $buy_approved_by
  * @property string|null $buy_approved_date
@@ -84,7 +85,7 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
             [['buy_request_id', 'destiny_id', 'payment_instrument_id', 'buy_condition_id'], 'integer'],
             [['bidding_start', 'bidding_end','ganadores','bidding_ready_date'], 'safe'],
             [['message','bidding_start','bidding_end','buy_condition_id'],'required','on'=>self::SCENARIO_GENERATE_LICITACION],
-            [['transport_days','build_days'],'required','on'=>self::SCENARIO_START_TRANSPORTATION],
+            [['transport_days','build_days','credit_card_open'],'required','on'=>self::SCENARIO_START_TRANSPORTATION],
             [['transport_days','build_days'],'integer','min'=>0,'max'=>999],
             [['bidding_start','bidding_end'], 'invalidRangeDate'],
             [['bidding_end'], 'beforeToday','on'=>self::SCENARIO_GENERATE_LICITACION],
@@ -153,6 +154,7 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
             'buy_request_id' => 'Buy Request ID',
             'bidding_start' => 'Inicio',
             'bidding_end' => 'Fin',
+            'credit_card_open' => 'Apertura de carta de crédito',
             'buyer_assigned' => 'Buyer Assigned',
             'blank_contract'=>'Preforma de contrato',
             'buyer_fundamentation'=>'Fundamentación de la compra',

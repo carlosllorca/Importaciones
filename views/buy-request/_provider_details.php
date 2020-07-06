@@ -99,6 +99,7 @@ use yii\widgets\ActiveForm;
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
+                        <th>Código</th>
                         <th>Recibido</th>
                         <th>Expira</th>
                         <th>Propuesta</th>
@@ -116,6 +117,7 @@ use yii\widgets\ActiveForm;
                         foreach ($model->offerts as $offert){
                             ?>
                             <tr>
+                                <th><?=$offert->code?></th>
                                 <th><?=Yii::$app->formatter->asDate($offert->upload_date)?></th>
                                 <th><?=Yii::$app->formatter->asDate($offert->expiration_date)?></th>
                                 <th><?= Html::a('Descargar',$offert->url_file,['target'=>'_blank'])?></th>

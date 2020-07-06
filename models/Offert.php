@@ -15,6 +15,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $upload_date
 
  * @property string $expiration_date
+ * @property string $code
  * @property string $url_file
  * @property int|null $evaluated_by
  * @property string $evaluation_date
@@ -49,7 +50,7 @@ class Offert extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [[ 'upload_by', 'upload_date', 'expiration_date', 'url_file', 'buy_request_provider_id'], 'required'],
+            [[ 'upload_by', 'upload_date', 'expiration_date', 'url_file', 'buy_request_provider_id','code'], 'required'],
             [[ 'upload_by', 'evaluated_by', 'buy_request_provider_id'], 'default', 'value' => null],
             [['upload_by', 'evaluated_by', 'buy_request_provider_id'], 'integer'],
             [['oferta'], 'file', 'skipOnEmpty' => true, 'extensions' => 'xls,xlsx','maxSize' => 2048*1024 ],
@@ -78,7 +79,6 @@ class Offert extends \yii\db\ActiveRecord
         $name = Yii::$app->security->generateRandomString().'.'.$this->oferta->extension;
         $this->oferta->saveAs('offerts/' .$name);
         return '/offerts/' .$name;
-
     }
     /**
     * Subir evaluacion
@@ -117,6 +117,7 @@ class Offert extends \yii\db\ActiveRecord
             'id' => 'ID',
 
             'upload_by' => 'Subido por',
+            'code' => 'Código',
             'upload_date' => 'Fecha de creación',
 
             'expiration_date' => 'Expira',

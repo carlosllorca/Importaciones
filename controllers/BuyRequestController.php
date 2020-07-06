@@ -139,6 +139,7 @@ class BuyRequestController extends MainController
     {
         $active = 'demands_associated';
         if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
+
             if($model->buyRequestInternational){
                 $form = $model->buyRequestInternational;
                 $form->proveedores=$model->arrayProveedores();
@@ -184,7 +185,7 @@ class BuyRequestController extends MainController
                 }
 
             }else{
-                $form=new BuyRequestInternational();
+                $form=new BuyRequestInternational(['bidding_start' => date('Y-m-d')]);
             }
         }
 
@@ -585,6 +586,7 @@ class BuyRequestController extends MainController
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->expiration_date=date('Y-m-d',strtotime($model->expiration_date));
             $model->save();
             $model->buyRequestProvider->provider_status_id=ProviderStatus::$OFERTA_RECIBIDA_ID;
             $model->buyRequestProvider->save(false);
@@ -746,11 +748,13 @@ class BuyRequestController extends MainController
                     $form =BuyRequestInternational::findOne($model->buyRequestInternational->id);
                     $form->setScenario(BuyRequestInternational::SCENARIO_START_TRANSPORTATION);
 
-                    if ($form->load(Yii::$app->request->post()) && $form->save()) {
+                    if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+                        $form->credit_card_open=date('Y-m-d',strtotime($form->credit_card_open));
+                        $form->save(false);
                         $model->buy_request_status_id=BuyRequestStatus::$EN_PROCESO;
 
                         $model->save(false);
-                        $current = $model->lastUploadDocumentDate();
+                        $current = $model->buyRequestInternational->credit_card_open;
 
                         foreach (Stage::getStagesByOrderType($model->buy_request_type_id) as $stage){
                             if($stage->order==2){

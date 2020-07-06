@@ -19,39 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Ajustes antes de la reunion">
-      <change afterPath="$PROJECT_DIR$/tests/functional/DemandIndexCest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Importaciones.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Importaciones.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Posibilidad de escoger a que proveedores se envía la orden.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/TrazaComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/TrazaComponent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/params.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/params.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/test.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/test_db.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/test_db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/BuyRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BuyRequestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SiteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/BuyRequestInternational.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequestInternational.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Provider.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Provider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bin/yii" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bin/yii" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/functional/ContactFormCest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functional/ContactFormCest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/functional/LoginFormCest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functional/LoginFormCest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/models/ContactFormTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/models/ContactFormTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/models/LoginFormTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/models/LoginFormTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/models/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/models/UserTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Offert.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Offert.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/buy-request/_evaluate_offert.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_evaluate_offert.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/_licitacion.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_licitacion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/_propuestas.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_propuestas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/demand/_dt_index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand/_dt_index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/left.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/left.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/error.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/error.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/seisa.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/seisa.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/buy-request/_propuestas.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/buy-request/_propuestas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/buy-request/_formTransportacion.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_formTransportacion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/buy-request/_provider_details.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_provider_details.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/buy-request/_uploadOffert.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_uploadOffert.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -425,14 +401,7 @@
       <workItem from="1592277983907" duration="6189000" />
       <workItem from="1592353553124" duration="944000" />
       <workItem from="1593975486493" duration="2180000" />
-      <workItem from="1593978242067" duration="11105000" />
-    </task>
-    <task id="LOCAL-00052" summary="Flujo de subida de documentos listo">
-      <created>1584322397443</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1584322397443</updated>
+      <workItem from="1593978242067" duration="15086000" />
     </task>
     <task id="LOCAL-00053" summary="concluido el paso de los documentos">
       <created>1584328027747</created>
@@ -770,7 +739,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591412503973</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="Posibilidad de escoger a que proveedores se envía la orden.">
+      <created>1594005869497</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1594005869498</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -802,7 +778,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="graficos" />
     <MESSAGE value="Gráfica demandas por UEB y por estado" />
     <MESSAGE value="Listos los gráficos del área logística" />
     <MESSAGE value="Cuadro de mando para el JDOPBS" />
@@ -827,7 +802,8 @@
     <MESSAGE value="Ahora a los usuarios se les asigna un tipo de orden que puede getionar" />
     <MESSAGE value="Unificando compradores" />
     <MESSAGE value="Ajustes antes de la reunion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajustes antes de la reunion" />
+    <MESSAGE value="Posibilidad de escoger a que proveedores se envía la orden." />
+    <option name="LAST_COMMIT_MESSAGE" value="Posibilidad de escoger a que proveedores se envía la orden." />
   </component>
   <component name="WindowStateProjectService">
     <state x="568" y="218" width="824" height="691" key="#CLI_Interpreters" timestamp="1592278486498">
@@ -1058,11 +1034,12 @@
     </state>
     <state x="2475" y="275" width="800" height="551" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586554504537" />
     <state x="606" y="295" width="800" height="563" key="Vcs.Push.Dialog.v2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590725698629" />
-    <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1590725647195">
+    <state x="395" y="192" width="332" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1594007883004">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="2256" y="169" width="566" height="677" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588481783603" />
     <state x="395" y="192" width="778" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590725647195" />
+    <state x="395" y="192" width="332" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1594007883004" />
     <state x="748" y="457" width="463" height="214" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1592278749205">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>

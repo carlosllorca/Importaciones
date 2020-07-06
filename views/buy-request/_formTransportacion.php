@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+use yii\jui\DatePicker;
 
 /* @var $this \yii\web\View */
 /* @var $model \app\models\BuyRequestInternational */
@@ -15,8 +16,14 @@ use yii\widgets\ActiveForm;
     ]
 ); ?>
 <div class="row">
-    <div class="col-sm-6"><?=$form->field($model,'transport_days')->textInput(['type'=>'number','min'=>1,'max'=>999])?></div>
     <div class="col-sm-6"><?=$form->field($model,'build_days')->textInput(['type'=>'number','min'=>1,'max'=>999])?></div>
+    <div class="col-sm-6"><?=$form->field($model,'transport_days')->textInput(['type'=>'number','min'=>1,'max'=>999])?></div>
+    <div class="col-sm-6"><?=$form->field($model,'credit_card_open')->widget(DatePicker::classname(), [
+            'dateFormat' => 'dd-MM-yyyy',
+
+            'options'=>['class'=>'form-control']
+        ]);?></div>
+
     <div class="col-sm-12">
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">Cancelar</button>
