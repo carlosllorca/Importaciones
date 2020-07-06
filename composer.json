@@ -28,7 +28,9 @@
         "kartik-v/yii2-widget-fileinput": "dev-master",
         "phpoffice/phpspreadsheet": "^1.11",
       "ext-zip": "*",
-        "ricar2ce/yii2-material-theme": "*"
+        "ricar2ce/yii2-material-theme": "*",
+        "yiisoft/yii2-bootstrap4": "^2.0",
+        "yiisoft/yii2-jui": "^2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                  * @var $model \app\models\Demand
                                  */
                                 if($model->demand_status_id==\app\models\DemandStatus::ACEPTADA_ID){
-                                    return $model->approvedBy->full_name;
+                                 //   return $model->approvedBy->full_name;
                                 }else{
                                     return ' - ';
                                 }

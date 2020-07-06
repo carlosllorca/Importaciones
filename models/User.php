@@ -83,6 +83,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['province_ueb'], 'exist', 'skipOnError' => true, 'targetClass' => ProvinceUeb::className(), 'targetAttribute' => ['province_ueb' => 'id']],
         ];
     }
+
+
     public function ralationUEBWithTypeUser($attribute){
         if($this->rol==Rbac::$UEB&&$this->province_ueb==ProvinceUeb::$SEDE_CENTRAL_id){
             $this->addError($attribute, 'Los Especialistas de UEB no pueden pertenecer a la Sede central.');
@@ -385,6 +387,18 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function getUserCanViews()
     {
         return $this->hasMany(UserCanView::className(), ['user_id' => 'id']);
+    }
+    public function allowNomenclador(){
+
+        $nomencladores = ['certificationtype','certification','buycondition','destiny','finaldestiny','providerstatus','demandstatus',
+            'buyrequeststatus','documentstatus','stage','paymentinstrument','paymentmethod','purchasereason','organism',
+            'country','deploymentpart','sellerrequirement','warrantytime','documenttype','buyrequesttype','um'
+            ];
+        foreach ($nomencladores as $nomenclador){
+            if(Yii::$app->user->can($nomenclador.'/index'))
+                return true;
+        }
+        return false;
     }
 
 

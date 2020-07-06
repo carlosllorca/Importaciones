@@ -227,4 +227,16 @@ FROM
     {
         return $this->render('about');
     }
+    public static function handleErrorCode($error){
+        switch ($error){
+            case 404:
+                return "El contenido solicitado no existe ($error).";
+            case 403:
+                return "Acceso denegado ($error).";
+            case 500:
+                return "Error interno ($error).";
+            default:
+                return 'Error en la gestión de contenido.';
+        }
+    }
 }

@@ -54,7 +54,9 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
     public $blank_contract;
     public $pliego;
     public $buyer_fundamentation;
+    public $proveedores;
     public $ganadores;
+
     public $message;
     static  $seller_fields  =[
         DocumentType::FUNDAMENTACION_COMPRA_ID=>'buyer_fundamentation',
@@ -86,6 +88,7 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
             [['transport_days','build_days'],'integer','min'=>0,'max'=>999],
             [['bidding_start','bidding_end'], 'invalidRangeDate'],
             [['bidding_end'], 'beforeToday','on'=>self::SCENARIO_GENERATE_LICITACION],
+            [['proveedores'], 'required','on'=>self::SCENARIO_GENERATE_LICITACION,'message'=>'Seleccione al menos un proveedor a notificar.'],
             [['blank_contract','pliego','buyer_fundamentation'], 'required','on'=>self::SCENARIO_SELECT_WINNERS],
             [['ganadores'], 'required','on'=>self::SCENARIO_SELECT_WINNERS,'message'=>'Debe seleccionar un ganador.'],
             [['blank_contract','pliego','buyer_fundamentation'], 'file', 'skipOnEmpty' => true, 'extensions' => 'pdf,doc,docx','maxSize' => 2048*1024 ],
@@ -182,6 +185,9 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
     {
         return $this->hasOne(BuyRequest::className(), ['id' => 'buy_request_id']);
     }
+
+
+
 
 
     /**

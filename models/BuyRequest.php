@@ -533,6 +533,13 @@ class BuyRequest extends \yii\db\ActiveRecord
         return 0;
 
     }
+    public function arrayProveedores(){
+        $proveedores = [];
+        foreach ($this->buyRequestProviders as $provider){
+            array_push($proveedores,$provider->provider_id);
+        }
+        return $proveedores;
+    }
     public function closeDemandsRelated(){
         foreach ($this->getDemands() as $demand){
             if($demand->demand_status_id==DemandStatus::TRAMITADA_ID){

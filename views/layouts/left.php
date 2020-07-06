@@ -132,10 +132,11 @@ if (class_exists('common\models\Menu')) {
             }
             ?>
             <?php
-            if (Yii::$app->user->can('user/index')) {
+
+            if (\app\models\User::userLogged()->allowNomenclador()) {
                 ?>
                 <li>
-                    <a class=" nav-link pointer <?= Rbac::getRole() != Rbac::$ROOT ? 'hidden' : '' ?>"
+                    <a class=" nav-link pointer"
                        data-toggle="collapse"
                        data-target="#submenu1">
                         <i class="material-icons">dashboard</i>

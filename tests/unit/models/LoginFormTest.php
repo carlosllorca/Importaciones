@@ -3,6 +3,7 @@
 namespace tests\unit\models;
 
 use app\models\LoginForm;
+use yii\db\Exception;
 
 class LoginFormTest extends \Codeception\Test\Unit
 {
@@ -13,7 +14,7 @@ class LoginFormTest extends \Codeception\Test\Unit
         \Yii::$app->user->logout();
     }
 
-    public function testLoginNoUser()
+    public function testSinCredenciales()
     {
         $this->model = new LoginForm([
             'username' => 'not_existing_username',
@@ -24,11 +25,11 @@ class LoginFormTest extends \Codeception\Test\Unit
         expect_that(\Yii::$app->user->isGuest);
     }
 
-    public function testLoginWrongPassword()
+    public function testContraseñaIncorrecta()
     {
         $this->model = new LoginForm([
-            'username' => 'demo',
-            'password' => 'wrong_password',
+            'username' => 'admin',
+            'password' => '123',
         ]);
 
         expect_not($this->model->login());
@@ -36,16 +37,26 @@ class LoginFormTest extends \Codeception\Test\Unit
         expect($this->model->errors)->hasKey('password');
     }
 
-    public function testLoginCorrect()
+    public function testAccesoCorrecto()
     {
         $this->model = new LoginForm([
-            'username' => 'demo',
-            'password' => 'demo',
+            'username' => 'admin',
+            'password' => '12345678',
         ]);
 
         expect_that($this->model->login());
         expect_not(\Yii::$app->user->isGuest);
         expect($this->model->errors)->hasntKey('password');
+    }
+
+    public function testGuardadoTraza()
+    {
+        $this->model = new LoginForm([
+            'username' => 'admin',
+            'password' => '12345678',
+        ]);
+        $this->model->login();
+        expect_not(\Yii::$app->traza->saveLog('example','testSample'));
     }
 
 }

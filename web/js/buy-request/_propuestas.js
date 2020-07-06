@@ -7,6 +7,8 @@ $(function() {
         showProvider(urlParams.get('provider'))
     }
 
+    modifyProviders();
+
 
 })
 function showForm(){
@@ -48,6 +50,20 @@ function selectWinners() {
         }
         console.log(values)
         $('#select-ganadores').val(values)
+
+    })
+}
+function modifyProviders() {
+    $('.provider_item').on('change', (event) => {
+
+        let values = [];
+        for (let i = 0; i < $('.provider_item').length; i++) {
+            if ($($('.provider_item')[i]).is(':checked')) {
+                values.push($($('.provider_item')[i]).attr('provider'))
+            }
+        }
+        console.log(values)
+        $('#proveedores').val(values)
 
     })
 }

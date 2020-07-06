@@ -141,29 +141,35 @@ class BuyRequestController extends MainController
         if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
             if($model->buyRequestInternational){
                 $form = $model->buyRequestInternational;
+                $form->proveedores=$model->arrayProveedores();
                 $form->setScenario(BuyRequestInternational::SCENARIO_GENERATE_LICITACION);
-                if ($form->load(Yii::$app->request->post()) && $form->save()) {
+                if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+                    $form->bidding_end=date('Y-m-d',strtotime($form->bidding_end));
+                    $form->save(false);
                     $model->buy_request_status_id=BuyRequestStatus::$LICITANDO;
                     foreach (Provider::related($model->arrayValidatedList(),$model->buy_request_type_id) as $provider){
+
                         if(BuyRequestProvider::find()->where(['buy_request_id'=>$model->id])
                             ->andWhere(['provider_id'=>$provider->id])->one()){
+                            if(!in_array((string)$provider->id,$form->proveedores)){
+                                BuyRequestProvider::deleteAll(['buy_request_id'=>$model->id,'provider_id'=>$provider->id]);
+                            }
                         }else{
-                            $m=new BuyRequestProvider();
-                            $m->buy_request_id=$model->id;
-                            $m->provider_id=$provider->id;
-                            $m->provider_status_id=ProviderStatus::$SOLICITUD_ENVIADA_ID;
-                            $m->save();
+                            if(in_array((string)$provider->id,$form->proveedores)){
+                                $m=new BuyRequestProvider();
+                                $m->buy_request_id=$model->id;
+                                $m->provider_id=$provider->id;
+                                $m->provider_status_id=ProviderStatus::$SOLICITUD_ENVIADA_ID;
+                                $m->save();
+                            }
+
                         }
                     };
                     if($form->notifyProviders($this)){
                         $model->save(false);
                         $active= 'propuestas';
                         Yii::$app->session->setFlash('success','El proceso de licitación ha sido iniciado/modificado. Fueron notificados los proveedores listados.');
-                        return $this->render('update', [
-                            'form'=>$form,
-                            'model' => $model,
-                            'active'=>$active
-                        ]);
+                        return $this->redirect(['update', 'id' => $model->id,'section'=>'propuestas']);
                     }else{
                         Yii::$app->session->setFlash('danger','Tuvimos un problema para notificar a los proveedores. Inténtelo de nuevo más tardre');
                         return $this->render('update', [
@@ -173,6 +179,8 @@ class BuyRequestController extends MainController
                         ]);
                     }
                     return $this->redirect(['view', 'id' => $model->id]);
+                }else{
+                    $active='propuestas';
                 }
 
             }else{
