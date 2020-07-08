@@ -21,20 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Posibilidad de escoger a que proveedores se envía la orden.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/ValidatedListItemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/ValidatedListItemController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BuyRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DataGraphics.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/DataGraphics.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ValidatedList.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ValidatedList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ValidatedListItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ValidatedListItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/demand/_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand/_items.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/demand/demand_products.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand/demand_products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/graficas/buyer_licitaciones_activas.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/graficas/buyer_licitaciones_activas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/validated-list-item/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/validated-list-item/_form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/validated-list-item/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/validated-list-item/create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/validated-list-item/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/validated-list-item/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/validated-list-item/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/validated-list-item/update.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/validated-list/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/validated-list/_form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/validated-list/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/validated-list/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/demand/_dt_index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand/_dt_index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/seisa.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/seisa.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,10 +45,13 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="f9881b44-1e69-4058-99d4-89531f808e75" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/web/js/yii_overrides.js" root0="SKIP_INSPECTION" />
@@ -851,11 +842,12 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2494" y="201" width="800" height="677" key="#Updates/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586532446893" />
-    <state x="629" y="222" width="1018" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592283725511">
+    <state x="629" y="222" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594210845024">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="2499" y="200" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588481748982" />
     <state x="629" y="222" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590702924591" />
+    <state x="629" y="222" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053/1920.87.1920.1080@72.27.1848.1053" timestamp="1594210845024" />
     <state x="629" y="222" width="1018" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1592283725511" />
     <state x="2563" y="280" width="624" height="544" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586287341734">
       <screen x="1920" y="0" width="1920" height="1080" />
@@ -1042,11 +1034,12 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="485" y="188" width="1022" height="737" key="SettingsEditor/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590716805510" />
-    <state x="606" y="295" width="800" height="563" key="Vcs.Push.Dialog.v2" timestamp="1590725698629">
+    <state x="606" y="295" width="800" height="563" key="Vcs.Push.Dialog.v2" timestamp="1594182278903">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="2475" y="275" width="800" height="551" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586554504537" />
     <state x="606" y="295" width="800" height="563" key="Vcs.Push.Dialog.v2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1590725698629" />
+    <state x="606" y="295" key="Vcs.Push.Dialog.v2/72.27.1848.1053/1920.87.1920.1080@72.27.1848.1053" timestamp="1594182278903" />
     <state x="395" y="192" width="665" height="464" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1594177232588">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>

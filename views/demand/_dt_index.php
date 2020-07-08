@@ -29,12 +29,36 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
+                    'rowOptions'=>function($model,$key){
+                        //Cambiar colores de las filas en funcion del tiempo que llevan creadas, 72 y 144 horas
+                        $orderCreatedDate = $model->sending_date;
+                        $today = date('Y-m-d');
+                        $secs = strtotime($today) - strtotime($orderCreatedDate);
+                        $dateResult = $secs / 86400;
+                        if($model->demand_status_id==\app\models\DemandStatus::ENVIADA_ID||$model->demand_status_id==\app\models\DemandStatus::ACEPTADA_ID){
+                            if($dateResult >= 3 && $dateResult < 6){
+                                // return ['class' => 'alert-warning'];
+                            }
+                            if($dateResult >= 6){
+                                return ['class' => 'alert-danger'];
+                            }
+                        }
+
+
+
+                    },
+
 
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
 
 
                         'demand_code',
+                        [
+                                'label'=>'Recibida',
+                                'attribute'=>'sending_date',
+                            'format' => 'date'
+                        ],
                        
                         [
                             'label' => 'Cliente',
@@ -65,8 +89,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                 /**
                                  * @var $model \app\models\Demand
                                  */
-                                if($model->demand_status_id==\app\models\DemandStatus::ACEPTADA_ID){
-                                 //   return $model->approvedBy->full_name;
+                                if($model->demand_status_id==\app\models\DemandStatus::ACEPTADA_ID&&$model->approved_by){
+
+                                    return $model->approvedBy->full_name;
                                 }else{
                                     return ' - ';
                                 }
