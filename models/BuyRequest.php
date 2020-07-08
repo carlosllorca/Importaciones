@@ -440,13 +440,27 @@ class BuyRequest extends \yii\db\ActiveRecord
         }
         return$clientes;
     }
-    public static function comboAvailableBuyRequest($type=false)
+    public static function comboAvailableBuyRequest($type=false,$validatedListId=false)
     {
         $models = self::find()->where(['buy_request_status_id'=>BuyRequestStatus::$BORRADOR_ID]);
+
         if($type){
             $models=$models->andWhere(['buy_request_type_id'=>$type]);
         }
-        return ArrayHelper::map($models->all(),'id','code');
+        $result = $models->all();
+        if($validatedListId){
+            $nr = [];
+            /**
+             * @var $result BuyRequest[];
+             */
+            foreach ($result as $m){
+                if($m->demandItems[0]->demand->validated_list_id==$validatedListId){
+                    array_push($nr,$m);
+                }
+            }
+            $result=$nr;
+        }
+        return ArrayHelper::map($result,'id','code');
     }
     public function arrayValidatedList(){
         $vl = [];

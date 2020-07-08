@@ -8,7 +8,7 @@ use yii\helpers\Html;
 
 $this->title = 'Crear producto';
 $this->params['breadcrumbs'][] = ['label' => 'Listados validados', 'url' => ['/validated-list/index']];
-$this->params['breadcrumbs'][] = ['label' => $vl->label, 'url' => ['/validated-list/update',['id'=>$vl->id]]];
+$this->params['breadcrumbs'][] = ['label' => $vl->label, 'url' => ['/validated-list/update','id'=>$model->validated_list_id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="card">

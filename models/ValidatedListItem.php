@@ -46,14 +46,14 @@ class ValidatedListItem extends \yii\db\ActiveRecord
         return [
             [['product_name', 'tecnic_description', 'price',  'um_id'], 'required'],
             [['tecnic_description'], 'string'],
-            [['price'], 'number'],
+            [['price'], 'number','min'=>0],
             [['certificados'], 'safe'],
-            [[ 'um_id', 'subfamily_id'], 'default', 'value' => null],
-            [[ 'um_id', 'subfamily_id'], 'integer'],
+            [[ 'um_id',], 'default', 'value' => null],
+            [[ 'um_id', 'validated_list_id'], 'integer'],
             [['seisa_code'], 'string', 'max' => 50],
             [['product_name'], 'string', 'max' => 200],
             [['seisa_code'], 'unique'],
-            [['validated_list_id'], 'exist', 'skipOnError' => true, 'targetClass' => ValidatedList::className(), 'targetAttribute' => ['subfamily_id' => 'id']],
+            [['validated_list_id'], 'exist', 'skipOnError' => true, 'targetClass' => ValidatedList::className(), 'targetAttribute' => ['validated_list_id' => 'id']],
             [['um_id'], 'exist', 'skipOnError' => true, 'targetClass' => Um::className(), 'targetAttribute' => ['um_id' => 'id']],
         ];
     }
@@ -87,7 +87,7 @@ class ValidatedListItem extends \yii\db\ActiveRecord
             'tecnic_description' => 'Descripción técnica',
             'price' => 'Precio',
             'um_id' => 'UM',
-            'subfamily_id' => 'Subfamilia',
+
             'certificados' => 'Certificación a exigir',
             'picture' => 'Foto',
             'active' => 'Activo',
@@ -164,7 +164,13 @@ class ValidatedListItem extends \yii\db\ActiveRecord
      *  * @param integer $validated_list_id
      * @return array|ValidatedListItem[]
      */
-    public  static  function validatedListItems($validated_list_id){
+    public  static  function validatedListItems($validated_list_id,$includeCommon=false){
+        if($includeCommon){
+            return self::find()->innerJoinWith('validatedList')->where(['validated_list_id'=>$validated_list_id])
+                ->andWhere(['active'=>true])
+                ->orWhere(['and',['validated_list.common'=>true,'active'=>true,]])
+                ->orderBy('product_name')->all();
+        }
         return self::find()->where(['validated_list_id'=>$validated_list_id])
             ->andWhere(['active'=>true])
             ->orderBy('product_name')->all();

@@ -244,6 +244,9 @@ class DataGraphics extends Model
         $edad = [0];
         if ($query) {
             $edad = [(int)$query['dias']];
+            if($edad[0]>20){
+                $edad=[20];
+            }
             if ($edad[0] == 0)
                 $edad = [1];
         }

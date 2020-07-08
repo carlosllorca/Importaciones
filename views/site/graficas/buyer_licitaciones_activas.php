@@ -71,4 +71,4 @@ $gaugeInternacional = \app\models\DataGraphics::gaugeCInternacional(\app\models\
         ],
         'series' => $gaugeInternacional
     ]
-]):$this->render('gaficos/noData',['name'=>'Licitaciones activas.']); ?>
+]):$this->render('/site/graficas/noData',['name'=>'Licitaciones activas.']); ?>
