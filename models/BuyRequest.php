@@ -440,13 +440,27 @@ class BuyRequest extends \yii\db\ActiveRecord
         }
         return$clientes;
     }
-    public static function comboAvailableBuyRequest($type=false)
+    public static function comboAvailableBuyRequest($type=false,$validatedListId=false)
     {
         $models = self::find()->where(['buy_request_status_id'=>BuyRequestStatus::$BORRADOR_ID]);
+
         if($type){
             $models=$models->andWhere(['buy_request_type_id'=>$type]);
         }
-        return ArrayHelper::map($models->all(),'id','code');
+        $result = $models->all();
+        if($validatedListId){
+            $nr = [];
+            /**
+             * @var $result BuyRequest[];
+             */
+            foreach ($result as $m){
+                if($m->demandItems[0]->demand->validated_list_id==$validatedListId){
+                    array_push($nr,$m);
+                }
+            }
+            $result=$nr;
+        }
+        return ArrayHelper::map($result,'id','code');
     }
     public function arrayValidatedList(){
         $vl = [];
@@ -532,6 +546,34 @@ class BuyRequest extends \yii\db\ActiveRecord
             return $completed*100/$available;
         return 0;
 
+    }
+    public function arrayProveedores(){
+        $proveedores = [];
+        foreach ($this->buyRequestProviders as $provider){
+            array_push($proveedores,$provider->provider_id);
+        }
+        return $proveedores;
+    }
+    public function closeDemandsRelated(){
+        foreach ($this->getDemands() as $demand){
+            if($demand->demand_status_id==DemandStatus::TRAMITADA_ID){
+                $query = Demand::find()->innerJoinWith('demandItems.buyRequest')
+                    ->where(['not',['buy_request.buy_request_status_id'=>[BuyRequestStatus::$CERRADA,BuyRequestStatus::$CANCELADA_ID]]])->one();
+                if(!$query){
+                    $demand->demand_status_id=DemandStatus::CERRADA_ID;
+                    $demand->save(false);
+                    try{
+                        Yii::$app->mailer->compose('demandClosed', ['demand'=>$demand])
+                            ->setFrom([Yii::$app->params['senderEmail']=>Yii::$app->params['senderName']])
+                            ->setTo($demand->createdBy->email)
+                            ->setSubject("La demanda".$demand->demand_code." ha sido cerrada.")
+                            ->send();
+                    }catch (\Exception $e){
+
+                    }
+                }
+            }
+        }
     }
 
 

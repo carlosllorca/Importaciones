@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ProvinceUeb */
+/* @var $model app\models\OffertStatus */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="province-ueb-form">
+<div class="offert-status-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'label')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'label')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

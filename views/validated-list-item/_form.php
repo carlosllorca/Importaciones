@@ -19,7 +19,7 @@ use kartik\select2\Select2;
         <div class="col-md-4">
             <?= $form->field($model, 'product_name')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-md-4"> <?= $form->field($model, 'price')->textInput() ?></div>
+        <div class="col-md-4"> <?= $form->field($model, 'price')->textInput(['type'=>'number','minValue'=>0,'step'=>'0.01']) ?></div>
 
     </div>
     <div class="row">
@@ -32,13 +32,7 @@ use kartik\select2\Select2;
                 ],
             ]);?>
         </div>
-        <div class="col-md-4">
-            <?= $form->field($model, 'subfamily_id')->widget(Select2::classname(), [
-                'data' => \app\models\Subfamily::combo($vl->id),
-                'options' => ['placeholder' => 'Seleccione ...'],
 
-            ]);?>
-        </div>
         <div class="col-md-4">
             <?= $form->field($model, 'certificados')->widget(Select2::classname(), [
                 'data' => \app\models\Certification::combo(),
@@ -71,7 +65,7 @@ use kartik\select2\Select2;
 
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

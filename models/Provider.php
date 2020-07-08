@@ -5,6 +5,8 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
+
 /**
  * This is the model class for table "provider".
  *
@@ -133,13 +135,16 @@ class Provider extends \yii\db\ActiveRecord
      * @param $validatedLists
      * @return Provider[]|array|\yii\db\ActiveRecord[]
      */
-    public static function related($validatedLists,$buyRequestType){
+    public static function related($validatedLists,$buyRequestType,$asArrayHelper=false){
 
         $models = self::find()->innerJoinWith('providerValidatedLists')
             ->andWhere(['buy_request_type_id'=>$buyRequestType])
         ->andWhere(['provider_validated_list.validated_list_id'=>$validatedLists])
             ->andWhere(['active'=>true])
             ->groupBy('provider.id')->all();
+        if($asArrayHelper){
+            return ArrayHelper::map($models,'id','name');
+        }
 
         return $models;
     }

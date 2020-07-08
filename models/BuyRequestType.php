@@ -79,4 +79,10 @@ class BuyRequestType extends \yii\db\ActiveRecord
     public static  function combo(){
         return ArrayHelper::map(self::find()->orderBy('label')->all(),'id','label');
     }
+    /**
+     * Combo tipos de solicitud de compra que gestiona el usuario autenticado
+     */
+    public static  function comboUserCanBuyRequestType(){
+        return ArrayHelper::map(self::find()->where(['id'=>User::userLogged()->arrayCanView()])->orderBy('label')->all(),'id','label');
+    }
 }

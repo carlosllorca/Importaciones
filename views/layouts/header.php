@@ -46,6 +46,7 @@ use yii\helpers\Html;
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                         <a class="dropdown-item" href="/user/my-account">Mi cuenta</a>
+                        <a class="dropdown-item" href="/site/contact">Reportar un problema</a>
 
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" style="padding: 0;">

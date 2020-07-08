@@ -134,12 +134,7 @@ a.desc:after {
 .form-control, .form-group .form-control {
     background-image: unset;
 }
-select.form-control{
-    margin-bottom: -6px!important;
-    margin-top: 8px!important;
-    padding-bottom: 0px!important;
 
-}
 .table > thead > tr > td{
     padding: 0px 8px!important;
 }
@@ -183,3 +178,9 @@ select.form-control{
     background-color: rgba(11, 170, 0, 0.82) !important;
     font-weight: bold;
 }
+/*select.form-control{*/
+/*    margin-bottom: -6px!important;*/
+/*    margin-top: 8px!important;*/
+/*    padding-bottom: 0px!important;*/
+
+/*}*/

@@ -70,7 +70,7 @@ $this->title = 'Añadir productos';
                             <tbody>
                             <?php
                             $pos = 0;
-                            foreach (\app\models\ValidatedListItem::validatedListItems($model->validated_list_id) as $validatedListItem) {
+                            foreach (\app\models\ValidatedListItem::validatedListItems($model->validated_list_id,true) as $validatedListItem) {
                                 $pos++;
                                 if (isset($arrayItems[$validatedListItem->id])) {
                                     $quantity = $arrayItems[$validatedListItem->id]['cantidad'];

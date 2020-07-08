@@ -20,6 +20,7 @@ class ProvinceUeb extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    STATIC $SEDE_CENTRAL_id= 4;
     public static function tableName()
     {
         return 'province_ueb';

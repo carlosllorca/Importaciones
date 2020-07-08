@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\ChangePasswordForm;
 use app\models\DocumentTypePermission;
 use app\models\Rbac;
+use app\models\UserCanView;
 use Yii;
 use app\models\User;
 use app\models\UserSearch;
@@ -76,6 +77,19 @@ class UserController extends MainController
             $model->password = Yii::$app->getSecurity()->generatePasswordHash($model->password);
             Rbac::changeRole($model->username,$model->rol);
             $model->save(false);
+            if ($model->user_can_view) {
+                $insertions = [];
+                foreach ($model->user_can_view as $id) {
+                    array_push($insertions,
+                        [
+                            $model->id,
+                            $id
+                        ]);
+                }
+                Yii::$app->db->createCommand()->batchInsert('user_can_view',
+                    ['user_id', 'buy_request_type_id'], $insertions)
+                    ->execute();
+            }
             Yii::$app->traza->saveLog('Agregar Usuario', "Fue añadido el usuario {$model->username} al sistema.");
             Yii::$app->session->setFlash('success','Usuario creado correctamente.');
             return $this->redirect(['index']);
@@ -137,11 +151,25 @@ class UserController extends MainController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->user_can_view=$model->arrayCanView();
         $current = $model->rol= Rbac::getRole($model->username);
         $newPerm  =new DocumentTypePermission();
         $newPerm->user_id=$id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
+            UserCanView::deleteAll(['user_id' => $model->id]);
+            if ($model->user_can_view) {
+                $insertions = [];
+                foreach ($model->user_can_view as $id) {
+                    array_push($insertions,
+                        [
+                            $model->id,
+                            $id
+                        ]);
+                }
+               $result =  Yii::$app->db->createCommand()->batchInsert('user_can_view',
+                    ['user_id', 'buy_request_type_id'], $insertions)
+                    ->execute();
+            }
             if($current!=$model->rol){
                 Rbac::changeRole($model->username,$model->rol);
                 $model->save(false);

@@ -3,6 +3,7 @@
 use kartik\file\FileInput;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+use yii\jui\DatePicker;
 
 
 
@@ -23,14 +24,20 @@ $form = ActiveForm::begin([
                 <?= $form->field($newOffert, 'upload_by')->textInput()?>
             </div>
             <div class="row">
+                <div class="col-sm-6">
+                    <?= $form->field($newOffert, 'code')->textInput(['type' => 'string']) ?>
+                </div>
 
                 <div class="col-sm-6">
-                    <?= $form->field($newOffert, 'expiration_date')->textInput(['type' => 'date']) ?>
+                    <?= $form->field($newOffert, 'expiration_date')->widget(DatePicker::classname(), [
+                        'dateFormat' => 'dd-MM-yyyy',
+
+                        'options'=>['class'=>'form-control']
+                    ]); ?>
                 </div>
                 <div class="col-sm-12">
                     <?= $form->field($newOffert, 'oferta')->widget(FileInput::className(),[
                         'options' => ['required'=>true],
-
                         'pluginOptions' =>[
                             'uploadUrl' => Url::to(['/site/file-upload']),
                             'showPreview' => false,

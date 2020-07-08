@@ -17,8 +17,8 @@ use yii\web\JqueryAsset;
         <div style="text-align: right" class="disabled">
 
 
-            <?= Html::input('hidden', null, json_encode(\app\models\BuyRequest::comboAvailableBuyRequest(\app\models\BuyRequestType::$INTERNACIIONAL_ID)), ['id' => 'si']) ?>
-            <?= Html::input('hidden', null, json_encode(\app\models\BuyRequest::comboAvailableBuyRequest(\app\models\BuyRequestType::$NACIONAL_ID)), ['id' => 'sn']) ?>
+            <?= Html::input('hidden', null, json_encode(\app\models\BuyRequest::comboAvailableBuyRequest(\app\models\BuyRequestType::$INTERNACIIONAL_ID,$model->validated_list_id)), ['id' => 'si']) ?>
+            <?= Html::input('hidden', null, json_encode(\app\models\BuyRequest::comboAvailableBuyRequest(\app\models\BuyRequestType::$NACIONAL_ID,$model->validated_list_id)), ['id' => 'sn']) ?>
 
 
             <?= Yii::$app->user->can('demand/clasify') ? Html::button('<b>Distribución interna</b>', ['class' => 'btn btn-primary clasify', 'onclick' => 'clasify(1,' . $model->id . ')', 'style' => ['margin-left' => '5px'], 'disabled' => true, 'title' => 'Trasladar los productos seleccionados desde otra UEB.']) : null ?>

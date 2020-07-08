@@ -18,14 +18,28 @@ return [
         'mailer' => [
             'useFileTransport' => true,
         ],
+        'traza'=>[
+            'class' => 'app\components\TrazaComponent',
+        ],
         'assetManager' => [
             'basePath' => __DIR__ . '/../web/assets',
         ],
+
         'urlManager' => [
-            'showScriptName' => true,
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+            ],
         ],
+
         'user' => [
             'identityClass' => 'app\models\User',
+
+            'authTimeout' => 86400,
+            'enableAutoLogin' => true,
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
         ],
         'request' => [
             'cookieValidationKey' => 'test',

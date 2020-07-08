@@ -2,6 +2,8 @@
 namespace app\components;
 use app\models\Log;
 use Yii;
+use yii\db\Exception;
+
 /**
  * Class TrazaComponent
  * @property \app\models\User $user
@@ -19,7 +21,9 @@ class TrazaComponent extends \yii\base\Component
         $model->ip=Yii::$app->request->userIP;
         $model->action=$action;
         $model->description=$msg;
-        $model->save();
+        if($model->validate())
+        return $model->save();
+
     }
 
     /**

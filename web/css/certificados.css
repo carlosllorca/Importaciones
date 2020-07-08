@@ -1,0 +1,167 @@
+
+@page {
+    margin: 0mm;
+    margin-top: 10mm;
+    margin-bottom: 10mm;
+    margin-header: 0mm;
+    margin-footer: 0mm;
+}
+
+.facturaWord{
+    color: #3E566B!important;
+    font-family: nunitobold;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+    font-size: 35px;
+}
+
+.texto{
+    font-size: 16px;
+    font-family: nunito;
+    font-weight: bold;
+    color: #3E566B;
+}
+.tableTitleItem{
+    color: #fff;
+    font-family: Nunito;
+    font-weight: bold;
+    font-size: 14px;
+}
+.textoEmpresa{
+    font-size: 13px;
+    font-family: Nunito;
+
+    color: #3E566B;
+}
+.etiqueta{
+    font-size: 13px;
+    font-family: nunitoitalic;
+    font-weight: lighter;
+
+    font-style: italic;
+    color: #3E566B;
+}
+
+.tableHeader{
+    color: #fff;
+    font-family: nunito;
+    font-size: 12px;
+}
+
+
+.tableDescriptionItem{
+    color: #fff;
+    font-weight: 100;
+    font-family: Nunito;
+    font-size: 10px;
+}
+
+.container-page{
+    width: 100%;
+    padding: 50px;
+    padding-top: 0px;
+}
+.row{
+    width: 100%;
+    flex-direction: row;
+
+}
+.col-10{
+    width: 83%;
+    float: left;
+}
+.col-6{
+ width: 50%;
+ float: left;
+}
+.col-5{
+    width: 41.65%;
+    float: left;
+}
+.col-4{
+    width: 33.3%;
+    float: left;
+}
+.col-3{
+    width: 25%;
+    float: left;
+}
+.col-2{
+    width: 16.67%;
+    float: left;
+}
+.col-1{
+    width: 8.33%;
+    float: left;
+}
+.textoSecundario{
+    font-family: Nunito;
+    font-size:12px;
+}
+.textoPrimario{
+    padding: 0px;
+    margin: 0px;
+    font-family: Nunito;
+    text-align: justify;
+    font-size:17px;
+    word-break: break-all;
+}
+.tituloSeccion{
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial;
+    text-align: center;
+    font-size:12px;
+}
+.rowTableAutor{
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial;
+    text-transform: uppercase;
+    font-size:12px;
+    text-align: center;
+    width: 100%;
+}
+.tituloContainer{
+    background-color: #a5f5ea;
+    padding-left: 10px;
+    border-top-right-radius:20px ;
+    border-bottom-right-radius: 20px;
+}
+.textoPrimarioParticipacion{
+    padding: 0px;
+    margin: 0px;
+    font-family: sans-serif;
+    text-align: center;
+    font-size:16px;
+    word-break: break-all;
+}
+.textoLabelParticipacion{
+    padding: 0px;
+    margin: 0px;
+    font-family: sans-serif;
+    text-align: center;
+    font-size:12px;
+    word-break: break-all;
+}
+.certifica{
+    color: #3E566B;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td{
+    padding: 3px 5px;
+}
+th{
+    padding: 5px 5px;
+    text-transform: uppercase;
+}
+.danger{
+    font-weight: bold;
+    color: darkred;
+}

@@ -132,10 +132,11 @@ if (class_exists('common\models\Menu')) {
             }
             ?>
             <?php
-            if (Yii::$app->user->can('user/index')) {
+
+            if (\app\models\User::userLogged()->allowNomenclador()) {
                 ?>
                 <li>
-                    <a class=" nav-link pointer <?= Rbac::getRole() != Rbac::$ROOT ? 'hidden' : '' ?>"
+                    <a class=" nav-link pointer"
                        data-toggle="collapse"
                        data-target="#submenu1">
                         <i class="material-icons">dashboard</i>
@@ -167,6 +168,17 @@ if (class_exists('common\models\Menu')) {
                     </ul>
                 </li>
                 <?php
+            }
+            if (Yii::$app->user->can('inform/index')) {
+                ?>
+                <li class="<?= \app\controllers\MainController::determineActive('inform') ?>">
+                    <a class="nav-link" href="/inform/index">
+                        <i class="material-icons">dvr</i>
+                        <p>Informes</p>
+                    </a>
+                </li>
+                <?php
+
             }
             ?>
 

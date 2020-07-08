@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'code',
                         [
                             'attribute' => 'buy_request_type_id',
-                            'filter'=>\app\models\BuyRequestType::combo(),
+                            'filter'=>\app\models\BuyRequestType::comboUserCanBuyRequestType(),
                             'value' => function($model){
                                 /**
                                  * @var $model \app\models\BuyRequest

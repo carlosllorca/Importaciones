@@ -58,19 +58,12 @@ class BuyRequestSearch extends BuyRequest
 
                 $query->andWhere(['not',['dt_approved_by'=>null]]);
                 break;
-            case Rbac::$COMPRADOR_INTERNACIONAL:
-                $query->innerJoinWith('buyRequestInternational');
+            case Rbac::$COMPRADOR:
+
                 $query->andWhere(['buyer_assigned'=>User::userLogged()->id]);
                 break;
 
-            case Rbac::$COMPRADOR_NACIONAL:
 
-                $query->andWhere(['buyer_assigned'=>User::userLogged()->id])
-                    ->orWhere(['and',
-                        ['buy_request_type_id'=>BuyRequestType::$NACIONAL_ID],
-                        ['buy_request_type_id'=>BuyRequestType::$TYPE_711],
-                    ]);
-                break;
             case Rbac::$ESP_TECNICO:
                 $query->andWhere(['dt_specialist_assigned'=>User::userLogged()->id]);
                 break;
@@ -83,6 +76,7 @@ class BuyRequestSearch extends BuyRequest
                 throw  new ForbiddenHttpException("Esta vista no está preparada para usuario scon su rol.");
                 break;
         }
+        $query->andWhere(['buy_request_type_id'=>User::userLogged()->arrayCanView()]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);

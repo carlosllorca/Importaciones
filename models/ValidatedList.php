@@ -11,6 +11,7 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property int $id
  * @property string $label
+ * @property boolean $common
  *
  * @property Demand[] $demands
  * @property ProviderValidatedList[] $providerValidatedLists
@@ -33,6 +34,7 @@ class ValidatedList extends \yii\db\ActiveRecord
     {
         return [
             [['label'], 'required'],
+            ['common','boolean'],
             [['label'], 'string', 'max' => 250],
         ];
     }
@@ -45,6 +47,7 @@ class ValidatedList extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'label' => 'Nombre',
+            'common' => 'Listado común',
         ];
     }
     /**

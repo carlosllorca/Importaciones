@@ -32,6 +32,7 @@ use yii\widgets\ActiveForm;
                 ]) ?>
             </div>
 
+
             <div class="col-sm-12" style="padding-left: 10px">
                 <?= $form->field($model, 'evaluacion')->widget(\kartik\file\FileInput::className(), [
                      'options' => ['placeholder' => 'Seleccione..'],

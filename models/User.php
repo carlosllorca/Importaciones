@@ -15,7 +15,6 @@ use yii\behaviors\TimestampBehavior;
  * @property string $username
  * @property string $full_name
  * @property string $email
-
  * @property string $password
  * @property string $confirm_password
  * @property string $cargo
@@ -34,9 +33,11 @@ use yii\behaviors\TimestampBehavior;
  * @property Log[] $logs
  * @property Offert[] $offerts
  * @property Offert[] $offerts0
+ * @property UserCanView[] $userCanViews
  * @property ProvinceUeb $provinceUeb
  * @property AuthItem $role
  * @property AuthAssignment $authAssignament
+ * @property int $updated_at [timestamp]
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -49,22 +50,25 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     }
     public $confirm_password;
     public $rol;
+    public $user_can_view;
     const SCENARIO_CREATE_USER = 'createUser';
 
 
     /**
      * {@inheritdoc}
      */
+
     public function rules()
     {
         return [
-            [['username', 'full_name', 'email', 'password', 'created_at'], 'required'],
+            [['username', 'full_name', 'email', 'password', 'created_at','province_ueb'], 'required'],
             [['created_at', 'last_login'], 'safe'],
             [['province_ueb'], 'default', 'value' => null],
             [['province_ueb'], 'integer'],
             [['email'], 'email'],
             [['password','confirm_password'], 'passwordsMatch','on'=>self::SCENARIO_CREATE_USER],
             [['rol'], 'required'],
+            ['user_can_view','safe'],
             [['active'], 'boolean'],
             [['username'], 'string', 'max' => 25],
             [['phone_number'], 'string', 'max' => 20],
@@ -73,19 +77,22 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['full_name','cargo','digital_signature_url'], 'string', 'max' => 150],
 
             [['email'], 'string', 'max' => 50],
-            [['province_ueb'], 'required',
-                'when'=>function($model){
-                    return $model->rol==Rbac::$UEB;
-                },
-                'whenClient' =>
-                    "function (attribute, value) {
-                     
-                    return $('#user-rol').val() === 'ueb';
-                }"],
+            [['province_ueb'], 'ralationUEBWithTypeUser'],
             [['password'], 'string', 'max' => 100,'min'=>8,'tooShort'=>'La contraseña debe tener como mínimo 8 caracteres'],
             [['confirm_password'], 'string', 'max' => 100,'min'=>8,'tooShort'=>'La contraseña debe tener como mínimo 8 caracteres','on'=>self::SCENARIO_CREATE_USER],
             [['province_ueb'], 'exist', 'skipOnError' => true, 'targetClass' => ProvinceUeb::className(), 'targetAttribute' => ['province_ueb' => 'id']],
         ];
+    }
+
+
+    public function ralationUEBWithTypeUser($attribute){
+        if($this->rol==Rbac::$UEB&&$this->province_ueb==ProvinceUeb::$SEDE_CENTRAL_id){
+            $this->addError($attribute, 'Los Especialistas de UEB no pueden pertenecer a la Sede central.');
+        }
+        if($this->rol!=Rbac::$UEB&&$this->province_ueb!=ProvinceUeb::$SEDE_CENTRAL_id){
+            $this->addError($attribute, 'Solo los usuario con rol de Especialista UEB pueden pertenecer a UEB diferentes de Sede central.');
+        }
+
     }
     public function passwordsMatch($attribute, $params)
     {
@@ -124,6 +131,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'email' => 'Correo electrónico',
             'password' => 'Contraseña',
             'confirm_password' => 'Confirmar Contraseña',
+            'user_can_view'=>'Tipos de ordenes que gestiona',
             'created_at' => 'Creado',
             'last_login' => 'Último acceso',
             'digital_signature' => 'Firma digital',
@@ -187,6 +195,20 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         }
         return $array;
     }
+    public function arrayCanView()
+    {
+        $array = [];
+        foreach ($this->userCanViews as $userCanView){
+            array_push($array,$userCanView->buy_request_type_id);
+        }
+        return $array;
+    }
+    public static function userCanViewOrder($buyRequestType,$user=false){
+        if($user==false){
+            $user=self::userLogged();
+        }
+        return in_array($buyRequestType,$user->arrayCanView());
+    }
 
     /**
      * @return ActiveQuery
@@ -239,7 +261,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getRole()
     {
-        return $this->authAssignament->itemName;
+
+        return $this->authAssignament?$this->authAssignament->itemName:false;
 
     }
 
@@ -309,11 +332,17 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return null;
     }
-    public static function combo($rol){
-        return ArrayHelper::map(self::find()->innerJoinWith('authAssignament')
+    public static function combo($rol,$orderType=false){
+        $query= self::find()->innerJoinWith('authAssignament')
             ->where(['auth_assignment.item_name'=>$rol])
-            ->andWhere(['user.active'=>true])
-            ->all(),'id','full_name');
+
+            ->andWhere(['user.active'=>true]);
+        if($orderType){
+            $query= $query->innerJoinWith('userCanViews')->andWhere(['user_can_view.buy_request_type_id'=>$orderType]);
+        }
+
+        return ArrayHelper::map($query->all(),'id','full_name');
+
     }
 
     /**
@@ -349,6 +378,27 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             }
         }
         return $active;
+    }
+    /**
+     * Gets query for [[UserCanViews]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserCanViews()
+    {
+        return $this->hasMany(UserCanView::className(), ['user_id' => 'id']);
+    }
+    public function allowNomenclador(){
+
+        $nomencladores = ['certificationtype','certification','buycondition','destiny','finaldestiny','providerstatus','demandstatus',
+            'buyrequeststatus','documentstatus','stage','paymentinstrument','paymentmethod','purchasereason','organism',
+            'country','deploymentpart','sellerrequirement','warrantytime','documenttype','buyrequesttype','um'
+            ];
+        foreach ($nomencladores as $nomenclador){
+            if(Yii::$app->user->can($nomenclador.'/index'))
+                return true;
+        }
+        return false;
     }
 
 

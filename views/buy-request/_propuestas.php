@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <div class="row">
         <div class="col-md-12" style="width: 100%;">
-            <div class="<?=$fLicitacion->bidding_start&&!$model->buyRequestProviders?'':'hidden'?>" id="licitacion_form">
+            <div class="<?=($fLicitacion->bidding_start&&!$model->buyRequestProviders)||($fLicitacion->getErrors())?'':'hidden'?>" id="licitacion_form">
                 <?php $form = ActiveForm::begin(); ?>
                 <div class="row" style="margin: auto;padding-top: 2%;padding-bottom: 2%">
                     <div class="col-sm-12 col-md-8"

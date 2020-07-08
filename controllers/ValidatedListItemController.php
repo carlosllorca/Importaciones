@@ -71,7 +71,7 @@ class ValidatedListItemController extends MainController
 
     public function actionCreate($vl)
     {
-        $model = new ValidatedListItem();
+        $model = new ValidatedListItem(['validated_list_id' => $vl]);
         $vl = ValidatedList::findOne($vl);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -83,7 +83,7 @@ class ValidatedListItemController extends MainController
                     $certificado->save();
                 }
             }
-            return $this->redirect(['validated-list-item/update', 'id' => $model->vl]);
+            return $this->redirect(['validated-list-item/update', 'id' => $vl]);
         }
 
         return $this->render('create', [
@@ -115,12 +115,12 @@ class ValidatedListItemController extends MainController
                     $certificado->save();
                 }
             }
-            return $this->redirect(['validated-list/update', 'id' => $model->subfamily->validated_list_id]);
+            return $this->redirect(['validated-list/update', 'id' => $model->validated_list_id]);
         }
 
         return $this->render('update', [
             'model' => $model,
-            'vl'=>$model->subfamily->validated_list_id
+            'vl'=>$model->validated_list_id
         ]);
     }
 

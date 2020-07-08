@@ -111,7 +111,7 @@ class BuyRequestController extends MainController
 
    public function actionUpdate($id){
        $model = $this->findModel($id);
-       if((Rbac::getRole()==Rbac::$ESP_TECNICO||Rbac::getRole()==Rbac::$COMPRADOR_INTERNACIONAL)&&(!$model->buy_approved_by||!$model->dt_approved_by)){
+       if((Rbac::getRole()==Rbac::$ESP_TECNICO||Rbac::getRole()==Rbac::$COMPRADOR)&&(!$model->buy_approved_by||!$model->dt_approved_by)){
            Yii::$app->session->setFlash('warning','Esta orden aún no ha sido aprobada para su edición.');
            return $this->redirect(['view','id'=>$model->id]);
        }
@@ -139,31 +139,38 @@ class BuyRequestController extends MainController
     {
         $active = 'demands_associated';
         if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
+
             if($model->buyRequestInternational){
                 $form = $model->buyRequestInternational;
+                $form->proveedores=$model->arrayProveedores();
                 $form->setScenario(BuyRequestInternational::SCENARIO_GENERATE_LICITACION);
-                if ($form->load(Yii::$app->request->post()) && $form->save()) {
+                if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+                    $form->bidding_end=date('Y-m-d',strtotime($form->bidding_end));
+                    $form->save(false);
                     $model->buy_request_status_id=BuyRequestStatus::$LICITANDO;
                     foreach (Provider::related($model->arrayValidatedList(),$model->buy_request_type_id) as $provider){
+
                         if(BuyRequestProvider::find()->where(['buy_request_id'=>$model->id])
                             ->andWhere(['provider_id'=>$provider->id])->one()){
+                            if(!in_array((string)$provider->id,$form->proveedores)){
+                                BuyRequestProvider::deleteAll(['buy_request_id'=>$model->id,'provider_id'=>$provider->id]);
+                            }
                         }else{
-                            $m=new BuyRequestProvider();
-                            $m->buy_request_id=$model->id;
-                            $m->provider_id=$provider->id;
-                            $m->provider_status_id=ProviderStatus::$SOLICITUD_ENVIADA_ID;
-                            $m->save();
+                            if(in_array((string)$provider->id,$form->proveedores)){
+                                $m=new BuyRequestProvider();
+                                $m->buy_request_id=$model->id;
+                                $m->provider_id=$provider->id;
+                                $m->provider_status_id=ProviderStatus::$SOLICITUD_ENVIADA_ID;
+                                $m->save();
+                            }
+
                         }
                     };
                     if($form->notifyProviders($this)){
                         $model->save(false);
                         $active= 'propuestas';
                         Yii::$app->session->setFlash('success','El proceso de licitación ha sido iniciado/modificado. Fueron notificados los proveedores listados.');
-                        return $this->render('update', [
-                            'form'=>$form,
-                            'model' => $model,
-                            'active'=>$active
-                        ]);
+                        return $this->redirect(['update', 'id' => $model->id,'section'=>'propuestas']);
                     }else{
                         Yii::$app->session->setFlash('danger','Tuvimos un problema para notificar a los proveedores. Inténtelo de nuevo más tardre');
                         return $this->render('update', [
@@ -173,10 +180,12 @@ class BuyRequestController extends MainController
                         ]);
                     }
                     return $this->redirect(['view', 'id' => $model->id]);
+                }else{
+                    $active='propuestas';
                 }
 
             }else{
-                $form=new BuyRequestInternational();
+                $form=new BuyRequestInternational(['bidding_start' => date('Y-m-d')]);
             }
         }
 
@@ -577,6 +586,7 @@ class BuyRequestController extends MainController
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->expiration_date=date('Y-m-d',strtotime($model->expiration_date));
             $model->save();
             $model->buyRequestProvider->provider_status_id=ProviderStatus::$OFERTA_RECIBIDA_ID;
             $model->buyRequestProvider->save(false);
@@ -738,11 +748,13 @@ class BuyRequestController extends MainController
                     $form =BuyRequestInternational::findOne($model->buyRequestInternational->id);
                     $form->setScenario(BuyRequestInternational::SCENARIO_START_TRANSPORTATION);
 
-                    if ($form->load(Yii::$app->request->post()) && $form->save()) {
+                    if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+                        $form->credit_card_open=date('Y-m-d',strtotime($form->credit_card_open));
+                        $form->save(false);
                         $model->buy_request_status_id=BuyRequestStatus::$EN_PROCESO;
 
                         $model->save(false);
-                        $current = $model->lastUploadDocumentDate();
+                        $current = $model->buyRequestInternational->credit_card_open;
 
                         foreach (Stage::getStagesByOrderType($model->buy_request_type_id) as $stage){
                             if($stage->order==2){
@@ -822,6 +834,12 @@ class BuyRequestController extends MainController
         if ($model->load(Yii::$app->request->post()) ) {
             if($setSuccess===true){
                 $model->real_end=date('Y-m-d');
+                $model->active=false;
+                $nh = $model->nextHito();
+                if($nh){
+                    $nh->active=true;
+                    $nh->save(false);
+                }
             }
 
             $dateStart= date('Y-m-d',strtotime($model->nextHitoDate));
@@ -854,6 +872,8 @@ class BuyRequestController extends MainController
                 $model->buyRequest->buy_request_status_id=BuyRequestStatus::$CERRADA;
                 $model->buyRequest->closed_date=date('Y-m-d');
                 $model->buyRequest->save(false);
+                $model->buyRequest->closeDemandsRelated();
+                Yii::$app->traza->saveLog("Orden cerrada","La orden ".$model->buyRequest->code." ha sido cerrada");
                 Yii::$app->session->setFlash('success','Has concluido el último hito. La orden ha sido cerrada.');
             }
             else{

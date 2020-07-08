@@ -10,12 +10,9 @@ use yii\widgets\Pjax;
 
 
 ?>
-<div class="validated-list-item-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<div class="validated-list-item-index" style="padding: 1rem">
     <p>
-        <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Adicionar item', ['validated-list-item/create','vl'=>$model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Adicionar', ['validated-list-item/create','vl'=>$model->id], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>

@@ -63,6 +63,14 @@ if (!$model->isNewRecord) {
         <div class="col-sm-6 col-md-4">
             <?= $form->field($model, 'rol')->dropDownList(\app\models\Rbac::comboRoles()) ?>
         </div>
+        <div class="col-sm-6 col-md-4">
+            <?= $form->field($model, 'user_can_view')->widget(\kartik\select2\Select2::className(),[
+                    'data'=>\app\models\BuyRequestType::combo(),
+                    'options' => [
+                            'multiple'=>true
+                    ]
+            ]) ?>
+        </div>
         <?php
         if ($model->isNewRecord) {
             ?>

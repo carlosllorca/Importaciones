@@ -4,17 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\ProvinceUebSearch */
+/* @var $searchModel app\models\ProviderStatusSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Listado de UEB';
+$this->title = 'Listado UEB';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="buy-request-status-index">
+
     <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title"><?=$this->title?></h4>
-            <p class="card-category">UEB distribuidas en las diferentes provincias desde las que se realizan las demandas.</p>
+            <p class="card-category">Listado de las UEB registradas en el sistema</p>
         </div>
         <div class="card-body" style="padding: 15px">
             <div class="p-3">
@@ -30,12 +31,22 @@ $this->params['breadcrumbs'][] = $this->title;
                     'filterModel' => $searchModel,
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
+
+
                         'label',
-                        ['class' => 'rce\material\grid\ActionColumn'],
+
+                        [
+                                'class' => 'rce\material\grid\ActionColumn',
+                                'template' => '{update} {delete}'
+                        ],
                     ],
                 ]); ?>
+
                 <?php Pjax::end(); ?>
             </div>
         </div>
     </div>
+
+
+
 </div>

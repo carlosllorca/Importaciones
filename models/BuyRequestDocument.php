@@ -176,8 +176,8 @@ class BuyRequestDocument extends \yii\db\ActiveRecord
             ->andWhere(['user.active' => true])->all();
         foreach ($documentTypePermissions as $documentTypePermission) {
             switch ($documentTypePermission->user->getRole()){
-                case Rbac::$COMPRADOR_NACIONAL:
-                case Rbac::$COMPRADOR_INTERNACIONAL:
+                case Rbac::$COMPRADOR:
+
                     if( $this->buyRequest->buyer_assigned==$documentTypePermission->user_id){
                         array_push($users,$documentTypePermission->user);
                     }

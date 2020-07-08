@@ -19,6 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="card-body" style="padding: 15px">
             <div class="p-3">
+                <p>
+                    <?= Yii::$app->user->can('demand/create')?Html::a('<span class="fa fa-plus"/>', ['create'], ['class' => 'btn btn-success','title'=>'Nueva demanda']):null ?>
+                </p>
 
                 <?php Pjax::begin(); ?>
                 <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -63,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                  * @var $model \app\models\Demand
                                  */
                                 if($model->demand_status_id==\app\models\DemandStatus::ACEPTADA_ID){
-                                    return $model->approvedBy->full_name;
+                                 //   return $model->approvedBy->full_name;
                                 }else{
                                     return ' - ';
                                 }

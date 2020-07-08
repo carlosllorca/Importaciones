@@ -36,16 +36,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         'created_at:date',
                         'last_login:datetime',
-//                        [
-//                                'attribute' => 'rol',
-//                                'filter' => \app\models\Rbac::comboRoles(),
-//                                'value' => function($model){
-//                                    /**
-//                                     * @var $model \app\models\User
-//                                     */
-//                                    return $model->role?$model->role->description:null;
-//                                }
-//                        ],
+                        [
+                                'attribute' => 'province_ueb',
+                                'filter' => \app\models\ProvinceUeb::combo(),
+                                'value' => function($model){
+                                    /**
+                                     * @var $model \app\models\User
+                                     */
+                                    return $model->province_ueb?$model->provinceUeb->label:null;
+                                }
+                        ],
                         'active:boolean',
 
                         [

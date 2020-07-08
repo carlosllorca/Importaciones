@@ -72,13 +72,20 @@ class DataGraphics extends Model
         return $finalFormed;
     }
 
+    /**
+     * Solicitude activas por tipo y estado - Jefe de compras
+     * Limitado a los tipos de ordenes que puede ver el usuario.
+     * @return array[]
+     * @throws \yii\db\Exception
+     */
     public static function solicitudesActivasxTipoYEstado()
     {
 
         $connection= self::getConnector();
-        $query = $connection->createCommand("select * from view_buy_request_by_type_and_status")->queryAll();
+        $query = $connection->createCommand("select * from view_buy_request_by_type_and_status where buy_request_type_id in (".self::strUserCanView().") ")->queryAll();
         $tiposOrdenesActivas = [];
         $estadosActivos = [];
+
         foreach ($query as $q) {
             if (!in_array($q['estado'], $estadosActivos)) {
                 array_push($estadosActivos, $q['estado']);
@@ -148,10 +155,11 @@ class DataGraphics extends Model
     public static function barBuyRequestByBuyerAndStatus($buyer = false)
     {
         $connection= self::getConnector();
+        $wherePart = "buy_request_type_id in (".self::strUserCanView().")";
         if ($buyer) {
-            $query = $connection->createCommand("select * from view_buy_request_active_x_status_x_esp_compras where id_user=" . $buyer . ";")->queryAll();
+            $query = $connection->createCommand("select * from view_buy_request_active_x_status_x_esp_compras where id_user=" . $buyer . " and ".$wherePart)->queryAll();
         } else {
-            $query = $connection->createCommand("select * from view_buy_request_active_x_status_x_esp_compras")->queryAll();
+            $query = $connection->createCommand("select * from view_buy_request_active_x_status_x_esp_compras where ".$wherePart)->queryAll();
         }
 
         $especialistasActivos = [];
@@ -236,6 +244,9 @@ class DataGraphics extends Model
         $edad = [0];
         if ($query) {
             $edad = [(int)$query['dias']];
+            if($edad[0]>20){
+                $edad=[20];
+            }
             if ($edad[0] == 0)
                 $edad = [1];
         }
@@ -259,7 +270,8 @@ class DataGraphics extends Model
     public static function gaugeJCompras()
     {
         $connection= self::getConnector();
-        $query = $connection->createCommand("select * from view_old_jcompras")->queryOne();
+        $wherePart = "buy_request_type_id in (".self::strUserCanView().")";
+        $query = $connection->createCommand("select * from view_old_jcompras where ".$wherePart)->queryOne();
         $edad = [0];
         if ($query) {
             $edad = [(int)$query['dias']];
@@ -273,10 +285,12 @@ class DataGraphics extends Model
     public static function gaugeCInternacional($comprador = false)
     {
         $connection= self::getConnector();
+        $wherePart = "buy_request_type_id in (".self::strUserCanView().")";
+
         if ($comprador) {
-            $query = $connection->createCommand("select * from view_buy_request_bidding_time where buyer_assigned=" . $comprador)->queryAll();
+            $query = $connection->createCommand("select * from view_buy_request_bidding_time where buyer_assigned=" . $comprador. ' and '.$wherePart)->queryAll();
         } else {
-            $query = $connection->createCommand("select * from view_buy_request_bidding_time")->queryAll();
+            $query = $connection->createCommand("select * from view_buy_request_bidding_time where ".$wherePart)->queryAll();
         }
 
         $series = [];
@@ -326,10 +340,11 @@ class DataGraphics extends Model
     public static function solicitudesConHitosActivosXTiempo($comprador = false)
     {
         $connection= self::getConnector();
+        $wherePart = "buy_request_type_id in (".self::strUserCanView().")";
         if ($comprador) {
-            $query = $connection->createCommand("select * from view_stages_actives_and_expired where buyer_assigned=" . $comprador)->queryAll();
+            $query = $connection->createCommand("select * from view_stages_actives_and_expired where buyer_assigned=" . $comprador.' and '.$wherePart)->queryAll();
         } else {
-            $query = $connection->createCommand("select * from view_stages_actives_and_expired")->queryAll();
+            $query = $connection->createCommand("select * from view_stages_actives_and_expired where ".$wherePart)->queryAll();
         }
         $categories = [];
         $series = [
@@ -528,15 +543,31 @@ class DataGraphics extends Model
 
         if($query){
             $response = [];
+            $p=0;
             foreach ($query as $value){
+                if($p!=0){
+                    array_push($response,(int)$value);
+                }
+                $p++;
 
-                array_push($response,(int)$value);
+
             }
             return $response;
         }else{
             return false;
         }
 
+
+    }
+    /*
+     * Devuelve string de ids de tipos de ordenes que puede ver el usuario autenticado.
+     */
+    private function strUserCanView(){
+        $data = User::userLogged()->arrayCanView();
+        if(count($data)==0){
+            $data=[-1];
+        }
+        return implode(', ',$data);
 
     }
 

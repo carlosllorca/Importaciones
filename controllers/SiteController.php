@@ -81,12 +81,11 @@ class SiteController extends Controller
                 break;
             case Rbac::$JEFE_COMPRAS:
                 return $this->render('indexJCompras');
-            case Rbac::$COMPRADOR_INTERNACIONAL:
+            case Rbac::$COMPRADOR:
 
-                return $this->render('indexCInternacional');
+                return $this->render('indexComprador');
                 break;
-            case Rbac::$COMPRADOR_NACIONAL:
-                return $this->render('indexCNacional');
+
                 break;
             case Rbac::$COMITE:
                 return $this->render('indexComite');
@@ -202,7 +201,13 @@ FROM
      */
     public function actionContact()
     {
-        $model = new ContactForm();
+        $model = new ContactForm(
+            [
+                'name' => User::userLogged()->full_name,
+                'email' => User::userLogged()->email
+            ]
+        );
+
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
 
@@ -221,5 +226,17 @@ FROM
     public function actionAbout()
     {
         return $this->render('about');
+    }
+    public static function handleErrorCode($error){
+        switch ($error){
+            case 404:
+                return "El contenido solicitado no existe ($error).";
+            case 403:
+                return "Acceso denegado ($error).";
+            case 500:
+                return "Error interno ($error).";
+            default:
+                return 'Error en la gestión de contenido.';
+        }
     }
 }

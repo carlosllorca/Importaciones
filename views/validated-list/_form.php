@@ -8,14 +8,15 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="validated-list-form">
+<div class="validated-list-form" style="padding: 1rem">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'label')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'common')->checkbox() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['id'=>'submit-button', 'class' => $model->isNewRecord?'btn btn-success':'hidden']) ?>
+        <?= Html::submitButton('Guardar', [ 'class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
