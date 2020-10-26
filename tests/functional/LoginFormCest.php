@@ -4,11 +4,12 @@ class LoginFormCest
 {
     public function _before(\FunctionalTester $I)
     {
-        $I->amOnRoute('site/login');
+        $I->amOnRoute('/site/login');
     }
 
     public function renderLoginPage(\FunctionalTester $I)
     {
+
         $I->see('Sistema para la gestión del ciclo logístico', 'h4');
 
     }
@@ -49,6 +50,7 @@ class LoginFormCest
 
     public function loginSuccessfully(\FunctionalTester $I)
     {
+        $I->amOnPage('/site/login');
         $I->submitForm('#login-form', [
             'LoginForm[username]' => 'admin',
             'LoginForm[password]' => '12345678',
