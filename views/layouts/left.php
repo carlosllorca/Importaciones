@@ -105,6 +105,18 @@ if (class_exists('common\models\Menu')) {
             }
             ?>
             <?php
+            if (Rbac::getRole()==Rbac::$ROOT) {
+                ?>
+                <li class=" <?= \app\controllers\MainController::determineActive('default') ?> ">
+                    <a class="nav-link" href="/db-manager">
+                        <i class="material-icons">restore</i>
+                        <p>Salvas/Restauras</p>
+                    </a>
+                </li>
+                <?php
+            }
+            ?>
+            <?php
             if (Yii::$app->user->can('validatedlist/index')) {
                 ?>
                 <li class="<?= \app\controllers\MainController::determineActive('validated-list') ?><?= \app\controllers\MainController::determineActive('validated-list-item') ?>">
