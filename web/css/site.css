@@ -184,3 +184,6 @@ a.desc:after {
 /*    padding-bottom: 0px!important;*/
 
 /*}*/
+.sidebar .nav li a, .sidebar .nav li .dropdown-menu a {
+    text-transform: none!important;
+}

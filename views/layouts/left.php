@@ -98,7 +98,7 @@ if (class_exists('common\models\Menu')) {
                 <li class=" <?= \app\controllers\MainController::determineActiveAction('manage', 'rbac') ?> ">
                     <a class="nav-link" href="/manage/rbac">
                         <i class="material-icons">security</i>
-                        <p>Roles y permisos</p>
+                        <p>Control de acceso</p>
                     </a>
                 </li>
                 <?php
@@ -110,7 +110,7 @@ if (class_exists('common\models\Menu')) {
                 <li class=" <?= \app\controllers\MainController::determineActive('default') ?> ">
                     <a class="nav-link" href="/db-manager">
                         <i class="material-icons">restore</i>
-                        <p>Salvas/Restauras</p>
+                        <p>Salvas y restauras</p>
                     </a>
                 </li>
                 <?php
