@@ -2,6 +2,13 @@
 <project version="4">
   <component name="PublishConfigData" autoUpload="Always" serverName="seisa.llorca.cu">
     <serverData>
+      <paths name="logistica.red.seisa.cu">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="seisa.llorca.cu">
         <serverdata>
           <mappings>

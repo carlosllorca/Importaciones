@@ -24,7 +24,7 @@ use yii\jui\DatePicker;
             'dateFormat' => 'dd/MM/yyyy',
             'clientOptions'=>[
                     'readOnly'=>true,
-                'disabled'=>true
+                'disabled'=>false
             ],
             'options'=>['class'=>'form-control']
         ]); ?>

@@ -142,9 +142,11 @@ class BuyRequestController extends MainController
 
             if($model->buyRequestInternational){
                 $form = $model->buyRequestInternational;
+                $form->bidding_start=date('m-d-Y');
                 $form->proveedores=$model->arrayProveedores();
                 $form->setScenario(BuyRequestInternational::SCENARIO_GENERATE_LICITACION);
                 if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+
                     $form->bidding_end=date('Y-m-d',strtotime($form->bidding_end));
                     $form->save(false);
                     $model->buy_request_status_id=BuyRequestStatus::$LICITANDO;

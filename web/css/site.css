@@ -187,3 +187,12 @@ a.desc:after {
 .sidebar .nav li a, .sidebar .nav li .dropdown-menu a {
     text-transform: none!important;
 }
+.ocultar{
+    display: none!important;
+}
+
+.sidebar .sidebar-wrapper {
+
+    height: calc(100vh - 55px)!important;
+
+}

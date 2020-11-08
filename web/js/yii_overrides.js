@@ -1,4 +1,7 @@
+$(()=>{
+    $('#navbarDropdownProfile').click()
 
+})
 /**
  * Created by carlos on 29/03/17.
  */
