@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                             'class'=>'btn btn-danger'
                         ])
                     :null?>
-                <?=Yii::$app->user->can('buyrequest/reject')&($model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$CANCELADA_ID&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$CERRADA)?
+                <?php $quitar = Yii::$app->user->can('buyrequest/reject')&($model->buy_request_status_id!=\app\models\BuyRequestStatus::$BORRADOR_ID&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$CANCELADA_ID&$model->buy_request_status_id!=\app\models\BuyRequestStatus::$CERRADA)?
                     Html::a("<span class='fa fa-remove'></span>",'#',
                         [
                             'title'=>'Cancelar solicitud',

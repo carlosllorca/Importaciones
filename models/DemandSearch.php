@@ -80,6 +80,12 @@ class DemandSearch extends Demand
             'demand_status_id' => $this->demand_status_id,
             'created_by' => $this->created_by,
         ]);
+        $daterange = $this->range();
+        if($daterange){
+            $query->andFilterWhere([
+                'between', 'sending_date', $daterange[0], $daterange[1]
+            ]);
+        }
 
         $query->andFilterWhere(['ilike', 'client_contract_number', $this->client_contract_number])
             ->andFilterWhere(['ilike', 'other_execution', $this->other_execution])
@@ -125,12 +131,18 @@ class DemandSearch extends Demand
             'require_post_warranty' => $this->require_post_warranty,
             'require_technic_asistance' => $this->require_technic_asistance,
             'created_date' => $this->created_date,
-            'sending_date' => $this->sending_date,
+           // 'sending_date' => $this->sending_date,
             'validated_list_id' => $this->validated_list_id,
             'seller_requirement_id' => $this->seller_requirement_id,
             'demand_status_id' => $this->demand_status_id,
             'created_by' => $this->created_by,
         ]);
+        $daterange = $this->range();
+        if($daterange){
+            $query->andFilterWhere([
+                'between', 'sending_date', $daterange[0], $daterange[1]
+            ]);
+        }
 
         $query->andFilterWhere(['ilike', 'client_contract_number', $this->client_contract_number])
             ->andFilterWhere(['ilike', 'other_execution', $this->other_execution])
@@ -201,12 +213,18 @@ class DemandSearch extends Demand
             'client.province_ueb'=>$this->ueb,
             'created_date' => $this->created_date,
             'approved_by' => $this->approved_by,
-            'sending_date' => $this->sending_date,
+
             'validated_list_id' => $this->validated_list_id,
             'seller_requirement_id' => $this->seller_requirement_id,
             'demand_status_id' => $this->demand_status_id,
             'created_by' => $this->created_by,
         ]);
+        $daterange = $this->range();
+        if($daterange){
+            $query->andFilterWhere([
+                'between', 'sending_date', $daterange[0], $daterange[1]
+            ]);
+        }
 
         $query->andFilterWhere(['ilike', 'client_contract_number', $this->client_contract_number])
             ->andFilterWhere(['ilike', 'other_execution', $this->other_execution])
@@ -221,5 +239,13 @@ class DemandSearch extends Demand
             ->andFilterWhere(['ilike', 'demand.demand_code', $this->demand_code]);
 
         return $dataProvider;
+    }
+    private function range(){
+        if(strlen($this->sending_date)==23){
+            $start = substr($this->sending_date,0,10);
+            $end = substr($this->sending_date,13,23);
+            return [$start,$end];
+        }
+        return false;
     }
 }

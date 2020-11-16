@@ -16,12 +16,12 @@ use yii\jui\DatePicker;
     ]
 ); ?>
 <div class="row">
-    <div class="col-sm-6"><?=$form->field($model,'build_days')->textInput(['type'=>'number','min'=>1,'max'=>999])?></div>
-    <div class="col-sm-6"><?=$form->field($model,'transport_days')->textInput(['type'=>'number','min'=>1,'max'=>999])?></div>
+    <div class="col-sm-6"><?=$form->field($model,'build_days')->textInput(['type'=>'number','min'=>30,'max'=>999])?></div>
+    <div class="col-sm-6"><?=$form->field($model,'transport_days')->textInput(['type'=>'number','min'=>30,'max'=>999])?></div>
     <div class="col-sm-6"><?=$form->field($model,'credit_card_open')->widget(DatePicker::classname(), [
             'dateFormat' => 'dd-MM-yyyy',
 
-            'options'=>['class'=>'form-control']
+            'options'=>['class'=>'form-control','autocomplete'=>'off']
         ]);?></div>
 
     <div class="col-sm-12">

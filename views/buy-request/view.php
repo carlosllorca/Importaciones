@@ -70,7 +70,7 @@ $seriesData = \app\models\DataGraphics::linearComparativeBuyRequest($model->id);
                 ?>
 
                 <?= Yii::$app->user->can('buyrequest/export') ? Html::a("<i class='center_fa fa fa-download '></i>",
-                    ['export', 'id' => $model->id], ['class' => 'btn btn-success', 'target' => '_blank', 'title' => 'Exportar solicitud de compra']) : null ?>
+                    ['export', 'id' => $model->id], ['class' => 'btn btn-success', 'title' => 'Exportar solicitud de compra']) : null ?>
                 <?php
             }
             ?>
@@ -501,7 +501,7 @@ $seriesData = \app\models\DataGraphics::linearComparativeBuyRequest($model->id);
                                 $porciento = $model->percentCompletedStages();
                                 ?>
                                 <div class="progress" title="Cumplimiento del ciclo de transportación." style="margin: 10px">
-                                    <div class="progress-bar" role="progressbar" style="width: <?=$porciento?>%;" aria-valuenow="<?=$porciento?>" aria-valuemin="0" aria-valuemax="100"><?=$model->documentUploadStatus()?>%</div>
+                                    <div class="progress-bar" role="progressbar" style="width: <?=$porciento?>%;" aria-valuenow="<?=$porciento?>" aria-valuemin="0" aria-valuemax="100"><?=$model->percentCompletedStages()?>%</div>
                                 </div>
                                 <?php
                                 if ($model->requestStages) {

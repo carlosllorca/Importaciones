@@ -109,7 +109,7 @@ class BuyRequestController extends MainController
         ]);
     }
 
-   public function actionUpdate($id){
+   public function actionUpdate($id,$tab='demands_associated'){
        $model = $this->findModel($id);
        if((Rbac::getRole()==Rbac::$ESP_TECNICO||Rbac::getRole()==Rbac::$COMPRADOR)&&(!$model->buy_approved_by||!$model->dt_approved_by)){
            Yii::$app->session->setFlash('warning','Esta orden aún no ha sido aprobada para su edición.');
@@ -117,11 +117,11 @@ class BuyRequestController extends MainController
        }
        switch ($model->buy_request_type_id){
            case BuyRequestType::$INTERNACIIONAL_ID:
-               return $this->updateInternacional($model);
+               return $this->updateInternacional($model,$tab);
                break;
            case BuyRequestType::$NACIONAL_ID:
            case BuyRequestType::$TYPE_711:
-               return $this->updateNacional($model);
+               return $this->updateNacional($model,$tab);
                break;
            default:
                new ForbiddenHttpException('Tipo de solicitud de compra no autorizado');
@@ -135,19 +135,23 @@ class BuyRequestController extends MainController
      * @return string|Response
      * @throws \yii\base\InvalidConfigException
      */
-    private function updateInternacional($model)
+    private function updateInternacional($model,$tab)
     {
-        $active = 'demands_associated';
+        $active = $tab;
         if($model->buy_request_type_id==BuyRequestType::$INTERNACIIONAL_ID){
 
             if($model->buyRequestInternational){
                 $form = $model->buyRequestInternational;
-                $form->bidding_start=date('m-d-Y');
+                if(!$form->bidding_start){
+                    $form->bidding_start=date('d-m-Y');
+                }
+
                 $form->proveedores=$model->arrayProveedores();
                 $form->setScenario(BuyRequestInternational::SCENARIO_GENERATE_LICITACION);
                 if ($form->load(Yii::$app->request->post()) && $form->validate()) {
 
                     $form->bidding_end=date('Y-m-d',strtotime($form->bidding_end));
+                    $form->bidding_start=date('Y-m-d',strtotime($form->bidding_start));
                     $form->save(false);
                     $model->buy_request_status_id=BuyRequestStatus::$LICITANDO;
                     foreach (Provider::related($model->arrayValidatedList(),$model->buy_request_type_id) as $provider){
@@ -183,7 +187,7 @@ class BuyRequestController extends MainController
                     }
                     return $this->redirect(['view', 'id' => $model->id]);
                 }else{
-                    $active='propuestas';
+                   // $active='propuestas';
                 }
 
             }else{
@@ -192,14 +196,14 @@ class BuyRequestController extends MainController
         }
 
 
-        if(Yii::$app->user->can('buyrequest/viewassociateddemands')){
-            $active = 'demands_associated';
-
-        }elseif (Yii::$app->user->can('buyrequest/viewproducts')){
+        if($active=='demands_associated'&&!Yii::$app->user->can('buyrequest/viewassociateddemands')){
             $active = 'products';
         }
-        elseif (Yii::$app->user->can('buyrequest/viewdocuments')){
+        if ($active=='products'&&!Yii::$app->user->can('buyrequest/viewproducts')){
             $active = 'documentos';
+        }
+        if ($active=='documentos'&&!Yii::$app->user->can('buyrequest/viewdocuments')){
+            $active = 'propuestas';
         }
 
         if(Yii::$app->request->isPost){
@@ -358,10 +362,14 @@ class BuyRequestController extends MainController
     }
     public function actionRemoveItem($item){
         $demandItem = DemandItem::findOne($item);
+        $buyRequest = $demandItem->buyRequest;
         $demandItem->buy_request_id=null;
         $demandItem->save(false);
         $demandItem->demand->demand_status_id=DemandStatus::ACEPTADA_ID;
         $demandItem->demand->save(false);
+        Yii::$app->session->setFlash('success','Producto eliminado de la orden. La demanda '.$demandItem->demand->demand_code.
+            ' ahora está en estado recibida.');
+        return $this->redirect(['buy-request/update','id'=>$buyRequest->id,'tab'=>'products']);
     }
     public function actionApprove($id){
         $model =$this->findModel($id);
@@ -462,8 +470,7 @@ class BuyRequestController extends MainController
             $zip->addFile($file);
         }
         $zip->close();
-        $this->downloadFile($model->code.'.zip');
-        //$this->downloadFile('tmp/'.$model->code.'.zip');
+        return $this->downloadFile('tmp/'.$model->code.'.zip');
 
 
 
@@ -756,6 +763,7 @@ class BuyRequestController extends MainController
                         $model->buy_request_status_id=BuyRequestStatus::$EN_PROCESO;
 
                         $model->save(false);
+                        $model = $this->findModel($id);
                         $current = $model->buyRequestInternational->credit_card_open;
 
                         foreach (Stage::getStagesByOrderType($model->buy_request_type_id) as $stage){

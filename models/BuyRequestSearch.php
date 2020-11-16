@@ -95,16 +95,30 @@ class BuyRequestSearch extends BuyRequest
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'created' => $this->created,
+           // 'created' => $this->created,
             'last_update' => $this->last_update,
             'created_by' => $this->created_by,
             'buy_request_status_id' => $this->buy_request_status_id,
 
             'buy_request_type_id' => $this->buy_request_type_id,
         ]);
+        $daterange = $this->range();
+        if($daterange){
+            $query->andFilterWhere([
+                'between', 'created', $daterange[0], $daterange[1]
+            ]);
+        }
 
         $query->andFilterWhere(['ilike', 'code', $this->code]);
 
         return $dataProvider;
+    }
+    private function range(){
+        if(strlen($this->created)==23){
+            $start = substr($this->created,0,10);
+            $end = substr($this->created,13,23);
+            return [$start,$end];
+        }
+        return false;
     }
 }

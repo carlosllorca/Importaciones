@@ -289,7 +289,7 @@ class BuyRequest extends \yii\db\ActiveRecord
     {
         $items =[];
         $buyRequestDocuments = BuyRequestDocument::find()->where(['buy_request_id'=>$this->id])
-            ->innerJoinWith('documentType')
+            ->leftJoin('document_type','document_type_id=document_type.id')
             ->orderBy('document_type.order_doc')->all();
         foreach ($buyRequestDocuments as $buyRequestDocument){
             if(!$buyRequestDocument->document_type_id&&Yii::$app->user->can('buyrequest/uploadotherdocs')){
@@ -511,8 +511,12 @@ class BuyRequest extends \yii\db\ActiveRecord
         $total= 0;
         $approved = 0;
         foreach ($this->buyRequestDocuments as $buyRequestDocument){
-
-            if($buyRequestDocument->documentType->required){
+            if($buyRequestDocument->document_type_id==null){
+                $total++;
+                if($buyRequestDocument->document_status_id===DocumentStatus::$APROBADO_ID){
+                    $approved++;
+                }
+            }elseif($buyRequestDocument->documentType->required){
                 $total++;
                 if($buyRequestDocument->document_status_id===DocumentStatus::$APROBADO_ID){
                     $approved++;
@@ -543,7 +547,7 @@ class BuyRequest extends \yii\db\ActiveRecord
                 $completed++;
         }
         if($available)
-            return $completed*100/$available;
+            return round($completed*100/$available,2);
         return 0;
 
     }

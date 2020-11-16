@@ -19,14 +19,14 @@ use yii\jui\DatePicker;
     <div class="col-sm-2"></div>
 
 
-    <div class="col-sm-4" style="text-align: center; padding: 0px 12px;">
+    <div class="col-sm-4 disabled" style="text-align: center; padding: 0px 12px;" >
         <?= $form->field($fLicitacion, 'bidding_start')->widget(DatePicker::classname(), [
-            'dateFormat' => 'dd/MM/yyyy',
+            'dateFormat' => 'dd-MM-yyyy',
             'clientOptions'=>[
                     'readOnly'=>true,
-                'disabled'=>false
+                'disabled'=>true
             ],
-            'options'=>['class'=>'form-control']
+            'options'=>['class'=>'form-control disabled']
         ]); ?>
 
 
@@ -35,7 +35,7 @@ use yii\jui\DatePicker;
         <?= $form->field($fLicitacion, 'bidding_end')->widget(DatePicker::classname(), [
             'dateFormat' => 'dd-MM-yyyy',
 
-            'options'=>['class'=>'form-control']
+            'options'=>['class'=>'form-control','autocomplete'=>'off']
         ]); ?>
     </div>
 
@@ -67,7 +67,7 @@ use yii\jui\DatePicker;
                 ]
             ]) ?>
     </div>
-    <?= $form->field($fLicitacion, 'proveedores')->dropDownList(Provider::related($model->arrayValidatedList(), \app\models\BuyRequestType::$INTERNACIIONAL_ID,true) ,['multiple'=>true,'id'=>'proveedores','class'=>''])->label(false)?>
+    <?= $form->field($fLicitacion, 'proveedores')->dropDownList(Provider::related($model->arrayValidatedList(), \app\models\BuyRequestType::$INTERNACIIONAL_ID,true) ,['multiple'=>true,'id'=>'proveedores','class'=>'hidden'])->label(false)?>
 </div>
 <div class="row">
     <div class="col-sm-12" style="padding: 20px;">

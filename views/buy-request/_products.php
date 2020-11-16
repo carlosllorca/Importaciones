@@ -38,7 +38,7 @@ use yii\helpers\Html;
                                 ['/buy-request/remove-item', 'item' => $product->id],
                                 [
                                     'title' => 'Eliminar item de la solicitud.',
-                                    'data-confirm' => '¿Está seguro que desea quitar este producto de la demanda?'
+                                    'data-confirm' => '¿Está seguro que desea quitar este producto de la orden de compra?'
                                 ]
                             ) : null ?>
                         </th>

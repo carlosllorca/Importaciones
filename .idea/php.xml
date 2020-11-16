@@ -111,6 +111,7 @@
       <path value="$PROJECT_DIR$/vendor/creocoder/yii2-flysystem" />
       <path value="$PROJECT_DIR$/vendor/yii2-db-manager/src" />
       <path value="$PROJECT_DIR$/vendor/beaten-sect0r/yii2-db-manager" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-date-range" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

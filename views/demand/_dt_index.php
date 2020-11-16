@@ -3,9 +3,11 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use kartik\daterange\DateRangePicker;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ProviderStatusSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+
 
 $this->title = 'Demandas';
 $this->params['breadcrumbs'][] = $this->title;
@@ -57,7 +59,18 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                                 'label'=>'Recibida',
                                 'attribute'=>'sending_date',
-                            'format' => 'date'
+                                'format' => 'date',
+                                'filter' => DateRangePicker::widget([
+                                    'model' => $searchModel,
+                                    'attribute' => 'sending_date',
+                                    'convertFormat' => false,
+                                    'pluginOptions' => [
+                                        'locale' => [
+                                            'format' => 'YYYY-MM-DD'
+                                        ],
+                                    ],
+                                ]),
+
                         ],
                        
                         [
