@@ -24,12 +24,15 @@ use yii\widgets\ActiveForm;
 
         </div>
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-6">
                 <?= $form->field($model, 'approved')->widget(\kartik\select2\Select2::className(), [
                     'data' => [0 => 'No', 1 => 'Si'],
                     'pluginOptions' => ['allowEmpty'=>false],
                     'options' => ['placeholder' => 'Seleccione..']
                 ]) ?>
+            </div>
+            <div class="col-sm-6">
+                <?= $form->field($model, 'code')->textInput() ?>
             </div>
 
 
