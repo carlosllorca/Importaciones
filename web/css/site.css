@@ -196,3 +196,37 @@ a.desc:after {
     height: calc(100vh - 55px)!important;
 
 }
+.navbar-absolute{
+    padding: 0px!important;
+}
+.main-panel>.content{
+    margin-top: 50px!important;
+    padding: 10px 15px 0px 15px!important;
+}
+.breadcrumb{
+    padding: 0px 20px!important;
+    background-color: transparent!important;
+}
+.card-body{
+    padding: 5px 15px!important;
+
+
+}
+.card{
+    margin-bottom: 0px!important;
+
+}
+
+.alert-danger {
+    color: #7f231c!important;
+}
+.alert.alert-danger {
+    background-color: #f55145!important;
+    color: #ffffff!important;
+}
+/*.buy-request-status-index{*/
+/*    overflow:hidden;*/
+/*}*/
+/*.sidebar-mini{*/
+/*    background-color: #eeeeee!important;*/
+/*}*/

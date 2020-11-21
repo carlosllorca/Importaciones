@@ -4,6 +4,7 @@ namespace app\controllers;
 
 
 use app\models\Settings;
+use app\models\User;
 use Faker\Provider\Base;
 use Yii;
 
@@ -180,7 +181,11 @@ class ManageController extends MainController
 
     public function actionDelete($id)
     {
-
+        $models = User::find()->innerJoinWith('authAssignament')->where(['item_name'=>$id])->all();
+        if($models){
+            Yii::$app->session->setFlash('danger','El rol no puede ser eliminado porque está asignado a al menos un usuario.');
+            return $this->redirect('rbac');
+        }
         if(Rbac::remove($id))
         {
 

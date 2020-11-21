@@ -56,12 +56,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 /**
                                                  * @var $model \app\models\User
                                                  */
-
+                                                if($model->id==2) return false;
                                                 if(Yii::$app->user->can('user/disable')){
                                                     if($model->active){
                                                         $msg = "¿Confirma que desea desactivar este usuario?";
                                                         return Html::a(
-                                                            "<i class='material-icons'>person_outline</i><div class='ripple-container'></div>",[$url],
+                                                            "<i class='material-icons'>lock</i><div class='ripple-container'></div>",[$url],
                                                             [
                                                                 'data-confirm'=>$msg,
                                                                 'class'=>'btn btn-primary btn-simple btn-xs',
@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     }else{
                                                         $msg = "¿Confirma que desea activar este usuario?";
                                                         return Html::a(
-                                                            "<i class='material-icons'>person</i><div class='ripple-container'></div>",[$url],
+                                                            "<i class='material-icons'>lock_open</i><div class='ripple-container'></div>",[$url],
                                                             [
                                                                 'data-confirm'=>$msg,
                                                                 'class'=>'btn btn-primary btn-simple btn-xs',

@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'class' => 'fa fa-trash',
                                     "title" => 'Eliminar',
                                     'data' => [
-                                        'confirm' => Yii::t('app', 'Está seguro que desea eliminar este Rol?'),
+                                        'confirm' => Yii::t('app', 'Está seguro que desea eliminar este rol?'),
                                         'method' => 'post',
 
                                     ],

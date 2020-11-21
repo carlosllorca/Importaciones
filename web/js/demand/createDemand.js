@@ -1,6 +1,17 @@
 $(function() {
 $('.quantity').on('change',async function(){
     let cantidad = $(this).val()
+    if(cantidad<0){
+        swal({
+            title: "La cantidad debe ser un número positivo.",
+            type: 'error',
+            confirmButtonText: 'Si',
+            allowOutsideClick: true
+        })
+        $(this).val(0)
+        cantidad= 0;
+        
+    }
     let demand = $(this).attr('demand')
     let product = $(this).attr('product')
     let result = await updateDemand(product,cantidad,demand,$(this))

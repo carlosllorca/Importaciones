@@ -13,13 +13,13 @@ use yii\widgets\DetailView;
 
 
     <p style="text-align: right">
-        <?=Yii::$app->user->can('buyrequest711/update')? Html::button('<span class="fa fa-pencil"/>',
+        <?=!$model->buyRequest->approve_start&&Yii::$app->user->can('buyrequest711/update')? Html::button('<span class="fa fa-pencil"/>',
             [
                 'class' => 'btn btn-primary',
                 'title'=>'Modificar datos del 711',
                 'onclick'=>'update711('.$model->id.')'
             ]):null ?>
-        <?=Yii::$app->user->can('buyrequest711/presentar')? Html::a('<span class="fa fa-check"></span> Presentar',
+        <?=!$model->buyRequest->approve_start&&Yii::$app->user->can('buyrequest711/presentar')? Html::a('<span class="fa fa-check"></span> Presentar',
         ['/buy-request-711/presentar','id'=>$model->id],
             [
                 'class' => 'btn btn-primary',

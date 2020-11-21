@@ -492,7 +492,7 @@ class Demand extends \yii\db\ActiveRecord
         }
         $model->price = $model->validatedListItem->price;
         $model->quantity= $quantity;
-        $model->save(false);
+        $model->save();
         return $model;
     }
 

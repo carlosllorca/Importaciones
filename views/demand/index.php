@@ -11,7 +11,7 @@ $this->title = 'Mis demandas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="buy-request-status-index">
+<div class="contenedorMio buy-request-status-index">
 
     <div class="card">
         <div class="card-header card-header-primary">

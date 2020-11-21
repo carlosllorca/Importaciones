@@ -241,6 +241,10 @@ class DemandController extends MainController
     }
     public function actionSend($id){
         $model = $this->findModel($id);
+        if(!$model->demandItems){
+            Yii::$app->session->setFlash('danger','Debe especificar al menos un producto a demandar.');
+            return  $this->redirect(['demand-products','id'=>$id]);
+        }
         $model->demand_status_id=DemandStatus::ENVIADA_ID;
         $model->sending_date=date('Y-m-d H:i:s');
         if(!$model->demand_code){

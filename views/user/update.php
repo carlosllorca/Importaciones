@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                         ]);
 
                 }
-                if(Yii::$app->user->can('user/disable')){
+                if($model->id!=2&&Yii::$app->user->can('user/disable')){
                     if($model->active){
                         $msg = "¿Confirma que desea desactivar este usuario?";
                         echo Html::a(

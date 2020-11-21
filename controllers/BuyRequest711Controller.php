@@ -106,6 +106,7 @@ class BuyRequest711Controller extends MainController
 
         $model->generateFiledTree();
         $model->buyRequest->buy_request_status_id = BuyRequestStatus::$EVALUANDO_OFERTAS;
+        $model->buyRequest->approve_start=date('Y-m-d');
         $model->buyRequest->save(false);
         Yii::$app->session->setFlash('success','711 presentado correctamente.');
         return $this->redirect(['/buy-request/update', 'id' => $model->buy_request_id, 'section' => 'documentos']);
