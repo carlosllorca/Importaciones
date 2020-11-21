@@ -21,22 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="Ronda de pruebas orden nacional y orden 77">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/BuyRequest711Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BuyRequest711Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/DemandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/DemandController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/DemandItemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/DemandItemController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/ManageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/ManageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Demand.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Demand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request-711/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request-711/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/_products.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/_products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buy-request/update_nacional.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/buy-request/update_nacional.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/demand/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/manage/rbac.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/manage/rbac.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/user/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/user/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/update.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/demand/createDemand.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/demand/createDemand.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/email.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/email.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/params.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/params.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/functional/LoginFormCest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/functional/LoginFormCest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/left.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/left.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/site/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -466,14 +457,7 @@
       <workItem from="1605931660430" duration="248000" />
       <workItem from="1605931969111" duration="1667000" />
       <workItem from="1605933913052" duration="629000" />
-      <workItem from="1605935260204" duration="3061000" />
-    </task>
-    <task id="LOCAL-00064" summary="Plantilla de correos.&#10;Email nueva demanda.">
-      <created>1586545099905</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1586545099905</updated>
+      <workItem from="1605935260204" duration="6968000" />
     </task>
     <task id="LOCAL-00065" summary="Correo para aprobar y rechazar demandas.">
       <created>1586549405261</created>
@@ -811,7 +795,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605491400893</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="Ronda de pruebas orden nacional y orden 77">
+      <created>1605984345997</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1605984345997</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -908,33 +899,33 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="774" y="314" width="424" height="491" key="FileChooserDialogImpl/72.27.1848.1053@72.27.1848.1053" timestamp="1604429431281" />
-    <state width="1802" height="344" key="GridCell.Tab.0.bottom" timestamp="1605936816784">
+    <state width="1240" height="283" key="GridCell.Tab.0.bottom" timestamp="1605986880507">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state width="1874" height="339" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603749923842" />
     <state width="1874" height="339" key="GridCell.Tab.0.bottom/1920.0.1920.1080/72.27.1848.1053@1920.0.1920.1080" timestamp="1603980894919" />
-    <state width="1802" height="344" key="GridCell.Tab.0.bottom/1920.0.1920.1080/72.27.1848.1053@72.27.1848.1053" timestamp="1605936816784" />
+    <state width="1240" height="283" key="GridCell.Tab.0.bottom/1920.0.1920.1080/72.27.1848.1053@72.27.1848.1053" timestamp="1605986880507" />
     <state width="1874" height="334" key="GridCell.Tab.0.bottom/72.27.3768.1053@72.27.3768.1053" timestamp="1605491061021" />
-    <state width="1802" height="344" key="GridCell.Tab.0.center" timestamp="1605936816784">
+    <state width="1240" height="283" key="GridCell.Tab.0.center" timestamp="1605986880507">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state width="1874" height="339" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603749923842" />
     <state width="1874" height="339" key="GridCell.Tab.0.center/1920.0.1920.1080/72.27.1848.1053@1920.0.1920.1080" timestamp="1603980894916" />
-    <state width="1802" height="344" key="GridCell.Tab.0.center/1920.0.1920.1080/72.27.1848.1053@72.27.1848.1053" timestamp="1605936816784" />
+    <state width="1240" height="283" key="GridCell.Tab.0.center/1920.0.1920.1080/72.27.1848.1053@72.27.1848.1053" timestamp="1605986880507" />
     <state width="1874" height="334" key="GridCell.Tab.0.center/72.27.3768.1053@72.27.3768.1053" timestamp="1605491061020" />
-    <state width="1802" height="344" key="GridCell.Tab.0.left" timestamp="1605936816783">
+    <state width="1240" height="283" key="GridCell.Tab.0.left" timestamp="1605986880507">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state width="1874" height="339" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603749923842" />
     <state width="1874" height="339" key="GridCell.Tab.0.left/1920.0.1920.1080/72.27.1848.1053@1920.0.1920.1080" timestamp="1603980894916" />
-    <state width="1802" height="344" key="GridCell.Tab.0.left/1920.0.1920.1080/72.27.1848.1053@72.27.1848.1053" timestamp="1605936816783" />
+    <state width="1240" height="283" key="GridCell.Tab.0.left/1920.0.1920.1080/72.27.1848.1053@72.27.1848.1053" timestamp="1605986880507" />
     <state width="1874" height="334" key="GridCell.Tab.0.left/72.27.3768.1053@72.27.3768.1053" timestamp="1605491061018" />
-    <state width="1802" height="344" key="GridCell.Tab.0.right" timestamp="1605936816784">
+    <state width="1240" height="283" key="GridCell.Tab.0.right" timestamp="1605986880507">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state width="1874" height="339" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603749923842" />
     <state width="1874" height="339" key="GridCell.Tab.0.right/1920.0.1920.1080/72.27.1848.1053@1920.0.1920.1080" timestamp="1603980894917" />
-    <state width="1802" height="344" key="GridCell.Tab.0.right/1920.0.1920.1080/72.27.1848.1053@72.27.1848.1053" timestamp="1605936816784" />
+    <state width="1240" height="283" key="GridCell.Tab.0.right/1920.0.1920.1080/72.27.1848.1053@72.27.1848.1053" timestamp="1605986880507" />
     <state width="1874" height="334" key="GridCell.Tab.0.right/72.27.3768.1053@72.27.3768.1053" timestamp="1605491061021" />
     <state width="1802" height="344" key="GridCell.Tab.1.bottom" timestamp="1605936816784">
       <screen x="72" y="27" width="1848" height="1053" />
@@ -1063,6 +1054,11 @@
           <url>file://$PROJECT_DIR$/controllers/ManageController.php</url>
           <line>183</line>
           <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/controllers/DemandController.php</url>
+          <line>268</line>
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Sistema para la gestión del ciclo logístico';
+$this->title = 'Aplicación informática para la gestión del ciclo logístico';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
@@ -19,6 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     <p class="card-category">Ingrese sus credenciales. Luego presione acceder.</p>
                 </div>
                 <div class="card-body" style="padding: 15px">
+                    <div style="width: 100%; text-align: center">
+                        <img src="/img/SEISA.png" width="20%" style="margin: autol "/>
+                    </div>
                     <div class="p-3">
                         <?php $form = ActiveForm::begin([
                             'id' => 'login-form',
@@ -31,10 +34,11 @@ $this->params['breadcrumbs'][] = $this->title;
 //                            ],
                         ]); ?>
 
+
                         <?= $form->field($model, 'username')->
                         textInput([
                             'autofocus' => true,
-                            'autocomplete'=>"disabled",
+                            'autocomplete'=>"off",
                             'readonly'=>true,
                             'onfocus'=>"this.removeAttribute('readonly');",
 
@@ -42,7 +46,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         <?= $form->field($model, 'password')->passwordInput([['maxlength' => true,'autocomplete'=>"off"]])->label('Contraseña') ?>
 
-                        <?= $form->field($model, 'rememberMe')->checkbox()->label('Recuérdame!') ?>
+                       <div style="display: none">
+                           <?= $form->field($model, 'rememberMe')->checkbox()->label('Recuérdame!') ?>
+                       </div>
 
                         <div class="form-group">
                             <div class="col-lg-offset-1 col-lg-11">

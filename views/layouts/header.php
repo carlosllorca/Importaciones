@@ -9,7 +9,7 @@ use yii\helpers\Html;
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " style="background-color: #fff!important;">
     <div class="container-fluid">
         <div class="navbar-wrapper">
-            <a class="navbar-brand" href="/">SIGCL-SEISA</a>
+            <a class="navbar-brand" href="/">AIGCL-SEISA</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>

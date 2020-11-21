@@ -16,7 +16,7 @@ if (class_exists('common\models\Menu')) {
     <div class="logo">
 
         <a href="/" class="simple-text logo-normal">
-            <?= $config::siteTitle() ?>
+            <img src="/img/SEISA.png" width="50%">
         </a>
     </div>
     <div class="sidebar-wrapper">

@@ -5,9 +5,9 @@ return [
     'htmlLayout' => 'layouts/html',
     'transport' => [
         'class' => 'Swift_SmtpTransport',
-        'host' => 'smtp.red.seisa.cu',  // ej. smtp.mandrillapp.com o smtp.gmail.com
-        'username' => 'comprador@seisa.cu',
-        'password' => 'MaiLog/++',
+        'host' => 'smtp.gmail.com',  // ej. smtp.mandrillapp.com o smtp.gmail.com
+        'username' => 'carlosllorcasantana@gmail.com',
+        'password' => 'micuent@',
         'port' => '587', // El puerto 25 es un puerto común también
         'encryption' => 'tls', // Es usado también a menudo, revise la configuración del servidor
     ]];

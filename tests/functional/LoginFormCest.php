@@ -10,7 +10,7 @@ class LoginFormCest
     public function renderLoginPage(\FunctionalTester $I)
     {
 
-        $I->see('Sistema para la gestión del ciclo logístico', 'h4');
+        $I->see('Aplicación informática para la gestión del ciclo logístico', 'h4');
 
     }
 //
