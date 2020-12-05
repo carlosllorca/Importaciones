@@ -19,25 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="pruebas de la aplciación">
+    <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="solucionando bug al eliminar elemento.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/email.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/email.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/BuyRequest711Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BuyRequest711Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/DemandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/DemandController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/ProviderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/ProviderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/ProvinceUebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/ProvinceUebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/ValidatedListItemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/ValidatedListItemController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Demand.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Demand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Rbac.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Rbac.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/UserSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/UserSearch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/client/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/client/_form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/demand/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/demand/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/user/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/demand/createDemand.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/demand/createDemand.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/inform/inform.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/inform/inform.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -473,14 +457,7 @@
       <workItem from="1606145703694" duration="2334000" />
       <workItem from="1606236678994" duration="639000" />
       <workItem from="1607105715980" duration="6148000" />
-      <workItem from="1607186430292" duration="658000" />
-    </task>
-    <task id="LOCAL-00066" summary="Correo de generar solicitud de compra nacional e internacional.">
-      <created>1586554492948</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1586554492949</updated>
+      <workItem from="1607186430292" duration="2947000" />
     </task>
     <task id="LOCAL-00067" summary="Correo solicitud nacional aprobada">
       <created>1586636073223</created>
@@ -818,7 +795,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605991317143</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="solucionando bug al eliminar elemento.">
+      <created>1607187122222</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1607187122223</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -850,7 +834,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="listo el view de la orden de compra internacional." />
     <MESSAGE value="Organizacion alfabetica de nomencladores." />
     <MESSAGE value="Adicionando propiedades para registrar la fecha/hpra de la creació y ultimo registro de las entidades." />
     <MESSAGE value="Perfil de usuario y cambiar contraseña." />
@@ -875,7 +858,8 @@
     <MESSAGE value="Ronda de pruebas flujo orden internacional" />
     <MESSAGE value="Ronda de pruebas orden nacional y orden 77" />
     <MESSAGE value="pruebas de la aplciación" />
-    <option name="LAST_COMMIT_MESSAGE" value="pruebas de la aplciación" />
+    <MESSAGE value="solucionando bug al eliminar elemento." />
+    <option name="LAST_COMMIT_MESSAGE" value="solucionando bug al eliminar elemento." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

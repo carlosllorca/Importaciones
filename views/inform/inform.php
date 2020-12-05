@@ -6,7 +6,7 @@ use yii\widgets\ActiveForm;
 /* @var $this \yii\web\View */
 /* @var $model \app\models\InformForm */
 
-$this->title='Módulo de informes'
+$this->title='Informes'
 ?>
 
 <div class="site-index">
