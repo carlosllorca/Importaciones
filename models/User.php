@@ -61,7 +61,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'full_name', 'email', 'password', 'created_at','province_ueb'], 'required'],
+            [['username', 'full_name', 'email', 'password', 'created_at','province_ueb','cargo'], 'required'],
             [['created_at', 'last_login'], 'safe'],
             [['province_ueb'], 'default', 'value' => null],
             [['province_ueb'], 'integer'],
@@ -73,8 +73,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['username'], 'string', 'max' => 25],
             [['phone_number'], 'string', 'max' => 20],
             [['phone_number'], 'string', 'max' => 20],
-            [['full_name','cargo'], 'string', 'max' => 150],
-            [['full_name','cargo','digital_signature_url'], 'string', 'max' => 150],
+            [['full_name','cargo'], 'string', 'max' => 80],
+            [['full_name','cargo','digital_signature_url'], 'string', 'max' => 80],
 
             [['email'], 'string', 'max' => 50],
             [['province_ueb'], 'ralationUEBWithTypeUser'],
@@ -389,6 +389,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $this->hasMany(UserCanView::className(), ['user_id' => 'id']);
     }
     public function allowNomenclador(){
+        if(Yii::$app->user->isGuest)
+            return false;
 
         $nomencladores = ['certificationtype','certification','buycondition','destiny','finaldestiny','providerstatus','demandstatus',
             'buyrequeststatus','documentstatus','stage','paymentinstrument','paymentmethod','purchasereason','organism',

@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use kartik\daterange\DateRangePicker;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -33,9 +34,38 @@ $this->params['breadcrumbs'][] = $this->title;
                         'username',
                         'full_name',
                         'email:email',
+                        [
+                            'label'=>'Creado',
+                            'attribute'=>'created_at',
+                            'format' => 'date',
+                            'filter' => DateRangePicker::widget([
+                                'model' => $searchModel,
+                                'attribute' => 'created_at',
+                                'convertFormat' => false,
+                                'pluginOptions' => [
+                                    'locale' => [
+                                        'format' => 'YYYY-MM-DD'
+                                    ],
+                                ],
+                            ]),
+                        ],
+                        [
+                            'label'=>'Último acceso',
+                            'attribute'=>'last_login',
+                            'format' => 'date',
+                            'filter' => DateRangePicker::widget([
+                                'model' => $searchModel,
+                                'attribute' => 'last_login',
+                                'convertFormat' => false,
+                                'pluginOptions' => [
+                                    'locale' => [
+                                        'format' => 'YYYY-MM-DD'
+                                    ],
+                                ],
+                            ]),
+                        ],
 
-                        'created_at:date',
-                        'last_login:datetime',
+
                         [
                                 'attribute' => 'province_ueb',
                                 'filter' => \app\models\ProvinceUeb::combo(),

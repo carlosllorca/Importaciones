@@ -55,12 +55,12 @@ class Client extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'address', 'organism_id', 'province_ueb'], 'required'],
+            [['name', 'address', 'organism_id', 'province_ueb','client_code'], 'required'],
             [['address'], 'string'],
             [['organism_id', 'province_ueb'], 'default', 'value' => null],
             [['organism_id', 'province_ueb'], 'integer'],
             [['client_code'], 'string', 'max' => 10],
-            [['name'], 'string', 'max' => 150],
+            [['name'], 'string', 'max' => 100],
             [['organism_id'], 'exist', 'skipOnError' => true, 'targetClass' => Organism::className(), 'targetAttribute' => ['organism_id' => 'id']],
             [['province_ueb'], 'exist', 'skipOnError' => true, 'targetClass' => ProvinceUeb::className(), 'targetAttribute' => ['province_ueb' => 'id']],
         ];

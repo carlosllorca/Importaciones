@@ -41,6 +41,7 @@ class Rbac extends Model
     {
         return [
             [['name', 'description',], 'required'],
+            [['description',], 'string','max'=>50,'min'=>5],
             ['name','isUnique'],
 
         ];
@@ -50,7 +51,7 @@ class Rbac extends Model
         if($this->isNewRecord){
             $role=$auth->getRole($this->name);
             if($role){
-                $this->addError($attribute,$this->type.' already exists!');
+                $this->addError($attribute,'El rol "'.$this->name.'" ya existe.');
             }
         }
 

@@ -1,9 +1,13 @@
 $(function() {
 $('.quantity').on('change',async function(){
     let cantidad = $(this).val()
-    if(cantidad<0){
+    if(!cantidad){
+        cantidad=0;
+        $(this).val(0)
+    }
+    if(cantidad<0||cantidad>99999){
         swal({
-            title: "La cantidad debe ser un número positivo.",
+            title: "La cantidad debe estar entre 0 y 99999.",
             type: 'error',
             confirmButtonText: 'Si',
             allowOutsideClick: true

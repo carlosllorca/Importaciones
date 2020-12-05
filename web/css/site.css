@@ -217,16 +217,17 @@ a.desc:after {
 
 }
 
-.alert-danger {
-    color: #7f231c!important;
-}
+
 .alert.alert-danger {
     background-color: #f55145!important;
     color: #ffffff!important;
 }
-/*.buy-request-status-index{*/
-/*    overflow:hidden;*/
-/*}*/
-/*.sidebar-mini{*/
-/*    background-color: #eeeeee!important;*/
-/*}*/
+.buy-request-status-index{
+    overflow:hidden;
+}
+.sidebar-mini{
+    background-color: #eeeeee!important;
+}
+.alert-danger {
+    color: #7f231c!important;
+}

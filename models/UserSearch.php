@@ -18,7 +18,7 @@ class UserSearch extends User
     {
         return [
             [['id', 'province_ueb'], 'integer'],
-            [['username', 'full_name', 'email', 'password', 'created_at', 'last_login','rol'], 'safe'],
+            [['username', 'full_name', 'email','created_at', 'password', 'created_at', 'last_login','rol'], 'safe'],
         ];
     }
 
@@ -56,11 +56,22 @@ class UserSearch extends User
             return $dataProvider;
         }
 
+        $daterangeCreated = $this->rangeCreated();
+        if($daterangeCreated){
+            $query->andFilterWhere([
+                'between', 'created_at', $daterangeCreated[0], $daterangeCreated[1]
+            ]);
+        }
+        $daterangeLasAccess = $this->rangeLastAccess();
+        if($daterangeLasAccess){
+            $query->andFilterWhere([
+                'between', 'last_login', $daterangeLasAccess[0], $daterangeLasAccess[1]
+            ]);
+        }
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_at' => $this->created_at,
-            'last_login' => $this->last_login,
             'province_ueb' => $this->province_ueb,
             'item_name' => $this->rol,
         ]);
@@ -71,5 +82,23 @@ class UserSearch extends User
             ->andFilterWhere(['ilike', 'password', $this->password]);
 
         return $dataProvider;
+    }
+    private function rangeCreated(){
+        if(strlen($this->created_at)==23){
+            $start = substr($this->created_at,0,10);
+            $end = substr($this->created_at,13,23);
+            return [$start,$end];
+        }
+
+        return false;
+    }
+    private function rangeLastAccess(){
+        if(strlen($this->last_login)==23){
+            $start = substr($this->last_login,0,10);
+            $end = substr($this->last_login,13,23);
+            return [$start,$end];
+        }
+
+        return false;
     }
 }

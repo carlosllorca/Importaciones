@@ -74,7 +74,7 @@ class Demand extends \yii\db\ActiveRecord
             [['demand_code'], 'string'],
             [['require_replacement_part', 'require_post_warranty', 'require_technic_asistance'], 'boolean'],
             [['created_date', 'sending_date', 'approved_date'], 'safe'],
-            [['client_contract_number'], 'string', 'max' => 50],
+            [['client_contract_number'], 'string', 'max' => 10],
             [['other_execution'], 'required',
                 'when' => function ($model) {
                     /**
