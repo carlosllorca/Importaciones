@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4ce22492-f1b0-47ca-af83-99616b8358a7" name="Default Changelist" comment="solucionando bug al eliminar elemento.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/inform/inform.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/inform/inform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +69,7 @@
     <setting file="file://$PROJECT_DIR$/web/js/buy-request/_hitos.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/web/js/buyrequest711/view.js" root0="SKIP_INSPECTION" />
   </component>
+  <component name="PhpDebugGeneral" break_at_first_line="true" listening_started="true" />
   <component name="PhpServers">
     <servers>
       <server host="seisa.llorca.cu" id="17445150-5343-4251-8a4b-56a6b7c6862c" name="seisa" use_path_mappings="true">
@@ -457,14 +458,12 @@
       <workItem from="1606145703694" duration="2334000" />
       <workItem from="1606236678994" duration="639000" />
       <workItem from="1607105715980" duration="6148000" />
-      <workItem from="1607186430292" duration="2947000" />
-    </task>
-    <task id="LOCAL-00067" summary="Correo solicitud nacional aprobada">
-      <created>1586636073223</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1586636073224</updated>
+      <workItem from="1607186430292" duration="3026000" />
+      <workItem from="1607208941615" duration="150000" />
+      <workItem from="1607356346356" duration="43000" />
+      <workItem from="1607400495226" duration="513000" />
+      <workItem from="1607698896454" duration="626000" />
+      <workItem from="1607706030347" duration="145000" />
     </task>
     <task id="LOCAL-00068" summary="Correo solicitud asignada a un usuario (Especialista técnico o comprador.)">
       <created>1586639971109</created>
@@ -802,7 +801,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607187122223</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="solucionando bug al eliminar elemento.">
+      <created>1607195787500</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1607195787500</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
