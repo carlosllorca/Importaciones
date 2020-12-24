@@ -3,7 +3,7 @@
 return [
     'adminEmail' => 'admin@example.com',
     'senderEmail' => 'inmaj@ecodeberrrysolutions.com',
-    'siteName'=>'Sistema informático para la gestión del ciclo logístico.',
+    'siteName'=>'Aplicación informática para la gestión del ciclo logístico.',
     'primaryColor'=>'#f66b0d',
     'senderName' => 'SEISA',
 

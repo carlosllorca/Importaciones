@@ -138,7 +138,7 @@ class DemandController extends MainController
         $model->demand_status_id=DemandStatus::RECHAZADA_ID;
         $model->rejected_reason=$reason;
         $model->save(false);
-        Yii::$app->traza->saveLog('Demanda rechazada','La Demanda '.$model->id. ' ha sido rechazada');
+        Yii::$app->traza->saveLog('Demanda rechazada.','La Demanda '.$model->id. ' ha sido rechazada');
         try{
 
 
@@ -151,7 +151,7 @@ class DemandController extends MainController
         }catch (\Exception $e){
             Yii::$app->session->setFlash('warning','Ocurrió un problema en el envio de correo.');
         }
-        Yii::$app->session->setFlash('success','Demanda rechazada');
+        Yii::$app->session->setFlash('success','Demanda rechazada.');
         return ['success'=>true];
         //todo: Enviar email a la UEB para notificar.
 
@@ -241,6 +241,10 @@ class DemandController extends MainController
     }
     public function actionSend($id){
         $model = $this->findModel($id);
+        if(!$model->demandItems){
+            Yii::$app->session->setFlash('danger','Debe especificar al menos un producto a demandar.');
+            return  $this->redirect(['demand-products','id'=>$id]);
+        }
         $model->demand_status_id=DemandStatus::ENVIADA_ID;
         $model->sending_date=date('Y-m-d H:i:s');
         if(!$model->demand_code){

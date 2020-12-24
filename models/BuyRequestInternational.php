@@ -86,7 +86,7 @@ class BuyRequestInternational extends \yii\db\ActiveRecord
             [['bidding_start', 'bidding_end','ganadores','bidding_ready_date'], 'safe'],
             [['message','bidding_start','bidding_end','buy_condition_id'],'required','on'=>self::SCENARIO_GENERATE_LICITACION],
             [['transport_days','build_days','credit_card_open'],'required','on'=>self::SCENARIO_START_TRANSPORTATION],
-            [['transport_days','build_days'],'integer','min'=>0,'max'=>999],
+            [['transport_days','build_days'],'integer','min'=>30,'max'=>999],
             [['bidding_start','bidding_end'], 'invalidRangeDate'],
             [['bidding_end'], 'beforeToday','on'=>self::SCENARIO_GENERATE_LICITACION],
             [['proveedores'], 'required','on'=>self::SCENARIO_GENERATE_LICITACION,'message'=>'Seleccione al menos un proveedor a notificar.'],

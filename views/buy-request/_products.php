@@ -38,7 +38,7 @@ use yii\helpers\Html;
                                 ['/buy-request/remove-item', 'item' => $product->id],
                                 [
                                     'title' => 'Eliminar item de la solicitud.',
-                                    'data-confirm' => '¿Está seguro que desea quitar este producto de la demanda?'
+                                    'data-confirm' => '¿Está seguro que desea quitar este producto de la orden de compra?'
                                 ]
                             ) : null ?>
                         </th>
@@ -56,7 +56,7 @@ use yii\helpers\Html;
         <div class="col-sm-12">
             <div style="text-align: right">
                 <?php
-                if ($model->buyRequest711&&count($model->getProducts())>1){
+                if (!$model->approve_start&&$model->buyRequest711&&count($model->getProducts())>1){
                 ?>
             <div class="btn-group right <?= Yii::$app->user->can('buyrequest711/separate') ? '' : 'hidden' ?>" role="group">
                 <button type="button" onclick='createAnother(1,<?=$model->id?>)'
@@ -83,7 +83,7 @@ use yii\helpers\Html;
                 <thead>
                 <tr>
                     <?php
-                    if ($model->buyRequest711&&count($model->getProducts())>1) {
+                    if (!$model->approve_start&&$model->buyRequest711&&count($model->getProducts())>1) {
                         ?>
                         <th></th>
                         <?php
@@ -102,7 +102,7 @@ use yii\helpers\Html;
                     ?>
                     <tr>
                         <?php
-                        if ($model->buyRequest711&&count($model->getProducts())>1) {
+                        if (!$model->approve_start&&$model->buyRequest711&&count($model->getProducts())>1) {
                             ?>
                             <th><?= \yii\helpers\Html::checkbox($product->id, false, ['class' => 'check_item','value'=>$product->id]) ?></th>
                             <?php

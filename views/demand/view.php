@@ -104,7 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                    role="tab" aria-controls="nav-profile" aria-selected="false">Otros detalles</a>
                                 <a class="nav-item nav-link <?= $active == 'items' ? 'active' : null ?>"
                                    id="nav-contact-tab"  data-toggle="tab"
-                                   href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Items</a>
+                                   href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Productos</a>
 
                             </div>
                         </nav>

@@ -83,7 +83,7 @@ class ValidatedListItemController extends MainController
                     $certificado->save();
                 }
             }
-            return $this->redirect(['validated-list-item/update', 'id' => $vl]);
+            return $this->redirect(['validated-list/update', 'id' => $vl->id]);
         }
 
         return $this->render('create', [
@@ -133,9 +133,17 @@ class ValidatedListItemController extends MainController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        try{
+            $model = $this->findModel($id);
+            $vl = $model->validated_list_id;
+            $model->delete();
+        }catch (\Exception $exception){
+            Yii::$app->session->setFlash('danger',"No podemos eliminar este elemento. Está siendo utilizado.");
+        }
 
-        return $this->redirect(['index']);
+
+        return $this->redirect(['validated-list/update','id'=>$vl]);
+
     }
 
     /**

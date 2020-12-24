@@ -7,6 +7,7 @@ $db = require __DIR__ . '/test_db.php';
  */
 return [
     'id' => 'basic-tests',
+    'language'=>'es',
     'basePath' => dirname(__DIR__),
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -17,6 +18,17 @@ return [
         'db' => $db,
         'mailer' => [
             'useFileTransport' => true,
+        ],
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'locale' => 'es-ES', //ej. 'es-ES'
+            'language'=>'es-ES',
+            'thousandSeparator' => '.',
+            'decimalSeparator' => ',',
+            'dateFormat' => 'dd/MM/Y',
+            'datetimeFormat' => 'd/M/Y hh:i:ss a',
+            'currencyCode' => '$',
+
         ],
         'traza'=>[
             'class' => 'app\components\TrazaComponent',

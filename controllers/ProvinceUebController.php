@@ -104,7 +104,13 @@ class ProvinceUebController extends MainController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        try{
+            $this->findModel($id)->delete();
+            Yii::$app->session->setFlash('success','Registro eliminado satisfactoriamente.');
+        }catch (\Exception $exception){
+            Yii::$app->session->setFlash('danger',"No podemos eliminar este elemento. Está siendo utilizado.");
+        }
+
 
         return $this->redirect(['index']);
     }

@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
     </div>
 
     <div class="form-group row">
-        <div class="col-md-12 col-sm-12 col-xs-12 p-0 m-0"><?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-inmaj-color' : 'btn btn-inmaj-color']) ?></div>
+        <div class="col-md-12 col-sm-12 col-xs-12 p-0 m-0"><?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Crear') : Yii::t('app', 'Modificar'), ['class' => 'btn btn-primary' ]) ?></div>
     </div>
     <?php ActiveForm::end(); ?>
 

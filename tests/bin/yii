@@ -18,7 +18,18 @@ $config = yii\helpers\ArrayHelper::merge(
     require __DIR__ . '/../../config/console.php',
     [
         'components' => [
-            'db' => require __DIR__ . '/../../config/db.php'
+            'db' => require __DIR__ . '/../../config/db.php',
+            'formatter' => [
+                'class' => 'yii\i18n\Formatter',
+                'locale' => 'es-ES', //ej. 'es-ES'
+                'language'=>'es-ES',
+                'thousandSeparator' => '.',
+                'decimalSeparator' => ',',
+                'dateFormat' => 'dd/MM/Y',
+                'datetimeFormat' => 'd/M/Y hh:i:ss a',
+                'currencyCode' => '$',
+
+            ],
         ]
     ]
 );

@@ -105,12 +105,19 @@
       <path value="$PROJECT_DIR$/vendor/ramosisw/yii2-material-dashboard" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-jui" />
       <path value="$PROJECT_DIR$/vendor/bower-asset/jquery-ui" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/vendor/creocoder/yii2-flysystem" />
+      <path value="$PROJECT_DIR$/vendor/yii2-db-manager/src" />
+      <path value="$PROJECT_DIR$/vendor/beaten-sect0r/yii2-db-manager" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-date-range" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
     <interpreters>
       <interpreter id="61a95553-ee96-48fc-803e-4fcead638632" name="seisa.llorca.cu" home="sshConfig://DATA" debugger_id="php.debugger.XDebug">
-        <remote_data INTERPRETER_PATH="/usr/bin/php" HELPERS_PATH="/home/carlos/.phpstorm_helpers" INITIALIZED="false" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" SSH_CONFIG_ID="8c48f2fc-1c0a-470c-8186-4b960a84ca89" SSH_CONFIG_NAME="carlos@seisa.llorca.cu:22 password" SSH_CREDENTIALS_ID="sshConfig://carlos@seisa.llorca.cu:22 password" />
+        <remote_data INTERPRETER_PATH="/usr/bin/php" HELPERS_PATH="/home/carlos/.phpstorm_helpers" INITIALIZED="false" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" SSH_CONFIG_ID="8c48f2fc-1c0a-470c-8186-4b960a84ca89" SSH_CONFIG_NAME="carlos@logistica.red.seisa.cu:22 password" SSH_CREDENTIALS_ID="sshConfig://carlos@seisa.llorca.cu:22 password" />
       </interpreter>
     </interpreters>
   </component>

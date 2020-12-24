@@ -3,7 +3,14 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="3cf5b849-b098-4dd0-ba55-4dc3a6ea6136" name="seisa.llorca.cu" url="http://seisa.llorca.cu">
-        <fileTransfer rootFolder="/var/www/html/Importaciones" accessType="SFTP" host="seisa.llorca.cu" port="22" sshConfigId="8c48f2fc-1c0a-470c-8186-4b960a84ca89" sshConfig="carlos@seisa.llorca.cu:22 password">
+        <fileTransfer rootFolder="/var/www/html/Importaciones" accessType="SFTP" host="seisa.llorca.cu" port="22" sshConfigId="2a1351d2-a26d-4167-a5a5-b89feb5a266c" sshConfig="seisa.llorca.cu">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="1d6a5571-59a9-40c3-b45e-8e5718a3e531" name="logistica.red.seisa.cu">
+        <fileTransfer rootFolder="/opt/Importaciones" accessType="SFTP" host="logistica.red.seisa.cu" port="22" sshConfigId="8c48f2fc-1c0a-470c-8186-4b960a84ca89" sshConfig="carlos@logistica.red.seisa.cu:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
         </div>
 
 
-        <div class="card-body" style="padding: 15px">
+        <div class="card-body" style="padding: 0px 15px">
             <div class="row" style="padding-left: 3rem; padding-right: 3rem;">
                 <div class="col-sm-12" style="text-align: right">
                     <?=Yii::$app->user->can('buyrequest/approve')&$model->buy_request_status_id==\app\models\BuyRequestStatus::$BORRADOR_ID||$model->buy_request_status_id==\app\models\BuyRequestStatus::$CANCELADA_ID?
@@ -109,7 +109,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
                     ?>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="width: 100%; padding: 0px 20px">
                 <div class="col-xs-12" style="width: 100%">
 
                     <?php

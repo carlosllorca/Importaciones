@@ -127,7 +127,7 @@ class MainController extends Controller
 
     public static function determineExpand($group)
     {
-        $groupsBackend = ["nomencaladores" => [ 'document-status',
+        $groupsBackend = ["nomencaladores" => [ 'document-status','province-ueb',
             'buy-request-status','buy-request-type', 'certification','certification-type', 'country', 'demand-status', 'deployment-part', 'document-type', 'document-type-permission',
             'offert-status','organism','payment-method','purchase-reason','stage','um','validated-list','warranty-time'
         ],
@@ -141,7 +141,7 @@ class MainController extends Controller
                 if ($item == $section) $open = true;
             }
         }
-        return $open ? "show" : "collapse";
+        return $open ? "show" :'collapse';
     }
 
     public static function getRouteNavigation()

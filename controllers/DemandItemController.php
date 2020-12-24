@@ -47,6 +47,10 @@ class DemandItemController extends MainController
         $raw_data = json_decode(Yii::$app->request->getRawBody());
         $cantidad =(int) $raw_data->quantity;
         $producto =(int) $raw_data->item;
+        if($cantidad<0){
+            Yii::$app->response->statusCode=501;
+            return  ['success'=>false,'error'=>'La cantidad no puede ser menor que 0'];
+        }
 
         $demand = Demand::findOne($raw_data->demand);
         $modelDemndItem = $demand->addOrUpdateDemandItem($producto,$cantidad);

@@ -1,11 +1,15 @@
 <?php
 /* @var $this \yii\web\View */
 /* @var $data array|\yii\db\DataReader */
-$this->title='Ventas último año';
+$this->title='Valor de las solicitudes cerrradas por meses';
 ?>
 <div class="container-page" style="padding: 0px 30px">
-    <?=$this->render('header',['title'=>$this->title])?>
-    <div style="width: 100%; padding-left: 15%;padding-right: 15%">
+    <?=$this->render('header',['title'=>$this->title,'date_start'=>$model->date_start,'date_end'=>$model->date_end])?>
+    <?php
+    if(count($data)==0){
+        echo $this->render('no_data_to_display');
+    }else{
+        ?>
         <table style="width: 100%">
             <tr>
                 <th style="width: 7%">No.</th>
@@ -35,7 +39,9 @@ $this->title='Ventas último año';
             }
             ?>
         </table>
-    </div>
+        <?php
+    }
+    ?>
 
 </div>
 

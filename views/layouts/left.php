@@ -16,7 +16,7 @@ if (class_exists('common\models\Menu')) {
     <div class="logo">
 
         <a href="/" class="simple-text logo-normal">
-            <?= $config::siteTitle() ?>
+            <img src="/img/SEISA.png" width="50%">
         </a>
     </div>
     <div class="sidebar-wrapper">
@@ -77,19 +77,7 @@ if (class_exists('common\models\Menu')) {
 
 
 
-            <?php
-            if (Yii::$app->user->can('provinceueb/index')) {
-                ?>
-                <li class="<?= \app\controllers\MainController::determineActive('province-ueb') ?>">
-                    <a class="nav-link" href="/province-ueb/index">
-                        <i class="material-icons">home</i>
-                        <p>UEB</p>
-                    </a>
-                </li>
-                <?php
 
-            }
-            ?>
 
 
             <?php
@@ -98,7 +86,19 @@ if (class_exists('common\models\Menu')) {
                 <li class=" <?= \app\controllers\MainController::determineActiveAction('manage', 'rbac') ?> ">
                     <a class="nav-link" href="/manage/rbac">
                         <i class="material-icons">security</i>
-                        <p>Roles y permisos</p>
+                        <p>Control de acceso</p>
+                    </a>
+                </li>
+                <?php
+            }
+            ?>
+            <?php
+            if (Rbac::getRole()==Rbac::$ROOT) {
+                ?>
+                <li class=" <?= \app\controllers\MainController::determineActive('default') ?> ">
+                    <a class="nav-link" href="/db-manager">
+                        <i class="material-icons">restore</i>
+                        <p>Salvas y restauras</p>
                     </a>
                 </li>
                 <?php
@@ -165,6 +165,7 @@ if (class_exists('common\models\Menu')) {
                         <?= $this->render('menu-item', ['permission' => 'documenttype', 'section' => 'document-type', 'title' => 'Tipos de documentos']) ?>
                         <?= $this->render('menu-item', ['permission' => 'buyrequesttype', 'section' => 'buy-request-type', 'title' => 'Tipos de Solicitudes de compra']) ?>
                         <?= $this->render('menu-item', ['permission' => 'um', 'section' => 'um', 'title' => 'Unidades de medida']) ?>
+                        <?= $this->render('menu-item', ['permission' => 'provinceueb', 'section' => 'province-ueb', 'title' => 'UEB']) ?>
                     </ul>
                 </li>
                 <?php

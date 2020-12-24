@@ -106,6 +106,7 @@ class BuyRequest711Controller extends MainController
 
         $model->generateFiledTree();
         $model->buyRequest->buy_request_status_id = BuyRequestStatus::$EVALUANDO_OFERTAS;
+        $model->buyRequest->approve_start=date('Y-m-d');
         $model->buyRequest->save(false);
         Yii::$app->session->setFlash('success','711 presentado correctamente.');
         return $this->redirect(['/buy-request/update', 'id' => $model->buy_request_id, 'section' => 'documentos']);
@@ -200,7 +201,13 @@ class BuyRequest711Controller extends MainController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        try{
+            $this->findModel($id)->delete();
+            Yii::$app->session->setFlash('success','Registro eliminado satisfactoriamente.');
+        }catch (\Exception $exception){
+            Yii::$app->session->setFlash('danger',"No podemos eliminar este elemento. Está siendo utilizado.");
+        }
+
 
         return $this->redirect(['index']);
     }

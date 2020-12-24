@@ -200,6 +200,7 @@ class UserController extends MainController
             $user = $this->findModel($id);
 
             $user->active = !$user->active;
+            $user->rol='unknown';
             $user->save();
             if($user->active){
                 Yii::$app->session->setFlash('success',"Usuario activado");

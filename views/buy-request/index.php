@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use kartik\daterange\DateRangePicker;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BuyRequestSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -44,7 +45,22 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return $model->buyRequestType->label;
                             }
                         ],
-                        'created:date',
+                        [
+                            'label'=>'Fecha',
+                            'attribute'=>'created',
+                            'format' => 'date',
+                            'filter' => DateRangePicker::widget([
+                                'model' => $searchModel,
+                                'attribute' => 'created',
+                                'convertFormat' => false,
+                                'pluginOptions' => [
+                                    'locale' => [
+                                        'format' => 'YYYY-MM-DD'
+                                    ],
+                                ],
+                            ]),
+                        ],
+
 
 
                         [
@@ -57,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return $model->createdBy->full_name;
                             }
                         ],
-                        'created:date',
+
                         [
                             'attribute' => 'buy_request_status_id',
                             'filter'=>\app\models\BuyRequestStatus::combo(),

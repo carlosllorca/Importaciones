@@ -32,7 +32,7 @@ $form = ActiveForm::begin([
                     <?= $form->field($newOffert, 'expiration_date')->widget(DatePicker::classname(), [
                         'dateFormat' => 'dd-MM-yyyy',
 
-                        'options'=>['class'=>'form-control']
+                        'options'=>['class'=>'form-control','autocomplete'=>'off']
                     ]); ?>
                 </div>
                 <div class="col-sm-12">

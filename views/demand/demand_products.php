@@ -93,6 +93,7 @@ $this->title = 'Añadir productos';
                                     <td>
                                         <input value="<?= $quantity ?>" demand="<?= $model->id ?>"
                                                product="<?= $validatedListItem->id ?>" type="number"
+                                               min="0"
                                                style="max-width: 70px" class="quantity"></td>
                                     <td class="import"><?= $import ?></td>
 

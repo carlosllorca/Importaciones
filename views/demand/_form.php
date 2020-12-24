@@ -11,7 +11,9 @@ use yii\helpers\Url;
 ?>
 
 <div class="demand-form">
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+            'id'=>'demand_form'
+    ]); ?>
     <div class="row">
         <div class="col-md-4">
             <?= $form->field($model, 'organism')->widget(Select2::classname(), [
